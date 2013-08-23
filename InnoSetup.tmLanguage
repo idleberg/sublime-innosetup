@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>iss</string>
+		<string>isl</string>
+	</array>
+
+	<key>name</key>
+	<string>InnoSetup</string>
+
+	<key>patterns</key>
+	<array>
+		<!-- comment -->
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.inno</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(;|#).*$\n?</string>
+			<key>name</key>
+			<string>comment.line.semicolon.inno</string>
+		</dict>
+
+		<!-- [section] -->
+		<dict>
+			<key>match</key>
+			<string>\[[\w]+\]</string>
+			<key>name</key>
+			<string>entity.name.section.inno</string>
+		</dict>
+
+		<!-- {constants} -->
+		<dict>
+			<key>match</key>
+			<string>{(#)?[\w]+}</string>
+			<key>name</key>
+			<string>variable.constant.inno</string>
+		</dict>
+
+		<!-- %variables -->
+		<dict>
+			<key>match</key>
+			<string>%[\w]</string>
+			<key>name</key>
+			<string>variable.inno</string>
+		</dict>
+
+		<!-- keywords -->
+		<dict>
+			<key>match</key>
+			<string>\b(AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|BackColor|BackColor2|BackColorDirection|BackSolid|ChangesAssociations|ChangesEnvironment|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CreateAppDir|CreateUninstallRegKey|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageDetectionMethod|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|OnlyBelowVersion|OutputBaseFilename|OutputDir|OutputManifestFile|Password|PrivilegesRequired|ReserveBytes|RestartApplications|RestartIfNeededByRun|SetupIconFile|SetupLogging|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|ShowUndisplayableLanguages|SignedUninstaller|SignedUninstallerDir|SignTool|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TouchDate|TouchTime|Uninstallable|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UpdateUninstallLogAppName|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageBackColor|WizardImageFile|WizardImageStretch|WizardSmallImageFile)\b</string>
+			<key>name</key>
+			<string>keyword.command.inno</string>
+		</dict>
+
+		<!-- obsolete keywords -->
+		<dict>
+			<key>match</key>
+			<string>\b(AlwaysCreateUninstallIcon|DisableAppendDir|DontMergeDuplicateFiles|MessagesFile|UninstallIconFile|UninstallIconName|UninstallStyle|WizardSmallImageBackColor|WizardStyle)\b</string>
+			<key>name</key>
+			<string>string.obsolete.inno</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<string>\b(AfterInstall|AfterMyProgInstall|BeforeInstall|BeforeMyProgInstall|Check|Components|Description|DestDir|DestName|Filename|Flags|Languages|Name|Parameters|Root|Source|StatusMsg|Subkey|Type|Types|ValueData|ValueName|ValueType|WorkingDir)\b:</string>
+			<key>name</key>
+			<string>constant.character.inno</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<string>\b((0(x|X)[0-9a-fA-F]+)|([0-9]+(\.[0-9]+)?))\b</string>
+			<key>name</key>
+			<string>constant.numeric.inno</string>
+		</dict>
+
+		<!-- flags -->
+		<dict>
+			<key>match</key>
+			<string>\b(32bit|64bit|allowunsafefiles|binary|bzip|checkablealone|checkedonce|closeonexit|compact|comparetimestamp|confirmoverwrite|createallsubdirs|createkeyifdoesntexist|createonlyiffileexists|createvalueifdoesntexist|custom|deleteafterinstall|deletekey|deletevalue|desktopicon|dirifempty|dirifempty|disablenouninstallwarning|dontcloseonexit|dontcopy|dontcreatekey|dontinheritcheck|dontverifychecksum|dword|excludefromshowinnewinstall|exclusive|expandsz|external|fast|filesandordirs|files|fixed|foldershortcut|fontisnttruetype|full|gacinstall|help|hidewizard|ia64|ignoreversion|iscustom|isreadme|lzma2|lzma|main|max|modify|multisz|nocompression|noencryption|noerror|none|none|noregerror|normal|nowait|no|onlyifdoesntexist|overwritereadonly|postinstall|preservestringtype|preventpinning|program|promptifolder|qword|readexec|readme|read|recursesubdirs|regserver|regtypelib|replacesameversion|restartreplace|restart|runascurrentuser|runasoriginaluser|runhidden|runminimized|setntfscompression|sharedfile|shellexec|skipifdoesntexist|skipifnotsilent|skipifsilent|skipifsourcedoesntexist|solidbreak|sortfilesbyextension|sortfilesbyname|string|touch|ultra|unchecked|uninsalwaysuninstall|uninsclearvalue|uninsdeleteentry|uninsdeletekeyifempty|uninsdeletekey|uninsdeletesectionifempty|uninsdeletesection|uninsdeletevalue|uninsneveruninstall|uninsnosharedfileprompt|uninsremovereadonly|uninsrestartdelete|unsetntfscompression|useapppaths|waituntilidle|waituntilterminated|yes|x64|x86|zip)\b</string>
+			<key>name</key>
+			<string>string.flags.inno</string>
+		</dict>
+	</array>
+	
+	<key>scopeName</key>
+	<string>source.inno</string>
+
+	<key>uuid</key>
+	<string>3102a56e-8d6d-49f7-a0ae-4515860347f4</string>
+</dict>
+</plist>
