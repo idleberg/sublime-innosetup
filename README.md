@@ -2,6 +2,8 @@
 
 [InnoSetup](http://www.jrsoftware.org/isinfo.php) syntax definitions and completions for [Sublime Text](http://www.sublimetext.com/) (the former work for [TextMate](http://macromates.com/) as well!)
 
+![Screenshot](https://raw.github.com/idleberg/InnoSetup-Sublime-Text/master/images/screenshot.png)
+
 This package is work in progress, Pascal Scripting is currently not supported!
 
 ## Installation
