@@ -22,6 +22,10 @@ This package is work in progress, Pascal Scripting is currently not supported!
 1. Download the files using the GitHub .zip download option
 2. Unzip the files to your Sublime Text `Packages/User` directory
 
+## Usages
+
+Auto-completion will always list all available flags for a command, the first flag displayed is always the default.
+
 ## License
 
 The MIT License (MIT)
