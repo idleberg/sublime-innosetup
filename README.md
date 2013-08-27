@@ -4,7 +4,7 @@
 
 ![Screenshot](https://raw.github.com/idleberg/InnoSetup-Sublime-Text/master/images/screenshot.gif)
 
-This package is work in progress, Pascal Scripting is currently not supported!
+*Screenshot of InnoSetup script in SublimeText with [Harper theme](https://github.com/idleberg/Harper.tmTheme)*
 
 ## Installation
 
