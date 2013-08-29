@@ -4,7 +4,7 @@
 
 ![Screenshot](https://raw.github.com/idleberg/InnoSetup-Sublime-Text/master/images/screenshot.gif)
 
-*Screenshot of InnoSetup script in SublimeText with [Harper theme](https://github.com/idleberg/Harper.tmTheme)*
+*Screenshot of InnoSetup script in Sublime Text with [Harper theme](https://github.com/idleberg/Harper.tmTheme)*
 
 ## Installation
 
