@@ -116,7 +116,7 @@
 			<string>variable.language.inno</string>
 		</dict>
 
-		<!-- Include Pascal source highlighting-->
+		<!-- Include Pascal source highlighting -->
 		<dict>
 			<key>include</key>
 			<string>source.pascal</string>
