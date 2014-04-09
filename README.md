@@ -1,6 +1,6 @@
 # InnoSetup for Sublime Text
 
-[InnoSetup](http://www.jrsoftware.org/isinfo.php) syntax definitions and completions for [Sublime Text](http://www.sublimetext.com/) (the former work for [TextMate](http://macromates.com/) as well!)
+[InnoSetup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
 
 ![Screenshot](https://raw.github.com/idleberg/InnoSetup-Sublime-Text/master/images/screenshot.gif)
 

@@ -1,0 +1,11 @@
+{
+  "cmd": ["ISCC", "inno-build", "$file"],
+  "working_dir": "${project_path:${folder}}",
+  "file_regex": "Compile aborted",
+  "selector" : "source.inno",
+  
+  "windows":
+    {
+      "cmd": ["$packages\\InnoSetup\\inno-build.cmd", "$file"]
+    }
+}
