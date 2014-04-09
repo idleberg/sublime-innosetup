@@ -3,7 +3,7 @@
 set inno_compiler=
 
 if defined INNO_HOME (
-    if exist "%INNO_HOME%\makensis.exe" (
+    if exist "%INNO_HOME%\ISCC.exe" (
         set "inno_compiler=%INNO_HOME%"
     )
 )
