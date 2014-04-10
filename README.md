@@ -26,7 +26,15 @@
 
 ## Usage
 
+### Completions
+
 Auto-completion will always list all available flags for a command, the first flag displayed is always the default.
+
+### Building
+
+Building requires a properly installed InnoSetup. You can build your script using the default shortcut or from the Tools menu. Output files will be placed in the same folder as your input.
+
+Should the build system be unable to locate the compiler, you should probably re-install InnoSetup to make sure required registry keys are created. Alternatively, you can specify the install location in the environment variable `%INNO_HOME%`.
 
 ## License
 
