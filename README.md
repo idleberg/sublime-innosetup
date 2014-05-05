@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/idleberg/InnoSetup-Sublime-Text.png)](http://travis-ci.org/idleberg/InnoSetup-Sublime-Text)
+
 # InnoSetup for Sublime Text
 
 [InnoSetup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
