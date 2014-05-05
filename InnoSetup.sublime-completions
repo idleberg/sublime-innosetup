@@ -436,6 +436,6 @@
                 { "trigger": "yes", "contents": "yes" },
                 { "trigger": "zip", "contents": "zip" },
 
-                { /* It ain't over 'til the fat lady sings */ }
+                { "note": "It ain't over 'til the fat lady sings" }
         ]
 }
