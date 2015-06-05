@@ -1,7 +1,7 @@
 # InnoSetup for Sublime Text
 
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![GitHub release](https://img.shields.io/github/release/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://github.com/idleberg/InnoSetup-Sublime-Text/releases)
+[![GitHub tag](https://img.shields.io/github/tag/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://github.com/idleberg/InnoSetup-Sublime-Text/tags)
 [![Travis](https://img.shields.io/travis/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://travis-ci.org/idleberg/InnoSetup-Sublime-Text)
 
 [InnoSetup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
