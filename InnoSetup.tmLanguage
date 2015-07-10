@@ -115,12 +115,6 @@
 			<key>name</key>
 			<string>variable.language.inno</string>
 		</dict>
-
-		<!-- Include Pascal source highlighting -->
-		<dict>
-			<key>include</key>
-			<string>source.pascal</string>
-		</dict>
 	</array>
 	
 	<key>scopeName</key>
