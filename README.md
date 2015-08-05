@@ -42,7 +42,7 @@ Building requires a properly installed Inno Setup, and to build on Unix you need
 
 Should the build system be unable to locate the compiler, you should probably re-install Inno Setup to make sure required registry keys are created. Alternatively, you can specify the install location in the environment variable `%INNO_HOME%`.
 
-### Unix
+#### Unix
 
 On Unix systems, you might have to make the build script executable:
 
