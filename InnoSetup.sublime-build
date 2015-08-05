@@ -1,5 +1,5 @@
 {
-  "cmd": ["ISCC", "inno-build", "$file"],
+  "cmd": ["$packages/makensis/inno-build.sh", "$file"],
   "working_dir": "${project_path:${folder}}",
   "file_regex": "Compile aborted",
   "selector" : "source.inno",

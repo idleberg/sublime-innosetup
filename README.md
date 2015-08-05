@@ -36,9 +36,20 @@ Auto-completion will always list all available flags for a command, the first fl
 
 ### Building
 
-Building requires a properly installed InnoSetup. You can build your script using the default shortcut or from the Tools menu. Output files will be placed in the same folder as your input.
+Building requires a properly installed InnoSetup, and to build on Unix you need Wine. You can build your script using the default <kbd>Cmd</kbd>+<kbd>b</kbd> shortcut or from selecting the build option in the Tools menu. Output files will be placed in the same folder as your input.
+
+#### Windows
 
 Should the build system be unable to locate the compiler, you should probably re-install InnoSetup to make sure required registry keys are created. Alternatively, you can specify the install location in the environment variable `%INNO_HOME%`.
+
+### Unix
+
+On Unix systems, you might have to make the build script executable:
+
+    # cd to Sublime Text/Packages/InnoSetup
+    chmod +x inno-build.sh
+
+Use the default shortcut <kbd>Cmd</kbd>+<kbd>b</kbd> to build scripts.
 
 ## License
 
