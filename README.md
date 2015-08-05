@@ -1,14 +1,14 @@
-# InnoSetup for Sublime Text
+# Inno Setup for Sublime Text
 
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![GitHub tag](https://img.shields.io/github/tag/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://github.com/idleberg/InnoSetup-Sublime-Text/tags)
 [![Travis](https://img.shields.io/travis/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://travis-ci.org/idleberg/InnoSetup-Sublime-Text)
 
-[InnoSetup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
+[Inno Setup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
 
 ![Screenshot](https://raw.github.com/idleberg/InnoSetup-Sublime-Text/master/images/screenshot.gif)
 
-*Screenshot of InnoSetup script in Sublime Text with [Harper theme](https://github.com/idleberg/Harper.tmTheme)*
+*Screenshot of Inno Setup script in Sublime Text with [Harper theme](https://github.com/idleberg/Harper.tmTheme)*
 
 ## Installation
 
@@ -16,7 +16,7 @@
 
 1. Make sure you already have [Package Control](http://wbond.net/sublime_packages/package_control/) installed
 2. Choose *Install Package* from the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `⇧⌘P` on OS X)
-3. Select *InnoSetup* and press `Enter`
+3. Select *Inno Setup* and press `Enter`
 
 ### GitHub
 
@@ -36,17 +36,17 @@ Auto-completion will always list all available flags for a command, the first fl
 
 ### Building
 
-Building requires a properly installed InnoSetup, and to build on Unix you need Wine. You can build your script using the default <kbd>Cmd</kbd>+<kbd>b</kbd> shortcut or from selecting the build option in the Tools menu. Output files will be placed in the same folder as your input.
+Building requires a properly installed Inno Setup, and to build on Unix you need Wine. You can build your script using the default <kbd>Cmd</kbd>+<kbd>b</kbd> shortcut or from selecting the build option in the Tools menu. Output files will be placed in the same folder as your input.
 
 #### Windows
 
-Should the build system be unable to locate the compiler, you should probably re-install InnoSetup to make sure required registry keys are created. Alternatively, you can specify the install location in the environment variable `%INNO_HOME%`.
+Should the build system be unable to locate the compiler, you should probably re-install Inno Setup to make sure required registry keys are created. Alternatively, you can specify the install location in the environment variable `%INNO_HOME%`.
 
 ### Unix
 
 On Unix systems, you might have to make the build script executable:
 
-    # cd to Sublime Text/Packages/InnoSetup
+    # cd to Sublime Text/Packages/Inno Setup
     chmod +x inno-build.sh
 
 Use the default shortcut <kbd>Cmd</kbd>+<kbd>b</kbd> to build scripts.
