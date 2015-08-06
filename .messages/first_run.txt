@@ -1,0 +1,6 @@
+On Unix systems, you can now build Inno Setup scripts using Wine. Once setup,
+make sure the build script is executable:
+
+    chmod +x inno-build.sh before you can build.
+
+Use the default shortcut Super+b to build scripts.
