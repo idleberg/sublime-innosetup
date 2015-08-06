@@ -15,8 +15,8 @@
 ### Package Control
 
 1. Make sure you already have [Package Control](http://wbond.net/sublime_packages/package_control/) installed
-2. Choose *Install Package* from the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `⇧⌘P` on OS X)
-3. Select *Inno Setup* and press `Enter`
+2. Choose *Install Package* from the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>p</kbd>` on Windows/Linux, <kbd>⇧</kbd>+<kbd>⌘</kbd>+<kbd>P</kbd>` on OS X)
+3. Select *Inno Setup* and press <kbd>Enter</kbd>
 
 ### GitHub
 
@@ -49,7 +49,7 @@ On Unix systems, you might have to make the build script executable:
     # cd to Sublime Text/Packages/Inno Setup
     chmod +x inno-build.sh
 
-Use the default shortcut <kbd>Cmd</kbd>+<kbd>b</kbd> to build scripts.
+Use the default shortcut <kbd>Super</kbd>+<kbd>b</kbd> to build scripts.
 
 ## License
 
