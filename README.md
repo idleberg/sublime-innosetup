@@ -15,7 +15,7 @@
 ### Package Control
 
 1. Make sure you already have [Package Control](http://wbond.net/sublime_packages/package_control/) installed
-2. Choose *Install Package* from the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>p</kbd>` on Windows/Linux, <kbd>⇧</kbd>+<kbd>⌘</kbd>+<kbd>P</kbd>` on OS X)
+2. Choose *Install Package* from the Command Palette (<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>p</kbd>)
 3. Select *Inno Setup* and press <kbd>Enter</kbd>
 
 ### GitHub
