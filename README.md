@@ -21,12 +21,7 @@
 ### GitHub
 
 1. Change to your Sublime Text `Packages` directory
-2. Clone repository `git clone https://github.com/idleberg/InnoSetup-Sublime-Text.git`
-
-### Manual installation
-
-1. Download the files using the GitHub .zip download option
-2. Unzip the files to your Sublime Text `Packages` directory
+2. Clone repository `git clone https://github.com/idleberg/InnoSetup-Sublime-Text.git 'Inno Setup'`
 
 ## Usage
 
