@@ -36,7 +36,7 @@ Auto-completion will always list all available flags for a command, the first fl
 
 ### Building
 
-Building requires a properly installed Inno Setup, and to build on Unix you need Wine. You can build your script using the default <kbd>Super</kbd>+<kbd>b</kbd> shortcut or from selecting the build option in the Tools menu. Output files will be placed in the same folder as your input.
+Building requires a properly installed Inno Setup, and to build on Unix you need [Wine](https://www.winehq.org/). You can build your script using the default <kbd>Super</kbd>+<kbd>b</kbd> shortcut or from selecting the build option in the Tools menu. Output files will be placed in the same folder as your input.
 
 #### Windows
 
