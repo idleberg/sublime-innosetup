@@ -6,9 +6,9 @@
 
 [Inno Setup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
 
-![Screenshot](https://raw.github.com/idleberg/InnoSetup-Sublime-Text/master/images/screenshot.gif)
+![Screenshot](https://raw.github.com/idleberg/InnoSetup-Sublime-Text/master/screenshot.png)
 
-*Screenshot of Inno Setup script in Sublime Text with [Harper theme](https://github.com/idleberg/Harper.tmTheme)*
+*Screenshot of Inno Setup in Sublime Text with [Hopscotch](https://github.com/idleberg/Hopscotch) color scheme*
 
 ## Installation
 
