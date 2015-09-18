@@ -24,6 +24,11 @@
 1. Change to your Sublime Text `Packages` directory
 2. Clone repository `git clone https://github.com/idleberg/InnoSetup-Sublime-Text.git 'Inno Setup'`
 
+### Manual installation
+
+1. Download the latest [stable release](https://github.com/idleberg/InnoSetup-Sublime-Text/releases)
+2. Unzip the archive to your Sublime Text `Packages` directory
+
 ## Usage
 
 ### Completions
