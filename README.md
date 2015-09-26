@@ -45,7 +45,7 @@ Should the build system be unable to locate the compiler, you should probably re
 
 #### Unix
 
-Use the default shortcut <kbd>Super</kbd>+<kbd>b</kbd> to build scripts. Should you experience a *Permission denied* error, change the permissions of the Bash script: `chmod +x inno-build.sh`.
+Use the default shortcut <kbd>Super</kbd>+<kbd>b</kbd> to build scripts. Should you experience a *Permission denied* error, change the permissions of the Bash script: `chmod +x build.sh`.
 
 ## License
 
