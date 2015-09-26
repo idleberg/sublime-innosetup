@@ -1,10 +1,10 @@
 @echo off
 
-set inno_compiler=
+set inno_dir=
 
 if defined INNO_HOME (
     if exist "%INNO_HOME%\ISCC.exe" (
-        set "inno_compiler=%INNO_HOME%"
+        set "inno_dir=%INNO_HOME%"
     )
 )
 
@@ -14,16 +14,16 @@ if %PROCESSOR_ARCHITECTURE%==x86 (
     set RegQry=HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1
 )
 
-if not defined inno_compiler (
-    for /F "tokens=2*" %%a in ('reg query "%RegQry%" /v InstallLocation ^|findstr InstallLocation') do set inno_compiler=%%b
+if not defined inno_dir (
+    for /F "tokens=2*" %%a in ('reg query "%RegQry%" /v InstallLocation ^|findstr InstallLocation') do set inno_dir=%%b
 )
 
-if not defined inno_compiler (
-    for %%X in (ISCC.exe) do (set inno_compiler=%%~dp$PATH:X)
+if not defined inno_dir (
+    for %%X in (ISCC.exe) do (set inno_dir=%%~dp$PATH:X)
 )
 
-if defined inno_compiler (
-    "%inno_compiler%\ISCC.exe" %1
+if defined inno_dir (
+    "%inno_dir%\ISCC.exe" %1
 ) else (
     echo "Error, build system cannot find NSIS! Please reinstall it, add ISCC.exe to your PATH, or defined the INNO_HOME environment variable."
 )
