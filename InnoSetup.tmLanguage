@@ -26,7 +26,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*(;|#).*$\n?</string>
+			<string>^\s*(;|#(^\w)).*$\n?</string>
 			<key>name</key>
 			<string>comment.line.semicolon.inno</string>
 		</dict>
