@@ -43,7 +43,7 @@ Building requires a properly installed Inno Setup, and to build on Unix you need
 
 Should the build system be unable to locate the compiler, you should probably re-install Inno Setup to make sure required registry keys are created. Alternatively, you can specify the install location in the [environment variable](http://superuser.com/a/284351/195953) `%INNO_HOME%`.
 
-#### Unix
+#### Linux
 
 Use the default shortcut <kbd>Super</kbd>+<kbd>b</kbd> to build scripts. Should you experience a *Permission denied* error, change the permissions of the Bash script: `chmod +x build.sh`.
 
