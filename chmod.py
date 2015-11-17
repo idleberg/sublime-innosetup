@@ -2,9 +2,6 @@
 
 import os, stat, sublime, sublime_plugin
 
-# Package name, must match directory name
-p = 'Inno Setup'
-
 # Array of files, relative to package directory
 files = [
     'build.sh'
@@ -13,11 +10,14 @@ files = [
 def plugin_loaded():
     from package_control import events
 
-    if (events.install(p) or events.post_upgrade(p)) and os.name is 'posix' or 'mac':
+    # Get name of package folder
+    me = os.path.basename(os.path.dirname(os.path.realpath(__file__)))
+
+    if (events.install(me) or events.post_upgrade(me)) and os.name is 'posix' or 'mac':
         for file in files:
 
             # Concat full path
-            f = sublime.packages_path() + '/' + p + '/' + file
+            f = me + '/' + file
 
             # Change permissions, if file exists
             if os.path.isfile(f):
