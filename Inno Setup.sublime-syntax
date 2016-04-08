@@ -9,6 +9,9 @@ file_extensions:
 scope: source.inno
 contexts:
   main:
+    - match: '(?i)^\[Code\]'
+      scope: entity.name.section.inno
+      push: pascal_block
     - match: ^(\s+)?#((append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef))\b
       scope: string.directives.inno
     - match: '\[[\w]+\]'
@@ -37,3 +40,13 @@ contexts:
       scope: comment.line.semicolon.inno
       captures:
         1: punctuation.definition.comment.inno
+
+  pascal_block:
+    - match: '^\s*#(append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef)\s+(".*")$'
+      captures:
+        1: keyword.control.include.inno
+        2: string.directives.inno
+    - match: '\[[\w]+\]'
+      scope: entity.name.section.inno
+      pop: true
+    - include: Packages/Pascal/Pascal.sublime-syntax
