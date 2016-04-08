@@ -39,9 +39,10 @@ err_lines = {}
 
 
 class LintAction(sublime_plugin.EventListener):
-  def on_pre_save_async(self, view):
+  def on_modified_async(self, view):
     if 'Inno' in view.settings().get('syntax'):
       lint(view)
+      self.on_selection_modified_async(view)
   def on_selection_modified_async(self, view):
     if 'Inno' not in view.settings().get('syntax'):
       return

@@ -46,7 +46,7 @@ contexts:
       captures:
         1: keyword.control.include.inno
         2: string.directives.inno
-    - match: '\[[\w]+\]'
+    - match: '^\[[\w]+\]$'
       scope: entity.name.section.inno
       pop: true
     - include: Packages/Pascal/Pascal.sublime-syntax
