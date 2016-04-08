@@ -25,15 +25,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-
-SCRIPTNAME=$1
+SCRIPT=$1
 INNO_BIN="Inno Setup 5/ISCC.exe"
 
 # Check if variable is set
-[ -z "$SCRIPTNAME" ] && { echo "Usage: $0 <SCRIPT_NAME>"; echo; exit 1; }
+[ -z "$SCRIPT" ] && { echo "Usage: $0 <SCRIPT_NAME>"; echo; exit 1; }
 
 # Check if filename exist
-[ ! -f "$SCRIPTNAME" ] && { echo "File not found. Aborting."; echo; exit 1; }
+[ ! -f "$SCRIPT" ] && { echo "File not found. Aborting."; echo; exit 1; }
 
 # Check if wine is present
 command -v wine >/dev/null 2>&1 || { echo >&2 "Wine doesn't seem to be installed. Aborting."; echo; exit 1; }
@@ -48,10 +47,10 @@ PROGFILES_PATH=$(winepath -u "${PROGRAMFILES}" 2>/dev/null)
 INNO_PATH="${PROGFILES_PATH%?}/${INNO_BIN}"
 
 # Translate unix script path to windows path 
-SCRIPTNAME=$(winepath -w "$SCRIPTNAME" 2> /dev/null)
+SCRIPT=$(winepath -w "$SCRIPT" 2> /dev/null)
 
 # Check if Inno Setup is installed into wine
 [ ! -f "$INNO_PATH" ] && { echo "Install Inno Setup 5 Quickstart before running this script."; echo; exit 1; }
 
 # Compile!
-wine "$INNO_PATH" "$SCRIPTNAME"
+wine "$INNO_PATH" "$SCRIPT"
