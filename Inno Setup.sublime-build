@@ -1,11 +1,11 @@
 {
-  "cmd": ["$packages/Inno Setup/build.sh", "$file"],
+  "cmd": ["$packages/sublime-innosetup/build.sh", "$file"],
   "working_dir": "${project_path:${folder}}",
   "file_regex": "Compile aborted",
   "selector" : "source.inno",
   
   "windows":
     {
-      "cmd": ["$packages\\Inno Setup\\build.cmd", "$file"]
+      "cmd": ["$packages\\sublime-innosetup\\build.cmd", "$file"]
     }
 }
