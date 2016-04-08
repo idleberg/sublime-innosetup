@@ -119,7 +119,7 @@ class FindUsages(sublime_plugin.TextCommand):
       if 'Inno' not in v.settings().get('syntax'):
         continue
       file = re.split('(?:.*)\\\\(.*)', v.file_name())[1]
-      regs = [file + ' at line ' + str(v.rowcol(r.a)[0] + 1) for r in v.find_all(r'\b' + sym + r'\b')]
+      regs = [get_symbol_context(v, r) + ':' + str(v.rowcol(r.a)[0] + 1) + ' in file: ' + file for r in v.find_all(r'\b' + sym + r'\b')]
       matches += [(v.file_name(), v.rowcol(r.a)) for r in v.find_all(r'\b' + sym + r'\b')]
       regions += regs
     def on_sel(ind):
@@ -142,6 +142,15 @@ def find_symbol(view, symbolname):
         return v.file_name(), row+1, col+1
   row, col = view.rowcol(view.sel()[0].a)
   return view.file_name(), row+1, col+1
+
+
+def get_symbol_context(view, region):
+  cont = ''
+  for s in view.symbols():
+    if s[0].a > region.a:
+      break
+    cont = s[1]
+  return cont
 
 
 def get_word_and_scope_under_cursor(view):
