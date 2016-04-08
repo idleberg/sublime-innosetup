@@ -1,8 +1,8 @@
 %YAML 1.2
 ---
 # http://www.sublimetext.com/docs/3/syntax.html
-name: InnoSetup
-comment: https://github.com/idleberg/InnoSetup-Sublime-Text
+name: 'Inno Setup'
+comment: https://github.com/idleberg/sublime-innosetup
 file_extensions:
   - iss
   - isl
@@ -49,4 +49,4 @@ contexts:
     - match: '^\[[\w]+\]$'
       scope: entity.name.section.inno
       pop: true
-    - include: InnoPascal.sublime-syntax
+    - include: 'Inno Pascal.sublime-syntax'
