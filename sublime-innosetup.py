@@ -9,6 +9,10 @@ popup_enabled = True
 popup_style = ''
 
 
+class InnoSetup():
+  err_lines = {}
+
+
 def refresh_popup_style(bg_color, text_color):
   global popup_style
   popup_style = (
@@ -35,10 +39,10 @@ def plugin_loaded():
   except OSError as e:
     print(e)
 
-err_lines = {}
-
 
 class LintAction(sublime_plugin.EventListener):
+  def on_load_async(self, view):
+    self.on_modified_async(view)
   def on_modified_async(self, view):
     if 'Inno' in view.settings().get('syntax'):
       lint(view)
@@ -48,33 +52,36 @@ class LintAction(sublime_plugin.EventListener):
       return
     if not popup_enabled:
       return
+    file = re.sub('\\\\', '/', view.file_name())
     sel_line = view.rowcol(view.sel()[0].a)[0]
-    if sel_line in list(err_lines.keys()):
-      html = '<html>' + err_lines[sel_line] + '</html>'
+    if sel_line in list(InnoSetup.err_lines[file].keys()):
+      html = '<html>' + InnoSetup.err_lines[file][sel_line] + '</html>'
       view.show_popup(popup_style + html, max_width=500)
 
 
 def lint(view):
-  global err_lines
-  err_lines = {}
   if not exists:
     return
   file = re.sub('\\\\', '/', view.file_name())
+  InnoSetup.err_lines[file] = {}
   cmd = [iscc, '/q', '/do', '/O-', file]
   p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, universal_newlines=True)
   out, err = p.communicate()
+  if not err:
+    return
   line_matcher = re.compile(r'Error on line (\d+).*')
   for msg in err.split('\n'):
     if msg == '' or 'Compile aborted' in msg:
       break
     err_line = int(line_matcher.split(msg)[1]) - 1
-    err_lines[err_line] = msg
-  highlight(view, err_lines)
+    InnoSetup.err_lines[file][err_line] = msg
+  highlight(view)
 
 
-def highlight(view, err_lines):
+def highlight(view):
   error_regions = []
-  for item in err_lines:
+  file = re.sub('\\\\', '/', view.file_name())
+  for item in InnoSetup.err_lines[file]:
     line_region = view.line(view.text_point(item, 0))
     error_regions.append(line_region)
   view.add_regions('inno_error', error_regions, 'entity.name.type.class.error.inno', 'dot', sublime.DRAW_NO_FILL)
@@ -87,3 +94,34 @@ class TogglePopup(sublime_plugin.ApplicationCommand):
     curr = settings.get('inno_popup_enabled', True)
     popup_enabled = not curr
     settings.set('inno_popup_enabled', popup_enabled)
+
+
+class GotoDefinition(sublime_plugin.TextCommand):
+  def run(self, edit):
+    view = self.view
+    sel_region = view.sel()[0]
+    print(sel_region)
+    scope = view.scope_name(sel_region.a)
+    if 'support.function.pascal' in scope:
+      symbolname = view.substr(view.word(sel_region.a))
+      f, r, c = find_symbol(view, symbolname)
+      goto_location(f, r, c)
+  def is_enabled(self):
+    return 'Inno' in self.view.settings().get('syntax')
+
+
+def find_symbol(view, symbolname):
+  for v in view.window().views():
+    if 'Inno' not in v.settings().get('syntax'):
+      continue
+    for sym in v.symbols():
+      if symbolname == sym[1]:
+        row, col = v.rowcol(sym[0].a)
+        return v.file_name(), row+1, col+1
+  row, col = view.rowcol(view.sel()[0].a)
+  return view.file_name(), row+1, col+1
+
+
+def goto_location(filename, row, col):
+  window = sublime.active_window()
+  window.open_file('%s:%s:%s' % (filename, row, col), sublime.ENCODED_POSITION)
