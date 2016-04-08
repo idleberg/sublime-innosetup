@@ -54,7 +54,7 @@ contexts:
     - include: types
 
   block_start:
-    - match: '\b(?i:begin)\b'
+    - match: '\b(?i:begin|try|case)\b'
       scope: keyword.control.pascal
       push: block_stmt
 
