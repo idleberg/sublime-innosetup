@@ -25,5 +25,5 @@ if not defined inno_dir (
 if defined inno_dir (
     "%inno_dir%\ISCC.exe" %1
 ) else (
-    echo "Error, build system cannot find NSIS! Please reinstall it, add ISCC.exe to your PATH, or defined the INNO_HOME environment variable."
+    echo "Error, build system cannot find Inno Setup! Make sure to add ISCC.exe to your PATH, or define the INNO_HOME environment variable."
 )
