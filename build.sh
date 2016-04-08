@@ -36,7 +36,7 @@ INNO_BIN="Inno Setup 5/ISCC.exe"
 [ ! -f "$SCRIPTNAME" ] && { echo "File not found. Aborting."; echo; exit 1; }
 
 # Check if wine is present
-command -v wine >/dev/null 2>&1 || { echo >&2 "I require wine but it's not installed. Aborting."; echo; exit 1; }
+command -v wine >/dev/null 2>&1 || { echo >&2 "Wine doesn't seem to be installed. Aborting."; echo; exit 1; }
 
 # Get Program Files path via wine command prompt
 PROGRAMFILES=$(wine cmd /c 'echo %PROGRAMFILES%' 2>/dev/null)
