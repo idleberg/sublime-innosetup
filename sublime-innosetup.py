@@ -33,7 +33,6 @@ class LintAction(sublime_plugin.EventListener):
     if 'Inno' not in view.settings().get('syntax'):
       return
     sel_line = view.rowcol(view.sel()[0].a)[0]
-    print(style)
     if sel_line in list(err_lines.keys()):
       html = '<html>' + err_lines[sel_line] + '</html>'
       view.show_popup(style + html, max_width=500)
