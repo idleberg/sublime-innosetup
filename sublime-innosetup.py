@@ -99,13 +99,34 @@ class TogglePopup(sublime_plugin.ApplicationCommand):
 class GotoDefinition(sublime_plugin.TextCommand):
   def run(self, edit):
     view = self.view
-    sel_region = view.sel()[0]
-    print(sel_region)
-    scope = view.scope_name(sel_region.a)
+    symbolname, scope = get_word_and_scope_under_cursor(view)
     if 'support.function.pascal' in scope:
-      symbolname = view.substr(view.word(sel_region.a))
       f, r, c = find_symbol(view, symbolname)
       goto_location(f, r, c)
+  def is_enabled(self):
+    return 'Inno' in self.view.settings().get('syntax')
+
+
+class FindUsages(sublime_plugin.TextCommand):
+  def run(self, edit):
+    view = self.view
+    current_loc = view.rowcol(view.sel()[0].a)
+    sym, scope = get_word_and_scope_under_cursor(view)
+    matches = []
+    regions = []
+    for v in view.window().views():
+      if 'Inno' not in v.settings().get('syntax'):
+        continue
+      file = re.split('(?:.*)\\\\(.*)', v.file_name())[1]
+      regs = [file + ' at line ' + str(v.rowcol(r.a)[0] + 1) for r in v.find_all(r'\b' + sym + r'\b')]
+      matches += [(v.file_name(), v.rowcol(r.a)) for r in v.find_all(r'\b' + sym + r'\b')]
+      regions += regs
+    def on_sel(ind):
+      if ind == - 1:
+        goto_location(view.file_name(), current_loc[0], current_loc[1])
+      f, rc = matches[ind]
+      goto_location(f, rc[0]+1, rc[1]+1)
+    view.window().show_quick_panel(regions, on_sel, sublime.MONOSPACE_FONT, 0, on_sel)
   def is_enabled(self):
     return 'Inno' in self.view.settings().get('syntax')
 
@@ -120,6 +141,13 @@ def find_symbol(view, symbolname):
         return v.file_name(), row+1, col+1
   row, col = view.rowcol(view.sel()[0].a)
   return view.file_name(), row+1, col+1
+
+
+def get_word_and_scope_under_cursor(view):
+    sel_region = view.sel()[0]
+    scope = view.scope_name(sel_region.a)
+    sym = view.substr(view.word(sel_region.a))
+    return sym, scope
 
 
 def goto_location(filename, row, col):
