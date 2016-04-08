@@ -84,6 +84,7 @@ def highlight(view):
   for item in InnoSetup.err_lines[file]:
     line_region = view.line(view.text_point(item, 0))
     error_regions.append(line_region)
+  view.set_status('Inno', 'error in lines:' + str([str(view.rowcol(r.a)[0]+1) + ',' for r in error_regions]))
   view.add_regions('inno_error', error_regions, 'entity.name.type.class.error.inno', 'dot', sublime.DRAW_NO_FILL)
 
 
