@@ -2,6 +2,7 @@ import sublime
 import sublime_plugin
 import subprocess
 import re
+from shutil import which
 
 iscc = ''
 exists = False
@@ -25,19 +26,34 @@ def refresh_popup_style(bg_color, text_color):
         )
 
 
-def plugin_loaded():
-  global iscc, exists, popup_enabled, popup_style
-  try:
-    subprocess.call(['iscc'], shell=True)
-    iscc = 'iscc'
-    exists = True
-    settings = sublime.load_settings('Preferences.sublime-settings')
-    popup_enabled = settings.get('inno_popup_enabled', True)
-    popup_bg = settings.get('inno_popup_bg', '#AAAAAA')
-    popup_text = settings.get('inno_popup_text', '#AA4400')
+def load_settings():
+  def get_iscc():
+    global iscc, exists
+    iscc = settings.get('iscc')
+    if which(iscc) is None:
+      exists = False
+      sublime.error_message('ISCC not found!')
+    else:
+      exists = True
+  def get_popup_enabled():
+    global popup_enabled
+    popup_enabled = settings.get('popup_enabled')
+  def get_popup_style():
+    popup_text = settings.get('popup_foreground')
+    popup_bg = settings.get('popup_background')
     refresh_popup_style(popup_bg, popup_text)
-  except OSError as e:
-    print(e)
+  settings = sublime.load_settings('Inno Setup.sublime-settings')
+  get_iscc()
+  get_popup_enabled()
+  get_popup_style()
+  settings.add_on_change('iscc', get_iscc)
+  settings.add_on_change('popup_enabled', get_popup_enabled)
+  settings.add_on_change('popup_foreground', get_popup_style)
+  settings.add_on_change('popup_background', get_popup_style)
+
+
+def plugin_loaded():
+  load_settings()
 
 
 class LintAction(sublime_plugin.EventListener):
@@ -53,8 +69,10 @@ class LintAction(sublime_plugin.EventListener):
     if not popup_enabled:
       return
     file = re.sub('\\\\', '/', view.file_name())
+    if file not in InnoSetup.err_lines:
+      lint(view)
     sel_line = view.rowcol(view.sel()[0].a)[0]
-    if sel_line in list(InnoSetup.err_lines[file].keys()):
+    if sel_line in InnoSetup.err_lines[file]:
       html = '<html>' + InnoSetup.err_lines[file][sel_line] + '</html>'
       view.show_popup(popup_style + html, max_width=500)
 
@@ -84,17 +102,8 @@ def highlight(view):
   for item in InnoSetup.err_lines[file]:
     line_region = view.line(view.text_point(item, 0))
     error_regions.append(line_region)
-  view.set_status('Inno', 'error in lines:' + str([str(view.rowcol(r.a)[0]+1) + ',' for r in error_regions]))
+  view.set_status('Inno', 'error in lines:' + str([str(view.rowcol(r.a)[0]+1) for r in error_regions]))
   view.add_regions('inno_error', error_regions, 'entity.name.type.class.error.inno', 'dot', sublime.DRAW_NO_FILL)
-
-
-class TogglePopup(sublime_plugin.ApplicationCommand):
-  def run(self):
-    global popup_enabled
-    settings = sublime.load_settings('Preferences.sublime-settings')
-    curr = settings.get('inno_popup_enabled', True)
-    popup_enabled = not curr
-    settings.set('inno_popup_enabled', popup_enabled)
 
 
 class GotoDefinition(sublime_plugin.TextCommand):
@@ -102,8 +111,9 @@ class GotoDefinition(sublime_plugin.TextCommand):
     view = self.view
     symbolname, scope = get_word_and_scope_under_cursor(view)
     if 'support.function.pascal' in scope:
-      f, r, c = find_symbol(view, symbolname)
-      goto_location(f, r, c)
+      d = view.window().lookup_symbol_in_open_files(symbolname)[-1]
+      abs_path, row, col = d[0], d[2][0], d[2][1]
+      goto_location(abs_path, row, col)
   def is_enabled(self):
     return 'Inno' in self.view.settings().get('syntax')
 
