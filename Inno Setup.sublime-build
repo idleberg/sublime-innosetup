@@ -1,5 +1,5 @@
 {
-  "cmd": ["$packages/sublime-innosetup/build.sh", "$file"],
+  "cmd": ["sh", "$packages/sublime-innosetup/build.sh", "$file"],
   "working_dir": "${project_path:${folder}}",
   "file_regex": "Compile aborted",
   "selector" : "source.inno",
