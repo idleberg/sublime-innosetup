@@ -49,4 +49,3 @@ contexts:
     - match: '^\[[\w]+\]$'
       scope: entity.name.section.inno
       pop: true
-    - include: 'Inno Pascal.sublime-syntax'
