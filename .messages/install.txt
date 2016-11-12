@@ -1,7 +1,0 @@
-On Linux, you can now build Inno Setup scripts using Wine. Use the default
-shortcut (Super+b) to build scripts.
-
-Should you experience a file permissions error, please set the permissions of
-the Bash script manually:
-
-    chmod +x build.sh
