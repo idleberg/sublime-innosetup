@@ -19,7 +19,7 @@
         <!-- Inno Pascal section -->
         <dict>
             <key>begin</key>
-            <string>(?i)^\[Code\]$</string>
+            <string>^(\[Code\])$</string>
             <key>beginCaptures</key>
             <dict>
                 <key>1</key>
@@ -29,7 +29,7 @@
                 </dict>
             </dict>
             <key>end</key>
-            <string>^(?=\[(Code|Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\])$</string>
+            <string>^(?=\[(Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\])$</string>
             <key>endCaptures</key>
             <dict>
                 <key>1</key>
