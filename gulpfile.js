@@ -1,69 +1,79 @@
  /*
- * sublimetext-gruntfile.js
- * https://github.com/idleberg/sublimetext-gruntfile.js
+ * sublimetext-gulpfile.js
+ * https://github.com/idleberg/sublimetext-gulpfile.js
  *
- * Copyright (c) 2014 Jan T. Sott
+ * Copyright (c) 2014-2016 Jan T. Sott
  * Licensed under the MIT license.
  */
- 
- module.exports = function(grunt) {
 
- 	var jsonFiles = [
-        '**/*.JSON-tmLanguage',
-        '**/*.sublime-build',
-        '**/*.sublime-commands',
-        '**/*.sublime-completions',
-        '**/*.sublime-keymap',
-        '**/*.sublime-macro',
-        '**/*.sublime-menu',
-        '**/*.sublime-settings',
-        '**/*.sublime-theme',
-        'messages.json'
-    ];
+// Dependencies
+var gulp = require('gulp'),
+    debug = require('gulp-debug'),
+    jsonLint = require('gulp-jsonlint');
+    ymlVal = require('gulp-yaml-validate');
+    xmlVal = require('gulp-xml-validator');
 
-    var xmlFiles = [
-    	'**/*.plist',
-    	'**/*.sublime-snippet',
-    	'**/*.tmCommand',
-    	'**/*.tmLanguage',
-    	'**/*.tmPreferences',
-    	'**/*.tmSnippet'
-    ];
+// Supported files
+var jsonFiles = [
+    '!node_modules/**/*',
+    '**/*.JSON-sublime-syntax',
+    '**/*.JSON-tmLanguage',
+    '**/*.JSON-tmTheme',
+    '**/*.sublime-build',
+    '**/*.sublime-commands',
+    '**/*.sublime-completions',
+    '**/*.sublime-keymap',
+    '**/*.sublime-macro',
+    '**/*.sublime-menu',
+    '**/*.sublime-settings',
+    '**/*.sublime-theme',
+    'messages.json'
+];
 
- 	grunt.initConfig({
+var xmlFiles = [
+    '!node_modules/**/*',
+    '**/*.plist',
+    '**/*.PLIST-sublime-syntax',
+    '**/*.PLIST-tmLanguage',
+    '**/*.PLIST-tmTheme',
+    '**/*.sublime-snippet',
+    '**/*.tmCommand',
+    '**/*.tmLanguage',
+    '**/*.tmPreferences',
+    '**/*.tmSnippet',
+    '**/*.tmTheme',
+    '**/*.xml'
+];
 
- 		// default task
-		jsonlint: {
-		  files: {
-		    src: jsonFiles
-		  }
-		},
+var ymlFiles = [
+    '!node_modules/**/*',
+    '**/*.sublime-syntax',
+    '**/*.YAML-tmLanguage',
+    '**/*.YAML-tmTheme'
+];
 
- 		xml_validator: {
- 			files: {
- 				src: xmlFiles
- 			},
- 		},
+// Available tasks
+gulp.task('lint', ['lint:json', 'lint:xml', 'lint:yml']);
 
-		// watch task
-        watch: {
-		    json: {
-		        files: jsonFiles,
-		        tasks: ['jsonlint']
-		    },
-		    xml: {
-		        files: xmlFiles,
-		        tasks: ['xml_validator']
-		    }
-		}
- 	});
+// Lint JSON
+gulp.task('lint:json', function(){
+  return gulp.src(jsonFiles)
+    .pipe(debug({title: 'lint:json'}))
+    .pipe(jsonLint())
+    .pipe(jsonLint.failAfterError())
+    .pipe(jsonLint.reporter());
+});
 
- 	grunt.loadNpmTasks('grunt-contrib-watch');
- 	grunt.loadNpmTasks('grunt-xml-validator');
- 	grunt.loadNpmTasks('grunt-jsonlint');
- 	grunt.registerTask('default', ['jsonlint', 'xml_validator']);
+// Validate XML
+gulp.task('lint:xml', function() {
+  return gulp.src(xmlFiles)
+    .pipe(debug({title: 'lint:xml'}))
+    .pipe(xmlVal());
+});
 
-    // task shortcuts
- 	grunt.registerTask('json', 'jsonlint');
- 	grunt.registerTask('xml', 'xml_validator');
- };
+// Validate YAML
+gulp.task('lint:yml', function() {
+  return gulp.src(ymlFiles)
+    .pipe(debug({title: 'lint:yml'}))
+    .pipe(ymlVal({ safe: true }));
+});
