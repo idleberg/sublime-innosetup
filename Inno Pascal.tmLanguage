@@ -39,6 +39,9 @@
         </dict>
     </array>
 
+    <key>scopeName</key>
+    <string>source.pascal.inno</string>
+
     <key>uuid</key>
     <string>fc3750f1-c489-4980-9c0b-e7048de97760</string>
 </dict>
