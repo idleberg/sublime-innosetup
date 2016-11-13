@@ -44,7 +44,7 @@
             <array>
                 <dict>
                     <key>include</key>
-                    <string>source.pascal</string>
+                    <string>source.pascal.inno</string>
                 </dict>
             </array>
         </dict>
