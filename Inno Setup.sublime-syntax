@@ -25,7 +25,7 @@ contexts:
           captures:
             1: entity.name.section.inno
           pop: true
-        - include: 'scope:source.pascal'
+        - include: 'scope:source.pascal.inno'
       with_prototype:
         - match: '^(?=\[(Code|Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\])$'
           pop: true
