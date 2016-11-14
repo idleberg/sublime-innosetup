@@ -3,7 +3,7 @@
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![Package Control](https://packagecontrol.herokuapp.com/downloads/Inno%20Setup.svg?style=flat-square)](https://packagecontrol.io/packages/Inno%20Setup)
 [![GitHub tag](https://img.shields.io/github/tag/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://github.com/idleberg/InnoSetup-Sublime-Text/tags)
-[![Travis](https://img.shields.io/travis/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://travis-ci.org/idleberg/InnoSetup-Sublime-Text)
+[![Travis](https://img.shields.io/travis/idleberg/InnoSetup-Sublime-Text.svg?branch=subl2&style=flat-square)](https://travis-ci.org/idleberg/InnoSetup-Sublime-Text)
 
 [Inno Setup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
 
