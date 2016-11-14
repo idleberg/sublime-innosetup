@@ -2,12 +2,12 @@
 
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![Package Control](https://packagecontrol.herokuapp.com/downloads/Inno%20Setup.svg?style=flat-square)](https://packagecontrol.io/packages/Inno%20Setup)
-[![GitHub tag](https://img.shields.io/github/tag/idleberg/InnoSetup-Sublime-Text.svg?style=flat-square)](https://github.com/idleberg/InnoSetup-Sublime-Text/tags)
-[![Travis](https://img.shields.io/travis/idleberg/InnoSetup-Sublime-Text.svg?branch=subl2&style=flat-square)](https://travis-ci.org/idleberg/InnoSetup-Sublime-Text)
+[![GitHub tag](https://img.shields.io/github/tag/idleberg/sublime-innosetup.svg?style=flat-square)](https://github.com/idleberg/sublime-innosetup/tags)
+[![Travis](https://img.shields.io/travis/idleberg/sublime-innosetup.svg?branch=subl2&style=flat-square)](https://travis-ci.org/idleberg/sublime-innosetup)
 
 [Inno Setup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
 
-![Screenshot](https://raw.githubusercontent.com/idleberg/InnoSetup-Sublime-Text/master/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/idleberg/sublime-innosetup/master/screenshot.png)
 
 *Screenshot of Inno Setup in Sublime Text with [Hopscotch](https://github.com/idleberg/Hopscotch) color scheme*
 
@@ -22,11 +22,11 @@
 ### GitHub
 
 1. Change to your Sublime Text `Packages` directory
-2. Clone repository `git clone https://github.com/idleberg/InnoSetup-Sublime-Text.git 'Inno Setup'`
+2. Clone repository `git clone https://github.com/idleberg/sublime-innosetup.git 'Inno Setup'`
 
 ### Manual installation
 
-1. Download the latest [stable release](https://github.com/idleberg/InnoSetup-Sublime-Text/releases)
+1. Download the latest [stable release](https://github.com/idleberg/sublime-innosetup/releases)
 2. Unzip the archive to your Sublime Text `Packages` directory
 
 ## Usage
@@ -53,4 +53,4 @@ This work is licensed under the [The MIT License](LICENSE).
 
 ## Donate
 
-You are welcome support this project using [Flattr](https://flattr.com/submit/auto?user_id=idleberg&url=https://github.com/idleberg/InnoSetup-Sublime-Text) or Bitcoin `17CXJuPsmhuTzFV2k4RKYwpEHVjskJktRd`
+You are welcome support this project using [Flattr](https://flattr.com/submit/auto?user_id=idleberg&url=https://github.com/idleberg/sublime-innosetup) or Bitcoin `17CXJuPsmhuTzFV2k4RKYwpEHVjskJktRd`
