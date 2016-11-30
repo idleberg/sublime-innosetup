@@ -22,7 +22,7 @@
 ### GitHub
 
 1. Change to your Sublime Text `Packages` directory
-2. Clone repository `git clone https://github.com/idleberg/sublime-innosetup.git 'Inno Setup'`
+2. Clone repository `git clone --branch subl2 https://github.com/idleberg/sublime-innosetup.git 'Inno Setup'`
 
 ### Manual installation
 
@@ -37,7 +37,7 @@ Auto-completion will always list all available flags for a command, the first fl
 
 ### Building
 
-Building requires a properly installed Inno Setup, and to build on Unix you need [Wine](https://www.winehq.org/). You can build your script using the default <kbd>Super</kbd>+<kbd>b</kbd> shortcut or from selecting the build option in the Tools menu. Output files will be placed in the same folder as your input.
+Building requires a properly installed Inno Setup, and to build on macOS/Linux you need [Wine](https://www.winehq.org/). You can build your script using the default <kbd>Super</kbd>+<kbd>b</kbd> shortcut or from selecting the build option in the Tools menu. Output files will be placed in the same folder as your input.
 
 #### Windows
 
@@ -45,7 +45,7 @@ Make sure that Inno Setup is installed properly and that `ISCC.exe` is in your P
 
 #### macOS / Linux
 
-Make sure that Wine and Inno Setup are installed properly. Use the default shortcut <kbd>Super</kbd>+<kbd>b</kbd> to build scripts.
+With Wine and Inno Setup properly installed, use the default shortcut <kbd>Super</kbd>+<kbd>b</kbd> to build your script.
 
 ## License
 
