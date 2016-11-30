@@ -1,29 +1,21 @@
 @echo off
 
-set inno_dir=
+rem Check %PATH% for ISCC.exe
+for %%X in (ISCC.exe) do (set inno_path=%%~dp$PATH:X)
+if defined inno_path goto :found
 
-if defined INNO_HOME (
-    if exist "%INNO_HOME%\ISCC.exe" (
-        set "inno_dir=%INNO_HOME%"
-    )
-)
-
+rem Check registry for InnoSetup install path
 if %PROCESSOR_ARCHITECTURE%==x86 (
     set RegQry=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1
 ) else (
     set RegQry=HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1
 )
 
-if not defined inno_dir (
-    for /F "tokens=2*" %%a in ('reg query "%RegQry%" /v InstallLocation ^|findstr InstallLocation') do set inno_dir=%%b
-)
+for /F "tokens=2*" %%a in ('reg query "%RegQry%" /v InstallLocation ^|findstr InstallLocation') do set inno_path=%%b
 
-if not defined inno_dir (
-    for %%X in (ISCC.exe) do (set inno_dir=%%~dp$PATH:X)
-)
-
-if defined inno_dir (
-    "%inno_dir%\ISCC.exe" %1
+:found
+if defined inno_path (
+    "%inno_path%\ISCC.exe" %1
 ) else (
-    echo "Error, build system cannot find Inno Setup! Make sure to add ISCC.exe to your PATH, or define the INNO_HOME environment variable."
+    echo 'ISCC.exe' is not recognized as an internal or external command, operable program or batch file.
 )
