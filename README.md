@@ -7,6 +7,8 @@
 
 [Inno Setup](http://www.jrsoftware.org/isinfo.php) syntax definitions, completions and build system for [Sublime Text](http://www.sublimetext.com/).
 
+**Note**: This package is compatible with Sublime Text 3 ([Build 3103](http://www.sublimetext.com/blog/articles/sublime-text-3-build-3103) or higher). Click [here](https://github.com/idleberg/sublime-innosetup/tree/subl2) for a Sublime Text 2 version of this package.
+
 ![Screenshot](https://raw.githubusercontent.com/idleberg/sublime-innosetup/master/screenshot.png)
 
 *Screenshot of Inno Setup in Sublime Text with [Hopscotch](https://github.com/idleberg/Hopscotch) color scheme*
