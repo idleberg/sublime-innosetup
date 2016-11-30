@@ -1,11 +1,35 @@
 {
-  "cmd": ["sh", "$packages/Inno Setup/scripts/build.sh", "$file"],
+  "selector": "source.inno",
   "working_dir": "${project_path:${folder}}",
-  "file_regex": "Compile aborted",
-  "selector" : "source.inno",
-  
-  "windows":
+  "cmd": [
+    "sh",
+    "$packages/Inno Setup/scripts/build.sh",
+    "$file"
+  ],
+  "windows": {
+    "cmd": [
+      "powershell",
+      "-ExecutionPolicy",
+      "Unrestricted",
+      "-File",
+      "$packages/Inno Setup/scripts/build.ps1",
+      "$file"
+    ]
+  },
+  "variants": [
     {
-      "cmd": ["$packages\\Inno Setup\\scripts\\build.cmd", "$file"]
+      "name": "Legacy Windows",
+      "cmd": [
+        "bash",
+        "-c",
+        "echo This build system is only available on Windows"
+      ],
+      "windows": {
+        "cmd": [
+          "$packages\\Inno Setup\\scripts\\build.cmd",
+          "$file"
+        ]
+      }
     }
+  ]
 }
