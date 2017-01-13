@@ -70,7 +70,7 @@ contexts:
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
-        - match: '\"{2}'
+        - match: '"{2}'
           scope: constant.character.escape.inno
         - match: '"{1}'
           scope: invalid.illegal.inno
