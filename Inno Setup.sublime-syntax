@@ -8,10 +8,9 @@ file_extensions:
   - isl
 scope: source.inno
 variables:
-  constant: '{#?\w+}'
+  constant: '{(app|cf32|cf64|cf|cmd|commonappdata|commondocs|computername|dao|dotnet11|dotnet2032|dotnet2064|dotnet20|dotnet4032|dotnet4064|dotnet40|fonts|groupname|group|hwnd|language|localappdata|log|pf32|pf64|pf|sd|sendto|srcexe|src|sysuserinfoname|sysuserinfoorg|syswow64|sys|tmp|uninstallexe|usercf|userinfoname|userinfoorg|userinfoserial|username|userpf|win|wizardhwnd)}'
   sections: '^\[(Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\]$'
   variable: '%\w+'
-  quotes: '""'
 contexts:
   main:
 
@@ -36,9 +35,9 @@ contexts:
       scope: keyword.other.inno
     - match: '{{sections}}'
       scope: entity.name.section.inno
-    - match: '^\s*(AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysCreateUninstallIcon|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|BackColor|BackColor2|BackColorDirection|BackSolid|ChangesAssociations|ChangesEnvironment|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CopyrightFontName|CopyrightFontSize|CreateAppDir|CreateUninstallRegKey|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DialogFontName|DialogFontSize|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageCodePage|LanguageDetectionMethod|LanguageID|LanguageName|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|PrivilegesRequired|ReserveBytes|RestartApplications|RestartIfNeededByRun|RightToLeft|SetupIconFile|SetupLogging|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|ShowUndisplayableLanguages|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolRetryCount|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TitleFontName|TitleFontSize|TouchDate|TouchTime|Uninstallable|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UpdateUninstallLogAppName|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WelcomeFontName|WelcomeFontSize|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageBackColor|WizardImageFile|WizardImageStretch|WizardSmallImageFile)\b'
+    - match: '^\s*(AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysCreateUninstallIcon|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|BackColor|BackColor2|BackColorDirection|BackSolid|ChangesAssociations|ChangesEnvironment|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CopyrightFontName|CopyrightFontSize|CreateAppDir|CreateUninstallRegKey|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DialogFontName|DialogFontSize|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageCodePage|LanguageDetectionMethod|LanguageID|LanguageName|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|PrivilegesRequired|ReserveBytes|RestartApplications|RestartIfNeededByRun|RightToLeft|SetupIconFile|SetupLogging|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|ShowUndisplayableLanguages|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolRetryCount|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TitleFontName|TitleFontSize|TouchDate|TouchTime|Uninstallable|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UpdateUninstallLogAppName|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WelcomeFontName|WelcomeFontSize|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageBackColor|WizardImageFile|WizardImageStretch|WizardSmallImageFile)(?=\s*=)'
       scope: keyword.inno
-    - match: '\b(AfterInstall|AfterMyProgInstall|BeforeInstall|BeforeMyProgInstall|Check|Components|Description|DestDir|DestName|Filename|Flags|Languages|Name|Parameters|Root|Source|StatusMsg|Subkey|Type|Types|ValueData|ValueName|ValueType|WorkingDir)\b:'
+    - match: '\b(AfterInstall|AfterMyProgInstall|BeforeInstall|BeforeMyProgInstall|Check|Components|Description|DestDir|DestName|Filename|Flags|Languages|Name|Parameters|Root|Source|StatusMsg|Subkey|Type|Types|ValueData|ValueName|ValueType|WorkingDir)(?=\s*:)'
       scope: keyword.other.inno
     - match: '\b(BeveledLabel|MyAppName|MyAppVerName|MyDescription)\b'
       scope: keyword.messages.inno
@@ -58,12 +57,12 @@ contexts:
       scope: variable.other.inno
 
     # Strings
-    - match: '\w+:\s*"'
+    - match: ':\s*"'
       captures:
         0: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.double.inno
-        - match: '"\s*(,|$)'
+        - match: '"{1}\s*(;|$\n?)'
           captures:
             0: punctuation.definition.string.end.inno
           pop: true
@@ -71,42 +70,10 @@ contexts:
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
-        - match: '{{quotes}}'
+        - match: '\"{2}'
           scope: constant.character.escape.inno
-
-    - match: "\\w+:\\s*\'"
-      captures:
-        0: punctuation.definition.string.begin.inno
-      push:
-        - meta_scope: string.quoted.single.inno
-        - match: "'"
-          captures:
-            0: punctuation.definition.string.end.inno
-          pop: true
-        - match: '{{constant}}'
-          scope: constant.other.inno
-        - match: '{{variable}}'
-          scope: variable.other.inno
-        - match: '{{variable}}'
-          scope: variable.other.inno
-        - match: '{{quotes}}'
-          scope: constant.character.escape.inno
-
-    - match: '\w+:\s*`'
-      captures:
-        0: punctuation.definition.string.begin.inno
-      push:
-        - meta_scope: string.quoted.double.inno
-        - match: '`'
-          captures:
-            0: punctuation.definition.string.end.inno
-          pop: true
-        - match: '{{constant}}'
-          scope: constant.other.inno
-        - match: '{{variable}}'
-          scope: variable.other.inno
-        - match: '{{quotes}}'
-          scope: constant.character.escape.inno
+        - match: '"{1}'
+          scope: invalid.illegal.inno
 
     # Line Comment
     - match: ^\s*;.*$
