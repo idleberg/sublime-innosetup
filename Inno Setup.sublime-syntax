@@ -8,9 +8,10 @@ file_extensions:
   - isl
 scope: source.inno
 variables:
-  constant: '{(#)?[\w]+}'
+  constant: '{#?\w+}'
   sections: '^\[(Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\]$'
   variable: '%\w+'
+  quotes: '""'
 contexts:
   main:
 
@@ -57,12 +58,12 @@ contexts:
       scope: variable.other.inno
 
     # Strings
-    - match: '"'
+    - match: '\w+:\s*"'
       captures:
         0: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.double.inno
-        - match: '"'
+        - match: '"\s*(,|$)'
           captures:
             0: punctuation.definition.string.end.inno
           pop: true
@@ -70,8 +71,10 @@ contexts:
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
+        - match: '{{quotes}}'
+          scope: constant.character.escape.inno
 
-    - match: "'"
+    - match: "\\w+:\\s*\'"
       captures:
         0: punctuation.definition.string.begin.inno
       push:
@@ -84,8 +87,12 @@ contexts:
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
+        - match: '{{variable}}'
+          scope: variable.other.inno
+        - match: '{{quotes}}'
+          scope: constant.character.escape.inno
 
-    - match: '`'
+    - match: '\w+:\s*`'
       captures:
         0: punctuation.definition.string.begin.inno
       push:
@@ -98,6 +105,8 @@ contexts:
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
+        - match: '{{quotes}}'
+          scope: constant.character.escape.inno
 
     # Line Comment
     - match: ^\s*;.*$
