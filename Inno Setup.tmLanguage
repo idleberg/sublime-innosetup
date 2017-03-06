@@ -173,15 +173,9 @@
                 </dict>
                 <dict>
                     <key>match</key>
-                    <string>"{2}</string>
+                    <string>\\.</string>
                     <key>name</key>
                     <string>constant.character.escape.inno</string>
-                </dict>
-                <dict>
-                    <key>match</key>
-                    <string>"{1}</string>
-                    <key>name</key>
-                    <string>invalid.illegal.inno</string>
                 </dict>
             </array>
         </dict>
