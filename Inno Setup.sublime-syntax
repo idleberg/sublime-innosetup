@@ -11,6 +11,7 @@ variables:
   constant: '{(app|cf32|cf64|cf|cmd|commonappdata|commondocs|computername|dao|dotnet11|dotnet2032|dotnet2064|dotnet20|dotnet4032|dotnet4064|dotnet40|fonts|groupname|group|hwnd|language|localappdata|log|pf32|pf64|pf|sd|sendto|srcexe|src|sysuserinfoname|sysuserinfoorg|syswow64|sys|tmp|uninstallexe|usercf|userinfoname|userinfoorg|userinfoserial|username|userpf|win|wizardhwnd)}'
   sections: '^\[(Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\]$'
   variable: '%\w+'
+  escaped: '\\.'
 contexts:
   main:
 
@@ -70,10 +71,8 @@ contexts:
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
-        - match: '"{2}'
+        - match: '{{escaped}}'
           scope: constant.character.escape.inno
-        - match: '"{1}'
-          scope: invalid.illegal.inno
 
     # Line Comment
     - match: ^\s*;.*$
