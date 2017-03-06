@@ -57,12 +57,12 @@ contexts:
       scope: variable.other.inno
 
     # Strings
-    - match: '"\s*"'
+    - match: '"'
       captures:
         0: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.double.inno
-        - match: '"{1}\s*(;|$\n?)'
+        - match: '"'
           captures:
             0: punctuation.definition.string.end.inno
           pop: true
