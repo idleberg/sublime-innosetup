@@ -49,6 +49,10 @@ Make sure that Inno Setup is installed properly and that `ISCC.exe` is in your P
 
 With Wine and Inno Setup properly installed, use the default shortcut <kbd>Super</kbd>+<kbd>b</kbd> to build your script.
 
+### Linter
+
+You can install a separate [linting package](https://packagecontrol.io/packages/SublimeLinter-contrib-iscc) to highlight errors in your InnoSetup script.
+
 ## License
 
 This work is licensed under the [The MIT License](LICENSE).
