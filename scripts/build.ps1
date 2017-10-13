@@ -1,27 +1,22 @@
 # The MIT License (MIT)
-# Copyright (c) 2016 Jan T. Sott
+# Copyright (c) 2016, 2017 Jan T. Sott
 #
 # https://github.com/idleberg/sublime-innosetup
 
 $DebugPreference = "SilentlyContinue"
 
-If (-Not (Test-Path HKLM:)) {
-    # This should never be shown when run from Sublime Text
-    Write-Host "Error: This script is meant to be run on Windows only"
-    Exit
-}
-
+# PowerShell 3.0 is integrated with Windows 8 and with Windows Server 2012
 If ($PSVersionTable.PSVersion.Major -lt 3) {
-    # PowerShell 3.0 is integrated with Windows 8 and with Windows Server 2012
     Write-Host "Error: This script requires PowerShell 3.0 (or higher)"
     Exit
 }
 
-If (Get-Command "ISCC.exe" -ErrorAction SilentlyContinue) {
-    Write-Debug "'ISCC.exe' found in %PATH%"
-    $iscc = "ISCC.exe"
-} Else {
-    Write-Debug "Checking registry for NSIS installation path"
+If (Get-Command "ISCC" -ErrorAction SilentlyContinue) {
+    Write-Debug "'ISCC' found in %PATH%"
+    $iscc = "ISCC"
+} ElseIf (Test-Path HKLM:) {
+    Write-Debug "Checking Windows Registry for NSIS installation path"
+
     If ([System.Environment]::Is64BitOperatingSystem) {
         $inno_key = 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1'
     } Else {
@@ -33,7 +28,7 @@ If (Get-Command "ISCC.exe" -ErrorAction SilentlyContinue) {
 }
 
 If (-Not $iscc) {
-    Write-Host "'ISCC.exe' is not recognized as an internal or external command, operable program or batch file."
+    Write-Host "'ISCC' is not recognized as an internal or external command, operable program or batch file."
 } Else {
     Write-Debug "Executing `"$iscc $args`""
     Start-Process -NoNewWindow -FilePath "$iscc" -ArgumentList "`"$args`""
