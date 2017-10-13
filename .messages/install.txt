@@ -1,0 +1,8 @@
+If you're using Inno Setup on Windows, it is recommended to also install
+SublimeLinter and this plugin to highlight errors in your Inno Setup script:
+
+    “SublimeLinter”, a linter for Sublime Text
+    https://packagecontrol.io/packages/SublimeLinter
+
+    “SublimeLinter-contrib-iscc”, Inno Setup plugin
+    https://packagecontrol.io/packages/SublimeLinter-contrib-iscc
