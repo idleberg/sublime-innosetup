@@ -34,22 +34,22 @@ INNO_BIN="Inno Setup 5/ISCC.exe"
 # Check if filename exist
 [ ! -f "$SCRIPT" ] && { echo "File not found. Aborting."; echo; exit 1; }
 
-# Check if wine is present
+# Check if Wine is present
 command -v wine >/dev/null 2>&1 || { echo >&2 "Wine doesn't seem to be installed. Aborting."; echo; exit 1; }
 
-# Get Program Files path via wine command prompt
+# Get Program Files path via Wine command prompt
 PROGRAMFILES=$(wine cmd /c 'echo %PROGRAMFILES%' 2>/dev/null)
 
-# Translate windows path to absolute unix path
+# Translate Windows path to absolute Unix path
 PROGFILES_PATH=$(winepath -u "${PROGRAMFILES}" 2>/dev/null)
 
 # Get inno setup path
 INNO_PATH="${PROGFILES_PATH%?}/${INNO_BIN}"
 
-# Translate unix script path to windows path 
+# Translate Unix script path to Windows path
 SCRIPT=$(winepath -w "$SCRIPT" 2> /dev/null)
 
-# Check if Inno Setup is installed into wine
+# Check if Inno Setup is installed into Wine
 [ ! -f "$INNO_PATH" ] && { echo "Install Inno Setup 5 Quickstart before running this script."; echo; exit 1; }
 
 # Compile!
