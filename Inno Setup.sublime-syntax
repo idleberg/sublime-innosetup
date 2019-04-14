@@ -8,8 +8,9 @@ file_extensions:
   - isl
 scope: source.inno
 variables:
-  constant: '(?i){(app|autoappdata|autocf|autocf32|autocf64|autodesktop|autodocs|autopf|autopf32|autopf64|autoprograms|autostartmenu|autostartup|autotemplates|cmd|commonappdata|commondesktop|commondocs|commonprograms|commonstartmenu|commonstartup|commontemplates|computername|dao|dotnet11|dotnet2032|dotnet2064|dotnet20|dotnet4032|dotnet4064|dotnet40|fonts|groupname|group|hwnd|language|localappdata|log|pf32|pf64|pf|sd|sendto|srcexe|src|sysuserinfoname|sysuserinfoorg|syswow64|sys|tmp|uninstallexe|usercf|userinfoname|userinfoorg|userinfoserial|username|userpf|win|wizardhwnd)}'
-  deprecated: '(?i){(cf32|cf64|cf|commonfavorites)}'
+  constant: '(?i){(app|autoappdata|autocf|autocf32|autocf64|autodesktop|autodocs|autopf|autopf32|autopf64|autoprograms|autostartmenu|autostartup|autotemplates|cmd|commonappdata|commondesktop|commondocs|commonprograms|commonstartmenu|commonstartup|commontemplates|computername|dao|dotnet11|dotnet2032|dotnet2064|dotnet20|dotnet4032|dotnet4064|dotnet40|fonts|groupname|group|hwnd|language|localappdata|log|sd|sendto|srcexe|src|sysuserinfoname|sysuserinfoorg|syswow64|sys|tmp|uninstallexe|usercf|userinfoname|userinfoorg|userinfoserial|username|userpf|win|wizardhwnd)}'
+  deprecated: '(?i){(cf32|cf64|cf|commonfavorites|pf32|pf64|pf)}'
+  escape_characters: \\([0abtnvfre "/\\N_Lp]|x\d\d|u\d{4}|U\d{8})
   sections: '^(?i)\[(Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\]$'
   variable: '%\w+'
 contexts:
@@ -32,6 +33,8 @@ contexts:
           pop: true
 
     # Inno Setup
+    - match: '{{deprecated}}'
+      scope: invalid.deprecated
     - match: '^(?i)\s*#(append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef)\b'
       scope: keyword.other.inno
     - match: '{{sections}}'
@@ -63,14 +66,16 @@ contexts:
         0: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.double.inno
-        - match: '"'
-          captures:
-            0: punctuation.definition.string.end.inno
           pop: true
         - match: '{{constant}}'
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
+        - match: '{{escape_characters}}'
+          scope: constant.character.escape.double-quoted.inno
+        - match: '"'
+          scope: punctuation.definition.string.end.inno
+          pop: true
     - match: "'"
       captures:
         0: punctuation.definition.string.begin.inno
