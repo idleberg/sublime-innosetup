@@ -67,6 +67,8 @@ contexts:
       push:
         - meta_scope: string.quoted.double.inno
           pop: true
+        - match: '{{deprecated}}'
+          scope: invalid.deprecated
         - match: '{{constant}}'
           scope: constant.other.inno
         - match: '{{variable}}'
@@ -85,6 +87,8 @@ contexts:
           captures:
             0: punctuation.definition.string.end.inno
           pop: true
+        - match: '{{deprecated}}'
+          scope: invalid.deprecated
         - match: '{{constant}}'
           scope: constant.other.inno
         - match: '{{variable}}'
