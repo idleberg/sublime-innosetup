@@ -14,25 +14,9 @@ variables:
   sections: '^(?i)\[(Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\]$'
   variable: '%\w+'
 contexts:
+  # Inno Setup
   main:
-
-    # Inno Pascal section
-    - match: '(?i)^\[Code\]$'
-      scope: entity.name.section.inno
-      captures:
-        1: entity.name.section.inno
-      push:
-        - meta_content_scope: source.pascal.embedded.inno
-        - match: '{{sections}}'
-          captures:
-            1: entity.name.section.inno
-          pop: true
-        - include: 'scope:source.pascal.inno'
-      with_prototype:
-        - match: '^(?i)(?=\[(Code|Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\])$'
-          pop: true
-
-    # Inno Setup
+    - include: pascal
     - match: '{{deprecated}}'
       scope: invalid.deprecated
     - match: '^(?i)\s*#(append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef)\b'
@@ -59,8 +43,28 @@ contexts:
       scope: constant.other.inno
     - match: '{{variable}}'
       scope: variable.other.inno
+    - include: strings
+    - include: comments
 
-    # Strings
+  # Inno Pascal
+  pascal:
+    - match: '(?i)^\[Code\]$'
+      scope: entity.name.section.inno
+      captures:
+        1: entity.name.section.inno
+      push:
+        - meta_content_scope: source.pascal.embedded.inno
+        - match: '{{sections}}'
+          captures:
+            1: entity.name.section.inno
+          pop: true
+        - include: 'scope:source.pascal.inno'
+      with_prototype:
+        - match: '^(?i)(?=\[(Code|Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\])$'
+          pop: true
+
+  # Strings
+  strings:
     - match: '"'
       captures:
         0: punctuation.definition.string.begin.inno
@@ -95,12 +99,13 @@ contexts:
         - match: '{{variable}}'
           scope: variable.other.inno
 
+  # Comments
+  comments:
     # Line Comment
     - match: ^\s*;.*$
       scope: comment.line.semicolon.inno
       captures:
         1: punctuation.definition.comment.inno
-
     # Preprocessor Comment
     - match: ^\s*//.*$
       scope: comment.line.double-slash.inno
