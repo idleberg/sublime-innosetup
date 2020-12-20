@@ -99,3 +99,9 @@ contexts:
       scope: comment.line.semicolon.inno
       captures:
         1: punctuation.definition.comment.inno
+
+    # Preprocessor Comment
+    - match: ^\s*//.*$
+      scope: comment.line.double-slash.inno
+      captures:
+        1: punctuation.definition.comment.inno
