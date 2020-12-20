@@ -73,8 +73,9 @@ contexts:
           scope: constant.other.inno
         - match: '{{variable}}'
           scope: variable.other.inno
-        - match: '{{escape_characters}}'
-          scope: constant.character.escape.double-quoted.inno
+        # C-style escape sequences are by default disabled in Inno Setup 6 with preprocessor directive: #pragma parseroption -p-
+        # - match: '{{escape_characters}}'
+        #   scope: constant.character.escape.double-quoted.inno
         - match: '"'
           scope: punctuation.definition.string.end.inno
           pop: true
