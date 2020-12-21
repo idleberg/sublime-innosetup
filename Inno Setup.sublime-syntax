@@ -99,10 +99,10 @@ contexts:
     - match: '(?=$)'
       pop: true
     # Hexadecimal number.
-    - match: '(?i)(\$[0-9a-f]+)'
+    - match: '(?i)\$[0-9a-f]+'
       scope: constant.numeric.integer.hexadecimal
     # Integer, float or version.
-    - match: '\b([0-9]+(?:\.[0-9]+)*)\b'
+    - match: '\b[0-9]+(?:\.[0-9]+)*\b'
       scope: constant.numeric
     # Double quoted string.
     - match: '"'
