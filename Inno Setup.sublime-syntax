@@ -13,8 +13,8 @@ variables:
   setup_directives_deprecated: '(?:DisableAppendDir|DontMergeDuplicateFiles|MessagesFile|UninstallIconFile|UninstallIconName|UninstallStyle|WizardSmallImageBackColor)'
   parameters: '(?:AfterInstall|Attribs|BeforeInstall|Check|Components|Description|DestDir|DestName|Excludes|Filename|Flags|GroupDescription|Languages|MessagesFile|MinVersion|Name|OnlyBelowVersion|Parameters|Permissions|Root|RunOnceId|Source|StatusMsg|Subkey|Type|ValueData|ValueName|ValueType|Verb|WorkingDir)'
   keywords: '(?:32bit|64bit|admin|allowunsafefiles|append|auto|binary|bzip|checkablealone|checkedonce|clAqua|clBlack|clBlue|clFuchsia|clGray|clGreen|clLime|clMaroon|clNavy|clOlive|closeonexit|clPurple|clRed|clSilver|clTeal|clWhite|clYellow|compact|comparetimestamp|compiler|confirmoverwrite|createallsubdirs|createkeyifdoesntexist|createonlyiffileexists|createvalueifdoesntexist|current|custom|deleteafterinstall|deletekey|deletevalue|desktopicon|dirifempty|disablenouninstallwarning|dontcloseonexit|dontcopy|dontcreatekey|dontinheritcheck|dontverifychecksum|dword|everyone-full|excludefromshowinnewinstall|exclusive|expandsz|external|fast|files|filesandordirs|fixed|foldershortcut|fontisnttruetype|full|gacinstall|help|hidden|hidewizard|ia64|ignoreversion|iscustom|isreadme|lefttoright|locale|lowest|lzma|lzma2|main|max|modify|multisz|new|no|nocompression|noencryption|noerror|none|noregerror|normal|notcontentindexed|nowait|onlyifdoesntexist|overwrite|overwritereadonly|postinstall|poweruser|preservestringtype|preventpinning|program|promptifolder|qword|read|readexec|readme|readonly|recursesubdirs|regserver|regtypelib|replacesameversion|restart|restartreplace|runascurrentuser|runasoriginaluser|runhidden|runminimized|setntfscompression|sharedfile|shellexec|skipifdoesntexist|skipifnotsilent|skipifsilent|skipifsourcedoesntexist|solidbreak|sortfilesbyextension|sortfilesbyname|string|system|toptobottom|touch|uilanguage|ultra|unchecked|uninsalwaysuninstall|uninsclearvalue|uninsdeleteentry|uninsdeletekey|uninsdeletekeyifempty|uninsdeletesection|uninsdeletesectionifempty|uninsdeletevalue|uninsneveruninstall|uninsnosharedfileprompt|uninsremovereadonly|uninsrestartdelete|unsetntfscompression|useapppaths|users-modify|waituntilidle|waituntilterminated|x64|x86|yes|zip)'
-  constants: '(?:app|autoappdata|autocf|autocf32|autocf64|autodesktop|autodocs|autopf|autopf32|autopf64|autoprograms|autostartmenu|autostartup|autotemplates|cmd|commonappdata|commondesktop|commondocs|commonprograms|commonstartmenu|commonstartup|commontemplates|computername|dao|dotnet11|dotnet2032|dotnet2064|dotnet20|dotnet4032|dotnet4064|dotnet40|fonts|groupname|group|hwnd|language|localappdata|log|sd|sendto|srcexe|src|sysuserinfoname|sysuserinfoorg|syswow64|sys|tmp|uninstallexe|usercf|userinfoname|userinfoorg|userinfoserial|username|userpf|win|wizardhwnd)'
-  constants_deprecated: '(?:cf32|cf64|cf|commonfavorites|pf32|pf64|pf)'
+  constants: '(?:\\|app|autoappdata|autocf|autocf32|autocf64|autodesktop|autodocs|autofonts|autopf|autopf32|autopf64|autoprograms|autostartmenu|autostartup|autotemplates|cmd|commonappdata|commoncf|commoncf32|commoncf64|commondesktop|commondocs|commonfonts|commonpf|commonpf32|commonpf64|commonprograms|commonstartmenu|commonstartup|commontemplates|computername|dao|dotnet11|dotnet20|dotnet2032|dotnet2064|dotnet40|dotnet4032|dotnet4064|group|groupname|hwnd|language|localappdata|log|sd|src|srcexe|sys|sysnative|sysuserinfoname|sysuserinfoorg|syswow64|tmp|uninstallexe|userappdata|usercf|userdesktop|userdocs|userfavorites|userfonts|userinfoname|userinfoorg|userinfoserial|username|userpf|userprograms|usersavedgames|usersendto|userstartmenu|userstartup|usertemplates|win|wizardhwnd)'
+  constants_deprecated: '(?:cf|cf32|cf64|commonfavorites|fonts|pf|pf32|pf64|sendto)'
   escape_sequences: '\\(?:[0abtnvfre "/\\N_Lp]|x\d\d|u\d{4}|U\d{8})'
 
 contexts:
@@ -131,23 +131,32 @@ contexts:
       push:
         - meta_content_scope: string.unquoted.inno
         - include: constant
+        # All sequences that may terminate string. If parent context doesn't act upon them, the string will resume.
         - match: '(?=;|$)'
           pop: true
 
   # Constant.
   constant:
-    # Built-in constant.
-    - match: '(?i)\{{{constants}}\}'
+    # Predefined constant.
+    - match: '(?i)(\{)(?:{{constants}}|{{constants_deprecated}})(\})'
       scope: constant.other.inno
-    # Deprecated constant.
-    - match: '(?i)\{{{constants_deprecated}}\}'
-      scope: invalid.deprecated
-    # Environment variable.
-    - match: '\{%\w+(?:\|[\w\s%{}]*)?\}'
-      scope: constant.other.inno
-    # Other constant.
-    - match: '(?i)\{(?:code|drive|ini|cm|reg|param):[\w\s{}\\/.]+(?:[,|][\w\s%{}\\/.]*)*\}'
-      scope: constant.other.inno
+      captures:
+        1: punctuation.section.braces.begin.inno
+        2: punctuation.section.braces.end.inno
+    # Dynamic constant.
+    - match: '(\{)(?:%|(?:code|drive|ini|cm|reg|param):)'
+      captures:
+        1: punctuation.section.braces.begin.inno
+      push:
+        - meta_scope: constant.other.inno
+        - match: '\}'
+          scope: punctuation.section.braces.end.inno
+          pop: true
+        - match: '\|'
+          scope: punctuation.separator.inno
+        - match: '(?i)%[0-9a-f]{2}'
+          scope: constant.character.escape
+        - include: constant
 
   # Comment.
   comment:
