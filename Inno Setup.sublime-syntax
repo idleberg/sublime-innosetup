@@ -1,6 +1,5 @@
 %YAML 1.2
 ---
-# http://www.sublimetext.com/docs/3/syntax.html
 name: 'Inno Setup'
 comment: https://github.com/idleberg/sublime-innosetup
 file_extensions: [iss, isl]
