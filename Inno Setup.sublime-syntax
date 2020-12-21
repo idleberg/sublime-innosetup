@@ -134,7 +134,7 @@ contexts:
   constant:
     # Predefined constant.
     - match: '(?i)(\{)(?:{{constants}}|{{constants_deprecated}})(\})'
-      scope: constant.other.inno
+      scope: support.constant.inno
       captures:
         1: punctuation.section.braces.begin.inno
         2: punctuation.section.braces.end.inno
@@ -143,7 +143,7 @@ contexts:
       captures:
         1: punctuation.section.braces.begin.inno
       push:
-        - meta_scope: constant.other.inno
+        - meta_scope: support.constant.inno
         - match: '\}'
           scope: punctuation.section.braces.end.inno
           pop: true
