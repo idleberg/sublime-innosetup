@@ -24,20 +24,16 @@ contexts:
     - match: '^\s*(?=#)'
       push: preprocessor
     # Code section.
-    - match: '(?i)^\[Code\]$'
-      scope: entity.name.namespace
-      push:
-        - meta_content_scope: source.pascal.embedded.inno
-        - match: '^(?i)\[{{sections}}\]$'
-          scope: entity.name.namespace
-          pop: true
-        - include: 'scope:source.pascal.inno'
-      with_prototype:
-        - match: '(?i)^(?=\[{{sections}}\])$'
-          pop: true
+    - match: '(?i)^\s*(\[Code\])\s*$'
+      captures:
+        1: entity.name.namespace
+      embed: scope:source.pascal.inno
+      embed_scope: source.pascal.embedded.inno
+      escape: '(?i)^(?=\s*\[{{sections}}\]\s*$)'
     # Other section.
-    - match: '(?i)^\[{{sections}}\]$'
-      scope: entity.name.namespace
+    - match: '(?i)^\s*(\[{{sections}}\])\s*$'
+      captures:
+        1: entity.name.namespace
     # Setup directive.
     - match: '(?i)^\s*({{setup_directives}}|{{setup_directives_deprecated}})\s*(=)\s*'
       captures:
