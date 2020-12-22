@@ -21,6 +21,7 @@ contexts:
     # Preprocessor directive.
     - match: '^\s*(?=#)'
       push: scope:source.preprocessor.inno
+    - include: preprocessor-inline
     # Code section.
     - match: '(?i)^\s*(\[Code\])\s*$'
       captures:
@@ -63,6 +64,15 @@ contexts:
         - include: value
     # Comment.
     - include: comment
+
+  # Inline preprocessor directive.
+  preprocessor-inline:
+    - match: '\{#'
+      scope: keyword.other.inno
+      embed: scope:source.preprocessor.inno
+      escape: '\}'
+      escape_captures:
+        0: keyword.other.inno
 
   # Separator.
   separator:
@@ -137,6 +147,13 @@ contexts:
         - match: '(?i)%[0-9a-f]{2}'
           scope: constant.character.escape.inno
         - include: constant
+    # Inline preprocessor directive.
+    - match: '(?=\{#)'
+      push:
+        - clear_scopes: 1
+        - include: preprocessor-inline
+        - match: ''
+          pop: true
 
   # Comment.
   comment:
