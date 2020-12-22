@@ -21,7 +21,7 @@ contexts:
   main:
     # Preprocessor directive.
     - match: '^\s*(?=#)'
-      push: scope:source.preprocessor.inno
+      push: scope:meta.preprocessor.inno
     - include: preprocessor-inline
     # Code section.
     - match: '(?i)^\s*(\[Code\])\s*$'
@@ -133,11 +133,11 @@ contexts:
   # Inline preprocessor directive.
   preprocessor-inline:
     - match: '\{#'
-      scope: keyword.other.inno
-      embed: scope:source.preprocessor.inno
+      scope: meta.preprocessor.inno keyword.other.inno
+      embed: scope:meta.preprocessor.inno
       escape: '\}'
       escape_captures:
-        0: keyword.other.inno
+        0: meta.preprocessor.inno keyword.other.inno
 
   # Directive value.
   directive-value:
@@ -267,5 +267,5 @@ contexts:
       captures:
         1: punctuation.definition.comment.inno
       push:
-        - meta_scope: comment.line.double-slash.inno
+        - meta_scope: meta.preprocessor.inno comment.line.double-slash.inno
         - include: line-spanning
