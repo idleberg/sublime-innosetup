@@ -22,6 +22,8 @@ contexts:
     - match: '^\s*(?=#)'
       push: scope:source.preprocessor.inno
     - include: preprocessor-inline
+    # Comment.
+    - include: comment
     # Code section.
     - match: '(?i)^\s*(\[Code\])\s*$'
       captures:
@@ -38,32 +40,34 @@ contexts:
       captures:
         1: keyword.other.inno
         2: keyword.operator.assignment.inno
-      push:
-        - include: keyword
-        - include: value
-    # Assignment after unrecognized directive (for example in CustomMessages section).
-    - match: '='
-      scope: keyword.operator.assignment.inno
-      push:
-        - include: value
+      push: directive-value
     # Parameter where keywords are expected.
     - match: '(?i)\b(Attribs|Components|Flags|Root|Type|ValueType|Verb)\s*(:)\s*'
       captures:
         1: keyword.other.inno
         2: keyword.operator.assignment.inno
-      push:
-        - include: separator
-        - include: keyword
+      push: parameter-keyword
     # Other parameter.
     - match: '(?i)\b({{parameters}})\s*(:)\s*'
       captures:
         1: keyword.other.inno
         2: keyword.operator.assignment.inno
-      push:
-        - include: separator
-        - include: value
-    # Comment.
-    - include: comment
+      push: parameter-value
+    # Unrecognized directive.
+    - match: '^\s*([^="''\s]*)(=)'
+      captures:
+        1: meta.unrecognized.directive.inno
+        2: keyword.operator.assignment.inno
+      push: directive-value
+    # Unrecognized parameter.
+    - match: '([^:"''\s]*)(:)'
+      captures:
+        1: meta.unrecognized.parameter.inno
+        2: keyword.operator.assignment.inno
+      push: parameter-value
+    # Loose value.
+    - include: separator
+    - include: value
 
   # Inline preprocessor directive.
   preprocessor-inline:
@@ -73,6 +77,29 @@ contexts:
       escape: '\}'
       escape_captures:
         0: keyword.other.inno
+
+  # Directive value.
+  directive-value:
+    - include: line-end
+    - include: keyword
+    - include: value
+
+  # Parameter keyword.
+  parameter-keyword:
+    - include: line-end
+    - include: separator
+    - include: keyword
+
+  # Parameter value.
+  parameter-value:
+    - include: line-end
+    - include: separator
+    - include: value
+
+  # Line end always pops the context.
+  line-end:
+    - match: '(?=$)'
+      pop: true
 
   # Separator.
   separator:
@@ -89,9 +116,6 @@ contexts:
 
   # Value.
   value:
-    # New line always ends value.
-    - match: '(?=$)'
-      pop: true
     # Hexadecimal number.
     - match: '(?i)\$[0-9a-f]+'
       scope: constant.numeric.integer.hexadecimal.inno
@@ -117,7 +141,7 @@ contexts:
           scope: punctuation.definition.string.end.inno
           pop: true
     # Unquoted string.
-    - match: ''
+    - match: '(?=\S)'
       push:
         - meta_content_scope: string.unquoted.inno
         - include: constant
