@@ -1,0 +1,159 @@
+%YAML 1.2
+---
+name: 'Inno Preprocessor'
+scope: source.preprocessor.inno
+
+variables:
+  directives: '(?:[:+=!]|(?:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef|x)\b)'
+  constants_preprocessor: '(?:__COUNTER__|__FILE__|__INCLUDE__|__LINE__|__OPT_[A-Z]__|__PATHFILENAME__|__POPT_[A-Z]__|__WIN32__|ISPP_INVOKED|ISPPCC_INVOKED|PREPROCVER|WINDOWS|UNICODE|CompilerPath|SourcePath|Ver)'
+  constants_builtin: '(?:_BUILTINS_ISS_|COMPANY_NAME|faAnyFile|faArchive|faDirectory|faHidden|False|faReadOnly|faSymLink|faSysFile|faVolumeID|FILE_DESCRIPTION|FILE_VERSION|FIND_AND|FIND_BEGINS|FIND_CASESENSITIVE|FIND_CONTAINS|FIND_ENDS|FIND_MATCH|FIND_NOT|FIND_OR|FIND_SENSITIVE|FIND_TRIM|HKCC|HKCC64|HKCR|HKCR64|HKCU|HKCU64|HKEY_CLASSES_ROOT|HKEY_CLASSES_ROOT_64|HKEY_CURRENT_CONFIG|HKEY_CURRENT_CONFIG_64|HKEY_CURRENT_USER|HKEY_CURRENT_USER_64|HKEY_LOCAL_MACHINE|HKEY_LOCAL_MACHINE_64|HKEY_USERS|HKEY_USERS_64|HKLM|HKLM64|HKU|HKU64|INTERNAL_NAME|LEGAL_COPYRIGHT|MaxInt|MinInt|NewLine|No|NULL|ORIGINAL_FILENAME|PRODUCT_NAME|PRODUCT_VERSION|SW_HIDE|SW_MAX|SW_MAXIMIZE|SW_MINIMIZE|SW_NORMAL|SW_RESTORE|SW_SHOW|SW_SHOWDEFAULT|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_SHOWMINNOACTIVE|SW_SHOWNA|SW_SHOWNOACTIVATE|SW_SHOWNORMAL|Tab|True|TYPE_ARRAY|TYPE_ERROR|TYPE_FUNC|TYPE_INTEGER|TYPE_MACRO|TYPE_NULL|TYPE_STRING|Yes)'
+
+contexts:
+  # Preprocessor.
+  main:
+    # End preprocessor code at the line end.
+    - include: line-spanning
+    # Comment.
+    - match: '/\*'
+      scope: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.block.inno
+        - match: '\*/'
+          scope: punctuation.definition.comment.inno
+          pop: true
+    - match: ';'
+      scope: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.line.semicolon.inno
+        - include: line-spanning
+    # Pragma directive.
+    - match: '(?i)(#)\s*pragma\b'
+      scope: keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - match: '\s+(option|parseroption)\s*(.*)$'
+          captures:
+            1: keyword.other.inno
+            2: string.unquoted.inno
+          pop: true
+        - match: '\s+(inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
+          captures:
+            1: keyword.other.inno
+          pop: true
+        - match: ''
+          pop: true
+    # Error directive.
+    - match: '(?i)(#)\s*error\b'
+      scope: keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - match: '\s*(.*)$'
+          captures:
+            1: string.unquoted.inno
+          pop: true
+    # Include directive.
+    - match: '(?i)(#)\s*(?:[+]|include\b)'
+      scope: keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - match: '\s*(<)[^<>]*(>)\s*$'
+          scope: string.quoted.other.inno
+          captures:
+            1: punctuation.definition.string.begin.inno
+            2: punctuation.definition.string.end.inno
+          pop: true
+        - match: ''
+          pop: true
+    # Other directive.
+    - match: '(?i)(#)\s*{{directives}}'
+      scope: keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+    # Expression.
+    - include: expression
+    # Braces. Necessary to prevent interpreting semicolons in for loop as comments.
+    - match: '\{'
+      scope: punctuation.section.braces.begin.inno
+      push:
+        - meta_scope: meta.braces.inno
+        - include: expression
+        - match: '\}'
+          scope: punctuation.section.braces.end.inno
+          pop: true
+
+  # Line spanning.
+  line-spanning:
+    - match: '(?=$)'
+      pop: true
+    - match: '\\(?=\s*$)'
+      scope: punctuation.separator.continuation.inno
+      # Resume parsing at next line.
+      push:
+        - match: '(?=\S|^\s*$)'
+          pop: true
+
+  # Expression.
+  expression:
+    - include: operator
+    - include: constant
+    - include: keyword
+    - include: value
+
+  # Operator.
+  operator:
+    - match: '='
+      scope: keyword.operator.assignment.inno
+    - match: '[-+*/]'
+      scope: keyword.operator.arithmetic.inno
+    - match: '!+|&&|\|\|'
+      scope: keyword.operator.logical.inno
+    - match: '[~&|^]|<<|>>'
+      scope: keyword.operator.bitwise.inno
+    - match: '<=|>=|<|>|==|!='
+      scope: keyword.operator.comparison.inno
+    - match: '[?:]'
+      scope: keyword.operator.conditional.inno
+
+  # Constant.
+  constant:
+    - match: '\b{{constants_preprocessor}}\b'
+      scope: constant.other.inno
+    - match: '\b{{constants_builtin}}\b'
+      scope: support.constant.inno
+
+  # Keyword.
+  keyword:
+    - match: '\b(?:void)\b'
+      scope: constant.language.inno
+    - match: '\b(?:any|int|str|func)\b'
+      scope: storage.type.inno
+    - match: '\b(?:public|protected|private)\b'
+      scope: storage.modifier.inno
+
+  # Value.
+  value:
+    # Hexadecimal number.
+    - match: '(?i)0x[0-9a-f]+u?l?'
+      scope: constant.numeric.integer.hexadecimal.inno
+    # Integer or float.
+    - match: '\b[0-9]+(?:\.[0-9]+)?\b'
+      scope: constant.numeric.inno
+    # Double quoted string.
+    - match: '"'
+      scope: punctuation.definition.string.begin.inno
+      push:
+        - meta_scope: string.quoted.double.inno
+        - match: '"'
+          scope: punctuation.definition.string.end.inno
+          pop: true
+    # Single quoted string.
+    - match: "'"
+      scope: punctuation.definition.string.begin.inno
+      push:
+        - meta_scope: string.quoted.double.inno
+        - match: "'"
+          scope: punctuation.definition.string.end.inno
+          pop: true

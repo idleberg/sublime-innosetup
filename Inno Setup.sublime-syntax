@@ -6,7 +6,6 @@ file_extensions: [iss, isl]
 scope: source.inno
 
 variables:
-  preprocessor_directives: '(?:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef)'
   sections: '(?:Code|Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)'
   setup_directives: '(?:AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysCreateUninstallIcon|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|BackColor|BackColor2|BackColorDirection|BackSolid|ChangesAssociations|ChangesEnvironment|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CopyrightFontName|CopyrightFontSize|CreateAppDir|CreateUninstallRegKey|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DialogFontName|DialogFontSize|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageCodePage|LanguageDetectionMethod|LanguageID|LanguageName|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|Permissions|PrivilegesRequired|PrivilegesRequiredOverridesAllowed|ReserveBytes|RestartApplications|RestartIfNeededByRun|RightToLeft|SetupIconFile|SetupLogging|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|ShowUndisplayableLanguages|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolMinimumTimeBetween|SignToolRetryCount|SignToolRetryDelay|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TitleFontName|TitleFontSize|TouchDate|TouchTime|Uninstallable|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UsePreviousPrivileges|UpdateUninstallLogAppName|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoOriginalFileName|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WelcomeFontName|WelcomeFontSize|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageBackColor|WizardImageFile|WizardImageStretch|WizardResizable|WizardSizePercent|WizardSmallImageFile|WizardStyle)'
   setup_directives_deprecated: '(?:DisableAppendDir|DontMergeDuplicateFiles|MessagesFile|UninstallIconFile|UninstallIconName|UninstallStyle|WizardSmallImageBackColor)'
@@ -21,7 +20,7 @@ contexts:
   main:
     # Preprocessor directive.
     - match: '^\s*(?=#)'
-      push: preprocessor
+      push: scope:source.preprocessor.inno
     # Code section.
     - match: '(?i)^\s*(\[Code\])\s*$'
       captures:
@@ -64,20 +63,6 @@ contexts:
         - include: value
     # Comment.
     - include: comment
-
-  # Preprocessor.
-  preprocessor:
-    - meta_scope: meta.preprocessor.inno
-    - match: '(?i)#{{preprocessor_directives}}\b'
-      scope: keyword.other.inno
-    - match: '\\(?=\s*$)'
-      scope: punctuation.separator.continuation.inno
-      # Resume parsing at next line.
-      push:
-        - match: '(?=\S|^\s*$)'
-          pop: true
-    - match: '(?=$)'
-      pop: true
 
   # Separator.
   separator:
