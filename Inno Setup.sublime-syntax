@@ -27,9 +27,12 @@ contexts:
     - match: '(?i)^\s*(\[Code\])\s*$'
       captures:
         1: entity.name.namespace.inno
-      embed: scope:source.pascal.inno
-      embed_scope: source.pascal.embedded.inno
-      escape: '(?i)^(?=\s*\[\w*\]\s*$)'
+      push:
+        - meta_scope: meta.namespace.inno
+        - meta_content_scope: source.pascal.embedded.inno
+        - include: scope:source.pascal.inno
+      with_prototype:
+        - include: section-end
     # Messages section.
     - match: '(?i)^\s*(\[Messages\])\s*$'
       captures:
