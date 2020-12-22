@@ -13,6 +13,7 @@ variables:
   keywords: '(?:32bit|64bit|admin|allowunsafefiles|append|auto|binary|bzip|checkablealone|checkedonce|clAqua|clBlack|clBlue|clFuchsia|clGray|clGreen|clLime|clMaroon|clNavy|clOlive|closeonexit|clPurple|clRed|clSilver|clTeal|clWhite|clYellow|compact|comparetimestamp|compiler|confirmoverwrite|createallsubdirs|createkeyifdoesntexist|createonlyiffileexists|createvalueifdoesntexist|current|custom|deleteafterinstall|deletekey|deletevalue|desktopicon|dirifempty|disablenouninstallwarning|dontcloseonexit|dontcopy|dontcreatekey|dontinheritcheck|dontverifychecksum|dword|everyone-full|excludefromshowinnewinstall|exclusive|expandsz|external|fast|files|filesandordirs|fixed|foldershortcut|fontisnttruetype|full|gacinstall|help|hidden|hidewizard|ia64|ignoreversion|iscustom|isreadme|lefttoright|locale|lowest|lzma|lzma2|main|max|modify|multisz|new|no|nocompression|noencryption|noerror|none|noregerror|normal|notcontentindexed|nowait|onlyifdoesntexist|overwrite|overwritereadonly|postinstall|poweruser|preservestringtype|preventpinning|program|promptifolder|qword|read|readexec|readme|readonly|recursesubdirs|regserver|regtypelib|replacesameversion|restart|restartreplace|runascurrentuser|runasoriginaluser|runhidden|runminimized|setntfscompression|sharedfile|shellexec|skipifdoesntexist|skipifnotsilent|skipifsilent|skipifsourcedoesntexist|solidbreak|sortfilesbyextension|sortfilesbyname|string|system|toptobottom|touch|uilanguage|ultra|unchecked|uninsalwaysuninstall|uninsclearvalue|uninsdeleteentry|uninsdeletekey|uninsdeletekeyifempty|uninsdeletesection|uninsdeletesectionifempty|uninsdeletevalue|uninsneveruninstall|uninsnosharedfileprompt|uninsremovereadonly|uninsrestartdelete|unsetntfscompression|useapppaths|users-modify|waituntilidle|waituntilterminated|x64|x86|yes|zip)'
   constants: '(?:\\|app|autoappdata|autocf|autocf32|autocf64|autodesktop|autodocs|autofonts|autopf|autopf32|autopf64|autoprograms|autostartmenu|autostartup|autotemplates|cmd|commonappdata|commoncf|commoncf32|commoncf64|commondesktop|commondocs|commonfonts|commonpf|commonpf32|commonpf64|commonprograms|commonstartmenu|commonstartup|commontemplates|computername|dao|dotnet11|dotnet20|dotnet2032|dotnet2064|dotnet40|dotnet4032|dotnet4064|group|groupname|hwnd|language|localappdata|log|sd|src|srcexe|sys|sysnative|sysuserinfoname|sysuserinfoorg|syswow64|tmp|uninstallexe|userappdata|usercf|userdesktop|userdocs|userfavorites|userfonts|userinfoname|userinfoorg|userinfoserial|username|userpf|userprograms|usersavedgames|usersendto|userstartmenu|userstartup|usertemplates|win|wizardhwnd)'
   constants_deprecated: '(?:cf|cf32|cf64|commonfavorites|fonts|pf|pf32|pf64|sendto)'
+  messages: '(?:AbortRetryIgnoreCancel|AbortRetryIgnoreIgnore|AbortRetryIgnoreRetry|AbortRetryIgnoreSelectAction|AboutSetupMenuItem|AboutSetupMessage|AboutSetupNote|AboutSetupTitle|AdminPrivilegesRequired|ApplicationsFound|ApplicationsFound2|BadDirName32|BadGroupName|BeveledLabel|BrowseDialogLabel|BrowseDialogTitle|ButtonBack|ButtonBrowse|ButtonCancel|ButtonFinish|ButtonInstall|ButtonNewFolder|ButtonNext|ButtonNo|ButtonNoToAll|ButtonOK|ButtonStopDownload|ButtonWizardBrowse|ButtonYes|ButtonYesToAll|CannotContinue|CannotInstallToNetworkDrive|CannotInstallToUNCPath|ChangeDiskTitle|ClickFinish|ClickNext|CloseApplications|CompactInstallation|ComponentsDiskSpaceGBLabel|ComponentsDiskSpaceMBLabel|ComponentSize1|ComponentSize2|ConfirmDeleteSharedFile2|ConfirmDeleteSharedFileTitle|ConfirmTitle|ConfirmUninstall|CustomInstallation|DirDoesntExist|DirDoesntExistTitle|DirExists|DirExistsTitle|DirNameTooLong|DiskSpaceGBLabel|DiskSpaceMBLabel|DiskSpaceWarning|DiskSpaceWarningTitle|DontCloseApplications|DownloadingLabel|ErrorChangingAttr|ErrorCloseApplications|ErrorCopying|ErrorCreatingDir|ErrorCreatingTemp|ErrorDownloadAborted|ErrorDownloadFailed|ErrorDownloadSizeFailed|ErrorExecutingProgram|ErrorFileHash1|ErrorFileHash2|ErrorFileSize|ErrorFunctionFailed|ErrorFunctionFailedNoCode|ErrorFunctionFailedWithMessage|ErrorIniEntry|ErrorInternal2|ErrorOpeningReadme|ErrorProgress|ErrorReadingExistingDest|ErrorReadingSource|ErrorRegCreateKey|ErrorRegisterServer|ErrorRegisterTypeLib|ErrorRegOpenKey|ErrorRegSvr32Failed|ErrorRegWriteKey|ErrorRenamingTemp|ErrorReplacingExistingFile|ErrorRestartingComputer|ErrorRestartReplace|ErrorTitle|ErrorTooManyFilesInDir|ExistingFileNewer2|ExistingFileNewerKeepExisting|ExistingFileNewerOverwriteExisting|ExistingFileNewerOverwriteOrKeepAll|ExistingFileNewerSelectAction|ExistingFileReadOnly2|ExistingFileReadOnlyKeepExisting|ExistingFileReadOnlyRetry|ExitSetupMessage|ExitSetupTitle|FileAbortRetryIgnoreIgnoreNotRecommended|FileAbortRetryIgnoreSkipNotRecommended|FileExists2|FileExistsKeepExisting|FileExistsOverwriteExisting|FileExistsOverwriteOrKeepAll|FileExistsSelectAction|FileNotInDir2|FinishedHeadingLabel|FinishedLabel|FinishedLabelNoIcons|FinishedRestartLabel|FinishedRestartMessage|FullInstallation|GroupNameTooLong|HelpTextNote|IncorrectPassword|InfoAfterClickLabel|InfoAfterLabel|InfoBeforeClickLabel|InfoBeforeLabel|InformationTitle|InstallingLabel|InvalidDirName|InvalidDrive|InvalidGroupName|InvalidParameter|InvalidPath|LastErrorMessage|LdrCannotCreateTemp|LdrCannotExecTemp|LicenseAccepted|LicenseLabel|LicenseLabel3|LicenseNotAccepted|MustEnterGroupName|NewFolderName|NoProgramGroupCheck2|NoRadio|NotOnThisPlatform|NoUninstallWarning|NoUninstallWarningTitle|OnlyAdminCanUninstall|OnlyOnTheseArchitectures|OnlyOnThisPlatform|PasswordEditLabel|PasswordLabel1|PasswordLabel3|PathLabel|PowerUserPrivilegesRequired|PrepareToInstallNeedsRestart|PreparingDesc|PreviousInstallNotCompleted|PrivilegesRequiredOverrideAllUsers|PrivilegesRequiredOverrideAllUsersRecommended|PrivilegesRequiredOverrideCurrentUser|PrivilegesRequiredOverrideCurrentUserRecommended|PrivilegesRequiredOverrideInstruction|PrivilegesRequiredOverrideText1|PrivilegesRequiredOverrideText2|PrivilegesRequiredOverrideTitle|ReadyLabel1|ReadyLabel2a|ReadyLabel2b|ReadyMemoComponents|ReadyMemoDir|ReadyMemoGroup|ReadyMemoTasks|ReadyMemoType|ReadyMemoUserInfo|RunEntryExec|RunEntryShellExec|SelectComponentsDesc|SelectComponentsLabel2|SelectDirBrowseLabel|SelectDirDesc|SelectDirectoryLabel|SelectDirLabel3|SelectDiskLabel2|SelectLanguageLabel|SelectLanguageTitle|SelectStartMenuFolderBrowseLabel|SelectStartMenuFolderDesc|SelectStartMenuFolderLabel3|SelectTasksDesc|SelectTasksLabel2|SetupAborted|SetupAlreadyRunning|SetupAppRunningError|SetupAppTitle|SetupFileCorrupt|SetupFileCorruptOrWrongVer|SetupFileMissing|SetupLdrStartupMessage|SetupWindowTitle|SharedFileLocationLabel|SharedFileNameLabel|ShowReadmeCheck|ShutdownBlockReasonInstallingApp|ShutdownBlockReasonUninstallingApp|SourceDoesntExist|SourceIsCorrupted|StatusClosingApplications|StatusCreateDirs|StatusCreateIcons|StatusCreateIniEntries|StatusCreateRegistryEntries|StatusExtractFiles|StatusRegisterFiles|StatusRestartingApplications|StatusRollback|StatusRunProgram|StatusSavingUninstall|StatusUninstalling|StopDownload|TranslatorNote|UninstallAppFullTitle|UninstallAppRunningError|UninstallAppTitle|UninstallDataCorrupted|UninstallDisplayNameMark|UninstallDisplayNameMark32Bit|UninstallDisplayNameMark64Bit|UninstallDisplayNameMarkAllUsers|UninstallDisplayNameMarkCurrentUser|UninstallDisplayNameMarks|UninstalledAll|UninstalledAndNeedsRestart|UninstalledMost|UninstallNotFound|UninstallOnlyOnWin64|UninstallOpenError|UninstallStatusLabel|UninstallUnknownEntry|UninstallUnsupportedVer|UserInfoDesc|UserInfoName|UserInfoNameRequired|UserInfoOrg|UserInfoSerial|WelcomeLabel1|WelcomeLabel2|WindowsServicePackRequired|WindowsVersionNotSupported|WinVersionTooHighError|WinVersionTooLowError|WizardInfoAfter|WizardInfoBefore|WizardInstalling|WizardLicense|WizardPassword|WizardPreparing|WizardReady|WizardSelectComponents|WizardSelectDir|WizardSelectProgramGroup|WizardSelectTasks|WizardUninstalling|WizardUserInfo|YesRadio)'
   escape_sequences: '\\(?:[0abtnvfre "/\\N_Lp]|x\d\d|u\d{4}|U\d{8})'
 
 contexts:
@@ -31,6 +32,43 @@ contexts:
       embed: scope:source.pascal.inno
       embed_scope: source.pascal.embedded.inno
       escape: '(?i)^(?=\s*\[{{sections}}\]\s*$)'
+    # Messages section.
+    - match: '(?i)^\s*(\[Messages\])\s*$'
+      captures:
+        1: entity.name.namespace.inno
+      push:
+        - meta_scope: meta.namespace.inno
+        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|([^="''\s]*))\s*(=)\s*'
+          captures:
+            1: keyword.other.inno
+            2: punctuation.accessor.inno
+            3: keyword.other.inno
+            4: meta.unrecognized.directive.inno
+            5: keyword.operator.assignment.inno
+          push: message-content
+          with_prototype:
+            - include: message-escapes
+        - include: section-end
+        - include: comment
+        - include: value
+    # CustomMessages section.
+    - match: '(?i)^\s*(\[CustomMessages\])\s*$'
+      captures:
+        1: entity.name.namespace.inno
+      push:
+        - meta_scope: meta.namespace.inno
+        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(=)\s*'
+          captures:
+            1: keyword.other.inno
+            2: punctuation.accessor.inno
+            3: keyword.other.inno
+            4: keyword.operator.assignment.inno
+          push: message-content
+          with_prototype:
+            - include: message-escapes
+        - include: section-end
+        - include: comment
+        - include: value
     # Other section.
     - match: '(?i)^\s*(\[{{sections}}\])\s*$'
       captures:
@@ -92,6 +130,11 @@ contexts:
         - match: ''
           pop: true
 
+  # End of section.
+  section-end:
+    - match: '(?i)^(?=\s*\[{{sections}}\]\s*$)'
+      pop: true
+
   # Inline preprocessor directive.
   preprocessor-inline:
     - match: '\{#'
@@ -119,12 +162,21 @@ contexts:
     - include: separator
     - include: value
 
+  # Message content.
+  message-content:
+    - include: line-spanning
+    - include: separator
+    - include: string
+
+  # Escape sequences in message.
+  message-escapes:
+    - match: '%[\dn%]|&'
+      scope: constant.character.escape
+
   # Separator.
   separator:
     - match: ';'
       scope: punctuation.separator.inno
-      pop: true
-    - match: '(?=$)'
       pop: true
 
   # Keyword.
@@ -134,12 +186,20 @@ contexts:
 
   # Value.
   value:
+    - include: number
+    - include: string
+
+  # Number
+  number:
     # Hexadecimal number.
     - match: '(?i)\$[0-9a-f]+'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer, float or version.
     - match: '\b[0-9]+(?:\.[0-9]+)*\b'
       scope: constant.numeric.inno
+
+  # String
+  string:
     # Double quoted string.
     - match: '"'
       scope: punctuation.definition.string.begin.inno
