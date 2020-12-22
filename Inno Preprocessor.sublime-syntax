@@ -12,7 +12,7 @@ contexts:
   # Preprocessor.
   main:
     # End preprocessor code at the line end.
-    - include: line-spanning
+    - include: scope:source.inno#line-spanning
     # Comment.
     - match: '/\*'
       scope: punctuation.definition.comment.inno
@@ -25,7 +25,7 @@ contexts:
       scope: punctuation.definition.comment.inno
       push:
         - meta_scope: comment.line.semicolon.inno
-        - include: line-spanning
+        - include: scope:source.inno#line-spanning
     # Pragma directive.
     - match: '(?i)(#)\s*pragma\b'
       scope: keyword.other.inno
@@ -82,17 +82,6 @@ contexts:
         - include: expression
         - match: '\}'
           scope: punctuation.section.braces.end.inno
-          pop: true
-
-  # Line spanning.
-  line-spanning:
-    - match: '(?=$)'
-      pop: true
-    - match: '\\(?=\s*$)'
-      scope: punctuation.separator.continuation.inno
-      # Resume parsing at next line.
-      push:
-        - match: '(?=\S|^\s*$)'
           pop: true
 
   # Expression.

@@ -69,6 +69,29 @@ contexts:
     - include: separator
     - include: value
 
+  # Line spanning.
+  line-spanning:
+    # Line end pops the context.
+    - match: '(?=$)'
+      pop: true
+    # However line spanning symbol prevents popping.
+    # Push an additional temporary context to break out to the top scope.
+    - match: '(?=\s+\\\s*$)'
+      push:
+        - clear_scopes: true
+        # Match the actual line spanning symbol.
+        - match: '\s+(\\)(?=\s*$)'
+          captures:
+            1: punctuation.separator.continuation.inno
+          # Resume parsing at the next line.
+          push:
+            - meta_scope: source.inno
+            - match: '(?=\S|^\s*$)'
+              pop: true
+        # Pop the temporary context.
+        - match: ''
+          pop: true
+
   # Inline preprocessor directive.
   preprocessor-inline:
     - match: '\{#'
@@ -80,26 +103,21 @@ contexts:
 
   # Directive value.
   directive-value:
-    - include: line-end
+    - include: line-spanning
     - include: keyword
     - include: value
 
   # Parameter keyword.
   parameter-keyword:
-    - include: line-end
+    - include: line-spanning
     - include: separator
     - include: keyword
 
   # Parameter value.
   parameter-value:
-    - include: line-end
+    - include: line-spanning
     - include: separator
     - include: value
-
-  # Line end always pops the context.
-  line-end:
-    - match: '(?=$)'
-      pop: true
 
   # Separator.
   separator:
@@ -144,6 +162,7 @@ contexts:
     - match: '(?=\S)'
       push:
         - meta_content_scope: string.unquoted.inno
+        - include: line-spanning
         - include: constant
         # All sequences that may terminate string. If parent context doesn't act upon them, the string will resume.
         - match: '(?=;|$)'
@@ -182,12 +201,16 @@ contexts:
   # Comment.
   comment:
     # Line comment.
-    - match: '^\s*(;).*$'
-      scope: comment.line.semicolon.inno
+    - match: '^\s*(;)'
       captures:
         1: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.line.semicolon.inno
+        - include: line-spanning
     # Preprocessor comment.
-    - match: '^\s*(//).*$'
-      scope: comment.line.double-slash.inno
+    - match: '^\s*(//)'
       captures:
         1: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.line.double-slash.inno
+        - include: line-spanning
