@@ -79,6 +79,8 @@ contexts:
       captures:
         1: entity.name.namespace.inno
         2: meta.unrecognized.section.inno
+    # Comment.
+    - include: comment
     # Setup directive.
     - match: '(?i)^\s*(?:({{setup_directives}}|{{setup_directives_deprecated}}|{{lang_options_directives}})|([^="''\s]*))\s*(=)\s*'
       captures:
@@ -105,8 +107,6 @@ contexts:
         2: meta.unrecognized.parameter.inno
         3: keyword.operator.assignment.inno
       push: parameter-value
-    # Comment.
-    - include: comment
     # Loose value.
     - include: separator
     - include: value
