@@ -7,10 +7,13 @@ scope: source.inno
 
 variables:
   sections: '(?:Code|Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)'
-  directives: '(?:AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysCreateUninstallIcon|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|BackColor|BackColor2|BackColorDirection|BackSolid|ChangesAssociations|ChangesEnvironment|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CopyrightFontName|CopyrightFontSize|CreateAppDir|CreateUninstallRegKey|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DialogFontName|DialogFontSize|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageCodePage|LanguageDetectionMethod|LanguageID|LanguageName|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|Permissions|PrivilegesRequired|PrivilegesRequiredOverridesAllowed|ReserveBytes|RestartApplications|RestartIfNeededByRun|RightToLeft|SetupIconFile|SetupLogging|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|ShowUndisplayableLanguages|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolMinimumTimeBetween|SignToolRetryCount|SignToolRetryDelay|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TitleFontName|TitleFontSize|TouchDate|TouchTime|Uninstallable|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UsePreviousPrivileges|UpdateUninstallLogAppName|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoOriginalFileName|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WelcomeFontName|WelcomeFontSize|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageBackColor|WizardImageFile|WizardImageStretch|WizardResizable|WizardSizePercent|WizardSmallImageFile|WizardStyle)'
-  directives_deprecated: '(?:DisableAppendDir|DontMergeDuplicateFiles|MessagesFile|UninstallIconFile|UninstallIconName|UninstallStyle|WizardSmallImageBackColor)'
-  parameters: '(?:AfterInstall|Attribs|BeforeInstall|Check|Components|Description|DestDir|DestName|Excludes|Filename|Flags|GroupDescription|Languages|MessagesFile|MinVersion|Name|OnlyBelowVersion|Parameters|Permissions|Root|RunOnceId|Source|StatusMsg|Subkey|Type|ValueData|ValueName|ValueType|Verb|WorkingDir)'
-  keywords: '(?:32bit|64bit|admin|allowunsafefiles|append|auto|binary|bzip|checkablealone|checkedonce|clAqua|clBlack|clBlue|clFuchsia|clGray|clGreen|clLime|clMaroon|clNavy|clOlive|closeonexit|clPurple|clRed|clSilver|clTeal|clWhite|clYellow|compact|comparetimestamp|compiler|confirmoverwrite|createallsubdirs|createkeyifdoesntexist|createonlyiffileexists|createvalueifdoesntexist|current|custom|deleteafterinstall|deletekey|deletevalue|desktopicon|dirifempty|disablenouninstallwarning|dontcloseonexit|dontcopy|dontcreatekey|dontinheritcheck|dontverifychecksum|dword|everyone-full|excludefromshowinnewinstall|exclusive|expandsz|external|fast|files|filesandordirs|fixed|foldershortcut|fontisnttruetype|full|gacinstall|help|hidden|hidewizard|ia64|ignoreversion|iscustom|isreadme|lefttoright|locale|lowest|lzma|lzma2|main|max|modify|multisz|new|no|nocompression|noencryption|noerror|none|noregerror|normal|notcontentindexed|nowait|onlyifdoesntexist|overwrite|overwritereadonly|postinstall|poweruser|preservestringtype|preventpinning|program|promptifolder|qword|read|readexec|readme|readonly|recursesubdirs|regserver|regtypelib|replacesameversion|restart|restartreplace|runascurrentuser|runasoriginaluser|runhidden|runminimized|setntfscompression|sharedfile|shellexec|skipifdoesntexist|skipifnotsilent|skipifsilent|skipifsourcedoesntexist|solidbreak|sortfilesbyextension|sortfilesbyname|string|system|toptobottom|touch|uilanguage|ultra|unchecked|uninsalwaysuninstall|uninsclearvalue|uninsdeleteentry|uninsdeletekey|uninsdeletekeyifempty|uninsdeletesection|uninsdeletesectionifempty|uninsdeletevalue|uninsneveruninstall|uninsnosharedfileprompt|uninsremovereadonly|uninsrestartdelete|unsetntfscompression|useapppaths|users-modify|waituntilidle|waituntilterminated|x64|x86|yes|zip)'
+  setup_directives: '(?:AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|ASLRCompatible|BackColor|BackColor2|BackColorDirection|BackSolid|ChangesAssociations|ChangesEnvironment|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CreateAppDir|CreateUninstallRegKey|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DEPCompatible|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageDetectionMethod|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|MissingRunOnceIdsWarning|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|PrivilegesRequired|PrivilegesRequiredOverridesAllowed|ReserveBytes|RestartApplications|RestartIfNeededByRun|SetupIconFile|SetupLogging|SetupMutex|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolMinimumTimeBetween|SignToolRetryCount|SignToolRetryDelay|SignToolRunMinimized|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TouchDate|TouchTime|Uninstallable|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UpdateUninstallLogAppName|UsedUserAreasWarning|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousPrivigeles|UsePreviousPrivileges|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoOriginalFileName|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageAlphaFormat|WizardImageFile|WizardImageStretch|WizardResizable|WizardSizePercent|WizardSmallImageFile|WizardStyle)'
+  setup_directives_deprecated: '(?:AlwaysCreateUninstallIcon|DisableAppendDir|DontMergeDuplicateFiles|MessagesFile|UninstallIconFile|UninstallIconName|UninstallStyle|WizardImageBackColor|WizardSmallImageBackColor)'
+  lang_options_directives: '(?:CopyrightFontName|CopyrightFontSize|DialogFontName|DialogFontSize|LanguageCodePage|LanguageID|LanguageName|RightToLeft|TitleFontName|TitleFontSize|WelcomeFontName|WelcomeFontSize)'
+  directive_keywords: '(?:admin|append|arm64|auto|BT|bzip|bzip\/\d|clAqua|classic|clBlack|clBlue|clFuchsia|clGray|clGreen|clLime|clMaroon|clNavy|clOlive|clPurple|clRed|clSilver|clTeal|clWhite|clYellow|commandline|current|defined|dialog|force|HC|ia64|lefttoright|locale|lowest|lzma|lzma2|lzma2\/fast|lzma2\/max|lzma2\/normal|lzma2\/ultra|lzma2\/ultra64|lzma\/fast|lzma\/max|lzma\/normal|lzma\/ultra|lzma\/ultra64|modern|new|no|none|overwrite|premultiplied|toptobottom|uilanguage|x64|x86|yes|zip|zip\/\d)'
+  parameters: '(?:AfterInstall|AppUserModelID|AppUserModelToastActivatorCLSID|Attribs|BeforeInstall|Check|Comment|Components|CopyMode|Description|DestDir|DestName|Excludes|ExternalSize|ExtraDiskSpaceRequired|Filename|Flags|FontInstall|GroupDescription|HotKey|IconFilename|IconIndex|InfoAfterFile|InfoBeforeFile|Key|Languages|LicenseFile|MessagesFile|MinVersion|Name|OnlyBelowVersion|Parameters|Permissions|Root|RunOnceId|Section|Source|StatusMsg|String|StrongAssemblyName|Subkey|Tasks|Type|Types|ValueData|ValueName|ValueType|Verb|WorkingDir)'
+  parameter_keywords: '(?:binary|compact|custom|dirifempty|dword|expandsz|files|filesandordirs|full|help|hidden|HKA(?:32|64)?|HKCC(?:32|64)?|HKCR(?:32|64)?|HKCU(?:32|64)?|HKLM(?:32|64)?|HKU(?:32|64)?|main|modify|multisz|none|notcontentindexed|open|print|qword|read|readexec|readonly|string|system)'
+  parameter_flags: '(?:32bit|64bit|allowunsafefiles|checkablealone|checkedonce|closeonexit|comparetimestamp|confirmoverwrite|createallsubdirs|createkeyifdoesntexist|createonlyiffileexists|createvalueifdoesntexist|deleteafterinstall|deletekey|deletevalue|disablenouninstallwarning|dontcloseonexit|dontcopy|dontcreatekey|dontinheritcheck|dontlogparameters|dontverifychecksum|excludefromshowinnewinstall|exclusive|external|fixed|foldershortcut|fontisnttruetype|gacinstall|hidewizard|ignoreversion|iscustom|isreadme|nocompression|noencryption|noerror|noregerror|nowait|onlyifdestfileexists|onlyifdoesntexist|overwritereadonly|postinstall|preservestringtype|preventpinning|promptifolder|recursesubdirs|regserver|regtypelib|replacesameversion|restart|restartreplace|runascurrentuser|runasoriginaluser|runhidden|runmaximized|runminimized|setntfscompression|sharedfile|shellexec|sign|signonce|skipifdoesntexist|skipifnotsilent|skipifsilent|skipifsourcedoesntexist|solidbreak|sortfilesbyextension|sortfilesbyname|touch|unchecked|uninsalwaysuninstall|uninsclearvalue|uninsdeleteentry|uninsdeletekey|uninsdeletekeyifempty|uninsdeletesection|uninsdeletesectionifempty|uninsdeletevalue|uninsneveruninstall|uninsnosharedfileprompt|uninsremovereadonly|uninsrestartdelete|unsetntfscompression|useapppaths|waituntilidle|waituntilterminated)'
   constants: '(?:\\|app|autoappdata|autocf|autocf32|autocf64|autodesktop|autodocs|autofonts|autopf|autopf32|autopf64|autoprograms|autostartmenu|autostartup|autotemplates|cmd|commonappdata|commoncf|commoncf32|commoncf64|commondesktop|commondocs|commonfonts|commonpf|commonpf32|commonpf64|commonprograms|commonstartmenu|commonstartup|commontemplates|computername|dao|dotnet11|dotnet20|dotnet2032|dotnet2064|dotnet40|dotnet4032|dotnet4064|group|groupname|hwnd|language|localappdata|log|sd|src|srcexe|sys|sysnative|sysuserinfoname|sysuserinfoorg|syswow64|tmp|uninstallexe|userappdata|usercf|userdesktop|userdocs|userfavorites|userfonts|userinfoname|userinfoorg|userinfoserial|username|userpf|userprograms|usersavedgames|usersendto|userstartmenu|userstartup|usertemplates|win|wizardhwnd)'
   constants_deprecated: '(?:cf|cf32|cf64|commonfavorites|fonts|pf|pf32|pf64|sendto)'
   messages: '(?:AbortRetryIgnoreCancel|AbortRetryIgnoreIgnore|AbortRetryIgnoreRetry|AbortRetryIgnoreSelectAction|AboutSetupMenuItem|AboutSetupMessage|AboutSetupNote|AboutSetupTitle|AdminPrivilegesRequired|ApplicationsFound|ApplicationsFound2|BadDirName32|BadGroupName|BeveledLabel|BrowseDialogLabel|BrowseDialogTitle|ButtonBack|ButtonBrowse|ButtonCancel|ButtonFinish|ButtonInstall|ButtonNewFolder|ButtonNext|ButtonNo|ButtonNoToAll|ButtonOK|ButtonStopDownload|ButtonWizardBrowse|ButtonYes|ButtonYesToAll|CannotContinue|CannotInstallToNetworkDrive|CannotInstallToUNCPath|ChangeDiskTitle|ClickFinish|ClickNext|CloseApplications|CompactInstallation|ComponentsDiskSpaceGBLabel|ComponentsDiskSpaceMBLabel|ComponentSize1|ComponentSize2|ConfirmDeleteSharedFile2|ConfirmDeleteSharedFileTitle|ConfirmTitle|ConfirmUninstall|CustomInstallation|DirDoesntExist|DirDoesntExistTitle|DirExists|DirExistsTitle|DirNameTooLong|DiskSpaceGBLabel|DiskSpaceMBLabel|DiskSpaceWarning|DiskSpaceWarningTitle|DontCloseApplications|DownloadingLabel|ErrorChangingAttr|ErrorCloseApplications|ErrorCopying|ErrorCreatingDir|ErrorCreatingTemp|ErrorDownloadAborted|ErrorDownloadFailed|ErrorDownloadSizeFailed|ErrorExecutingProgram|ErrorFileHash1|ErrorFileHash2|ErrorFileSize|ErrorFunctionFailed|ErrorFunctionFailedNoCode|ErrorFunctionFailedWithMessage|ErrorIniEntry|ErrorInternal2|ErrorOpeningReadme|ErrorProgress|ErrorReadingExistingDest|ErrorReadingSource|ErrorRegCreateKey|ErrorRegisterServer|ErrorRegisterTypeLib|ErrorRegOpenKey|ErrorRegSvr32Failed|ErrorRegWriteKey|ErrorRenamingTemp|ErrorReplacingExistingFile|ErrorRestartingComputer|ErrorRestartReplace|ErrorTitle|ErrorTooManyFilesInDir|ExistingFileNewer2|ExistingFileNewerKeepExisting|ExistingFileNewerOverwriteExisting|ExistingFileNewerOverwriteOrKeepAll|ExistingFileNewerSelectAction|ExistingFileReadOnly2|ExistingFileReadOnlyKeepExisting|ExistingFileReadOnlyRetry|ExitSetupMessage|ExitSetupTitle|FileAbortRetryIgnoreIgnoreNotRecommended|FileAbortRetryIgnoreSkipNotRecommended|FileExists2|FileExistsKeepExisting|FileExistsOverwriteExisting|FileExistsOverwriteOrKeepAll|FileExistsSelectAction|FileNotInDir2|FinishedHeadingLabel|FinishedLabel|FinishedLabelNoIcons|FinishedRestartLabel|FinishedRestartMessage|FullInstallation|GroupNameTooLong|HelpTextNote|IncorrectPassword|InfoAfterClickLabel|InfoAfterLabel|InfoBeforeClickLabel|InfoBeforeLabel|InformationTitle|InstallingLabel|InvalidDirName|InvalidDrive|InvalidGroupName|InvalidParameter|InvalidPath|LastErrorMessage|LdrCannotCreateTemp|LdrCannotExecTemp|LicenseAccepted|LicenseLabel|LicenseLabel3|LicenseNotAccepted|MustEnterGroupName|NewFolderName|NoProgramGroupCheck2|NoRadio|NotOnThisPlatform|NoUninstallWarning|NoUninstallWarningTitle|OnlyAdminCanUninstall|OnlyOnTheseArchitectures|OnlyOnThisPlatform|PasswordEditLabel|PasswordLabel1|PasswordLabel3|PathLabel|PowerUserPrivilegesRequired|PrepareToInstallNeedsRestart|PreparingDesc|PreviousInstallNotCompleted|PrivilegesRequiredOverrideAllUsers|PrivilegesRequiredOverrideAllUsersRecommended|PrivilegesRequiredOverrideCurrentUser|PrivilegesRequiredOverrideCurrentUserRecommended|PrivilegesRequiredOverrideInstruction|PrivilegesRequiredOverrideText1|PrivilegesRequiredOverrideText2|PrivilegesRequiredOverrideTitle|ReadyLabel1|ReadyLabel2a|ReadyLabel2b|ReadyMemoComponents|ReadyMemoDir|ReadyMemoGroup|ReadyMemoTasks|ReadyMemoType|ReadyMemoUserInfo|RunEntryExec|RunEntryShellExec|SelectComponentsDesc|SelectComponentsLabel2|SelectDirBrowseLabel|SelectDirDesc|SelectDirectoryLabel|SelectDirLabel3|SelectDiskLabel2|SelectLanguageLabel|SelectLanguageTitle|SelectStartMenuFolderBrowseLabel|SelectStartMenuFolderDesc|SelectStartMenuFolderLabel3|SelectTasksDesc|SelectTasksLabel2|SetupAborted|SetupAlreadyRunning|SetupAppRunningError|SetupAppTitle|SetupFileCorrupt|SetupFileCorruptOrWrongVer|SetupFileMissing|SetupLdrStartupMessage|SetupWindowTitle|SharedFileLocationLabel|SharedFileNameLabel|ShowReadmeCheck|ShutdownBlockReasonInstallingApp|ShutdownBlockReasonUninstallingApp|SourceDoesntExist|SourceIsCorrupted|StatusClosingApplications|StatusCreateDirs|StatusCreateIcons|StatusCreateIniEntries|StatusCreateRegistryEntries|StatusExtractFiles|StatusRegisterFiles|StatusRestartingApplications|StatusRollback|StatusRunProgram|StatusSavingUninstall|StatusUninstalling|StopDownload|TranslatorNote|UninstallAppFullTitle|UninstallAppRunningError|UninstallAppTitle|UninstallDataCorrupted|UninstallDisplayNameMark|UninstallDisplayNameMark32Bit|UninstallDisplayNameMark64Bit|UninstallDisplayNameMarkAllUsers|UninstallDisplayNameMarkCurrentUser|UninstallDisplayNameMarks|UninstalledAll|UninstalledAndNeedsRestart|UninstalledMost|UninstallNotFound|UninstallOnlyOnWin64|UninstallOpenError|UninstallStatusLabel|UninstallUnknownEntry|UninstallUnsupportedVer|UserInfoDesc|UserInfoName|UserInfoNameRequired|UserInfoOrg|UserInfoSerial|WelcomeLabel1|WelcomeLabel2|WindowsServicePackRequired|WindowsVersionNotSupported|WinVersionTooHighError|WinVersionTooLowError|WizardInfoAfter|WizardInfoBefore|WizardInstalling|WizardLicense|WizardPassword|WizardPreparing|WizardReady|WizardSelectComponents|WizardSelectDir|WizardSelectProgramGroup|WizardSelectTasks|WizardUninstalling|WizardUserInfo|YesRadio)'
@@ -24,16 +27,6 @@ contexts:
     - match: '^\s*(?=#)'
       push: scope:meta.preprocessor.inno
     - include: preprocessor-inline
-    # Code section.
-    - match: '(?i)^\s*(\[Code\])\s*$'
-      captures:
-        1: entity.name.namespace.inno
-      push:
-        - meta_scope: meta.namespace.code.inno
-        - meta_content_scope: source.pascal.embedded.inno
-        - include: scope:source.pascal.inno
-      with_prototype:
-        - include: section-end
     # Messages section.
     - match: '(?i)^\s*(\[Messages\])\s*$'
       captures:
@@ -71,26 +64,41 @@ contexts:
         - include: section-end
         - include: comment
         - include: value
+    # Code section.
+    - match: '(?i)^\s*(\[Code\])\s*$'
+      captures:
+        1: entity.name.namespace.inno
+      push:
+        - meta_scope: meta.namespace.code.inno
+        - meta_content_scope: source.pascal.embedded.inno
+        - include: scope:source.pascal.inno
+      with_prototype:
+        - include: section-end
     # Other section.
     - match: '(?i)^\s*(?:(\[{{sections}}\])|(\[\w*\]))\s*$'
       captures:
         1: entity.name.namespace.inno
         2: meta.unrecognized.section.inno
     # Setup directive.
-    - match: '(?i)^\s*(?:({{directives}})|({{directives_deprecated}})|([^="''\s]*))\s*(=)\s*'
+    - match: '(?i)^\s*(?:({{setup_directives}}|{{setup_directives_deprecated}}|{{lang_options_directives}})|([^="''\s]*))\s*(=)\s*'
       captures:
         1: keyword.other.inno
-        2: keyword.other.inno
-        3: meta.unrecognized.directive.inno
-        4: keyword.operator.assignment.inno
+        2: meta.unrecognized.directive.inno
+        3: keyword.operator.assignment.inno
       push: directive-value
-    # Parameter where keywords are expected.
-    - match: '(?i)\b(Attribs|Components|Flags|Root|Type|ValueType|Verb)\s*(:)\s*'
+    # Parameter expecting keywords.
+    - match: '(?i)\b(Attribs|Components|Root|Type|Types|ValueType|Verb)\s*(:)\s*'
       captures:
         1: keyword.other.inno
         2: keyword.operator.assignment.inno
-      push: parameter-keyword
-    # Other parameter.
+      push: parameter-keywords
+    # Parameter expecting flags.
+    - match: '(?i)\b(Flags)\s*(:)\s*'
+      captures:
+        1: keyword.other.inno
+        2: keyword.operator.assignment.inno
+      push: parameter-flags
+    # Parameter expecting value.
     - match: '(?i)\b(?:({{parameters}})|([^:"''\s]*))\s*(:)\s*'
       captures:
         1: keyword.other.inno
@@ -142,14 +150,23 @@ contexts:
   # Directive value.
   directive-value:
     - include: line-spanning
-    - include: keyword
+    - match: '(?i)\s*\b{{directive_keywords}}\b'
+      scope: constant.language.inno
     - include: value
 
-  # Parameter keyword.
-  parameter-keyword:
+  # Parameter keywords.
+  parameter-keywords:
     - include: line-spanning
     - include: separator
-    - include: keyword
+    - match: '(?i)\s*\b{{parameter_keywords}}\b'
+      scope: constant.language.inno
+
+  # Parameter flags.
+  parameter-flags:
+    - include: line-spanning
+    - include: separator
+    - match: '(?i)\s*\b{{parameter_flags}}\b'
+      scope: constant.language.inno
 
   # Parameter value.
   parameter-value:
@@ -175,11 +192,6 @@ contexts:
     - match: ';'
       scope: punctuation.separator.inno
       pop: true
-
-  # Keyword.
-  keyword:
-    - match: '(?i)\s*\b{{keywords}}\b'
-      scope: constant.language.inno
 
   # Value.
   value:
