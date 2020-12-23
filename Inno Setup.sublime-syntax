@@ -74,14 +74,14 @@ contexts:
         - include: scope:source.pascal.inno
       with_prototype:
         - include: section-end
-    # Other section.
+    # Other or unrecognized section.
     - match: '(?i)^\s*(?:(\[{{sections}}\])|(\[\w*\]))\s*$'
       captures:
         1: entity.name.namespace.inno
         2: meta.unrecognized.section.inno
     # Comment.
     - include: comment
-    # Setup directive.
+    # Directive.
     - match: '(?i)^\s*(?:({{setup_directives}}|{{setup_directives_deprecated}}|{{lang_options_directives}})|([^="''\s]*))\s*(=)\s*'
       captures:
         1: keyword.other.inno

@@ -114,6 +114,11 @@ contexts:
       scope: keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
+    # Unrecognized directive.
+    - match: '(?i)(#)\s*\w*'
+      scope: meta.unrecognized.directive.inno
+      captures:
+        1: punctuation.definition.keyword.inno
     # Expression.
     - include: expression
     - include: separator
