@@ -100,8 +100,7 @@ contexts:
                 - include: line-spanning
                 - match: '(?=[,)])'
                   pop: true
-            - match: ','
-              scope: punctuation.separator.inno
+            - include: separator
             - match: '\)'
               scope: meta.function.parameters.inno
               pop: true
@@ -117,6 +116,7 @@ contexts:
         1: punctuation.definition.keyword.inno
     # Expression.
     - include: expression
+    - include: separator
     # Braces. Necessary to prevent interpreting semicolons in for loop as comments.
     - match: '\{'
       scope: punctuation.section.braces.begin.inno
@@ -144,6 +144,11 @@ contexts:
     - include: modifier
     - include: constant
     - include: value
+
+  # Separator.
+  separator:
+    - match: ','
+      scope: punctuation.separator.inno
 
   # Operator.
   operator:

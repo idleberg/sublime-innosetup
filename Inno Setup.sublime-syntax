@@ -29,7 +29,7 @@ contexts:
       captures:
         1: entity.name.namespace.inno
       push:
-        - meta_scope: meta.namespace.inno
+        - meta_scope: meta.namespace.code.inno
         - meta_content_scope: source.pascal.embedded.inno
         - include: scope:source.pascal.inno
       with_prototype:
@@ -39,7 +39,7 @@ contexts:
       captures:
         1: entity.name.namespace.inno
       push:
-        - meta_scope: meta.namespace.inno
+        - meta_scope: meta.namespace.messages.inno
         - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|([^="''\s]*))\s*(=)\s*'
           captures:
             1: keyword.other.inno
@@ -49,7 +49,7 @@ contexts:
             5: keyword.operator.assignment.inno
           push: message-content
           with_prototype:
-            - include: message-escapes
+            - include: message-specials
         - include: section-end
         - include: comment
         - include: value
@@ -58,7 +58,7 @@ contexts:
       captures:
         1: entity.name.namespace.inno
       push:
-        - meta_scope: meta.namespace.inno
+        - meta_scope: meta.namespace.custom-messages.inno
         - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(=)\s*'
           captures:
             1: keyword.other.inno
@@ -67,7 +67,7 @@ contexts:
             4: keyword.operator.assignment.inno
           push: message-content
           with_prototype:
-            - include: message-escapes
+            - include: message-specials
         - include: section-end
         - include: comment
         - include: value
@@ -110,17 +110,16 @@ contexts:
       pop: true
     # However line spanning symbol prevents popping.
     # Push an additional temporary context to break out to the top scope.
-    - match: '(?=\s+\\\s*$)'
+    - match: '(?<=\s)(?=\\\s*$)'
       push:
         - clear_scopes: true
         # Match the actual line spanning symbol.
-        - match: '\s+(\\)(?=\s*$)'
-          captures:
-            1: punctuation.separator.continuation.inno
+        - match: '\\(?=\s*$)'
+          scope: punctuation.separator.continuation.inno
           # Resume parsing at the next line.
           push:
-            - meta_scope: source.inno
-            - match: '(?=\S|^\s*$)'
+            - meta_scope: source.inno meta.preprocessor.inno
+            - match: '(?=\s*\S|^\s*$)'
               pop: true
         # Pop the temporary context.
         - match: ''
@@ -164,10 +163,12 @@ contexts:
     - include: separator
     - include: string
 
-  # Escape sequences in message.
-  message-escapes:
-    - match: '%[\dn%]|&'
-      scope: constant.character.escape
+  # Message formatting placeholders and escape sequences.
+  message-specials:
+    - match: '%\d|&'
+      scope: constant.other.placeholder.inno
+    - match: '%[n%]'
+      scope: constant.character.escape.inno
 
   # Separator.
   separator:
