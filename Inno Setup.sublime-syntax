@@ -23,10 +23,8 @@ variables:
 contexts:
   # Source.
   main:
-    # Preprocessor directive.
-    - match: '^\s*(?=#)'
-      push: scope:meta.preprocessor.inno
-    - include: preprocessor-inline
+    # Preprocessor code.
+    - include: preprocessor
     # Messages section.
     - match: '(?i)^\s*(\[Messages\])\s*$'
       captures:
@@ -73,6 +71,7 @@ contexts:
         - meta_content_scope: source.pascal.embedded.inno
         - include: scope:source.pascal.inno
       with_prototype:
+        - include: preprocessor
         - include: section-end
     # Other or unrecognized section.
     - match: '(?i)^\s*(?:(\[{{sections}}\])|(\[\w*\]))\s*$'
@@ -80,7 +79,12 @@ contexts:
         1: entity.name.namespace.inno
         2: meta.unrecognized.section.inno
     # Comment.
-    - include: comment
+    - match: '^\s*(;)'
+      captures:
+        1: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.line.semicolon.inno
+        - include: line-end
     # Directive.
     - match: '(?i)^\s*(?:({{setup_directives}}|{{setup_directives_deprecated}}|{{lang_options_directives}})|([^="''\s]*))\s*(=)\s*'
       captures:
@@ -111,13 +115,17 @@ contexts:
     - include: separator
     - include: value
 
-  # Line spanning.
-  line-spanning:
+  # Line end with consideration of line spanning.
+  line-end:
     # Line end pops the context.
     - match: '(?=$)'
       pop: true
     # However line spanning symbol prevents popping.
-    # Push an additional temporary context to break out to the top scope.
+    - include: line-spanning
+
+  # Line spanning continues context over a line end.
+  line-spanning:
+    # Push a temporary context to break out to the top scope.
     - match: '(?<=\s)(?=\\\s*$)'
       push:
         - clear_scopes: true
@@ -133,50 +141,75 @@ contexts:
         - match: ''
           pop: true
 
+  # Preprocessor code.
+  preprocessor:
+    - match: '^\s*(?=#)'
+      push: scope:meta.preprocessor.inno
+    - include: preprocessor-inline
+    - include: preprocessor-comment
+
+  # Inline preprocessor directive.
+  preprocessor-inline:
+    # Push a temporary context to break out to the top scope.
+    - match: '(?=\{#)'
+      push:
+        - clear_scopes: true
+        - meta_scope: source.inno
+        - match: '\{#'
+          scope: meta.preprocessor.inno keyword.other.inno
+          embed: scope:meta.preprocessor.inno
+          escape: '(?=\})'
+        - match: '\}'
+          scope: meta.preprocessor.inno keyword.other.inno
+          pop: true
+        # Pop the temporary context.
+        - match: ''
+          pop: true
+
+  # Preprocessor comment.
+  preprocessor-comment:
+    - match: '^\s*(//)'
+      captures:
+        1: punctuation.definition.comment.inno
+      push:
+        - meta_scope: meta.preprocessor.inno comment.line.double-slash.inno
+        - include: line-end
+
   # End of section.
   section-end:
     - match: '(?i)^(?=\s*\[\w*\]\s*$)'
       pop: true
 
-  # Inline preprocessor directive.
-  preprocessor-inline:
-    - match: '\{#'
-      scope: meta.preprocessor.inno keyword.other.inno
-      embed: scope:meta.preprocessor.inno
-      escape: '\}'
-      escape_captures:
-        0: meta.preprocessor.inno keyword.other.inno
-
   # Directive value.
   directive-value:
-    - include: line-spanning
+    - include: line-end
     - match: '(?i)\s*\b{{directive_keywords}}\b'
       scope: constant.language.inno
     - include: value
 
   # Parameter keywords.
   parameter-keywords:
-    - include: line-spanning
+    - include: line-end
     - include: separator
     - match: '(?i)\s*\b{{parameter_keywords}}\b'
       scope: constant.language.inno
 
   # Parameter flags.
   parameter-flags:
-    - include: line-spanning
+    - include: line-end
     - include: separator
     - match: '(?i)\s*\b{{parameter_flags}}\b'
       scope: constant.language.inno
 
   # Parameter value.
   parameter-value:
-    - include: line-spanning
+    - include: line-end
     - include: separator
     - include: value
 
   # Message content.
   message-content:
-    - include: line-spanning
+    - include: line-end
     - include: separator
     - include: string
 
@@ -231,7 +264,7 @@ contexts:
     - match: '(?=\S)'
       push:
         - meta_content_scope: string.unquoted.inno
-        - include: line-spanning
+        - include: line-end
         - include: constant
         # All sequences that may terminate string. If parent context doesn't act upon them, the string will resume.
         - match: '(?=;|$)'
@@ -260,26 +293,4 @@ contexts:
           scope: constant.character.escape.inno
         - include: constant
     # Inline preprocessor directive.
-    - match: '(?=\{#)'
-      push:
-        - clear_scopes: 1
-        - include: preprocessor-inline
-        - match: ''
-          pop: true
-
-  # Comment.
-  comment:
-    # Line comment.
-    - match: '^\s*(;)'
-      captures:
-        1: punctuation.definition.comment.inno
-      push:
-        - meta_scope: comment.line.semicolon.inno
-        - include: line-spanning
-    # Preprocessor comment.
-    - match: '^\s*(//)'
-      captures:
-        1: punctuation.definition.comment.inno
-      push:
-        - meta_scope: meta.preprocessor.inno comment.line.double-slash.inno
-        - include: line-spanning
+    - include: preprocessor-inline
