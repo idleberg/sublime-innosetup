@@ -1,7 +1,6 @@
 %YAML 1.2
 ---
 name: 'Inno Setup'
-comment: https://github.com/idleberg/sublime-innosetup
 file_extensions: [iss, isl]
 scope: source.inno
 
