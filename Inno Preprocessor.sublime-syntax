@@ -186,7 +186,7 @@ contexts:
   # Value.
   value:
     # Hexadecimal number.
-    - match: '(?i)0x[0-9a-f]+u?l?'
+    - match: '(?i)0x\h+u?l?'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer or float.
     - match: '\b[0-9]+(?:\.[0-9]+)?\b'

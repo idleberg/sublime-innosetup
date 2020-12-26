@@ -240,7 +240,7 @@ contexts:
   # Number
   number:
     # Hexadecimal number.
-    - match: '(?i)\$[0-9a-f]+'
+    - match: '\$\h+'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer, float or version.
     - match: '\b[0-9]+(?:\.[0-9]+)*\b'
