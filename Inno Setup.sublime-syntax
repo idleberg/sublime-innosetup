@@ -125,11 +125,16 @@ contexts:
   # Line spanning continues context over a line end.
   line-spanning:
     # Push a temporary context to break out to the top scope.
-    - match: '(?<=\s)(?=\\\s*$)'
+    - match: '(?<=\s)(?=\\[ \t]*$)'
       push:
         - clear_scopes: true
-        # Match the actual line spanning symbol.
-        - match: '\\(?=\s*$)'
+        # Match invalid line spanning.
+        - match: '(\\)([ \t]+)$'
+          captures:
+            1: punctuation.separator.continuation.inno
+            2: invalid.illegal.inno
+        # Match valid line spanning.
+        - match: '\\$'
           scope: punctuation.separator.continuation.inno
           # Resume parsing at the next line.
           push:
@@ -144,6 +149,8 @@ contexts:
   preprocessor:
     - match: '^\s*(?=#)'
       push: scope:meta.preprocessor.inno
+      with_prototype:
+        - include: line-end
     - include: preprocessor-inline
     - include: preprocessor-comment
 
@@ -246,6 +253,7 @@ contexts:
       scope: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.double.inno
+        - include: line-end
         - include: constant
         - match: '"'
           scope: punctuation.definition.string.end.inno
@@ -255,6 +263,7 @@ contexts:
       scope: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.single.inno
+        - include: line-end
         - include: constant
         - match: "'"
           scope: punctuation.definition.string.end.inno

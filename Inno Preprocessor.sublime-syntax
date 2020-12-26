@@ -13,8 +13,6 @@ variables:
 contexts:
   # Preprocessor.
   main:
-    # End preprocessor code at the line end.
-    - include: line-end
     # Comment.
     - match: '/\*'
       scope: punctuation.definition.comment.inno
@@ -27,7 +25,6 @@ contexts:
       scope: punctuation.definition.comment.inno
       push:
         - meta_scope: comment.line.semicolon.inno
-        - include: line-end
     # Pragma directive.
     - match: '(?i)(#)\s*pragma\b'
       scope: keyword.other.inno
@@ -85,7 +82,6 @@ contexts:
             2: meta.function.parameters.inno
           set:
             - meta_content_scope: meta.function.parameters.inno
-            - include: line-end
             - include: type
             - match: '\*'
               scope: keyword.operator.reference.inno
@@ -97,7 +93,6 @@ contexts:
               scope: keyword.operator.assignment.inno
               push: expression
               with_prototype:
-                - include: line-end
                 - match: '(?=[,)])'
                   pop: true
             - include: separator
@@ -131,10 +126,6 @@ contexts:
         - match: '\}'
           scope: punctuation.section.braces.end.inno
           pop: true
-
-  # Line end.
-  line-end:
-    - include: scope:source.inno#line-end
 
   # Pop when including line is reached.
   pop:

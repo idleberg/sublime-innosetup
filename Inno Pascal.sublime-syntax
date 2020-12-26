@@ -19,12 +19,12 @@ contexts:
       captures:
         1: storage.type.function.pascal keyword.declaration.function.pascal
         2: meta.function.pascal entity.name.function.pascal
-      push:
+      with_prototype:
         - include: line-end
+      push:
         - match: '\('
           set:
             - meta_scope: meta.function.parameters.inno
-            - include: line-end
             - match: '\b(?:const|var)\b'
               scope: storage.modifier.pascal
             - match: '\w+'
@@ -63,8 +63,19 @@ contexts:
     # Inno Setup constants.
     - match: '(?i)\b{{inno_constants}}\b'
       scope: constant.other.pascal
-    # String cannot be delimited with double quotes.
+    # Strings cannot be delimited with double quotes.
     - match: '"'
+    # Handle line spanning in single-quoted strings.
+    - match: "'"
+      scope: punctuation.definition.string.begin.pascal
+      push:
+        - meta_scope: string.quoted.single.pascal
+        - include: line-end
+        - match: "''"
+          scope: constant.character.escape.apostrophe.pascal
+        - match: "'"
+          scope: punctuation.definition.string.end.pascal
+          pop: true
     # Escape sequences.
     - match: '#\d+'
       scope: constant.character.escape.pascal
