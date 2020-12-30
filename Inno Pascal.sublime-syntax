@@ -113,10 +113,8 @@ contexts:
   operator:
     - match: ':='
       scope: keyword.operator.assignment.pascal
-    - match: '[-+*/%]'
+    - match: '[-+*/]'
       scope: keyword.operator.arithmetic.pascal
-    - match: '[~&|!]|<<|>>'
-      scope: keyword.operator.bitwise.pascal
     - match: '<=|>=|<|>|=|<>'
       scope: keyword.operator.comparison.pascal
 
