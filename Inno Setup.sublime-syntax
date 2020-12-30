@@ -156,7 +156,10 @@ contexts:
   # Preprocessor code.
   preprocessor:
     - match: '^\s*(?=#)'
-      push: scope:meta.preprocessor.inno
+      push:
+        - clear_scopes: true
+        - meta_content_scope: source.inno meta.preprocessor.inno
+        - include: scope:meta.preprocessor.inno
       with_prototype:
         - include: line-end
     - include: preprocessor-inline
@@ -186,7 +189,8 @@ contexts:
       captures:
         1: punctuation.definition.comment.inno
       push:
-        - meta_scope: meta.preprocessor.inno comment.line.double-slash.inno
+        - clear_scopes: true
+        - meta_scope: source.inno meta.preprocessor.inno comment.line.double-slash.inno
         - include: line-end
 
   # Ordinary comment.
