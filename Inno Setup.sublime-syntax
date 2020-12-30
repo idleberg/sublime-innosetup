@@ -120,7 +120,8 @@ contexts:
       push: parameter-value
     # Loose value.
     - include: separator
-    - include: value
+    - include: number
+    - include: string
 
   # Line end with consideration of line spanning.
   line-end:
@@ -206,13 +207,20 @@ contexts:
   messages-common:
     - match: '='
       scope: keyword.operator.assignment.inno
-      push: message-content
+      push:
+        - include: line-end
+        - include: string
       with_prototype:
-        - include: message-specials
+        # Formatting placeholders and escape sequences.
+        - match: '%\d|&'
+          scope: constant.other.placeholder.inno
+        - match: '%[n%]'
+          scope: constant.character.escape.inno
     - include: preprocessor
     - include: section-end
     - include: comment
-    - include: value
+    - include: number
+    - include: string
 
   # End of section.
   section-end:
@@ -224,7 +232,8 @@ contexts:
     - include: line-end
     - match: '(?i)\s*\b{{directive_keywords}}\b'
       scope: constant.language.inno
-    - include: value
+    - include: number
+    - include: string
 
   # Parameter keywords.
   parameter-keywords:
@@ -244,31 +253,14 @@ contexts:
   parameter-value:
     - include: line-end
     - include: separator
-    - include: value
-
-  # Message content.
-  message-content:
-    - include: line-end
-    - include: separator
+    - include: number
     - include: string
-
-  # Message formatting placeholders and escape sequences.
-  message-specials:
-    - match: '%\d|&'
-      scope: constant.other.placeholder.inno
-    - match: '%[n%]'
-      scope: constant.character.escape.inno
 
   # Separator.
   separator:
     - match: ';'
       scope: punctuation.separator.inno
       pop: true
-
-  # Value.
-  value:
-    - include: number
-    - include: string
 
   # Number
   number:
@@ -287,6 +279,7 @@ contexts:
       push:
         - meta_scope: string.quoted.double.inno
         - include: line-end
+        - include: preprocessor-inline
         - include: constant
         - match: '"'
           scope: punctuation.definition.string.end.inno
@@ -297,6 +290,7 @@ contexts:
       push:
         - meta_scope: string.quoted.single.inno
         - include: line-end
+        - include: preprocessor-inline
         - include: constant
         - match: "'"
           scope: punctuation.definition.string.end.inno
@@ -306,6 +300,7 @@ contexts:
       push:
         - meta_content_scope: string.unquoted.inno
         - include: line-end
+        - include: preprocessor-inline
         - include: constant
         # All sequences that may terminate string. If parent context doesn't act upon them, the string will resume.
         - match: '(?=;|$)'
@@ -333,5 +328,3 @@ contexts:
         - match: '(?i)%[0-9a-f]{2}'
           scope: constant.character.escape.inno
         - include: constant
-    # Inline preprocessor directive.
-    - include: preprocessor-inline
