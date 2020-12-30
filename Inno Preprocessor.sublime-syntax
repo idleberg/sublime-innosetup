@@ -14,63 +14,55 @@ contexts:
   # Preprocessor.
   main:
     # Comment.
-    - match: '/\*'
-      scope: punctuation.definition.comment.inno
-      push:
-        - meta_scope: comment.block.inno
-        - match: '\*/'
-          scope: punctuation.definition.comment.inno
-          pop: true
-    - match: ';'
-      scope: punctuation.definition.comment.inno
-      push:
-        - meta_scope: comment.line.semicolon.inno
+    - include: comment
     # Pragma directive.
     - match: '(?i)(#)\s*pragma\b'
       scope: keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
-        - match: '\s+(option|parseroption)\s*(.*)$'
-          captures:
-            1: keyword.other.inno
-            2: string.unquoted.inno
+        - include: comment
+        - match: '(?i)(?:option|parseroption)\b'
+          scope: keyword.other.inno
+          set:
+            - meta_content_scope: string.unquoted.inno
+            - include: comment
+        - match: '(?i)(?:inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
+          scope: keyword.other.inno
           pop: true
-        - match: '\s+(inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
-          captures:
-            1: keyword.other.inno
+        # Pop context before anything else.
+        - match: '(?=\S)'
           pop: true
-        - include: pop
     # Error directive.
     - match: '(?i)(#)\s*error\b'
       scope: keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
-        - match: '\s*(.*)$'
-          captures:
-            1: string.unquoted.inno
-          pop: true
+        - meta_content_scope: string.unquoted.inno
     # Include directive.
     - match: '(?i)(#)\s*(?:[+]|include\b)'
       scope: keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
+        - include: comment
         - match: '\s*(<)[^<>]*(>)\s*$'
           scope: string.quoted.other.inno
           captures:
             1: punctuation.definition.string.begin.inno
             2: punctuation.definition.string.end.inno
           pop: true
-        - include: pop
+        # Pop context before anything else.
+        - match: '(?=\S)'
+          pop: true
     # Define directive.
     - match: '(?i)(#)\s*(?:[:]|define\b)'
       scope: keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
-        - match: '\s+'
+        - include: comment
         - include: modifier
         # Keywords and types cannot be redefined.
         - match: '(?=void|any|int|str|func)'
@@ -82,17 +74,19 @@ contexts:
             2: meta.function.parameters.inno
           set:
             - meta_content_scope: meta.function.parameters.inno
+            - include: comment
             - include: type
             - match: '\*'
               scope: keyword.operator.reference.inno
-            - match: '\w+'
-              scope: variable.parameter.inno
             - match: '\?'
               scope: keyword.operator.optional.inno
+            - match: '\w+'
+              scope: variable.parameter.inno
             - match: '='
               scope: keyword.operator.assignment.inno
-              push: expression
-              with_prototype:
+              push:
+                - include: comment
+                - include: expression
                 - match: '(?=[,)])'
                   pop: true
             - include: separator
@@ -103,7 +97,9 @@ contexts:
         - match: '\w+'
           scope: entity.name.variable.inno
           pop: true
-        - include: pop
+        # Pop context before anything else.
+        - match: '(?=\S)'
+          pop: true
     # Other directive.
     - match: '(?i)(#)\s*{{directives}}'
       scope: keyword.other.inno
@@ -117,20 +113,38 @@ contexts:
     # Expression.
     - include: expression
     - include: separator
-    # Braces. Necessary to prevent interpreting semicolons in for loop as comments.
+    # Braces. Necessary to prevent matching semicolons in for loop as comments.
     - match: '\{'
       scope: punctuation.section.braces.begin.inno
       push:
         - meta_scope: meta.braces.inno
+        - include: comment-block
         - include: expression
         - match: '\}'
           scope: punctuation.section.braces.end.inno
           pop: true
 
-  # Pop when including line is reached.
-  pop:
-    - match: ''
-      pop: true
+  # Comment.
+  comment:
+    - include: comment-block
+    - include: comment-line
+
+  # Block comment.
+  comment-block:
+    - match: '/\*'
+      scope: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.block.inno
+        - match: '\*/'
+          scope: punctuation.definition.comment.inno
+          pop: true
+
+  # Line comment.
+  comment-line:
+    - match: ';'
+      scope: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.line.semicolon.inno
 
   # Expression.
   expression:
