@@ -27,35 +27,33 @@ contexts:
       captures:
         1: storage.type.function.pascal keyword.declaration.function.pascal
         2: meta.function.pascal entity.name.function.pascal
-      with_prototype:
-        - include: line-end
       push:
+        - include: line-end
         - match: '\('
           set:
             - meta_scope: meta.function.parameters.inno
-            - match: '\b(?:const|var)\b'
-              scope: storage.modifier.pascal
+            - include: line-end
+            - include: comment
+            - include: expression
             - match: '\w+'
               scope: variable.parameter.pascal
-            - match: '(:)\s*'
-              captures:
-                1: punctuation.separator.pascal
+            - match: ':'
+              scope: punctuation.separator.pascal
               push:
-                # If a type is not matched, match whatever string is present to prevent formatting it as a parameter.
-                - include: type
-                - include: class
-                - match: '\w+'
-                - match: ''
+                - include: line-end
+                - include: comment
+                - include: expression
+                - match: '(?=[;)])'
                   pop: true
             - match: ';'
               scope: punctuation.separator.pascal
             - match: '\)'
               pop: true
-        - match: '(?=[:;])'
+        - match: '(?=\S)'
           pop: true
     # Expression.
     - include: expression
-    - include: terminator
+    - include: separator
 
   # Line end and line spanning.
   line-end:
@@ -104,8 +102,10 @@ contexts:
     - include: number
     - include: string
 
-  # Terminator.
-  terminator:
+  # Separator.
+  separator:
+    - match: ':'
+      scope: punctuation.separator.pascal
     - match: ';'
       scope: punctuation.terminator.pascal
 
