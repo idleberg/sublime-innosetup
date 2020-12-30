@@ -4,10 +4,17 @@ name: 'Inno Pascal'
 scope: source.pascal.inno
 
 variables:
-  inno_functions: '(?:Abort|ActiveLanguage|AddBackslash|AddPeriod|AddQuotes|AnsiLowercase|AnsiUppercase|Beep|BringToFrontAndRestore|BrowseForFolder|ChangeFileExt|CharLength|CharToOemBuff|CheckForMutexes|Chr|CoFreeUnusedLibraries|ComparePackedVersion|CompareStr|CompareText|ConvertPercentStr|Copy|CreateCallback|CreateComObject|CreateCustomForm|CreateCustomPage|CreateDir|CreateDownloadPage|CreateInputDirPage|CreateInputFilePage|CreateInputOptionPage|CreateInputQueryPage|CreateMutex|CreateOleObject|CreateOutputMsgMemoPage|CreateOutputMsgPage|CreateOutputProgressPage|CreateShellLink|CurrentFilename|CurrentSourceFilename|CustomMessage|DecrementSharedCount|DelayDeleteFile|Delete|DeleteFile|DeleteIniEntry|DeleteIniSection|DelTree|DirExists|DLLGetLastError|DownloadTemporaryFile|DownloadTemporaryFileSize|EnableFsRedirection|Exec|ExecAsOriginalUser|ExitSetupMsgBox|ExpandConstant|ExpandConstantEx|ExpandFileName|ExpandUNCFileName|ExtractFileDir|ExtractFileDrive|ExtractFileExt|ExtractFileName|ExtractFilePath|ExtractRelativePath|ExtractTemporaryFile|ExtractTemporaryFiles|FileCopy|FileExists|FileOrDirExists|FileSearch|FileSize|FileSize64|FindClose|FindFirst|FindNext|FindWindowByClassName|FindWindowByWindowName|FloatToStr|FmtMessage|FontExists|ForceDirectories|Format|GenerateUniqueName|Get8087CW|GetActiveOleObject|GetArrayLength|GetCmdTail|GetComputerNameString|GetCurrentDir|GetDateTimeString|GetEnv|GetExceptionMessage|GetIniBool|GetIniInt|GetIniString|GetMainForm|GetMD5OfFile|GetMD5OfString|GetMD5OfUnicodeString|GetOpenFileName|GetOpenFileNameMulti|GetPackedVersion|GetPreviousData|GetSaveFileName|GetSHA1OfFile|GetSHA1OfString|GetSHA1OfUnicodeString|GetSHA256OfFile|GetSHA256OfString|GetSHA256OfUnicodeString|GetShellFolderByCSIDL|GetShortName|GetSpaceOnDisk|GetSpaceOnDisk64|GetSystemDir|GetSysWow64Dir|GetTempDir|GetUILanguage|GetUninstallProgressForm|GetUserNameString|GetVersionComponents|GetVersionNumbers|GetVersionNumbersString|GetWinDir|GetWindowsVersion|GetWindowsVersionEx|GetWindowsVersionString|GetWizardForm|IDispatchInvoke|IncrementSharedCount|IniKeyExists|Insert|InstallOnThisVersion|IntToStr|Is64BitInstallMode|IsAdmin|IsAdminInstallMode|IsARM64|IsDotNetInstalled|IsIA64|IsIniSectionEmpty|IsProtectedSystemFile|IsUninstaller|IsWildcard|IsWin64|IsX64|IsX86|Length|LoadStringFromFile|LoadStringsFromFile|Log|Lowercase|MakePendingFileRenameOperationsChecksum|MinimizePathName|ModifyPifFile|MsgBox|Null|OemToCharBuff|OleCheck|Ord|PackVersionComponents|PackVersionNumbers|PageFromID|PageIndexFromID|ParamCount|ParamStr|Pos|PostBroadcastMessage|PostMessage|ProcessorArchitecture|RaiseException|Random|RegDeleteKeyIfEmpty|RegDeleteKeyIncludingSubkeys|RegDeleteValue|RegGetSubkeyNames|RegGetValueNames|RegisterExtraCloseApplicationsResource|RegisterServer|RegisterTypeLibrary|RegisterWindowMessage|RegKeyExists|RegQueryBinaryValue|RegQueryDWordValue|RegQueryMultiStringValue|RegQueryStringValue|RegValueExists|RegWriteBinaryValue|RegWriteDWordValue|RegWriteExpandStringValue|RegWriteMultiStringValue|RegWriteStringValue|RemoveBackslash|RemoveBackslashUnlessRoot|RemoveDir|RemoveQuotes|RenameFile|RestartReplace|RmSessionStarted|SamePackedVersion|SameStr|SameText|SaveStringsToFile|SaveStringsToUTF8File|SaveStringToFile|ScaleX|ScaleY|SelectDisk|SendBroadcastMessage|SendBroadcastNotifyMessage|SendMessage|SendNotifyMessage|Set8087CW|SetArrayLength|SetCurrentDir|SetIniBool|SetIniInt|SetIniString|SetLength|SetNTFSCompression|SetPreviousData|SetupMessage|ShellExec|ShellExecAsOriginalUser|ShowExceptionMessage|Sleep|StringChange|StringChangeEx|StringOfChar|StringToGUID|StrToFloat|StrToInt|StrToInt64|StrToInt64Def|StrToIntDef|SuppressibleMsgBox|SuppressibleTaskDialogMsgBox|SysErrorMessage|TaskDialogMsgBox|Terminated|Trim|TrimLeft|TrimRight|Unassigned|UninstallSilent|UnloadDLL|UnpackVersionComponents|UnpackVersionNumbers|UnpinShellLink|UnregisterFont|UnregisterServer|UnregisterTypeLibrary|Uppercase|VarIsClear|VarIsEmpty|VarIsNull|VarType|VersionToStr|WildcardMatch|WizardDirValue|WizardGroupValue|WizardIsComponentSelected|WizardIsTaskSelected|WizardNoIcons|WizardSelectComponents|WizardSelectedComponents|WizardSelectedTasks|WizardSelectTasks|WizardSetupType|WizardSilent)'
-  inno_functions_deprecated: '(?:LoadDLL|CallDLLProc|FreeDLL|CastStringToInteger|CastIntegerToString)'
-  inno_constants: '(?:HKA|HKA32|HKA64|HKCC|HKCC32|HKCC64|HKCR|HKCR32|HKCR64|HKCU|HKCU32|HKCU64|HKEY_AUTO|HKEY_AUTO_32|HKEY_AUTO_64|HKEY_CLASSES_ROOT|HKEY_CLASSES_ROOT_32|HKEY_CLASSES_ROOT_64|HKEY_CURRENT_CONFIG|HKEY_CURRENT_CONFIG_32|HKEY_CURRENT_CONFIG_64|HKEY_CURRENT_USER|HKEY_CURRENT_USER_32|HKEY_CURRENT_USER_64|HKEY_DYN_DATA|HKEY_LOCAL_MACHINE|HKEY_LOCAL_MACHINE_32|HKEY_LOCAL_MACHINE_64|HKEY_PERFORMANCE_DATA|HKEY_USERS|HKEY_USERS_32|HKEY_USERS_64|HKLM|HKLM32|HKLM64|HKU|HKU32|HKU64|IDABORT|IDCANCEL|IDIGNORE|IDNO|IDOK|IDRETRY|IDYES|MB_ABORTRETRYIGNORE|MB_DEFBUTTON1|MB_DEFBUTTON2|MB_DEFBUTTON3|MB_OK|MB_OKCANCEL|MB_RETRYCANCEL|MB_SETFOREGROUND|MB_YESNO|MB_YESNOCANCEL|mbConfirmation|mbCriticalError|mbError|mbInformation|sfAppData|sfDesktop|sfDocs|sfFavorites|sfFonts|sfLocalAppData|sfPrograms|sfSendTo|sfStartMenu|sfStartup|sfTemplates|srNo|srUnknown|srYes|ssDone|ssInstall|ssPostInstall|SW_HIDE|SW_SHOW|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_SHOWMINNOACTIVE|SW_SHOWNORMAL|wpFinished|wpInfoAfter|wpInfoBefore|wpInstalling|wpLicense|wpPassword|wpPreparing|wpReady|wpSelectComponents|wpSelectDir|wpSelectProgramGroup|wpSelectTasks|wpUserInfo|wpWelcome)'
-  types: '(?:AnsiString|Boolean|Byte|ByteBool|Cardinal|Char|Currency|Double|DWord|Extended|Int64|Integer|LongBool|LongInt|LongWord|PAnsiChar|ShortInt|Single|SmallInt|String|UnicodeString|Variant|WideChar|WideString|Word|WordBool)'
+  keywords: '(?:break|continue|downto|exit|function|override|procedure)'
+  # Words that are reserved in the Pascal syntax, but should not be.
+  not_keywords: '(?:absolute|abstract|all|and_then|attribute|bindable|exports|far|file|import|interrupt|library|module|name|near|object|only|operator|or_else|otherwise|packed|pow|qualified|resident|restricted|segment|value|view)'
+  types_builtin: '(?:AnsiString|Boolean|Byte|ByteBool|Cardinal|Char|Currency|Double|DWord|Extended|Int64|Integer|LongBool|LongInt|LongWord|PAnsiChar|ShortInt|Single|SmallInt|String|UnicodeString|Variant|WideChar|WideString|Word|WordBool)'
+  types_inno: '(?:TFontStyle|TPenMode|TPenStyle|TBrushStyle|TAlphaFormat|TAlign|TAnchorKind|TScrollBarKind|TFormBorderStyle|TBorderIcon|TPosition|TCloseAction|TEShiftState|TAlignment|TEditCharCase|TScrollStyle|TComboBoxStyle|TCheckBoxState|TListBoxStyle|TBevelKind|TBevelShape|TBevelStyle|TPanelBevel|TCheckItemOperation|TNewProgressBarState|TNewProgressBarStyle)'
+  classes_inno: '(?:TBevel|TBitmap|TBitmapImage|TBrush|TButton|TButtonControl|TCanvas|TCheckBox|TComboBox|TComponent|TControl|TCustomCheckBox|TCustomComboBox|TCustomControl|TCustomEdit|TCustomFolderTreeView|TCustomLabel|TCustomListBox|TCustomMemo|TCustomPanel|TDownloadWizardPage|TEdit|TFileStream|TFolderTreeView|TFont|TForm|TGraphic|TGraphicControl|TGraphicsObject|THandleStream|TInputDirWizardPage|TInputFileWizardPage|TInputOptionWizardPage|TInputQueryWizardPage|TLabel|TListBox|TMainForm|TMemo|TNewButton|TNewCheckBox|TNewCheckListBox|TNewComboBox|TNewEdit|TNewListBox|TNewMemo|TNewNotebook|TNewNotebookPage|TNewProgressBar|TNewRadioButton|TNewStaticText|TObject|TOutputMsgMemoWizardPage|TOutputMsgWizardPage|TOutputProgressWizardPage|TPanel|TPasswordEdit|TPen|TPersistent|TRadioButton|TRichEditViewer|TScrollingWinControl|TSetupForm|TSizeConstraints|TStartMenuFolderTreeView|TStream|TStringList|TStrings|TStringStream|TUIStateForm|TUninstallProgressForm|TWinControl|TWizardForm|TWizardPage)'
+  functions_builtin: '(?:abs|chr|cos|int|ord|pi|pred|round|sin|sizeof|sqrt|succ|trunc)'
+  functions_inno: '(?:Abort|ActiveLanguage|AddBackslash|AddPeriod|AddQuotes|AnsiLowercase|AnsiUppercase|Beep|BringToFrontAndRestore|BrowseForFolder|ChangeFileExt|CharLength|CharToOemBuff|CheckForMutexes|Chr|CoFreeUnusedLibraries|ComparePackedVersion|CompareStr|CompareText|ConvertPercentStr|Copy|CreateCallback|CreateComObject|CreateCustomForm|CreateCustomPage|CreateDir|CreateDownloadPage|CreateInputDirPage|CreateInputFilePage|CreateInputOptionPage|CreateInputQueryPage|CreateMutex|CreateOleObject|CreateOutputMsgMemoPage|CreateOutputMsgPage|CreateOutputProgressPage|CreateShellLink|CurrentFilename|CurrentSourceFilename|CustomMessage|DecrementSharedCount|DelayDeleteFile|Delete|DeleteFile|DeleteIniEntry|DeleteIniSection|DelTree|DirExists|DLLGetLastError|DownloadTemporaryFile|DownloadTemporaryFileSize|EnableFsRedirection|Exec|ExecAsOriginalUser|ExitSetupMsgBox|ExpandConstant|ExpandConstantEx|ExpandFileName|ExpandUNCFileName|ExtractFileDir|ExtractFileDrive|ExtractFileExt|ExtractFileName|ExtractFilePath|ExtractRelativePath|ExtractTemporaryFile|ExtractTemporaryFiles|FileCopy|FileExists|FileOrDirExists|FileSearch|FileSize|FileSize64|FindClose|FindFirst|FindNext|FindWindowByClassName|FindWindowByWindowName|FloatToStr|FmtMessage|FontExists|ForceDirectories|Format|GenerateUniqueName|Get8087CW|GetActiveOleObject|GetArrayLength|GetCmdTail|GetComputerNameString|GetCurrentDir|GetDateTimeString|GetEnv|GetExceptionMessage|GetIniBool|GetIniInt|GetIniString|GetMainForm|GetMD5OfFile|GetMD5OfString|GetMD5OfUnicodeString|GetOpenFileName|GetOpenFileNameMulti|GetPackedVersion|GetPreviousData|GetSaveFileName|GetSHA1OfFile|GetSHA1OfString|GetSHA1OfUnicodeString|GetSHA256OfFile|GetSHA256OfString|GetSHA256OfUnicodeString|GetShellFolderByCSIDL|GetShortName|GetSpaceOnDisk|GetSpaceOnDisk64|GetSystemDir|GetSysWow64Dir|GetTempDir|GetUILanguage|GetUninstallProgressForm|GetUserNameString|GetVersionComponents|GetVersionNumbers|GetVersionNumbersString|GetWinDir|GetWindowsVersion|GetWindowsVersionEx|GetWindowsVersionString|GetWizardForm|IDispatchInvoke|IncrementSharedCount|IniKeyExists|Insert|InstallOnThisVersion|IntToStr|Is64BitInstallMode|IsAdmin|IsAdminInstallMode|IsARM64|IsDotNetInstalled|IsIA64|IsIniSectionEmpty|IsProtectedSystemFile|IsUninstaller|IsWildcard|IsWin64|IsX64|IsX86|Length|LoadStringFromFile|LoadStringsFromFile|Log|Lowercase|MakePendingFileRenameOperationsChecksum|MinimizePathName|ModifyPifFile|MsgBox|Null|OemToCharBuff|OleCheck|Ord|PackVersionComponents|PackVersionNumbers|PageFromID|PageIndexFromID|ParamCount|ParamStr|Pos|PostBroadcastMessage|PostMessage|ProcessorArchitecture|RaiseException|Random|RegDeleteKeyIfEmpty|RegDeleteKeyIncludingSubkeys|RegDeleteValue|RegGetSubkeyNames|RegGetValueNames|RegisterExtraCloseApplicationsResource|RegisterServer|RegisterTypeLibrary|RegisterWindowMessage|RegKeyExists|RegQueryBinaryValue|RegQueryDWordValue|RegQueryMultiStringValue|RegQueryStringValue|RegValueExists|RegWriteBinaryValue|RegWriteDWordValue|RegWriteExpandStringValue|RegWriteMultiStringValue|RegWriteStringValue|RemoveBackslash|RemoveBackslashUnlessRoot|RemoveDir|RemoveQuotes|RenameFile|RestartReplace|RmSessionStarted|SamePackedVersion|SameStr|SameText|SaveStringsToFile|SaveStringsToUTF8File|SaveStringToFile|ScaleX|ScaleY|SelectDisk|SendBroadcastMessage|SendBroadcastNotifyMessage|SendMessage|SendNotifyMessage|Set8087CW|SetArrayLength|SetCurrentDir|SetIniBool|SetIniInt|SetIniString|SetLength|SetNTFSCompression|SetPreviousData|SetupMessage|ShellExec|ShellExecAsOriginalUser|ShowExceptionMessage|Sleep|StringChange|StringChangeEx|StringOfChar|StringToGUID|StrToFloat|StrToInt|StrToInt64|StrToInt64Def|StrToIntDef|SuppressibleMsgBox|SuppressibleTaskDialogMsgBox|SysErrorMessage|TaskDialogMsgBox|Terminated|Trim|TrimLeft|TrimRight|Unassigned|UninstallSilent|UnloadDLL|UnpackVersionComponents|UnpackVersionNumbers|UnpinShellLink|UnregisterFont|UnregisterServer|UnregisterTypeLibrary|Uppercase|VarIsClear|VarIsEmpty|VarIsNull|VarType|VersionToStr|WildcardMatch|WizardDirValue|WizardGroupValue|WizardIsComponentSelected|WizardIsTaskSelected|WizardNoIcons|WizardSelectComponents|WizardSelectedComponents|WizardSelectedTasks|WizardSelectTasks|WizardSetupType|WizardSilent)'
+  functions_inno_deprecated: '(?:LoadDLL|CallDLLProc|FreeDLL|CastStringToInteger|CastIntegerToString)'
+  functions_inno_events: '(?:InitializeSetup|InitializeWizard|DeinitializeSetup|CurStepChanged|CurInstallProgressChanged|NextButtonClick|BackButtonClick|CancelButtonClick|ShouldSkipPage|CurPageChanged|CheckPassword|NeedRestart|UpdateReadyMemo|RegisterPreviousData|CheckSerial|PrepareToInstall|InitializeUninstall|InitializeUninstallProgressForm|DeinitializeUninstall|CurUninstallStepChanged|UninstallNeedRestart)'
+  constants_inno: '(?:afDefined|afIgnored|afPremultiplied|akBottom|akLeft|akRight|akTop|alBottom|alClient|alLeft|alNone|alRight|alTop|biHelp|biMaximize|biMinimize|biSystemMenu|bkFlat|bkNone|bkSoft|bkTile|bsBDiagonal|bsBottomLine|bsBox|bsClear|bsCross|bsDiagCross|bsDialog|bsFDiagonal|bsFrame|bsHorizontal|bsLeftLine|bsLowered|bsNone|bsRaised|bsRightLine|bsSingle|bsSizeable|bsSizeToolWin|bsSolid|bsSpacer|bsToolWindow|bsTopLine|bsVertical|bvLowered|bvNone|bvRaised|bvSpace|caFree|caHide|caMinimize|caNone|cbChecked|cbGrayed|cbUnchecked|coCheck|coCheckWithChildren|coUncheck|crHand|csDropDown|csDropDownList|csOwnerDrawFixed|csOwnerDrawVariable|csSimple|ecLowerCase|ecNormal|ecUpperCase|ewNoWait|ewWaitUntilIdle|ewWaitUntilTerminated|FILE_ATTRIBUTE_ARCHIVE|FILE_ATTRIBUTE_COMPRESSED|FILE_ATTRIBUTE_DEVICE|FILE_ATTRIBUTE_DIRECTORY|FILE_ATTRIBUTE_ENCRYPTED|FILE_ATTRIBUTE_HIDDEN|FILE_ATTRIBUTE_NORMAL|FILE_ATTRIBUTE_NOT_CONTENT_INDEXED|FILE_ATTRIBUTE_OFFLINE|FILE_ATTRIBUTE_READONLY|FILE_ATTRIBUTE_REPARSE_POINT|FILE_ATTRIBUTE_SPARSE_FILE|FILE_ATTRIBUTE_SYSTEM|FILE_ATTRIBUTE_TEMPORARY|fsBold|fsItalic|fsStrikeOut|fsUnderline|HKA|HKA32|HKA64|HKCC|HKCC32|HKCC64|HKCR|HKCR32|HKCR64|HKCU|HKCU32|HKCU64|HKEY_AUTO|HKEY_AUTO_32|HKEY_AUTO_64|HKEY_CLASSES_ROOT|HKEY_CLASSES_ROOT_32|HKEY_CLASSES_ROOT_64|HKEY_CURRENT_CONFIG|HKEY_CURRENT_CONFIG_32|HKEY_CURRENT_CONFIG_64|HKEY_CURRENT_USER|HKEY_CURRENT_USER_32|HKEY_CURRENT_USER_64|HKEY_DYN_DATA|HKEY_LOCAL_MACHINE|HKEY_LOCAL_MACHINE_32|HKEY_LOCAL_MACHINE_64|HKEY_PERFORMANCE_DATA|HKEY_USERS|HKEY_USERS_32|HKEY_USERS_64|HKLM|HKLM32|HKLM64|HKU|HKU32|HKU64|IDABORT|IDCANCEL|IDIGNORE|IDNO|IDOK|IDRETRY|IDYES|lbOwnerDrawFixed|lbOwnerDrawVariable|lbStandard|MB_ABORTRETRYIGNORE|MB_DEFBUTTON1|MB_DEFBUTTON2|MB_DEFBUTTON3|MB_OK|MB_OKCANCEL|MB_RETRYCANCEL|MB_SETFOREGROUND|MB_YESNO|MB_YESNOCANCEL|mbConfirmation|mbCriticalError|mbError|mbInformation|net11|net20|net30|net35|net45|net451|net452|net46|net461|net462|net47|net471|net472|net48|net4Client|net4Full|npbsError|npbsNormal|npbsPaused|npbstMarquee|npbstNormal|pmBlack|pmCopy|pmMask|pmMaskNotPen|pmMaskPenNot|pmMerge|pmMergeNotPen|pmMergePenNot|pmNop|pmNot|pmNotCopy|pmNotMask|pmNotMerge|pmNotXor|pmWhite|pmXor|poDefault|poDefaultPosOnly|poDefaultSizeOnly|poDesigned|poDesktopCenter|poMainFormCenter|poOwnerFormCenter|poScreenCenter|psClear|psDash|psDashDot|psDashDotDot|psDot|psInsideFrame|psSolid|sbHorizontal|sbVertical|sfAppData|sfDesktop|sfDocs|sfFavorites|sfFonts|sfLocalAppData|sfPrograms|sfSendTo|sfStartMenu|sfStartup|sfTemplates|srNo|srUnknown|srYes|ssAlt|ssBoth|ssCtrl|ssDone|ssDouble|ssHorizontal|ssInstall|ssLeft|ssMiddle|ssNone|ssPostInstall|ssRight|ssShift|ssVertical|SW_HIDE|SW_SHOW|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_SHOWMINNOACTIVE|SW_SHOWNORMAL|taCenter|taLeftJustify|taRightJustify|usAppMutexCheck|usDone|usPostUninstall|usUninstall|varArray|varBoolean|varByRef|varByte|varCurrency|varDate|varDispatch|varDouble|varEmpty|varError|varInteger|varNull|varOleStr|varSingle|varSmallint|varString|varTypeMask|varUnknown|varVariant|wpFinished|wpInfoAfter|wpInfoBefore|wpInstalling|wpLicense|wpPassword|wpPreparing|wpReady|wpSelectComponents|wpSelectDir|wpSelectProgramGroup|wpSelectTasks|wpUserInfo|wpWelcome)'
 
 contexts:
   # Pascal.
@@ -35,6 +42,7 @@ contexts:
               push:
                 # If a type is not matched, match whatever string is present to prevent formatting it as a parameter.
                 - include: type
+                - include: class
                 - match: '\w+'
                 - match: ''
                   pop: true
@@ -44,25 +52,27 @@ contexts:
               pop: true
         - match: '(?=[:;])'
           pop: true
-    # Reserved words.
-    - match: '(?i)\b(?:break|continue|downto|exit|function|override|procedure)\b'
+    # Keywords.
+    - match: '(?i)\b{{keywords}}\b'
       scope: keyword.other.pascal
     # Words that should not be reserved.
-    - match: '(?i)\b(?:absolute|abstract|exports|file|library|name|object|operator|packed)\b'
+    - match: '(?i)\b{{not_keywords}}\b'
     # Language constants.
     - match: '(?i)\b(?:nil|true|false)\b'
       scope: constant.language.pascal
     # Data types.
     - include: type
-    # Language variables.
-    - match: '(?i)\b(?:result|self)\b'
+    # Special and global variables.
+    - match: '(?i)\b(?:result|self|MainForm|UninstallProgressForm|WizardForm)\b'
       scope: variable.language.pascal
     # Inno Setup functions.
-    - match: '(?i)\b(?:{{inno_functions}}|{{inno_functions_deprecated}})\b'
+    - match: '(?i)\b(?:{{functions_builtin}}|{{functions_inno}}|{{functions_inno_deprecated}}|{{functions_inno_events}})\b'
       scope: support.function.pascal
     # Inno Setup constants.
-    - match: '(?i)\b{{inno_constants}}\b'
+    - match: '(?i)\b{{constants_inno}}\b'
       scope: constant.other.pascal
+    # Inno Setup classes.
+    - include: class
     # Strings cannot be delimited with double quotes.
     - match: '"'
     # Handle line spanning in single-quoted strings.
@@ -82,12 +92,12 @@ contexts:
     # Terminator symbol.
     - match: ';'
       scope: punctuation.terminator.pascal
-    # Match before Pascal to prevent matching double-dash comments.
+    # Match minus operator before including Pascal to prevent matching double-dash comments.
     - match: '-'
       scope: keyword.operator.arithmetic.pascal
-    # Finally include Pascal syntax.
+    # Finally include the Pascal syntax.
     - include: 'scope:source.pascal'
-    # Match after Pascal to allow double-slash comments after code.
+    # Match other operators after including Pascal to allow double-slash comments after code.
     - include: operator
 
   # Line end and line spanning.
@@ -110,5 +120,10 @@ contexts:
 
   # Type.
   type:
-    - match: '(?i)\b{{types}}\b'
+    - match: '(?i)\b(?:{{types_builtin}}|{{types_inno}})\b'
       scope: storage.type.pascal
+
+  # Class.
+  class:
+    - match: '(?i)\b{{classes_inno}}\b'
+      scope: support.class.pascal
