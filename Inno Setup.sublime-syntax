@@ -269,7 +269,7 @@ contexts:
   # Number
   number:
     # Hexadecimal number.
-    - match: '\$\h+'
+    - match: '\$\h+\b'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer, float or version.
     - match: '\b[0-9]+(?:\.[0-9]+)*\b'
