@@ -69,6 +69,12 @@ contexts:
 
   # Preprocessor code.
   preprocessor:
+    - include: preprocessor-directive
+    - include: preprocessor-inline
+    - include: preprocessor-comment
+
+  # Preprocessor directive.
+  preprocessor-directive:
     - match: '^\s*(?=#)'
       push:
         - clear_scopes: true
@@ -76,10 +82,8 @@ contexts:
         - include: scope:meta.preprocessor.inno
       with_prototype:
         - include: line-end
-    - include: preprocessor-inline
-    - include: preprocessor-comment
 
-  # Inline preprocessor directive.
+  # Preprocessor inline.
   preprocessor-inline:
     # Push a temporary context to break out to the top scope.
     - match: '(?=\{#)'
@@ -146,16 +150,7 @@ contexts:
         - include: comment
         - include: section-end
         # Directives.
-        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{lang_options_directives}})|\w*)\s*(=)'
-          captures:
-            1: keyword.other.inno
-            2: punctuation.accessor.inno
-            3: keyword.other.inno
-            4: keyword.operator.assignment.inno
-          push:
-            - include: line-end
-            - include: number
-            - include: string
+        - include: lang-options-directive
         # Values.
         - include: number
         - include: string
@@ -166,12 +161,15 @@ contexts:
       captures:
         1: entity.name.namespace.inno
       push:
-        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|\w*)\s*(?==)'
-          captures:
-            1: keyword.other.inno
-            2: punctuation.accessor.inno
-            3: keyword.other.inno
-        - include: messages-sections-common
+        # General.
+        - include: line-spanning
+        - include: preprocessor
+        - include: comment
+        - include: section-end
+        # Messages.
+        - include: inno-message
+        # Values.
+        - include: string
 
   # CustomMessages section.
   custom-messages-section:
@@ -179,34 +177,15 @@ contexts:
       captures:
         1: entity.name.namespace.inno
       push:
-        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(?==)'
-          captures:
-            1: keyword.other.inno
-            2: punctuation.accessor.inno
-            3: keyword.other.inno
-        - include: messages-sections-common
-
-  # Common for Messages and CustomMessages sections.
-  messages-sections-common:
-    # General.
-    - include: line-spanning
-    - include: preprocessor
-    - include: comment
-    - include: section-end
-    # Message content.
-    - match: '='
-      scope: keyword.operator.assignment.inno
-      push:
-        - include: line-end
+        # General.
+        - include: line-spanning
+        - include: preprocessor
+        - include: comment
+        - include: section-end
+        # Messages.
+        - include: custom-message
+        # Values.
         - include: string
-      with_prototype:
-        # Formatting placeholders and escape sequences.
-        - match: '%\d|&'
-          scope: constant.other.placeholder.inno
-        - match: '%[n%]'
-          scope: constant.character.escape.inno
-    # Values.
-    - include: string
 
   # Code section.
   code-section:
@@ -273,6 +252,51 @@ contexts:
           scope: constant.language.inno
         - include: number
         - include: string
+
+  # LangOptions directive.
+  lang-options-directive:
+    - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{lang_options_directives}})|\w*)\s*(=)'
+      captures:
+        1: keyword.other.inno
+        2: punctuation.accessor.inno
+        3: keyword.other.inno
+        4: keyword.operator.assignment.inno
+      push:
+        - include: line-end
+        - include: number
+        - include: string
+
+  # Inno Setup message. Only known messages are assigned keyword scope.
+  inno-message:
+    - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|\w*)\s*(?==)'
+      captures:
+        1: keyword.other.inno
+        2: punctuation.accessor.inno
+        3: keyword.other.inno
+    - include: message-value
+
+  # Custom message. All messages are assigned keyword scope.
+  custom-message:
+    - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(?==)'
+      captures:
+        1: keyword.other.inno
+        2: punctuation.accessor.inno
+        3: keyword.other.inno
+    - include: message-value
+
+  # Message value. Common for both types of messages.
+  message-value:
+    - match: '='
+      scope: keyword.operator.assignment.inno
+      push:
+        - include: line-end
+        - include: string
+      with_prototype:
+        # Formatting placeholders and escape sequences.
+        - match: '%\d|&'
+          scope: constant.other.placeholder.inno
+        - match: '%[n%]'
+          scope: constant.character.escape.inno
 
   # Parameter expecting boolean expression.
   expression-parameter:
