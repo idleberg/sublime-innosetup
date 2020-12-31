@@ -18,41 +18,13 @@ variables:
 contexts:
   # Pascal.
   main:
-    # Line spanning.
+    # General. Preprocessor scopes are included in the push prototype.
     - include: line-spanning
-    # Comment.
     - include: comment
-    # Declaration of routine (function or procedure).
-    - match: '(?i)\b(function|procedure)\s+(\w+(?:\.\w+)?)'
-      captures:
-        1: storage.type.function.pascal keyword.declaration.function.pascal
-        2: meta.function.pascal entity.name.function.pascal
-      push:
-        - include: line-end
-        - match: '\('
-          set:
-            - meta_scope: meta.function.parameters.inno
-            - include: line-end
-            - include: comment
-            - include: expression
-            - match: '\w+'
-              scope: variable.parameter.pascal
-            - match: ':'
-              scope: punctuation.separator.pascal
-              push:
-                - include: line-end
-                - include: comment
-                - include: expression
-                - match: '(?=[;)])'
-                  pop: true
-            - match: ';'
-              scope: punctuation.separator.pascal
-            - match: '\)'
-              pop: true
-        - match: '(?=\S)'
-          pop: true
+    # Language constructs.
+    - include: routine-definition
+    - include: event-attribute
     # Expression.
-    - include: attribute
     - include: expression
     - include: separator
 
@@ -90,8 +62,41 @@ contexts:
         - meta_scope: comment.line.double-slash.pascal
         - include: line-end
 
-  # Attribute.
-  attribute:
+  # Definition of routine (function or procedure).
+  routine-definition:
+    - match: '(?i)\b(function|procedure)\s+(\w+(?:\.\w+)?)'
+      captures:
+        1: storage.type.function.pascal keyword.declaration.function.pascal
+        2: meta.function.pascal entity.name.function.pascal
+      push:
+        - include: line-end
+        # Change to parameters context.
+        - match: '\('
+          set:
+            - meta_scope: meta.function.parameters.inno
+            - include: line-end
+            - include: comment
+            - include: expression
+            - match: '\w+'
+              scope: variable.parameter.pascal
+            - match: ':'
+              scope: punctuation.separator.pascal
+              push:
+                - include: line-end
+                - include: comment
+                - include: expression
+                - match: '(?=[;)])'
+                  pop: true
+            - match: ';'
+              scope: punctuation.separator.pascal
+            - match: '\)'
+              pop: true
+        # Pop context at anything else than round bracket or whitespace. 
+        - match: '(?=\S)'
+          pop: true
+
+  # Event attribute.
+  event-attribute:
     - match: '<(?=\s*(?:event))'
       scope: punctuation.definition.annotation.pascal
       push:
