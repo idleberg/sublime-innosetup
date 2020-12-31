@@ -18,105 +18,26 @@ variables:
   messages: '(?:AbortRetryIgnoreCancel|AbortRetryIgnoreIgnore|AbortRetryIgnoreRetry|AbortRetryIgnoreSelectAction|AboutSetupMenuItem|AboutSetupMessage|AboutSetupNote|AboutSetupTitle|AdminPrivilegesRequired|ApplicationsFound|ApplicationsFound2|BadDirName32|BadGroupName|BeveledLabel|BrowseDialogLabel|BrowseDialogTitle|ButtonBack|ButtonBrowse|ButtonCancel|ButtonFinish|ButtonInstall|ButtonNewFolder|ButtonNext|ButtonNo|ButtonNoToAll|ButtonOK|ButtonStopDownload|ButtonWizardBrowse|ButtonYes|ButtonYesToAll|CannotContinue|CannotInstallToNetworkDrive|CannotInstallToUNCPath|ChangeDiskTitle|ClickFinish|ClickNext|CloseApplications|CompactInstallation|ComponentsDiskSpaceGBLabel|ComponentsDiskSpaceMBLabel|ComponentSize1|ComponentSize2|ConfirmDeleteSharedFile2|ConfirmDeleteSharedFileTitle|ConfirmTitle|ConfirmUninstall|CustomInstallation|DirDoesntExist|DirDoesntExistTitle|DirExists|DirExistsTitle|DirNameTooLong|DiskSpaceGBLabel|DiskSpaceMBLabel|DiskSpaceWarning|DiskSpaceWarningTitle|DontCloseApplications|DownloadingLabel|ErrorChangingAttr|ErrorCloseApplications|ErrorCopying|ErrorCreatingDir|ErrorCreatingTemp|ErrorDownloadAborted|ErrorDownloadFailed|ErrorDownloadSizeFailed|ErrorExecutingProgram|ErrorFileHash1|ErrorFileHash2|ErrorFileSize|ErrorFunctionFailed|ErrorFunctionFailedNoCode|ErrorFunctionFailedWithMessage|ErrorIniEntry|ErrorInternal2|ErrorOpeningReadme|ErrorProgress|ErrorReadingExistingDest|ErrorReadingSource|ErrorRegCreateKey|ErrorRegisterServer|ErrorRegisterTypeLib|ErrorRegOpenKey|ErrorRegSvr32Failed|ErrorRegWriteKey|ErrorRenamingTemp|ErrorReplacingExistingFile|ErrorRestartingComputer|ErrorRestartReplace|ErrorTitle|ErrorTooManyFilesInDir|ExistingFileNewer2|ExistingFileNewerKeepExisting|ExistingFileNewerOverwriteExisting|ExistingFileNewerOverwriteOrKeepAll|ExistingFileNewerSelectAction|ExistingFileReadOnly2|ExistingFileReadOnlyKeepExisting|ExistingFileReadOnlyRetry|ExitSetupMessage|ExitSetupTitle|FileAbortRetryIgnoreIgnoreNotRecommended|FileAbortRetryIgnoreSkipNotRecommended|FileExists2|FileExistsKeepExisting|FileExistsOverwriteExisting|FileExistsOverwriteOrKeepAll|FileExistsSelectAction|FileNotInDir2|FinishedHeadingLabel|FinishedLabel|FinishedLabelNoIcons|FinishedRestartLabel|FinishedRestartMessage|FullInstallation|GroupNameTooLong|HelpTextNote|IncorrectPassword|InfoAfterClickLabel|InfoAfterLabel|InfoBeforeClickLabel|InfoBeforeLabel|InformationTitle|InstallingLabel|InvalidDirName|InvalidDrive|InvalidGroupName|InvalidParameter|InvalidPath|LastErrorMessage|LdrCannotCreateTemp|LdrCannotExecTemp|LicenseAccepted|LicenseLabel|LicenseLabel3|LicenseNotAccepted|MustEnterGroupName|NewFolderName|NoProgramGroupCheck2|NoRadio|NotOnThisPlatform|NoUninstallWarning|NoUninstallWarningTitle|OnlyAdminCanUninstall|OnlyOnTheseArchitectures|OnlyOnThisPlatform|PasswordEditLabel|PasswordLabel1|PasswordLabel3|PathLabel|PowerUserPrivilegesRequired|PrepareToInstallNeedsRestart|PreparingDesc|PreviousInstallNotCompleted|PrivilegesRequiredOverrideAllUsers|PrivilegesRequiredOverrideAllUsersRecommended|PrivilegesRequiredOverrideCurrentUser|PrivilegesRequiredOverrideCurrentUserRecommended|PrivilegesRequiredOverrideInstruction|PrivilegesRequiredOverrideText1|PrivilegesRequiredOverrideText2|PrivilegesRequiredOverrideTitle|ReadyLabel1|ReadyLabel2a|ReadyLabel2b|ReadyMemoComponents|ReadyMemoDir|ReadyMemoGroup|ReadyMemoTasks|ReadyMemoType|ReadyMemoUserInfo|RunEntryExec|RunEntryShellExec|SelectComponentsDesc|SelectComponentsLabel2|SelectDirBrowseLabel|SelectDirDesc|SelectDirectoryLabel|SelectDirLabel3|SelectDiskLabel2|SelectLanguageLabel|SelectLanguageTitle|SelectStartMenuFolderBrowseLabel|SelectStartMenuFolderDesc|SelectStartMenuFolderLabel3|SelectTasksDesc|SelectTasksLabel2|SetupAborted|SetupAlreadyRunning|SetupAppRunningError|SetupAppTitle|SetupFileCorrupt|SetupFileCorruptOrWrongVer|SetupFileMissing|SetupLdrStartupMessage|SetupWindowTitle|SharedFileLocationLabel|SharedFileNameLabel|ShowReadmeCheck|ShutdownBlockReasonInstallingApp|ShutdownBlockReasonUninstallingApp|SourceDoesntExist|SourceIsCorrupted|StatusClosingApplications|StatusCreateDirs|StatusCreateIcons|StatusCreateIniEntries|StatusCreateRegistryEntries|StatusExtractFiles|StatusRegisterFiles|StatusRestartingApplications|StatusRollback|StatusRunProgram|StatusSavingUninstall|StatusUninstalling|StopDownload|TranslatorNote|UninstallAppFullTitle|UninstallAppRunningError|UninstallAppTitle|UninstallDataCorrupted|UninstallDisplayNameMark|UninstallDisplayNameMark32Bit|UninstallDisplayNameMark64Bit|UninstallDisplayNameMarkAllUsers|UninstallDisplayNameMarkCurrentUser|UninstallDisplayNameMarks|UninstalledAll|UninstalledAndNeedsRestart|UninstalledMost|UninstallNotFound|UninstallOnlyOnWin64|UninstallOpenError|UninstallStatusLabel|UninstallUnknownEntry|UninstallUnsupportedVer|UserInfoDesc|UserInfoName|UserInfoNameRequired|UserInfoOrg|UserInfoSerial|WelcomeLabel1|WelcomeLabel2|WindowsServicePackRequired|WindowsVersionNotSupported|WinVersionTooHighError|WinVersionTooLowError|WizardInfoAfter|WizardInfoBefore|WizardInstalling|WizardLicense|WizardPassword|WizardPreparing|WizardReady|WizardSelectComponents|WizardSelectDir|WizardSelectProgramGroup|WizardSelectTasks|WizardUninstalling|WizardUserInfo|YesRadio)'
 
 contexts:
-  # Source.
+  # Inno Setup.
   main:
-    # Preprocessor code.
+    # General.
+    - include: line-spanning
     - include: preprocessor
-    # Messages section.
-    - match: '(?i)^\s*(\[Messages\])\s*$'
-      captures:
-        1: entity.name.namespace.inno
-      push:
-        - meta_scope: meta.namespace.messages.inno
-        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|(\w*))\s*(?==)'
-          captures:
-            1: keyword.other.inno
-            2: punctuation.accessor.inno
-            3: keyword.other.inno
-            4: meta.unrecognized.directive.inno
-        - include: messages-common
-    # CustomMessages section.
-    - match: '(?i)^\s*(\[CustomMessages\])\s*$'
-      captures:
-        1: entity.name.namespace.inno
-      push:
-        - meta_scope: meta.namespace.custom-messages.inno
-        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(?==)'
-          captures:
-            1: keyword.other.inno
-            2: punctuation.accessor.inno
-            3: keyword.other.inno
-        - include: messages-common
-    # Code section.
-    - match: '(?i)^\s*(\[Code\])\s*$'
-      captures:
-        1: entity.name.namespace.inno
-      push:
-        - meta_scope: meta.namespace.code.inno
-        - meta_content_scope: source.pascal.embedded.inno
-        - include: scope:source.pascal.inno
-      with_prototype:
-        - include: preprocessor
-        - include: section-end
-    # Other or unrecognized section.
-    - match: '(?i)^\s*(?:(\[{{sections}}\])|(\[\w*\]))\s*$'
-      captures:
-        1: entity.name.namespace.inno
-        2: meta.unrecognized.section.inno
-    # Comment.
     - include: comment
-    # Directive expecting boolean expression.
-    - match: '(?i)^\s*(ChangesAssociations|ChangesEnvironment|CreateUninstallRegKey|Uninstallable)\s*(=)\s*'
-      captures:
-        1: keyword.other.inno
-        2: keyword.operator.assignment.inno
-      push:
-        - meta_content_scope: source.pascal.embedded.inno
-        - match: '(?i)\s*(?:yes|no)\s*(?=$)'
-          scope: constant.language.inno
-        - include: scope:source.pascal.inno
-      with_prototype:
-        - include: preprocessor
-        - include: line-end
-    # Directive expecting keyword or value.
-    - match: '(?i)^\s*(?:({{setup_directives}}|{{setup_directives_deprecated}}|{{lang_options_directives}})|([^="''\s]*))\s*(=)\s*'
-      captures:
-        1: keyword.other.inno
-        2: meta.unrecognized.directive.inno
-        3: keyword.operator.assignment.inno
-      push: directive-value
-    # Parameter expecting boolean expression.
-    - match: '(?i)\b(AfterInstall|BeforeInstall|Check|Components|Tasks)\s*(:)\s*'
-      captures:
-        1: keyword.other.inno
-        2: keyword.operator.assignment.inno
-      push:
-        - meta_content_scope: source.pascal.embedded.inno
-        - include: separator
-        - include: scope:source.pascal.inno
-      with_prototype:
-        - include: preprocessor
-        - include: line-end
-    # Parameter expecting keywords.
-    - match: '(?i)\b(Attribs|Components|Root|Type|Types|ValueType|Verb)\s*(:)\s*'
-      captures:
-        1: keyword.other.inno
-        2: keyword.operator.assignment.inno
-      push: parameter-keywords
-    # Parameter expecting flags.
-    - match: '(?i)\b(Flags)\s*(:)\s*'
-      captures:
-        1: keyword.other.inno
-        2: keyword.operator.assignment.inno
-      push: parameter-flags
-    # Parameter expecting value.
-    - match: '(?i)\b(?:({{parameters}})|([^:"''\s]*))\s*(:)\s*'
-      captures:
-        1: keyword.other.inno
-        2: meta.unrecognized.parameter.inno
-        3: keyword.operator.assignment.inno
-      push: parameter-value
-    # Loose value.
+    # Sections.
+    - include: messages-section
+    - include: custom-messages-section
+    - include: code-section
+    - include: other-section
+    # Directives.
+    - include: expression-directive
+    - include: keyword-value-directive
+    # Parameters.
+    - include: expression-parameter
+    - include: flag-parameter
+    - include: keyword-parameter
+    - include: value-parameter
+    # Value.
     - include: separator
     - include: number
     - include: string
@@ -201,8 +122,40 @@ contexts:
         - meta_scope: comment.line.semicolon.inno
         - include: line-end
 
-  # Common matches for Messages and CustomMessages sections.
-  messages-common:
+  # Messages section.
+  messages-section:
+    - match: '(?i)^\s*(\[Messages\])\s*$'
+      captures:
+        1: entity.name.namespace.inno
+      push:
+        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|\w*)\s*(?==)'
+          captures:
+            1: keyword.other.inno
+            2: punctuation.accessor.inno
+            3: keyword.other.inno
+        - include: messages-sections-common
+
+  # CustomMessages section.
+  custom-messages-section:
+    - match: '(?i)^\s*(\[CustomMessages\])\s*$'
+      captures:
+        1: entity.name.namespace.inno
+      push:
+        - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(?==)'
+          captures:
+            1: keyword.other.inno
+            2: punctuation.accessor.inno
+            3: keyword.other.inno
+        - include: messages-sections-common
+
+  # Common for Messages and CustomMessages sections.
+  messages-sections-common:
+    # General.
+    - include: line-spanning
+    - include: preprocessor
+    - include: comment
+    - include: section-end
+    # Message Content.
     - match: '='
       scope: keyword.operator.assignment.inno
       push:
@@ -214,47 +167,111 @@ contexts:
           scope: constant.other.placeholder.inno
         - match: '%[n%]'
           scope: constant.character.escape.inno
-    - include: preprocessor
-    - include: section-end
-    - include: comment
-    - include: number
+    # Value.
     - include: string
+
+  # Code section.
+  code-section:
+    - match: '(?i)^\s*(\[Code\])\s*$'
+      captures:
+        1: entity.name.namespace.inno
+      push:
+        - meta_content_scope: source.pascal.embedded.inno
+        - include: scope:source.pascal.inno
+      with_prototype:
+        - include: preprocessor
+        - include: section-end
+
+  # Other section.
+  other-section:
+    - match: '(?i)^\s*(?:(\[{{sections}}\])|\[\w*\])\s*$'
+      captures:
+        1: entity.name.namespace.inno
 
   # End of section.
   section-end:
     - match: '(?i)^(?=\s*\[\w*\]\s*$)'
       pop: true
 
-  # Directive value.
-  directive-value:
-    - include: line-end
-    - match: '(?i)\s*\b{{directive_keywords}}\b'
-      scope: constant.language.inno
-    - include: number
-    - include: string
+  # Directive expecting boolean expression.
+  expression-directive:
+    - match: '(?i)^\s*(ChangesAssociations|ChangesEnvironment|CreateUninstallRegKey|Uninstallable)\s*(=)'
+      captures:
+        1: keyword.other.inno
+        2: keyword.operator.assignment.inno
+      push:
+        - meta_content_scope: source.pascal.embedded.inno
+        - match: '(?i)\s*(?:yes|no)\s*(?=$)'
+          scope: constant.language.inno
+        - include: scope:source.pascal.inno
+      with_prototype:
+        - include: preprocessor
+        - include: line-end
 
-  # Parameter keywords.
-  parameter-keywords:
-    - include: line-end
-    - include: separator
-    - match: '(?i)\s*\b{{parameter_keywords}}\b'
-      scope: constant.language.inno
+  # Directive expecting keywords or value.
+  keyword-value-directive:
+    - match: '(?i)^\s*(?:({{setup_directives}}|{{setup_directives_deprecated}}|{{lang_options_directives}})|\w*)\s*(=)'
+      captures:
+        1: keyword.other.inno
+        2: keyword.operator.assignment.inno
+      push:
+        - include: line-end
+        - match: '(?i)\s*\b{{directive_keywords}}\b'
+          scope: constant.language.inno
+        - include: number
+        - include: string
 
-  # Parameter flags.
-  parameter-flags:
-    - include: line-end
-    - include: separator
-    - match: '(?i)\s*\b{{parameter_flags}}\b'
-      scope: constant.language.inno
+  # Parameter expecting boolean expression.
+  expression-parameter:
+    - match: '(?i)\b(AfterInstall|BeforeInstall|Check|Components|Tasks)\s*(:)'
+      captures:
+        1: keyword.other.inno
+        2: keyword.operator.assignment.inno
+      push:
+        - meta_content_scope: source.pascal.embedded.inno
+        - include: separator
+        - include: scope:source.pascal.inno
+      with_prototype:
+        - include: preprocessor
+        - include: line-end
 
-  # Parameter value.
-  parameter-value:
-    - include: line-end
-    - include: separator
-    - include: number
-    - include: string
+  # Parameter expecting flags.
+  flag-parameter:
+    - match: '(?i)\b(Flags)\s*(:)'
+      captures:
+        1: keyword.other.inno
+        2: keyword.operator.assignment.inno
+      push:
+        - include: line-end
+        - include: separator
+        - match: '(?i)\s*\b{{parameter_flags}}\b'
+          scope: constant.language.inno
 
-  # Separator.
+  # Parameter expecting keywords.
+  keyword-parameter:
+    - match: '(?i)\b(Attribs|Components|Permissions|Root|Type|Types|ValueType|Verb)\s*(:)'
+      captures:
+        1: keyword.other.inno
+        2: keyword.operator.assignment.inno
+      push:
+        - include: line-end
+        - include: separator
+        - match: '(?i)\s*\b{{parameter_keywords}}\b'
+          scope: constant.language.inno
+
+  # Parameter expecting value.
+  value-parameter:
+    - match: '(?i)(?:\b({{parameters}})|\w*)\s*(:)'
+      captures:
+        1: keyword.other.inno
+        2: keyword.operator.assignment.inno
+      push:
+        - include: line-end
+        - include: separator
+        - include: number
+        - include: string
+
+  # Parameter separator.
   separator:
     - match: ';'
       scope: punctuation.separator.inno
