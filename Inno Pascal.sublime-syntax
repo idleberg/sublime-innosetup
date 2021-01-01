@@ -4,10 +4,10 @@ name: 'Inno Pascal'
 scope: source.pascal.inno
 
 variables:
-  keywords: '(?:and|array|as|asm|begin|break|case|class|const|constructor|continue|destructor|div|do|downto|else|end|except|exit|export|external|finalization|finally|for|forward|function|goto|if|implementation|in|inherited|initialization|interface|is|label|mod|nil|not|of|or|override|private|procedure|program|property|protected|public|published|record|repeat|set|shl|shr|then|to|try|type|unit|until|uses|var|virtual|while|with|xor)'
+  keywords: '(?:and|array|as|asm|begin|break|case|class|const|constructor|continue|destructor|div|do|downto|else|end|except|exit|export|external|finalization|finally|for|forward|function|goto|if|implementation|in|inherited|initialization|interface|is|label|mod|not|of|or|out|override|private|procedure|program|property|protected|public|published|record|repeat|set|shl|shr|then|to|try|type|unit|until|uses|var|virtual|while|with|xor)'
   types_pascal: '(?:AnsiString|Boolean|Byte|ByteBool|Cardinal|Char|Currency|Double|DWord|Extended|Int64|Integer|LongBool|LongInt|LongWord|PAnsiChar|ShortInt|Single|SmallInt|String|UnicodeString|Variant|WideChar|WideString|Word|WordBool)'
-  types_inno: '(?:TAlign|TAlignment|TAlphaFormat|TAnchorKind|TAnchors|TBevelKind|TBevelShape|TBevelStyle|TBevelWidth|TBorderIcon|TBorderIcons|TBorderStyle|TBorderWidth|TBrushStyle|TCheckBoxState|TCheckItemOperation|TCloseAction|TCloseEvent|TCloseQueryEvent|TColor|TComboBoxStyle|TConstraintSize|TEditCharCase|TEShiftState|TFolderRenameEvent|TFontStyle|TFontStyles|TFormBorderStyle|TFormStyle|TKeyEvent|TKeyPressEvent|TListBoxStyle|TNewProgressBarState|TNewProgressBarStyle|TNotifyEvent|TPanelBevel|TPenMode|TPenStyle|TPosition|TScrollBarInc|TScrollBarKind|TScrollStyle|TShiftState|TWizardPageButtonEvent|TWizardPageCancelEvent|TWizardPageNotifyEvent|TWizardPageShouldSkipEvent)'
-  classes_inno: '(?:TBevel|TBitmap|TBitmapImage|TBrush|TButton|TButtonControl|TCanvas|TCheckBox|TComboBox|TComponent|TControl|TCustomCheckBox|TCustomComboBox|TCustomControl|TCustomEdit|TCustomFolderTreeView|TCustomLabel|TCustomListBox|TCustomMemo|TCustomPanel|TDownloadWizardPage|TEdit|TFileStream|TFolderTreeView|TFont|TForm|TGraphic|TGraphicControl|TGraphicsObject|THandleStream|TInputDirWizardPage|TInputFileWizardPage|TInputOptionWizardPage|TInputQueryWizardPage|TLabel|TListBox|TMainForm|TMemo|TNewButton|TNewCheckBox|TNewCheckListBox|TNewComboBox|TNewEdit|TNewListBox|TNewMemo|TNewNotebook|TNewNotebookPage|TNewProgressBar|TNewRadioButton|TNewStaticText|TObject|TOutputMsgMemoWizardPage|TOutputMsgWizardPage|TOutputProgressWizardPage|TPanel|TPasswordEdit|TPen|TPersistent|TRadioButton|TRichEditViewer|TScrollingWinControl|TSetupForm|TSizeConstraints|TStartMenuFolderTreeView|TStream|TStringList|TStrings|TStringStream|TUIStateForm|TUninstallProgressForm|TWinControl|TWizardForm|TWizardPage)'
+  types_inno: '(?:HBitmap|HResult|HWND|TAlign|TAlignment|TAlphaFormat|TAnchorKind|TAnchors|TArrayOfString|TBevelKind|TBevelShape|TBevelStyle|TBevelWidth|TBorderIcon|TBorderIcons|TBorderStyle|TBorderWidth|TBrushStyle|TCheckBoxState|TCheckItemOperation|TCloseAction|TCloseEvent|TCloseQueryEvent|TColor|TComboBoxStyle|TConstraintSize|TDotNetVersion|TDuplicates|TEditCharCase|TEShiftState|TExecWait|TFindRec|TFolderRenameEvent|TFontStyle|TFontStyles|TFormBorderStyle|TFormStyle|TGUID|TKeyEvent|TKeyPressEvent|TListBoxStyle|TMsgBoxType|TNewProgressBarState|TNewProgressBarStyle|TNotebook|TNotifyEvent|TOnDownloadProgress|TPanelBevel|TPenMode|TPenStyle|TPosition|TScrollBarInc|TScrollBarKind|TScrollStyle|TSetupMessageID|TSetupProcessorArchitecture|TShiftState|TVarType|TWindowsVersion|TWizardPageButtonEvent|TWizardPageCancelEvent|TWizardPageNotifyEvent|TWizardPageShouldSkipEvent)'
+  classes_inno: '(?:IDispatch|IUnknown|TBevel|TBitmap|TBitmapImage|TBrush|TButton|TButtonControl|TCanvas|TCheckBox|TComboBox|TComponent|TControl|TCustomCheckBox|TCustomComboBox|TCustomControl|TCustomEdit|TCustomFolderTreeView|TCustomLabel|TCustomListBox|TCustomMemo|TCustomPanel|TDownloadWizardPage|TEdit|TFileStream|TFolderTreeView|TFont|TForm|TGraphic|TGraphicControl|TGraphicsObject|THandleStream|TInputDirWizardPage|TInputFileWizardPage|TInputOptionWizardPage|TInputQueryWizardPage|TLabel|TListBox|TMainForm|TMemo|TNewButton|TNewCheckBox|TNewCheckListBox|TNewComboBox|TNewEdit|TNewListBox|TNewMemo|TNewNotebook|TNewNotebookPage|TNewProgressBar|TNewRadioButton|TNewStaticText|TObject|TOutputMsgMemoWizardPage|TOutputMsgWizardPage|TOutputProgressWizardPage|TPanel|TPasswordEdit|TPen|TPersistent|TRadioButton|TRichEditViewer|TScrollingWinControl|TSetupForm|TSizeConstraints|TStartMenuFolderTreeView|TStream|TStringList|TStrings|TStringStream|TUIStateForm|TUninstallProgressForm|TWinControl|TWizardForm|TWizardPage)'
   routines_pascal: '(?:Abs|Chr|Cos|Int|Ord|Pi|Pred|Round|Sin|SizeOf|Sqrt|Succ|Trunc)'
   routines_inno: '(?:Abort|ActiveLanguage|AddBackslash|AddPeriod|AddQuotes|AnsiLowercase|AnsiUppercase|Beep|BringToFrontAndRestore|BrowseForFolder|ChangeFileExt|CharLength|CharToOemBuff|CheckForMutexes|Chr|CoFreeUnusedLibraries|ComparePackedVersion|CompareStr|CompareText|ConvertPercentStr|Copy|CreateCallback|CreateComObject|CreateCustomForm|CreateCustomPage|CreateDir|CreateDownloadPage|CreateInputDirPage|CreateInputFilePage|CreateInputOptionPage|CreateInputQueryPage|CreateMutex|CreateOleObject|CreateOutputMsgMemoPage|CreateOutputMsgPage|CreateOutputProgressPage|CreateShellLink|CurrentFilename|CurrentSourceFilename|CustomMessage|DecrementSharedCount|DelayDeleteFile|Delete|DeleteFile|DeleteIniEntry|DeleteIniSection|DelTree|DirExists|DLLGetLastError|DownloadTemporaryFile|DownloadTemporaryFileSize|EnableFsRedirection|Exec|ExecAsOriginalUser|ExitSetupMsgBox|ExpandConstant|ExpandConstantEx|ExpandFileName|ExpandUNCFileName|ExtractFileDir|ExtractFileDrive|ExtractFileExt|ExtractFileName|ExtractFilePath|ExtractRelativePath|ExtractTemporaryFile|ExtractTemporaryFiles|FileCopy|FileExists|FileOrDirExists|FileSearch|FileSize|FileSize64|FindClose|FindFirst|FindNext|FindWindowByClassName|FindWindowByWindowName|FloatToStr|FmtMessage|FontExists|ForceDirectories|Format|GenerateUniqueName|Get8087CW|GetActiveOleObject|GetArrayLength|GetCmdTail|GetComputerNameString|GetCurrentDir|GetDateTimeString|GetEnv|GetExceptionMessage|GetIniBool|GetIniInt|GetIniString|GetMainForm|GetMD5OfFile|GetMD5OfString|GetMD5OfUnicodeString|GetOpenFileName|GetOpenFileNameMulti|GetPackedVersion|GetPreviousData|GetSaveFileName|GetSHA1OfFile|GetSHA1OfString|GetSHA1OfUnicodeString|GetSHA256OfFile|GetSHA256OfString|GetSHA256OfUnicodeString|GetShellFolderByCSIDL|GetShortName|GetSpaceOnDisk|GetSpaceOnDisk64|GetSystemDir|GetSysWow64Dir|GetTempDir|GetUILanguage|GetUninstallProgressForm|GetUserNameString|GetVersionComponents|GetVersionNumbers|GetVersionNumbersString|GetWinDir|GetWindowsVersion|GetWindowsVersionEx|GetWindowsVersionString|GetWizardForm|IDispatchInvoke|IncrementSharedCount|IniKeyExists|Insert|InstallOnThisVersion|IntToStr|Is64BitInstallMode|IsAdmin|IsAdminInstallMode|IsARM64|IsDotNetInstalled|IsIA64|IsIniSectionEmpty|IsProtectedSystemFile|IsUninstaller|IsWildcard|IsWin64|IsX64|IsX86|Length|LoadStringFromFile|LoadStringsFromFile|Log|Lowercase|MakePendingFileRenameOperationsChecksum|MinimizePathName|ModifyPifFile|MsgBox|Null|OemToCharBuff|OleCheck|Ord|PackVersionComponents|PackVersionNumbers|PageFromID|PageIndexFromID|ParamCount|ParamStr|Pos|PostBroadcastMessage|PostMessage|ProcessorArchitecture|RaiseException|Random|RegDeleteKeyIfEmpty|RegDeleteKeyIncludingSubkeys|RegDeleteValue|RegGetSubkeyNames|RegGetValueNames|RegisterExtraCloseApplicationsResource|RegisterServer|RegisterTypeLibrary|RegisterWindowMessage|RegKeyExists|RegQueryBinaryValue|RegQueryDWordValue|RegQueryMultiStringValue|RegQueryStringValue|RegValueExists|RegWriteBinaryValue|RegWriteDWordValue|RegWriteExpandStringValue|RegWriteMultiStringValue|RegWriteStringValue|RemoveBackslash|RemoveBackslashUnlessRoot|RemoveDir|RemoveQuotes|RenameFile|RestartReplace|RmSessionStarted|SamePackedVersion|SameStr|SameText|SaveStringsToFile|SaveStringsToUTF8File|SaveStringToFile|ScaleX|ScaleY|SelectDisk|SendBroadcastMessage|SendBroadcastNotifyMessage|SendMessage|SendNotifyMessage|Set8087CW|SetArrayLength|SetCurrentDir|SetIniBool|SetIniInt|SetIniString|SetLength|SetNTFSCompression|SetPreviousData|SetupMessage|ShellExec|ShellExecAsOriginalUser|ShowExceptionMessage|Sleep|StringChange|StringChangeEx|StringOfChar|StringToGUID|StrToFloat|StrToInt|StrToInt64|StrToInt64Def|StrToIntDef|SuppressibleMsgBox|SuppressibleTaskDialogMsgBox|SysErrorMessage|TaskDialogMsgBox|Terminated|Trim|TrimLeft|TrimRight|Unassigned|UninstallSilent|UnloadDLL|UnpackVersionComponents|UnpackVersionNumbers|UnpinShellLink|UnregisterFont|UnregisterServer|UnregisterTypeLibrary|Uppercase|VarIsClear|VarIsEmpty|VarIsNull|VarType|VersionToStr|WildcardMatch|WizardDirValue|WizardGroupValue|WizardIsComponentSelected|WizardIsTaskSelected|WizardNoIcons|WizardSelectComponents|WizardSelectedComponents|WizardSelectedTasks|WizardSelectTasks|WizardSetupType|WizardSilent)'
   routines_inno_deprecated: '(?:LoadDLL|CallDLLProc|FreeDLL|CastStringToInteger|CastIntegerToString)'
@@ -69,20 +69,21 @@ contexts:
         1: storage.type.function.pascal keyword.declaration.function.pascal
         2: meta.function.pascal entity.name.function.pascal
       push:
-        - include: line-end
+        - include: line-spanning
         # Change to parameters context.
         - match: '\('
           set:
             - meta_scope: meta.function.parameters.inno
-            - include: line-end
+            - include: line-spanning
             - include: comment
             - include: expression
             - match: '\w+'
               scope: variable.parameter.pascal
+            # Push into a new context to prevent formatting unknown types as parameters.
             - match: ':'
               scope: punctuation.separator.pascal
               push:
-                - include: line-end
+                - include: line-spanning
                 - include: comment
                 - include: expression
                 - match: '(?=[;)])'
@@ -115,7 +116,6 @@ contexts:
     - include: operator
     - include: keyword
     - include: type
-    - include: class
     - include: routine
     - include: constant
     - include: variable
@@ -150,9 +150,6 @@ contexts:
   type:
     - match: '(?i)\b(?:{{types_pascal}}|{{types_inno}})\b'
       scope: storage.type.pascal
-
-  # Class.
-  class:
     - match: '(?i)\b{{classes_inno}}\b'
       scope: support.class.pascal
 
@@ -196,7 +193,7 @@ contexts:
         - meta_scope: string.quoted.single.pascal
         - include: line-end
         - match: "''"
-          scope: constant.character.escape.apostrophe.pascal
+          scope: constant.character.escape.pascal
         - match: "'"
           scope: punctuation.definition.string.end.pascal
           pop: true

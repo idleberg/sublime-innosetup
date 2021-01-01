@@ -6,7 +6,7 @@ scope: meta.preprocessor.inno
 variables:
   directives: '(?:[:+=!]|(?:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef|x)\b)'
   constants_language: '(?:__COUNTER__|__FILE__|__INCLUDE__|__LINE__|__OPT_[A-Z]__|__PATHFILENAME__|__POPT_[A-Z]__|__WIN32__|ISPP_INVOKED|ISPPCC_INVOKED|PREPROCVER|WINDOWS|UNICODE|CompilerPath|SourcePath|Ver)'
-  constants_support: '(?:_BUILTINS_ISS_|COMPANY_NAME|faAnyFile|faArchive|faDirectory|faHidden|False|faReadOnly|faSymLink|faSysFile|faVolumeID|FILE_DESCRIPTION|FILE_VERSION|FIND_AND|FIND_BEGINS|FIND_CASESENSITIVE|FIND_CONTAINS|FIND_ENDS|FIND_MATCH|FIND_NOT|FIND_OR|FIND_SENSITIVE|FIND_TRIM|HKCC|HKCC64|HKCR|HKCR64|HKCU|HKCU64|HKEY_CLASSES_ROOT|HKEY_CLASSES_ROOT_64|HKEY_CURRENT_CONFIG|HKEY_CURRENT_CONFIG_64|HKEY_CURRENT_USER|HKEY_CURRENT_USER_64|HKEY_LOCAL_MACHINE|HKEY_LOCAL_MACHINE_64|HKEY_USERS|HKEY_USERS_64|HKLM|HKLM64|HKU|HKU64|INTERNAL_NAME|LEGAL_COPYRIGHT|MaxInt|MinInt|NewLine|No|NULL|ORIGINAL_FILENAME|PRODUCT_NAME|PRODUCT_VERSION|SW_HIDE|SW_MAX|SW_MAXIMIZE|SW_MINIMIZE|SW_NORMAL|SW_RESTORE|SW_SHOW|SW_SHOWDEFAULT|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_SHOWMINNOACTIVE|SW_SHOWNA|SW_SHOWNOACTIVATE|SW_SHOWNORMAL|Tab|True|TYPE_ARRAY|TYPE_ERROR|TYPE_FUNC|TYPE_INTEGER|TYPE_MACRO|TYPE_NULL|TYPE_STRING|Yes)'
+  constants_support: '(?:_BUILTINS_ISS_|COMPANY_NAME|faAnyFile|faArchive|faDirectory|faHidden|False|faReadOnly|faSymLink|faSysFile|faVolumeID|FILE_DESCRIPTION|FILE_VERSION|FIND_AND|FIND_BEGINS|FIND_CASESENSITIVE|FIND_CONTAINS|FIND_ENDS|FIND_MATCH|FIND_NOT|FIND_OR|FIND_SENSITIVE|FIND_TRIM|HKCC|HKCC64|HKCR|HKCR64|HKCU|HKCU64|HKEY_CLASSES_ROOT|HKEY_CLASSES_ROOT_64|HKEY_CURRENT_CONFIG|HKEY_CURRENT_CONFIG_64|HKEY_CURRENT_USER|HKEY_CURRENT_USER_64|HKEY_LOCAL_MACHINE|HKEY_LOCAL_MACHINE_64|HKEY_USERS|HKEY_USERS_64|HKLM|HKLM64|HKU|HKU64|INTERNAL_NAME|LEGAL_COPYRIGHT|MaxInt|MinInt|NewLine|No|NULL|ORIGINAL_FILENAME|PRODUCT_NAME|PRODUCT_VERSION|SW_HIDE|SW_MAX|SW_MAXIMIZE|SW_MINIMIZE|SW_NORMAL|SW_RESTORE|SW_SHOW|SW_SHOWDEFAULT|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_SHOWMINNOACTIVE|SW_SHOWNA|SW_SHOWNOACTIVATE|SW_SHOWNORMAL|Tab|True|TYPE_ARRAY|TYPE_ERROR|TYPE_FUNC|TYPE_INTEGER|TYPE_MACRO|TYPE_NULL|TYPE_STRING|void|Yes)'
   functions_language: '(?:ComparePackedVersion|Copy|CopyFile|Defined|DeleteFile|DeleteFileNow|DimOf|DirExists|EntryCount|Error|Exec|FileClose|FileEof|FileExists|FileOpen|FileRead|FileReset|FileSize|Find|FindClose|FindFirst|FindGetFileName|FindNext|ForceDirectories|GetDateTimeString|GetEnv|GetFileDateTimeString|GetMD5OfFile|GetMD5OfString|GetMD5OfUnicodeString|GetSHA1OfFile|GetSHA1OfString|GetSHA1OfUnicodeString|GetStringFileInfo|GetVersionNumbersString|Int|IsWin64|Len|LowerCase|Message|Pos|ReadIni|ReadReg|RPos|SamePackedVersion|SaveStringToFile|SaveToFile|SetSetupSetting|SetupSetting|Str|StringChange|Trim|TypeOf|UpperCase|Warning|WriteIni)'
   functions_support: '(?:AddBackslash|ChangeFileExt|DecodeVer|Delete|DeleteToFirstPeriod|EncodeVer|ExtractFileDir|ExtractFileExt|ExtractFileName|ExtractFilePath|FindCode|FindNextSection|FindSection|FindSectionEnd|FindSectionEnd|GetFileCompany|GetFileCopyright|GetFileDescription|GetFileOriginalFilename|GetFileProductVersion|GetFileVersion|GetFileVersionString|GetPackedVersion|GetVersionComponents|GetVersionNumbers|Insert|IsDirSet|Max|Min|PackVersionComponents|PackVersionNumbers|ParseVersion|Power|RemoveBackslash|RemoveFileExt|SameStr|SameText|TypeOf2|UnpackVersionComponents|UnpackVersionNumbers|VersionToStr|WarnRenamedVersion|YesNo)'
 
@@ -21,7 +21,6 @@ contexts:
     - include: include-directive
     - include: define-directive
     - include: other-directive
-    - include: unknown-directive
     # Expression.
     - include: expression
     - include: separator
@@ -113,12 +112,10 @@ contexts:
         1: punctuation.definition.keyword.inno
       push:
         - include: comment
-        - include: modifier
-        # Keywords and types cannot be redefined.
-        - match: '(?=void|any|int|str|func)'
-          pop: true
+        - include: keyword
+        - include: type
         # Function definition.
-        - match: '(\w+)\s*(\()'
+        - match: '(\w*)\s*(\()'
           captures:
             1: meta.function.inno entity.name.function.inno
             2: meta.function.parameters.inno
@@ -126,10 +123,8 @@ contexts:
             - meta_content_scope: meta.function.parameters.inno
             - include: comment
             - include: type
-            - match: '\*'
-              scope: keyword.operator.reference.inno
-            - match: '\?'
-              scope: keyword.operator.optional.inno
+            - match: '[*?]'
+              scope: keyword.operator.inno
             - match: '\w+'
               scope: variable.parameter.inno
             - match: '='
@@ -151,15 +146,12 @@ contexts:
         - match: '(?=\S)'
           pop: true
 
-  # Other directive.
+  # Other or unknown directive.
   other-directive:
     - match: '(?i)(#)\s*{{directives}}'
       scope: keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
-
-  # Unknown directive.
-  unknown-directive:
     - match: '(?i)(#)\s*\w*'
       captures:
         1: punctuation.definition.keyword.inno
@@ -169,7 +161,6 @@ contexts:
     - include: operator
     - include: keyword
     - include: type
-    - include: modifier
     - include: function
     - include: constant
     - include: number
@@ -197,27 +188,22 @@ contexts:
 
   # Keyword.
   keyword:
-    - match: '\b(?:void)\b'
-      scope: constant.language.inno
+    - match: '(?i)\b(?:public|protected|private)\b'
+      scope: storage.modifier.inno
 
   # Type.
   type:
-    - match: '\b(?:any|int|str|func)\b'
+    - match: '(?i)\b(?:any|int|str|func)\b'
       scope: storage.type.inno
-
-  # Modifier.
-  modifier:
-    - match: '\b(?:public|protected|private)\b'
-      scope: storage.modifier.inno
 
   # Function.
   function:
-    - match: '\b(?:{{functions_language}}|{{functions_support}})\b'
+    - match: '(?i)\b(?:{{functions_language}}|{{functions_support}})\b'
       scope: support.function.inno
 
   # Constant.
   constant:
-    - match: '\b(?:{{constants_language}}|{{constants_support}})\b'
+    - match: '(?i)\b(?:{{constants_language}}|{{constants_support}})\b'
       scope: constant.other.inno
 
   # Number.
@@ -236,6 +222,8 @@ contexts:
       scope: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.double.inno
+        - match: '""'
+          scope: constant.character.escape.inno
         - match: '"'
           scope: punctuation.definition.string.end.inno
           pop: true
@@ -244,6 +232,8 @@ contexts:
       scope: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.double.inno
+        - match: "''"
+          scope: constant.character.escape.inno
         - match: "'"
           scope: punctuation.definition.string.end.inno
           pop: true
