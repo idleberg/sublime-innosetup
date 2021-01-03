@@ -75,7 +75,8 @@ contexts:
 
   # Preprocessor directive.
   preprocessor-directive:
-    - match: '^\s*(?=#)'
+    # Spaces should not be matched here. Using '^\s*(?=#)' would clear scopes in random places.
+    - match: '^(?=\s*#)'
       push:
         - clear_scopes: true
         - meta_content_scope: source.inno meta.preprocessor.inno
@@ -233,7 +234,7 @@ contexts:
         2: keyword.operator.assignment.inno
       push:
         - meta_content_scope: source.pascal.embedded.inno
-        - match: '(?i)\s*(?:yes|no)\s*(?=$)'
+        - match: '(?i)\s*(?:yes|no)(?=\s*$)'
           scope: constant.language.inno
         - include: scope:source.pascal.inno
       with_prototype:
