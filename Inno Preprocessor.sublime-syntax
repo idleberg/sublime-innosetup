@@ -35,6 +35,11 @@ contexts:
           scope: punctuation.section.braces.end.inno
           pop: true
 
+  # Pop context before any non-whitespace character when including line is reached.
+  pop-before-char:
+    - match: '(?=\S)'
+      pop: true
+
   # Comment.
   comment:
     - include: comment-block
@@ -73,9 +78,7 @@ contexts:
         - match: '(?i)(?:inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
           scope: keyword.other.inno
           pop: true
-        # Pop context before anything else.
-        - match: '(?=\S)'
-          pop: true
+        - include: pop-before-char
 
   # Error directive.
   error-directive:
@@ -100,9 +103,7 @@ contexts:
             1: punctuation.definition.string.begin.inno
             2: punctuation.definition.string.end.inno
           pop: true
-        # Pop context before anything else.
-        - match: '(?=\S)'
-          pop: true
+        - include: pop-before-char
 
   # Define directive.
   define-directive:
@@ -142,9 +143,7 @@ contexts:
         - match: '\w+'
           scope: entity.name.variable.inno
           pop: true
-        # Pop context before anything else.
-        - match: '(?=\S)'
-          pop: true
+        - include: pop-before-char
 
   # Other or unknown directive.
   other-directive:
