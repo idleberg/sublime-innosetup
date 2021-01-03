@@ -93,8 +93,11 @@ contexts:
         - meta_scope: source.inno
         - match: '\{#'
           scope: meta.preprocessor.inno keyword.other.inno
-          embed: scope:meta.preprocessor.inno
-          escape: '(?=\})'
+          push: scope:meta.preprocessor.inno
+          with_prototype:
+            - include: line-end
+            - match: '(?=\})'
+              pop: true
         - match: '\}'
           scope: meta.preprocessor.inno keyword.other.inno
           pop: true
