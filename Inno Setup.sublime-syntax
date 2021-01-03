@@ -34,12 +34,12 @@ contexts:
     # Values.
     - include: separator
     - include: number
-    - include: string
+    - include: directive-string
 
   # Line end with consideration of line spanning.
   line-end:
-    # Line end pops the context.
-    - match: '(?=$)'
+    # Line end pops the context already at the preceding whitespace.
+    - match: '(?=\s*$)'
       pop: true
     # However line spanning symbol prevents popping.
     - include: line-spanning
@@ -50,7 +50,7 @@ contexts:
     - match: '(?<=\s)(?=\\[ \t]*$)'
       push:
         - clear_scopes: true
-        # Match invalid line spanning.
+        # Match invalid line spanning. Using \s would wrongly format til the end of the buffer.
         - match: '(\\)([ \t]+)$'
           captures:
             1: punctuation.separator.continuation.inno
@@ -136,7 +136,7 @@ contexts:
         - include: keyword-value-directive
         # Values.
         - include: number
-        - include: string
+        - include: directive-string
 
   # LangOptions section.
   lang-options-section:
@@ -153,7 +153,7 @@ contexts:
         - include: lang-options-directive
         # Values.
         - include: number
-        - include: string
+        - include: directive-string
 
   # Messages section.
   messages-section:
@@ -169,7 +169,7 @@ contexts:
         # Messages.
         - include: inno-message
         # Values.
-        - include: string
+        - include: message-string
 
   # CustomMessages section.
   custom-messages-section:
@@ -185,7 +185,7 @@ contexts:
         # Messages.
         - include: custom-message
         # Values.
-        - include: string
+        - include: message-string
 
   # Code section.
   code-section:
@@ -218,7 +218,7 @@ contexts:
         # Values.
         - include: separator
         - include: number
-        - include: string
+        - include: parameter-string
 
   # End of section.
   section-end:
@@ -251,7 +251,7 @@ contexts:
         - match: '(?i)\s*\b{{directive_keywords}}\b'
           scope: constant.language.inno
         - include: number
-        - include: string
+        - include: directive-string
 
   # LangOptions directive.
   lang-options-directive:
@@ -264,39 +264,31 @@ contexts:
       push:
         - include: line-end
         - include: number
-        - include: string
+        - include: directive-string
 
-  # Inno Setup message. Only known messages are assigned keyword scope.
+  # Inno Setup message. Only known messages are assigned the keyword scope.
   inno-message:
-    - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|\w*)\s*(?==)'
+    - match: '(?i)^\s*(?:([a-z]{2})(\.))?(?:({{messages}})|\w*)\s*(=)'
       captures:
         1: keyword.other.inno
         2: punctuation.accessor.inno
         3: keyword.other.inno
-    - include: message-value
-
-  # Custom message. All messages are assigned keyword scope.
-  custom-message:
-    - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(?==)'
-      captures:
-        1: keyword.other.inno
-        2: punctuation.accessor.inno
-        3: keyword.other.inno
-    - include: message-value
-
-  # Message value. Common for both types of messages.
-  message-value:
-    - match: '='
-      scope: keyword.operator.assignment.inno
+        4: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: string
-      with_prototype:
-        # Formatting placeholders and escape sequences.
-        - match: '%\d|&'
-          scope: constant.other.placeholder.inno
-        - match: '%[n%]'
-          scope: constant.character.escape.inno
+        - include: message-string
+
+  # Custom message. All messages are assigned the keyword scope.
+  custom-message:
+    - match: '(?i)^\s*(?:([a-z]{2})(\.))?(\w*)\s*(=)'
+      captures:
+        1: keyword.other.inno
+        2: punctuation.accessor.inno
+        3: keyword.other.inno
+        4: keyword.operator.assignment.inno
+      push:
+        - include: line-end
+        - include: message-string
 
   # Parameter expecting boolean expression.
   expression-parameter:
@@ -346,7 +338,7 @@ contexts:
         - include: line-end
         - include: pop-separator
         - include: number
-        - include: string
+        - include: parameter-string
 
   # Parameter separator.
   separator:
@@ -368,40 +360,111 @@ contexts:
     - match: '\b[0-9]+(?:\.[0-9]+)*\b'
       scope: constant.numeric.inno
 
-  # String
-  string:
-    # Double quoted string.
-    - match: '"'
+  # Directive string.
+  # Can be double-quoted or unquoted. Constants are expanded.
+  # Quotes are valid, also in constants. Opening braces must be escaped.
+  directive-string:
+    # Quoted string. Has to start and end with a quote.
+    - match: '"(?=.*"\s*$)'
       scope: punctuation.definition.string.begin.inno
       push:
-        - meta_scope: string.quoted.double.inno
+        - meta_scope: string.quoted.inno
         - include: line-end
         - include: preprocessor-inline
-        - include: constant
+        # Only last quote terminates the string, other quotes are escaped.
+        - match: '"(?!\s*$)|\{\{'
+          scope: constant.character.escape.inno
         - match: '"'
           scope: punctuation.definition.string.end.inno
           pop: true
-    # Single quoted string.
-    - match: "'"
-      scope: punctuation.definition.string.begin.inno
-      push:
-        - meta_scope: string.quoted.single.inno
-        - include: line-end
-        - include: preprocessor-inline
-        - include: constant
-        - match: "'"
-          scope: punctuation.definition.string.end.inno
-          pop: true
-    # Unquoted string.
+        # Push temporary constant-matching context to handle quotes.
+        - match: '(?=\{)'
+          push:
+            - include: constant
+            - match: ''
+              pop: true
+          with_prototype:
+            # Preprocessor has to be included as well to take precedence over quote handling.
+            - include: preprocessor-inline
+            - match: '"(?!\s*$)'
+              scope: constant.character.escape.inno
+    # Unquoted string. Can contain quotes.
     - match: '(?=\S)'
       push:
         - meta_content_scope: string.unquoted.inno
         - include: line-end
         - include: preprocessor-inline
         - include: constant
-        # All sequences that may terminate string. If parent context doesn't act upon them, the string will resume.
-        - match: '(?=;|$)'
+        - match: '\{\{'
+          scope: constant.character.escape.inno
+
+  # Parameter string.
+  # Can be double-quoted or unquoted. Constants are expanded.
+  # Quotes must be escaped, also in constants. Opening braces must be escaped.
+  parameter-string:
+    # Quoted string. Terminated at unescaped quote.
+    - match: '"'
+      scope: punctuation.definition.string.begin.inno
+      push:
+        - meta_scope: string.quoted.inno
+        - include: line-end
+        - include: preprocessor-inline
+        # Unescaped quote terminates the string.
+        - match: '""|\{\{'
+          scope: constant.character.escape.inno
+        - match: '"'
+          scope: punctuation.definition.string.end.inno
           pop: true
+        # Push temporary constant-matching context to handle quotes.
+        - match: '(?=\{)'
+          push:
+            - include: constant
+            - match: ''
+              pop: true
+          with_prototype:
+            # Preprocessor has to be included as well to take precedence over quote handling.
+            - include: preprocessor-inline
+            - match: '""'
+              scope: constant.character.escape.inno
+            - match: '(?=")'
+              pop: true
+    # Unquoted string. Quotes are invalid.
+    - match: '(?=\S)'
+      push:
+        - meta_content_scope: string.unquoted.inno
+        - include: line-end
+        - include: preprocessor-inline
+        - match: '\{\{'
+          scope: constant.character.escape.inno
+        # Quote or semicolon terminates the string at whitespace preceding it.
+        - match: '(?=\s*[;"])'
+          pop: true
+        # Push temporary constant-matching context to handle quotes.
+        - match: '(?=\{)'
+          push:
+            - include: constant
+            - match: ''
+              pop: true
+          with_prototype:
+            # Preprocessor has to be included as well to take precedence over quote handling.
+            - include: preprocessor-inline
+            - match: '(?=\s*[;"])'
+              pop: true
+
+  # Message string.
+  # Always unquoted. Constants are not expanded.
+  # Quotes and opening braces are valid.
+  message-string:
+    # Unquoted string.
+    - match: '(?=\S)'
+      push:
+        - meta_content_scope: string.unquoted.inno
+        - include: line-end
+        - include: preprocessor-inline
+        - match: '%\d|&'
+          scope: constant.other.placeholder.inno
+        - match: '%[n%]'
+          scope: constant.character.escape.inno
 
   # Constant.
   constant:
@@ -417,6 +480,9 @@ contexts:
         1: punctuation.section.braces.begin.inno
       push:
         - meta_scope: support.constant.inno
+        - include: line-end
+        - include: preprocessor-inline
+        - include: constant
         - match: '\}'
           scope: punctuation.section.braces.end.inno
           pop: true
@@ -424,4 +490,3 @@ contexts:
           scope: punctuation.separator.inno
         - match: '(?i)%[0-9a-f]{2}'
           scope: constant.character.escape.inno
-        - include: constant
