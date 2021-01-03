@@ -381,7 +381,7 @@ contexts:
         - include: line-end
         - include: preprocessor-inline
         # Only last quote terminates the string, other quotes are escaped.
-        - match: '"(?!\s*$)|\{\{'
+        - match: '"(?!\s*$)'
           scope: constant.character.escape.inno
         - match: '"'
           scope: punctuation.definition.string.end.inno
@@ -404,8 +404,6 @@ contexts:
         - include: line-end
         - include: preprocessor-inline
         - include: constant
-        - match: '\{\{'
-          scope: constant.character.escape.inno
 
   # Parameter string.
   # Can be double-quoted or unquoted. Constants are expanded.
@@ -419,7 +417,7 @@ contexts:
         - include: line-end
         - include: preprocessor-inline
         # Unescaped quote terminates the string.
-        - match: '""|\{\{'
+        - match: '""'
           scope: constant.character.escape.inno
         - match: '"'
           scope: punctuation.definition.string.end.inno
@@ -443,8 +441,6 @@ contexts:
         - meta_content_scope: string.unquoted.inno
         - include: line-end
         - include: preprocessor-inline
-        - match: '\{\{'
-          scope: constant.character.escape.inno
         # Quote or semicolon terminates the string at whitespace preceding it.
         - match: '(?=\s*[;"])'
           pop: true
@@ -477,6 +473,9 @@ contexts:
 
   # Constant.
   constant:
+    # Escaped opening brace.
+    - match: '\{\{'
+      scope: constant.character.escape.inno
     # Predefined constant.
     - match: '(?i)(\{)(?:{{constants}}|{{constants_deprecated}})(\})'
       scope: support.constant.inno
