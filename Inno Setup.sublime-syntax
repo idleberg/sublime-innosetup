@@ -197,6 +197,7 @@ contexts:
         - meta_content_scope: source.pascal.embedded.inno
         - include: scope:source.pascal.inno
       with_prototype:
+        # Line spanning is handled in Inno Pascal syntax.
         - include: preprocessor
         - include: section-end
 
@@ -239,12 +240,12 @@ contexts:
           scope: constant.language.inno
         - include: scope:source.pascal.inno
       with_prototype:
-        - include: preprocessor
         - include: line-end
+        - include: preprocessor
 
   # Setup directive expecting keywords or value.
   keyword-value-directive:
-    - match: '(?i)^\s*(({{setup_directives}}|{{setup_directives_deprecated}})|[^=]*?)\s*(=)'
+    - match: '(?i)^\s*(({{setup_directives}}|{{setup_directives_deprecated}})|[^=\s][^=]*?|)\s*(=)'
       captures:
         1: meta.directive.inno
         2: keyword.other.inno
@@ -258,7 +259,7 @@ contexts:
 
   # LangOptions directive.
   lang-options-directive:
-    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.]*)(\.))?(({{lang_options_directives}})|[^=]*?)\s*(=)'
+    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.\s][^=.]*|)(\.))?(({{lang_options_directives}})|[^=\s][^=]*?|)\s*(=)'
       captures:
         1: meta.language.inno
         2: keyword.other.inno
@@ -273,7 +274,7 @@ contexts:
 
   # Inno Setup message. Only known messages are assigned the keyword scope.
   inno-message:
-    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.]*)(\.))?(({{messages}})|[^=]*?)\s*(=)'
+    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.\s][^=.]*|)(\.))?(({{messages}})|[^=\s][^=]*?|)\s*(=)'
       captures:
         1: meta.language.inno
         2: keyword.other.inno
@@ -287,7 +288,7 @@ contexts:
 
   # Custom message. All messages are assigned the keyword scope.
   custom-message:
-    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.]*)(\.))?([a-z_]\w*)\s*(=)'
+    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.\s][^=.]*|)(\.))?([a-z_]\w*)\s*(=)'
       captures:
         1: meta.language.inno
         2: keyword.other.inno
@@ -338,7 +339,7 @@ contexts:
 
   # Parameter expecting value.
   value-parameter:
-    - match: '(?i)(\b({{parameters}})|[^:]*?)\s*(:)'
+    - match: '(?i)(\b({{parameters}})|[^:\s][^:]*?|)\s*(:)'
       captures:
         1: meta.parameter.inno
         2: keyword.other.inno
