@@ -23,8 +23,8 @@ contexts:
     - include: line-spanning
     - include: comment
     # Language constructs.
-    - include: routine-definition
     - include: event-attribute
+    - include: routine-definition
     # Expression.
     - include: expression
     - include: separator
@@ -63,6 +63,21 @@ contexts:
         - meta_scope: comment.line.double-slash.pascal
         - include: line-end
 
+  # Event attribute.
+  event-attribute:
+    - match: '<(?=\s*(?:event))'
+      scope: punctuation.definition.annotation.pascal
+      push:
+        - meta_scope: meta.annotation.pascal
+        - include: line-end
+        - match: '(?i)\b(?:event)\b'
+          scope: variable.annotation.pascal
+        - include: comment
+        - include: expression
+        - match: '>'
+          scope: punctuation.definition.annotation.pascal
+          pop: true
+
   # Definition of routine (function or procedure).
   routine-definition:
     - match: '(?i)\b(function|procedure)\s+(\w+(?:\.\w+)?)'
@@ -95,21 +110,6 @@ contexts:
               pop: true
         # Pop context at anything else than round bracket or whitespace. 
         - match: '(?=\S)'
-          pop: true
-
-  # Event attribute.
-  event-attribute:
-    - match: '<(?=\s*(?:event))'
-      scope: punctuation.definition.annotation.pascal
-      push:
-        - meta_scope: meta.annotation.pascal
-        - include: line-end
-        - match: '(?i)\b(?:event)\b'
-          scope: variable.annotation.pascal
-        - include: comment
-        - include: expression
-        - match: '>'
-          scope: punctuation.definition.annotation.pascal
           pop: true
 
   # Expression.
