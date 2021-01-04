@@ -21,6 +21,7 @@ contexts:
     - include: include-directive
     - include: define-directive
     - include: other-directive
+    - include: unknown-directive
     # Expression.
     - include: expression
     - include: separator
@@ -145,13 +146,17 @@ contexts:
           pop: true
         - include: pop-before-char
 
-  # Other or unknown directive.
+  # Other directive.
   other-directive:
     - match: '(?i)(#)\s*{{directives}}'
       scope: keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
-    - match: '(?i)(#)\s*\w*'
+
+  # Unknown directive.
+  unknown-directive:
+    - match: '(?i)(#).*'
+      scope: invalid.illegal.inno
       captures:
         1: punctuation.definition.keyword.inno
 

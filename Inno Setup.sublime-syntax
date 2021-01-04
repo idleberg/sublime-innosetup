@@ -31,10 +31,9 @@ contexts:
     - include: custom-messages-section
     - include: code-section
     - include: other-section
-    # Values.
-    - include: separator
-    - include: number
-    - include: directive-string
+    - include: unknown-section
+    # Invalid content.
+    - include: invalid-content
 
   # Line end with consideration of line spanning.
   line-end:
@@ -138,9 +137,8 @@ contexts:
         # Directives.
         - include: expression-directive
         - include: keyword-value-directive
-        # Values.
-        - include: number
-        - include: directive-string
+        # Invalid content.
+        - include: invalid-content
 
   # LangOptions section.
   lang-options-section:
@@ -155,9 +153,8 @@ contexts:
         - include: section-end
         # Directives.
         - include: lang-options-directive
-        # Values.
-        - include: number
-        - include: directive-string
+        # Invalid content.
+        - include: invalid-content
 
   # Messages section.
   messages-section:
@@ -172,8 +169,8 @@ contexts:
         - include: section-end
         # Messages.
         - include: inno-message
-        # Values.
-        - include: message-string
+        # Invalid content.
+        - include: invalid-content
 
   # CustomMessages section.
   custom-messages-section:
@@ -188,8 +185,8 @@ contexts:
         - include: section-end
         # Messages.
         - include: custom-message
-        # Values.
-        - include: message-string
+        # Invalid content.
+        - include: invalid-content
 
   # Code section.
   code-section:
@@ -206,10 +203,9 @@ contexts:
 
   # Other section.
   other-section:
-    - match: '(?i)^\s*((\[{{sections}}\])|\[[^\]]*\])\s*$'
+    - match: '(?i)^\s*(\[{{sections}}\])\s*$'
       captures:
-        1: meta.section-tag.inno
-        2: entity.name.namespace.inno
+        1: meta.section-tag.inno entity.name.namespace.inno
       push:
         # General.
         - include: line-spanning
@@ -221,15 +217,30 @@ contexts:
         - include: flag-parameter
         - include: keyword-parameter
         - include: value-parameter
-        # Values.
-        - include: separator
-        - include: number
-        - include: parameter-string
+        # Invalid content.
+        - include: invalid-content
+
+  # Unknown section.
+  unknown-section:
+    - match: '(?i)^\s*(\[[^\]]*\])\s*$'
+      captures:
+        1: meta.section-tag.inno
+      push:
+        # General.
+        - include: line-spanning
+        - include: preprocessor
+        - include: comment
+        - include: section-end
 
   # End of section.
   section-end:
-    - match: '(?i)^(?=\s*\[[^\]]*\]\s*$)'
+    - match: '(?i)^(?=\s*\[)'
       pop: true
+
+  # Invalid content.
+  invalid-content:
+    - match: '\S.*?(?=\s*(?:\\|$))'
+      scope: invalid.illegal.inno
 
   # Setup directive expecting boolean expression.
   expression-directive:
@@ -248,56 +259,64 @@ contexts:
 
   # Setup directive expecting keywords or value.
   keyword-value-directive:
-    - match: '(?i)^\s*(({{setup_directives}}|{{setup_directives_deprecated}})|[^=\s][^=]*?|)\s*(=)'
+    - match: '(?i)^\s*(({{setup_directives}}|{{setup_directives_deprecated}})|([^=\s][^=]*?)|)\s*(=)'
       captures:
         1: meta.directive.inno
         2: keyword.other.inno
-        3: keyword.operator.assignment.inno
+        3: invalid.illegal.inno
+        4: keyword.operator.assignment.inno
       push:
         - include: line-end
         - match: '(?i)\s*\b{{directive_keywords}}\b'
           scope: constant.language.inno
-        - include: number
+        - include: directive-number
         - include: directive-string
 
   # LangOptions directive.
   lang-options-directive:
-    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.\s][^=.]*|)(\.))?(({{lang_options_directives}})|[^=\s][^=]*?|)\s*(=)'
+    - match: '(?i)^\s*(?:(([a-z]{2})|([^=.\s][^=.]*)|)(\.))?(({{lang_options_directives}})|([^=\s][^=]*?)|)\s*(=)'
       captures:
         1: meta.language.inno
         2: keyword.other.inno
-        3: punctuation.accessor.inno
-        4: meta.directive.inno
-        5: keyword.other.inno
-        6: keyword.operator.assignment.inno
+        3: invalid.illegal.inno
+        4: punctuation.accessor.inno
+        5: meta.directive.inno
+        6: keyword.other.inno
+        7: invalid.illegal.inno
+        8: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: number
+        - include: directive-number
         - include: directive-string
 
   # Inno Setup message. Only known messages are assigned the keyword scope.
   inno-message:
-    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.\s][^=.]*|)(\.))?(({{messages}})|[^=\s][^=]*?|)\s*(=)'
+    - match: '(?i)^\s*(?:(([a-z]{2})|([^=.\s][^=.]*)|)(\.))?(({{messages}})|([^=\s][^=]*?)|)\s*(=)'
       captures:
         1: meta.language.inno
         2: keyword.other.inno
-        3: punctuation.accessor.inno
-        4: meta.message.inno
-        5: keyword.other.inno
-        6: keyword.operator.assignment.inno
+        3: invalid.illegal.inno
+        4: punctuation.accessor.inno
+        5: meta.message.inno
+        6: keyword.other.inno
+        7: invalid.illegal.inno
+        8: keyword.operator.assignment.inno
       push:
         - include: line-end
         - include: message-string
 
   # Custom message. All messages are assigned the keyword scope.
   custom-message:
-    - match: '(?i)^\s*(?:(([a-z]{2})|[^=.\s][^=.]*|)(\.))?([a-z_]\w*)\s*(=)'
+    - match: '(?i)^\s*(?:(([a-z]{2})|([^=.\s][^=.]*)|)(\.))?(([a-z_]\w*)|([^=\s][^=]*?)|)\s*(=)'
       captures:
         1: meta.language.inno
         2: keyword.other.inno
-        3: punctuation.accessor.inno
-        4: meta.message.inno keyword.other.inno
-        5: keyword.operator.assignment.inno
+        3: invalid.illegal.inno
+        4: punctuation.accessor.inno
+        5: meta.message.inno
+        6: keyword.other.inno
+        7: invalid.illegal.inno
+        8: keyword.operator.assignment.inno
       push:
         - include: line-end
         - include: message-string
@@ -342,15 +361,16 @@ contexts:
 
   # Parameter expecting value.
   value-parameter:
-    - match: '(?i)(\b({{parameters}})|[^:\s][^:]*?|)\s*(:)'
+    - match: '(?i)(\b({{parameters}})|([^:\s][^:]*?)|)\s*(:)'
       captures:
         1: meta.parameter.inno
         2: keyword.other.inno
-        3: keyword.operator.assignment.inno
+        3: invalid.illegal.inno
+        4: keyword.operator.assignment.inno
       push:
         - include: line-end
         - include: pop-separator
-        - include: number
+        - include: parameter-number
         - include: parameter-string
 
   # Parameter separator.
@@ -364,13 +384,22 @@ contexts:
       scope: punctuation.separator.inno
       pop: true
 
-  # Number
-  number:
+  # Directive number. Partial directive value must not be recognized as number.
+  directive-number:
     # Hexadecimal number.
-    - match: '\$\h+\b'
+    - match: '\$\h+(?=\s*(?:\\|$))'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer, float or version.
-    - match: '\b[0-9]+(?:\.[0-9]+)*\b'
+    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:\\|$))'
+      scope: constant.numeric.inno
+
+  # Parameter number. Partial parameter value must not be recognized as number.
+  parameter-number:
+    # Hexadecimal number.
+    - match: '\$\h+(?=\s*(?:;|\\|$))'
+      scope: constant.numeric.integer.hexadecimal.inno
+    # Integer, float or version.
+    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:;|\\|$))'
       scope: constant.numeric.inno
 
   # Directive string.
@@ -397,16 +426,33 @@ contexts:
             - match: ''
               pop: true
           with_prototype:
-            # Preprocessor has to be included as well to take precedence over quote handling.
+            # Preprocessor can contain strings so must be included to take precedence.
             - include: preprocessor-inline
             - match: '"(?!\s*$)'
               scope: constant.character.escape.inno
+            # Premature end of string.
+            - match: '(?=")'
+              pop: true
     # Unquoted string. Can contain quotes.
     - match: '(?=\S)'
       push:
         - meta_content_scope: string.unquoted.inno
         - include: line-end
         - include: preprocessor-inline
+        # Escape quotes for readability.
+        - match: '"'
+          scope: constant.character.escape.inno
+        # Push temporary constant-matching context to handle quotes.
+        - match: '(?=\{)'
+          push:
+            - include: constant
+            - match: ''
+              pop: true
+          with_prototype:
+            # Preprocessor can contain strings so must be included to take precedence.
+            - include: preprocessor-inline
+            - match: '"'
+              scope: constant.character.escape.inno
         - include: constant
 
   # Parameter string.
@@ -425,7 +471,7 @@ contexts:
           scope: constant.character.escape.inno
         - match: '"'
           scope: punctuation.definition.string.end.inno
-          pop: true
+          set: parameter-end
         # Push temporary constant-matching context to handle quotes.
         - match: '(?=\{)'
           push:
@@ -433,10 +479,11 @@ contexts:
             - match: ''
               pop: true
           with_prototype:
-            # Preprocessor has to be included as well to take precedence over quote handling.
+            # Preprocessor can contain strings so must be included to take precedence.
             - include: preprocessor-inline
             - match: '""'
               scope: constant.character.escape.inno
+            # Premature end of string.
             - match: '(?=")'
               pop: true
     # Unquoted string. Quotes are invalid.
@@ -447,7 +494,7 @@ contexts:
         - include: preprocessor-inline
         # Quote or semicolon terminates the string at whitespace preceding it.
         - match: '(?=\s*[;"])'
-          pop: true
+          set: parameter-end
         # Push temporary constant-matching context to handle quotes.
         - match: '(?=\{)'
           push:
@@ -455,10 +502,22 @@ contexts:
             - match: ''
               pop: true
           with_prototype:
-            # Preprocessor has to be included as well to take precedence over quote handling.
+            # Preprocessor can contain strings so must be included to take precedence.
             - include: preprocessor-inline
+            # Premature end of string.
             - match: '(?=\s*[;"])'
               pop: true
+
+  # Expected end of parameter. Used to mark multiple values in a single parameter as invalid.
+  parameter-end:
+    - include: line-end
+    - include: preprocessor-inline
+    # Pop when separator is encountered, but allow it to pop also parent context.
+    - match: '(?=;)'
+      pop: true
+    # Any non-whitespace character up to separator, line spanning or line end are invalid.
+    - match: '\S.*?(?=\s*(?:;|\\|$))'
+      scope: invalid.illegal.inno
 
   # Message string.
   # Always unquoted. Constants are not expanded.
@@ -502,3 +561,12 @@ contexts:
           scope: punctuation.separator.inno
         - match: '(?i)%[0-9a-f]{2}'
           scope: constant.character.escape.inno
+    # Invalid constant.
+    - match: '\{'
+      push:
+        - meta_scope: invalid.illegal.inno
+        - include: line-end
+        - include: preprocessor-inline
+        - include: constant
+        - match: '\}'
+          pop: true
