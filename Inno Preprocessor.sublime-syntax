@@ -13,7 +13,8 @@ variables:
 contexts:
   # Preprocessor.
   main:
-    # General. Line end handling is included in the push prototype.
+    # General.
+    # Line end handling is included in the push prototype.
     - include: comment
     # Directives.
     - include: pragma-directive
@@ -24,17 +25,7 @@ contexts:
     - include: unknown-directive
     # Expression.
     - include: expression
-    - include: separator
-    # Braces. Necessary to prevent matching semicolons in for loop as comments.
-    - match: '\{'
-      scope: punctuation.section.braces.begin.inno
-      push:
-        - meta_scope: meta.braces.inno
-        - include: comment-block
-        - include: expression
-        - match: '\}'
-          scope: punctuation.section.braces.end.inno
-          pop: true
+    - include: terminator
 
   # Pop context before any non-whitespace character when including line is reached.
   pop-before-char:
@@ -136,7 +127,6 @@ contexts:
                 - include: expression
                 - match: '(?=[,)])'
                   pop: true
-            - include: separator
             - match: '\)'
               scope: meta.function.parameters.inno
               pop: true
@@ -162,6 +152,8 @@ contexts:
 
   # Expression.
   expression:
+    - include: braces-section
+    - include: parens-section
     - include: operator
     - include: keyword
     - include: type
@@ -170,10 +162,34 @@ contexts:
     - include: number
     - include: string
 
-  # Separator.
-  separator:
+  # Statement terminator.
+  terminator:
     - match: ','
-      scope: punctuation.separator.inno
+      scope: keyword.operator.terminator.inno
+
+  # Section delineated by curly braces. Necessary to prevent matching semicolons as comments.
+  braces-section:
+    - match: '\{'
+      scope: punctuation.section.braces.begin.inno
+      push:
+        - meta_scope: meta.braces.inno
+        - include: comment-block
+        - include: expression
+        - match: '\}'
+          scope: punctuation.section.braces.end.inno
+          pop: true
+
+  # Section delineated by parentheses. Necessary to prevent matching commas as terminators.
+  parens-section:
+    - match: '\('
+      scope: punctuation.section.parens.begin.inno
+      push:
+        - meta_scope: meta.parens.inno
+        - include: comment
+        - include: expression
+        - match: '\)'
+          scope: punctuation.section.parens.end.inno
+          pop: true
 
   # Operator.
   operator:
