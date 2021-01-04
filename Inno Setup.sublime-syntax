@@ -20,7 +20,7 @@ variables:
 contexts:
   # Inno Setup.
   main:
-    # General.
+    # Common.
     - include: line-spanning
     - include: preprocessor
     - include: comment
@@ -32,8 +32,13 @@ contexts:
     - include: code-section
     - include: other-section
     - include: unknown-section
-    # Invalid content.
+    # Any content outside of section is invalid.
     - include: invalid-content
+
+  # Pop context when including line is reached.
+  pop-here:
+    - match: ''
+      pop: true
 
   # Line end with consideration of line spanning.
   line-end:
@@ -63,8 +68,7 @@ contexts:
             - match: '(?=\s*\S|^\s*$)'
               pop: true
         # Pop the temporary context.
-        - match: ''
-          pop: true
+        - include: pop-here
 
   # Preprocessor code.
   preprocessor:
@@ -74,7 +78,7 @@ contexts:
 
   # Preprocessor directive.
   preprocessor-directive:
-    # Spaces should not be matched here. Using '^\s*(?=#)' would clear scopes in random places.
+    # Using '^\s*(?=#)' would clear scopes in random places.
     - match: '^(?=\s*#)'
       push:
         - clear_scopes: true
@@ -86,7 +90,7 @@ contexts:
   # Preprocessor inline.
   preprocessor-inline:
     # Push a temporary context to break out to the top scope.
-    - match: '(?=\{#)'
+    - match: '(?=\s*\{#)'
       push:
         - clear_scopes: true
         - meta_scope: source.inno
@@ -101,8 +105,7 @@ contexts:
           scope: meta.preprocessor.inno keyword.other.inno
           pop: true
         # Pop the temporary context.
-        - match: ''
-          pop: true
+        - include: pop-here
 
   # Preprocessor comment.
   preprocessor-comment:
@@ -129,15 +132,9 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
-        # General.
-        - include: line-spanning
-        - include: preprocessor
-        - include: comment
-        - include: section-end
-        # Directives.
+        - include: section-common
         - include: expression-directive
         - include: keyword-value-directive
-        # Invalid content.
         - include: invalid-content
 
   # LangOptions section.
@@ -146,14 +143,9 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
-        # General.
-        - include: line-spanning
-        - include: preprocessor
-        - include: comment
-        - include: section-end
-        # Directives.
+        - include: section-common
+        - include: language-prefix
         - include: lang-options-directive
-        # Invalid content.
         - include: invalid-content
 
   # Messages section.
@@ -162,14 +154,9 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
-        # General.
-        - include: line-spanning
-        - include: preprocessor
-        - include: comment
-        - include: section-end
-        # Messages.
+        - include: section-common
+        - include: language-prefix
         - include: inno-message
-        # Invalid content.
         - include: invalid-content
 
   # CustomMessages section.
@@ -178,14 +165,9 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
-        # General.
-        - include: line-spanning
-        - include: preprocessor
-        - include: comment
-        - include: section-end
-        # Messages.
+        - include: section-common
+        - include: language-prefix
         - include: custom-message
-        # Invalid content.
         - include: invalid-content
 
   # Code section.
@@ -197,7 +179,7 @@ contexts:
         - meta_content_scope: source.pascal.embedded.inno
         - include: scope:source.pascal.inno
       with_prototype:
-        # Line spanning is handled in Inno Pascal syntax.
+        # Line spanning is handled by Inno Pascal syntax.
         - include: preprocessor
         - include: section-end
 
@@ -207,17 +189,11 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
-        # General.
-        - include: line-spanning
-        - include: preprocessor
-        - include: comment
-        - include: section-end
-        # Parameters.
+        - include: section-common
         - include: boolean-expression-parameter
         - include: flag-parameter
         - include: keyword-parameter
         - include: value-parameter
-        # Invalid content.
         - include: invalid-content
 
   # Unknown section.
@@ -226,18 +202,21 @@ contexts:
       captures:
         1: meta.section-tag.inno
       push:
-        # General.
-        - include: line-spanning
-        - include: preprocessor
-        - include: comment
-        - include: section-end
+        - include: section-common
+
+  # Common includes for sections.
+  section-common:
+    - include: line-spanning
+    - include: preprocessor
+    - include: comment
+    - include: section-end
 
   # End of section.
   section-end:
     - match: '(?i)^(?=\s*\[)'
       pop: true
 
-  # Invalid content.
+  # Marks any non-whitespace content as invalid.
   invalid-content:
     - match: '\S.*?(?=\s*(?:\\|$))'
       scope: invalid.illegal.inno
@@ -259,7 +238,7 @@ contexts:
 
   # Setup directive expecting keywords or value.
   keyword-value-directive:
-    - match: '(?i)^\s*(({{setup_directives}}|{{setup_directives_deprecated}})|([^=\s][^=]*?)|)\s*(=)'
+    - match: '(?i)^\s*(({{setup_directives}}|{{setup_directives_deprecated}})|([^=]*?))\s*(=)'
       captures:
         1: meta.directive.inno
         2: keyword.other.inno
@@ -272,18 +251,23 @@ contexts:
         - include: directive-number
         - include: directive-string
 
-  # LangOptions directive.
-  lang-options-directive:
-    - match: '(?i)^\s*(?:(([a-z]{2})|([^=.\s][^=.]*)|)(\.))?(({{lang_options_directives}})|([^=\s][^=]*?)|)\s*(=)'
+  # Language prefix used in LangOptions, Messages and CustomMessages sections.
+  language-prefix:
+    - match: '(?i)^\s*(([a-z]{2})|([^=.]*))(\.)'
       captures:
         1: meta.language.inno
         2: keyword.other.inno
         3: invalid.illegal.inno
         4: punctuation.accessor.inno
-        5: meta.directive.inno
-        6: keyword.other.inno
-        7: invalid.illegal.inno
-        8: keyword.operator.assignment.inno
+
+  # LangOptions directive.
+  lang-options-directive:
+    - match: '(?i)(?:^\s*|(?<=\.))(({{lang_options_directives}})|([^=]*?))\s*(=)'
+      captures:
+        1: meta.directive.inno
+        2: keyword.other.inno
+        3: invalid.illegal.inno
+        4: keyword.operator.assignment.inno
       push:
         - include: line-end
         - include: directive-number
@@ -291,32 +275,24 @@ contexts:
 
   # Inno Setup message. Only known messages are assigned the keyword scope.
   inno-message:
-    - match: '(?i)^\s*(?:(([a-z]{2})|([^=.\s][^=.]*)|)(\.))?(({{messages}})|([^=\s][^=]*?)|)\s*(=)'
+    - match: '(?i)(?:^\s*|(?<=\.))(({{messages}})|([^=]*?))\s*(=)'
       captures:
-        1: meta.language.inno
+        1: meta.message.inno
         2: keyword.other.inno
         3: invalid.illegal.inno
-        4: punctuation.accessor.inno
-        5: meta.message.inno
-        6: keyword.other.inno
-        7: invalid.illegal.inno
-        8: keyword.operator.assignment.inno
+        4: keyword.operator.assignment.inno
       push:
         - include: line-end
         - include: message-string
 
   # Custom message. All messages are assigned the keyword scope.
   custom-message:
-    - match: '(?i)^\s*(?:(([a-z]{2})|([^=.\s][^=.]*)|)(\.))?(([a-z_]\w*)|([^=\s][^=]*?)|)\s*(=)'
+    - match: '(?i)(?:^\s*|(?<=\.))(([a-z_]\w*)|([^=]*?))\s*(=)'
       captures:
-        1: meta.language.inno
+        1: meta.message.inno
         2: keyword.other.inno
         3: invalid.illegal.inno
-        4: punctuation.accessor.inno
-        5: meta.message.inno
-        6: keyword.other.inno
-        7: invalid.illegal.inno
-        8: keyword.operator.assignment.inno
+        4: keyword.operator.assignment.inno
       push:
         - include: line-end
         - include: message-string
@@ -332,8 +308,8 @@ contexts:
         - include: pop-separator
         - include: scope:source.pascal.inno
       with_prototype:
-        - include: preprocessor
         - include: line-end
+        - include: preprocessor
 
   # Parameter expecting flags.
   flag-parameter:
@@ -361,7 +337,7 @@ contexts:
 
   # Parameter expecting value.
   value-parameter:
-    - match: '(?i)(\b({{parameters}})|([^:\s][^:]*?)|)\s*(:)'
+    - match: '(?i)\s*(\b({{parameters}})|([^:]*?))\s*(:)'
       captures:
         1: meta.parameter.inno
         2: keyword.other.inno
@@ -423,8 +399,7 @@ contexts:
         - match: '(?=\{)'
           push:
             - include: constant
-            - match: ''
-              pop: true
+            - include: pop-here
           with_prototype:
             # Preprocessor can contain strings so must be included to take precedence.
             - include: preprocessor-inline
@@ -446,8 +421,7 @@ contexts:
         - match: '(?=\{)'
           push:
             - include: constant
-            - match: ''
-              pop: true
+            - include: pop-here
           with_prototype:
             # Preprocessor can contain strings so must be included to take precedence.
             - include: preprocessor-inline
@@ -476,8 +450,7 @@ contexts:
         - match: '(?=\{)'
           push:
             - include: constant
-            - match: ''
-              pop: true
+            - include: pop-here
           with_prototype:
             # Preprocessor can contain strings so must be included to take precedence.
             - include: preprocessor-inline
@@ -499,8 +472,7 @@ contexts:
         - match: '(?=\{)'
           push:
             - include: constant
-            - match: ''
-              pop: true
+            - include: pop-here
           with_prototype:
             # Preprocessor can contain strings so must be included to take precedence.
             - include: preprocessor-inline
