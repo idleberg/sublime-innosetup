@@ -19,17 +19,13 @@ contexts:
   # Pascal.
   # Preprocessor handling is included in the push prototype.
   main:
-    # Common.
-    - include: line-spanning
-    - include: comment
     # Language constructs.
     - include: type-block
     - include: var-block
     - include: event-attribute
     - include: routine-definition
-    # Expression.
-    - include: expression
-    - include: separator
+    # Block of code.
+    - include: block
 
   # Line end and line spanning.
   line-end:
@@ -44,7 +40,7 @@ contexts:
     - match: \(\*
       scope: punctuation.definition.comment.pascal
       push:
-        - meta_scope: comment.block.pascal
+        - meta_scope: comment.block.parens.pascal
         - include: line-spanning
         - match: \*\)
           scope: punctuation.definition.comment.pascal
@@ -53,7 +49,7 @@ contexts:
     - match: '\{'
       scope: punctuation.definition.comment.pascal
       push:
-        - meta_scope: comment.block.pascal
+        - meta_scope: comment.block.braces.pascal
         - include: line-spanning
         - match: '\}'
           scope: punctuation.definition.comment.pascal
@@ -75,12 +71,12 @@ contexts:
         - include: comment
         - match: '(?i)\b(?:event)\b'
           scope: variable.annotation.pascal
-        - include: expression
         - match: '>'
           scope: punctuation.definition.annotation.pascal
           pop: true
+        - include: expression
 
-  # Definition of routine (function or procedure).
+  # Routine definition (function or procedure).
   routine-definition:
     - match: '(?i)\b(function|procedure)\s+(?:\w+(\.))?(\w+)'
       captures:
@@ -93,14 +89,10 @@ contexts:
         - match: '\('
           push:
             - meta_scope: meta.function.parameters.pascal
-            - include: line-spanning
-            - include: comment
-            - include: expression
+            - include: type-declaration
+            - include: block
             - match: '\w+'
               scope: variable.parameter.pascal
-            - include: type-declaration
-            - match: ';'
-              scope: punctuation.separator.pascal
             - match: '\)'
               pop: true
         # Match return type.
@@ -114,46 +106,51 @@ contexts:
     - match: '(?i)\b(?:type)\b'
       scope: keyword.other.pascal
       push:
-        - meta_scope: meta.block.type.pascal
         - include: pop-at-block-end
-        - match: '(?i)\b(?:interface)\b'
-          scope: keyword.other.pascal
-          push:
-            - meta_scope: meta.block.interface.pascal
-            - include: pop-at-end-keyword
-            - include: routine-definition
-            - include: block-common
-        - match: '(?i)\b(?:record)\b'
-          scope: keyword.other.pascal
-          push:
-            - meta_scope: meta.block.record.pascal
-            - include: pop-at-end-keyword
-            - include: type-declaration
-            - include: block-common
+        - include: interface-definition
+        - include: record-definition
+        - include: block
         - include: type
-        - include: block-common
 
   # Var block. Type declarations are recognized.
+  # Note: Type declarations in const block are invalid in Inno Setup.
   var-block:
     - match: '(?i)\b(?:var)\b'
       scope: keyword.other.pascal
       push:
-        - meta_scope: meta.block.var.pascal
         - include: pop-at-block-end
         - include: type-declaration
-        - include: block-common
+        - include: block
 
-  # Common includes for block.
-  block-common:
-    - include: line-spanning
-    - include: comment
-    - include: expression
-    - include: separator
-
-  # Pop context of a top-level block (const, label, type, var).
+  # Pop context at end of a top-level block (const, label, type, var).
   pop-at-block-end:
     - match: '(?i)(?=\b(?:begin|const|label|type|var|constructor|destructor|function|procedure)\b)'
       pop: true
+
+  # Interface definition.
+  interface-definition:
+    - match: '(?i)\b(?:interface)\b'
+      scope: keyword.other.pascal
+      push:
+        - include: pop-at-end-keyword
+        # Match ancestor.
+        - match: '\('
+          push:
+            - include: block
+            - include: type
+            - match: '\)'
+              pop: true
+        - include: routine-definition
+        - include: block
+
+  # Record definition.
+  record-definition:
+    - match: '(?i)\b(?:record)\b'
+      scope: keyword.other.pascal
+      push:
+        - include: pop-at-end-keyword
+        - include: type-declaration
+        - include: block
 
   # Pop context at end keyword.
   pop-at-end-keyword:
@@ -166,12 +163,17 @@ contexts:
     - match: ':'
       scope: punctuation.separator.pascal
       push:
-        - include: line-spanning
-        - include: comment
-        - include: expression
-        - include: type
-        - match: '(?=[;)])'
+        - match: '(?=[;)=])'
           pop: true
+        - include: block
+        - include: type
+
+  # Block of code.
+  block:
+    - include: line-spanning
+    - include: comment
+    - include: expression
+    - include: separator
 
   # Expression.
   expression:
@@ -179,8 +181,7 @@ contexts:
     - include: keyword
     - include: routine
     - include: constant
-    - include: variable
-    - include: member
+    - include: identifier
     - include: escape
     - include: number
     - include: string
@@ -227,13 +228,12 @@ contexts:
     - match: '(?i)\b(?:{{constants_inno}}|{{constants_vcl}})\b'
       scope: constant.other.pascal
 
-  # Special or global variable.
-  variable:
+  # Identifier.
+  identifier:
+    # Special or global variable.
     - match: '(?i)\b(?:result|self|MainForm|UninstallProgressForm|WizardForm)\b'
       scope: variable.language.pascal
-
-  # Member of a data structure.
-  member:
+    # Member of a data structure.
     - match: '(?<=\w)\s*(\.)\s*\w+'
       captures:
         1: punctuation.accessor.pascal
