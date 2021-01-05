@@ -14,8 +14,6 @@ contexts:
   # Preprocessor.
   # Line end handling is included in the push prototype.
   main:
-    # Common.
-    - include: comment
     # Directives.
     - include: pragma-directive
     - include: error-directive
@@ -25,7 +23,6 @@ contexts:
     - include: unknown-directive
     # Expression.
     - include: expression
-    - include: terminator
 
   # Pop context before any non-whitespace character when including line is reached.
   pop-before-char:
@@ -34,11 +31,7 @@ contexts:
 
   # Comment.
   comment:
-    - include: comment-block
-    - include: comment-line
-
-  # Block comment.
-  comment-block:
+    # Block comment.
     - match: '/\*'
       scope: punctuation.definition.comment.inno
       push:
@@ -46,9 +39,7 @@ contexts:
         - match: '\*/'
           scope: punctuation.definition.comment.inno
           pop: true
-
-  # Line comment.
-  comment-line:
+    # Line comment.
     - match: ';'
       scope: punctuation.definition.comment.inno
       push:
@@ -107,33 +98,9 @@ contexts:
         - include: comment
         - include: keyword
         - include: type
-        # Function definition.
-        - match: '(\w*)\s*(\()'
-          captures:
-            1: meta.function.inno entity.name.function.inno
-            2: meta.function.parameters.inno
-          set:
-            - meta_content_scope: meta.function.parameters.inno
-            - include: comment
-            - include: type
-            - match: '[*?]'
-              scope: keyword.operator.inno
-            - match: '\w+'
-              scope: variable.parameter.inno
-            - match: '='
-              scope: keyword.operator.assignment.inno
-              push:
-                - include: comment
-                - include: expression
-                - match: '(?=[,)])'
-                  pop: true
-            - match: '\)'
-              scope: meta.function.parameters.inno
-              pop: true
-        # Variable definition.
-        - match: '\w+'
-          scope: entity.name.variable.inno
-          pop: true
+        - match: '(?i)[a-z_]\w*'
+          scope: meta.function.inno entity.name.function.inno
+          set: expect-parameters
         - include: pop-before-char
 
   # Other directive.
@@ -152,44 +119,84 @@ contexts:
 
   # Expression.
   expression:
-    - include: braces-section
-    - include: parens-section
+    - include: comment
+    - include: braces
+    - include: parens
     - include: operator
     - include: keyword
     - include: type
-    - include: function
     - include: constant
+    - include: identifier
     - include: number
     - include: string
+    - include: terminator
 
-  # Statement terminator.
-  terminator:
-    - match: ','
-      scope: keyword.operator.terminator.inno
-
-  # Section delineated by curly braces. Necessary to prevent matching semicolons as comments.
-  braces-section:
+  # Section delimited by curly braces. Prevents matching semicolons as comments.
+  braces:
     - match: '\{'
       scope: punctuation.section.braces.begin.inno
       push:
         - meta_scope: meta.braces.inno
-        - include: comment-block
+        - match: ';'
+          scope: punctuation.separator.inno
         - include: expression
         - match: '\}'
           scope: punctuation.section.braces.end.inno
           pop: true
 
-  # Section delineated by parentheses. Necessary to prevent matching commas as terminators.
-  parens-section:
+  # Section delimited by parentheses.
+  parens:
     - match: '\('
       scope: punctuation.section.parens.begin.inno
       push:
         - meta_scope: meta.parens.inno
-        - include: comment
         - include: expression
         - match: '\)'
           scope: punctuation.section.parens.end.inno
           pop: true
+
+  # Push when expecting arguments of a function call. Pops if arguments are not found. Prevents matching terminators.
+  expect-arguments:
+    - include: comment
+    - match: '\('
+      scope: punctuation.section.arguments.begin.inno
+      set:
+        - meta_scope: meta.arguments.inno
+        - match: ','
+          scope: punctuation.separator.inno
+        - include: expression
+        - match: '\)'
+          scope: punctuation.section.arguments.end.inno
+          pop: true
+    - include: pop-before-char
+
+  # Push when expecting parameters of a function definition. Pops if parameters are not found.
+  expect-parameters:
+    - include: comment
+    - match: '\('
+      scope: punctuation.section.parameters.begin.inno
+      set:
+        - meta_scope: meta.function.parameters.inno
+        - include: comment
+        - include: type
+        - include: number
+        - include: string
+        - match: ','
+          scope: punctuation.separator.inno
+        - match: '[*?]'
+          scope: keyword.operator.inno
+        - match: '\w+'
+          scope: variable.parameter.inno
+        - match: '='
+          scope: keyword.operator.assignment.inno
+          push:
+            - match: '(?=[,)])'
+              pop: true
+            - include: expression
+        - match: '\)'
+          scope: punctuation.section.parameters.end.inno
+          pop: true
+    - include: pop-before-char
 
   # Operator.
   operator:
@@ -216,10 +223,15 @@ contexts:
     - match: '(?i)\b(?:any|int|str|func)\b'
       scope: storage.type.inno
 
-  # Function.
-  function:
+  # Identifier (function or variable).
+  identifier:
+    # Built-in function.
     - match: '(?i)\b(?:{{functions_language}}|{{functions_support}})\b'
       scope: support.function.inno
+      push: expect-arguments
+    # User defined function (may be a variable, but we will still try to match arguments).
+    - match: '(?i)[a-z_]\w*'
+      push: expect-arguments
 
   # Constant.
   constant:
@@ -257,3 +269,8 @@ contexts:
         - match: "'"
           scope: punctuation.definition.string.end.inno
           pop: true
+
+  # Statement terminator.
+  terminator:
+    - match: ','
+      scope: keyword.operator.terminator.inno
