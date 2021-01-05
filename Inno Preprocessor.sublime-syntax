@@ -5,6 +5,7 @@ scope: meta.preprocessor.inno
 
 variables:
   directives: '(?:[:+=!]|(?:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef|x)\b)'
+  pragma_keywords: '(?:option|parseroption|inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)'
   constants_language: '(?:__COUNTER__|__FILE__|__INCLUDE__|__LINE__|__OPT_[A-Z]__|__PATHFILENAME__|__POPT_[A-Z]__|__WIN32__|ISPP_INVOKED|ISPPCC_INVOKED|PREPROCVER|WINDOWS|UNICODE|CompilerPath|SourcePath|Ver)'
   constants_support: '(?:_BUILTINS_ISS_|COMPANY_NAME|faAnyFile|faArchive|faDirectory|faHidden|False|faReadOnly|faSymLink|faSysFile|faVolumeID|FILE_DESCRIPTION|FILE_VERSION|FIND_AND|FIND_BEGINS|FIND_CASESENSITIVE|FIND_CONTAINS|FIND_ENDS|FIND_MATCH|FIND_NOT|FIND_OR|FIND_SENSITIVE|FIND_TRIM|HKCC|HKCC64|HKCR|HKCR64|HKCU|HKCU64|HKEY_CLASSES_ROOT|HKEY_CLASSES_ROOT_64|HKEY_CURRENT_CONFIG|HKEY_CURRENT_CONFIG_64|HKEY_CURRENT_USER|HKEY_CURRENT_USER_64|HKEY_LOCAL_MACHINE|HKEY_LOCAL_MACHINE_64|HKEY_USERS|HKEY_USERS_64|HKLM|HKLM64|HKU|HKU64|INTERNAL_NAME|LEGAL_COPYRIGHT|MaxInt|MinInt|NewLine|No|NULL|ORIGINAL_FILENAME|PRODUCT_NAME|PRODUCT_VERSION|SW_HIDE|SW_MAX|SW_MAXIMIZE|SW_MINIMIZE|SW_NORMAL|SW_RESTORE|SW_SHOW|SW_SHOWDEFAULT|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_SHOWMINNOACTIVE|SW_SHOWNA|SW_SHOWNOACTIVATE|SW_SHOWNORMAL|Tab|True|TYPE_ARRAY|TYPE_ERROR|TYPE_FUNC|TYPE_INTEGER|TYPE_MACRO|TYPE_NULL|TYPE_STRING|void|Yes)'
   functions_language: '(?:ComparePackedVersion|Copy|CopyFile|Defined|DeleteFile|DeleteFileNow|DimOf|DirExists|EntryCount|Error|Exec|FileClose|FileEof|FileExists|FileOpen|FileRead|FileReset|FileSize|Find|FindClose|FindFirst|FindGetFileName|FindNext|ForceDirectories|GetDateTimeString|GetEnv|GetFileDateTimeString|GetMD5OfFile|GetMD5OfString|GetMD5OfUnicodeString|GetSHA1OfFile|GetSHA1OfString|GetSHA1OfUnicodeString|GetStringFileInfo|GetVersionNumbersString|Int|IsWin64|Len|LowerCase|Message|Pos|ReadIni|ReadReg|RPos|SamePackedVersion|SaveStringToFile|SaveToFile|SetSetupSetting|SetupSetting|Str|StringChange|Trim|TypeOf|UpperCase|Warning|WriteIni)'
@@ -58,7 +59,7 @@ contexts:
           set:
             - meta_content_scope: string.unquoted.inno
             - include: comment
-        - match: '(?i)(?:inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
+        - match: '(?i)(?:{{pragma_keywords}})\b'
           scope: keyword.other.inno
           pop: true
         - include: pop-before-char
