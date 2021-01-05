@@ -364,29 +364,29 @@ contexts:
       scope: punctuation.separator.inno
       pop: true
 
-  # Directive number. Partial directive value must not be recognized as number.
+  # Directive number. Must end at line spanning or line end.
   directive-number:
     # Hexadecimal number.
-    - match: '\$\h+(?=\s*(?:\\|$))'
+    - match: '\$\h+(?=\s*(?:\s\\|$))'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer, float or version.
-    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:\\|$))'
+    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:\s\\|$))'
       scope: constant.numeric.inno
 
-  # Parameter number. Partial parameter value must not be recognized as number.
+  # Parameter number. Must end at separator, line spanning or line end.
   parameter-number:
     # Hexadecimal number.
-    - match: '\$\h+(?=\s*(?:;|\\|$))'
+    - match: '\$\h+(?=\s*(?:;|\s\\|$))'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer, float or version.
-    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:;|\\|$))'
+    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:;|\s\\|$))'
       scope: constant.numeric.inno
 
   # Directive string.
   # Can be double-quoted or unquoted. Constants are expanded.
   # Quotes are valid, also in constants. Opening braces must be escaped.
   directive-string:
-    # Quoted string. Has to start and end with a quote.
+    # Quoted string. Starts and ends with a quote.
     - match: '"(?=.*"\s*$)'
       scope: punctuation.definition.string.begin.inno
       push:
@@ -437,7 +437,7 @@ contexts:
   # Can be double-quoted or unquoted. Constants are expanded.
   # Quotes must be escaped, also in constants. Opening braces must be escaped.
   parameter-string:
-    # Quoted string. Terminated at unescaped quote.
+    # Quoted string. Terminates at unescaped quote.
     - match: '"'
       scope: punctuation.definition.string.begin.inno
       push:
