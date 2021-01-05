@@ -4,7 +4,8 @@ name: 'Inno Pascal'
 scope: source.pascal.inno
 
 variables:
-  keywords: '(?:and|array|as|asm|begin|break|case|class|const|constructor|continue|destructor|div|do|downto|else|end|except|exit|export|external|finalization|finally|for|forward|function|goto|if|implementation|in|inherited|initialization|interface|is|label|mod|not|of|or|out|override|private|procedure|program|property|protected|public|published|record|repeat|set|shl|shr|then|to|try|type|unit|until|uses|var|virtual|while|with|xor)'
+  keywords: '(?:and|array|as|begin|break|case|const|continue|div|do|downto|else|end|except|exit|external|finally|for|forward|function|goto|if|in|interface|is|label|mod|not|of|or|out|procedure|program|record|repeat|set|shl|shr|then|to|try|type|until|var|while|with|xor)'
+  keywords_invalid: '(?:class|constructor|destructor|export|finalization|implementation|inherited|initialization|override|private|property|protected|public|published|unit|uses|virtual)'
   types_pascal: '(?:AnsiString|Bool|Boolean|Byte|ByteBool|Cardinal|Char|Currency|Double|DWord|Extended|Int64|Integer|LongBool|LongInt|LongWord|PAnsiChar|ShortInt|Single|SmallInt|String|UnicodeString|Variant|WideChar|WideString|Word|WordBool)'
   types_inno: '(?:HBitmap|HResult|HWND|TAlign|TAlignment|TAlphaFormat|TAnchorKind|TAnchors|TArrayOfString|TBevelKind|TBevelShape|TBevelStyle|TBevelWidth|TBorderIcon|TBorderIcons|TBorderStyle|TBorderWidth|TBrushStyle|TCheckBoxState|TCheckItemOperation|TCloseAction|TCloseEvent|TCloseQueryEvent|TColor|TComboBoxStyle|TConstraintSize|TDotNetVersion|TDuplicates|TEditCharCase|TEShiftState|TExecWait|TFindRec|TFolderRenameEvent|TFontStyle|TFontStyles|TFormBorderStyle|TFormStyle|TGUID|TKeyEvent|TKeyPressEvent|TListBoxStyle|TMsgBoxType|TNewProgressBarState|TNewProgressBarStyle|TNotebook|TNotifyEvent|TOnDownloadProgress|TPanelBevel|TPenMode|TPenStyle|TPosition|TScrollBarInc|TScrollBarKind|TScrollStyle|TSetupMessageID|TSetupProcessorArchitecture|TSetupStep|TShiftState|TUninstallStep|TVarType|TWindowsVersion|TWizardPageButtonEvent|TWizardPageCancelEvent|TWizardPageNotifyEvent|TWizardPageShouldSkipEvent)'
   classes_inno: '(?:IDispatch|IUnknown|TBevel|TBitmap|TBitmapImage|TBrush|TButton|TButtonControl|TCanvas|TCheckBox|TComboBox|TComponent|TControl|TCustomCheckBox|TCustomComboBox|TCustomControl|TCustomEdit|TCustomFolderTreeView|TCustomLabel|TCustomListBox|TCustomMemo|TCustomPanel|TDownloadWizardPage|TEdit|TFileStream|TFolderTreeView|TFont|TForm|TGraphic|TGraphicControl|TGraphicsObject|THandleStream|TInputDirWizardPage|TInputFileWizardPage|TInputOptionWizardPage|TInputQueryWizardPage|TLabel|TListBox|TMainForm|TMemo|TNewButton|TNewCheckBox|TNewCheckListBox|TNewComboBox|TNewEdit|TNewListBox|TNewMemo|TNewNotebook|TNewNotebookPage|TNewProgressBar|TNewRadioButton|TNewStaticText|TObject|TOutputMsgMemoWizardPage|TOutputMsgWizardPage|TOutputProgressWizardPage|TPanel|TPasswordEdit|TPen|TPersistent|TRadioButton|TRichEditViewer|TScrollingWinControl|TSetupForm|TSizeConstraints|TStartMenuFolderTreeView|TStream|TStringList|TStrings|TStringStream|TUIStateForm|TUninstallProgressForm|TWinControl|TWizardForm|TWizardPage)'
@@ -122,9 +123,9 @@ contexts:
         - include: type-declaration
         - include: block
 
-  # Pop context at end of a top-level block (const, label, type, var).
+  # Pop context at end of a top-level block (const, type, var).
   pop-at-block-end:
-    - match: '(?i)(?=\b(?:begin|const|label|type|var|constructor|destructor|function|procedure)\b)'
+    - match: '(?i)(?=\b(?:begin|end|const|label|program|type|var|function|procedure)\b)'
       pop: true
 
   # Interface definition.
@@ -208,6 +209,8 @@ contexts:
   keyword:
     - match: '(?i)\b{{keywords}}\b'
       scope: keyword.other.pascal
+    - match: '(?i)\b{{keywords_invalid}}\b'
+      scope: invalid.illegal.pascal
 
   # Type.
   type:
@@ -231,7 +234,7 @@ contexts:
   # Identifier.
   identifier:
     # Special or global variable.
-    - match: '(?i)\b(?:result|self|MainForm|UninstallProgressForm|WizardForm)\b'
+    - match: '(?i)\b(?:result|MainForm|UninstallProgressForm|WizardForm)\b'
       scope: variable.language.pascal
     # Member of a data structure.
     - match: '(?<=\w)\s*(\.)\s*\w+'
