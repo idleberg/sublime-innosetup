@@ -82,10 +82,11 @@ contexts:
 
   # Definition of routine (function or procedure).
   routine-definition:
-    - match: '(?i)\b(function|procedure)\s+(\w+(?:\.\w+)?)'
+    - match: '(?i)\b(function|procedure)\s+(?:\w+(\.))?(\w+)'
       captures:
         1: storage.type.function.pascal keyword.declaration.function.pascal
-        2: meta.function.pascal entity.name.function.pascal
+        2: punctuation.accessor.pascal
+        3: meta.function.pascal entity.name.function.pascal
       push:
         - include: line-spanning
         # Match parameters.
@@ -179,6 +180,7 @@ contexts:
     - include: routine
     - include: constant
     - include: variable
+    - include: member
     - include: escape
     - include: number
     - include: string
@@ -229,6 +231,12 @@ contexts:
   variable:
     - match: '(?i)\b(?:result|self|MainForm|UninstallProgressForm|WizardForm)\b'
       scope: variable.language.pascal
+
+  # Member of a data structure.
+  member:
+    - match: '(?<=\w)\s*(\.)\s*\w+'
+      captures:
+        1: punctuation.accessor.pascal
 
   # Escape sequence.
   escape:
