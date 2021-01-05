@@ -303,7 +303,7 @@ contexts:
 
   # Parameter expecting boolean expression.
   boolean-expression-parameter:
-    - match: '(?i)\b({{parameters_boolean}})\s*(:)'
+    - match: '(?i)\s*(\b{{parameters_boolean}})\s*(:)'
       captures:
         1: meta.parameter.inno keyword.other.inno
         2: keyword.operator.assignment.inno
@@ -317,7 +317,7 @@ contexts:
 
   # Parameter expecting flags.
   flag-parameter:
-    - match: '(?i)\b({{parameters_flag}})\s*(:)'
+    - match: '(?i)\s*(\b{{parameters_flag}})\s*(:)'
       captures:
         1: meta.parameter.inno keyword.other.inno
         2: keyword.operator.assignment.inno
@@ -329,7 +329,7 @@ contexts:
 
   # Parameter expecting keywords.
   keyword-parameter:
-    - match: '(?i)\b({{parameters_keyword}})\s*(:)'
+    - match: '(?i)\s*(\b{{parameters_keyword}})\s*(:)'
       captures:
         1: meta.parameter.inno keyword.other.inno
         2: keyword.operator.assignment.inno
