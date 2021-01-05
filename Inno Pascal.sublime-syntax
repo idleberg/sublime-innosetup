@@ -17,9 +17,9 @@ variables:
 
 contexts:
   # Pascal.
+  # Preprocessor handling is included in the push prototype.
   main:
-    # General.
-    # Preprocessor scopes are included in the push prototype.
+    # Common.
     - include: line-spanning
     - include: comment
     # Language constructs.

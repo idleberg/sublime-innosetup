@@ -12,9 +12,9 @@ variables:
 
 contexts:
   # Preprocessor.
+  # Line end handling is included in the push prototype.
   main:
-    # General.
-    # Line end handling is included in the push prototype.
+    # Common.
     - include: comment
     # Directives.
     - include: pragma-directive
