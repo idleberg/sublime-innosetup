@@ -1,4 +1,5 @@
 {
+  "scope": "source.pascal.inno",
   "completions": [
     {
       "contents": "function GetCmdTail",
@@ -968,6 +969,5 @@
       "contents": "function CastIntegerToString(${1:const L: Longint})",
       "trigger": "CastIntegerToString\tDeprecated"
     }
-  ],
-  "scope": "source.pascal.inno"
+  ]
 }
