@@ -86,6 +86,7 @@ contexts:
         3: meta.function.pascal entity.name.function.pascal
       push:
         - include: line-spanning
+        - include: comment
         # Match parameters.
         - match: '\('
           push:
