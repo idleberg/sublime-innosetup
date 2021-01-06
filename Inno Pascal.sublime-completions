@@ -82,12 +82,12 @@
       "trigger": "ExpandConstantEx\tSetup or Uninstall Info"
     },
     {
-      "contents": "IsComponentSelected(${1:const Components: String})",
-      "trigger": "IsComponentSelected\tSetup or Uninstall Info"
+      "contents": "WizardIsComponentSelected(${1:const Components: String})",
+      "trigger": "WizardIsComponentSelected\tSetup or Uninstall Info"
     },
     {
-      "contents": "IsTaskSelected(${1:const Tasks: String})",
-      "trigger": "IsTaskSelected\tSetup or Uninstall Info"
+      "contents": "WizardIsTaskSelected(${1:const Tasks: String})",
+      "trigger": "WizardIsTaskSelected\tSetup or Uninstall Info"
     },
     {
       "contents": "ExtractTemporaryFile(${1:const FileName: String})",
@@ -134,12 +134,8 @@
       "trigger": "ShowExceptionMessage\tException"
     },
     {
-      "contents": "IsAdminLoggedOn",
-      "trigger": "IsAdminLoggedOn\tSystem"
-    },
-    {
-      "contents": "IsPowerUserLoggedOn",
-      "trigger": "IsPowerUserLoggedOn\tSystem"
+      "contents": "IsAdmin",
+      "trigger": "IsAdmin\tSystem"
     },
     {
       "contents": "GetWindowsVersion",
@@ -556,10 +552,6 @@
     {
       "contents": "GetTempDir",
       "trigger": "GetTempDir\tFile System"
-    },
-    {
-      "contents": "GetShellFolder(${Common: Boolean}, ${2:const ID: TShellFolderID})",
-      "trigger": "GetShellFolder\tFile System"
     },
     {
       "contents": "GetShellFolderByCSIDL(${1:const Folder: Integer}, ${2:const Create: Boolean})",
@@ -1060,6 +1052,150 @@
     {
       "contents": "function UninstallNeedRestart(): Boolean;\nbegin\n\t$0\nend",
       "trigger": "UninstallNeedRestart\tUninstall event"
+    },
+    {
+      "contents": "WizardSelectComponents(${1:const Components: String})",
+      "trigger": "WizardSelectComponents\tSetup or Uninstall Info"
+    },
+    {
+      "contents": "WizardSelectTasks(${1:const Tasks: String})",
+      "trigger": "WizardSelectTasks\tSetup or Uninstall Info"
+    },
+    {
+      "contents": "GetWizardForm",
+      "trigger": "GetWizardForm\tSetup or Uninstall Info"
+    },
+    {
+      "contents": "GetUninstallProgressForm",
+      "trigger": "GetUninstallProgressForm\tSetup or Uninstall Info"
+    },
+    {
+      "contents": "GetMainForm",
+      "trigger": "GetMainForm\tSetup or Uninstall Info"
+    },
+    {
+      "contents": "IsAdminInstallMode",
+      "trigger": "IsAdminInstallMode\tSystem"
+    },
+    {
+      "contents": "IsX86",
+      "trigger": "IsX86\tSystem"
+    },
+    {
+      "contents": "IsX64",
+      "trigger": "IsX64\tSystem"
+    },
+    {
+      "contents": "IsIA64",
+      "trigger": "IsIA64\tSystem"
+    },
+    {
+      "contents": "IsARM64",
+      "trigger": "IsARM64\tSystem"
+    },
+    {
+      "contents": "IsDotNetInstalled(${1:const MinVersion: TDotNetVersion}; ${2:const MinServicePack: Cardinal})",
+      "trigger": "IsDotNetInstalled\tSystem"
+    },
+    {
+      "contents": "CreateCallback(${1:Method: AnyMethod})",
+      "trigger": "CreateCallback\tSystem"
+    },
+    {
+      "contents": "SameText(${1:const S1: string}; ${2:const S2: string})",
+      "trigger": "SameText\tString"
+    },
+    {
+      "contents": "SameStr(${1:const S1: string}; ${2:const S2: string})",
+      "trigger": "SameStr\tString"
+    },
+    {
+      "contents": "IsWildcard(${1:const Pattern: String})",
+      "trigger": "IsWildcard\tString"
+    },
+    {
+      "contents": "WildcardMatch(${1:const Text: String}; ${2:const Pattern: String})",
+      "trigger": "WildcardMatch\tString"
+    },
+    {
+      "contents": "GetSHA256OfString(${1:const S: AnsiString})",
+      "trigger": "GetSHA256OfString\tString"
+    },
+    {
+      "contents": "GetSHA256OfUnicodeString(${1:const S: String})",
+      "trigger": "GetSHA256OfUnicodeString\tString"
+    },
+    {
+      "contents": "FileSize64(${1:const Name: String}; ${2:var Size: Int64})",
+      "trigger": "FileSize64\tFile System"
+    },
+    {
+      "contents": "GetSHA256OfFile(${1:const Filename: String})",
+      "trigger": "GetSHA256OfFile\tFile System"
+    },
+    {
+      "contents": "DownloadTemporaryFile(${1:const Url: String}; ${2:const FileName: String}; ${3:const RequiredSHA256OfFile: String}; ${4:const OnDownloadProgress: TOnDownloadProgress})",
+      "trigger": "DownloadTemporaryFile\tFile"
+    },
+    {
+      "contents": "DownloadTemporaryFileSize(${1:const Url})",
+      "trigger": "DownloadTemporaryFileSize\tFile"
+    },
+    {
+      "contents": "GetVersionComponents(${1:const Filename: String}; ${2:var Major: Word}; ${3:var Minor: Word}; ${4:var Revision: Word}; ${5:var Build: Word})",
+      "trigger": "GetVersionComponents\tFile Version"
+    },
+    {
+      "contents": "GetPackedVersion(${1:const Filename: String}; ${2:var Version: Int64})",
+      "trigger": "GetPackedVersion\tFile Version"
+    },
+    {
+      "contents": "PackVersionNumbers(${1:const VersionMS: Cardinal}; ${2:const VersionLS: Cardinal})",
+      "trigger": "PackVersionNumbers\tFile Version"
+    },
+    {
+      "contents": "PackVersionComponents(${1:var Major: Word}; ${2:var Minor: Word}; ${3:var Revision: Word}; ${4:var Build: Word})",
+      "trigger": "PackVersionComponents\tFile Version"
+    },
+    {
+      "contents": "ComparePackedVersion(${1:const Version1: Int64}; ${2:const Version2: Int64})",
+      "trigger": "ComparePackedVersion\tFile Version"
+    },
+    {
+      "contents": "SamePackedVersion(${1:const Version1: Int64}; ${2:const Version2: Int64})",
+      "trigger": "SamePackedVersion\tFile Version"
+    },
+    {
+      "contents": "UnpackVersionNumbers(${1:const Version: Int64}; ${2:const VersionMS: Cardinal}; ${3:const VersionLS: Cardinal})",
+      "trigger": "UnpackVersionNumbers\tFile Version"
+    },
+    {
+      "contents": "UnpackVersionComponents(${1:const Version: Int64}; ${2:var Major: Word}; ${3:var Minor: Word}; ${4:var Revision: Word}; ${5:var Build: Word})",
+      "trigger": "UnpackVersionComponents\tFile Version"
+    },
+    {
+      "contents": "VersionToStr(${1:const Version: Int64})",
+      "trigger": "VersionToStr\tFile Version"
+    },
+    {
+      "contents": "CreateDownloadPage(${1:const ACaption: String}; ${2:const ADescription: String}; ${3:const OnDownloadProgress: TOnDownloadProgress})",
+      "trigger": "CreateDownloadPage\tCustom Setup Wizard Page"
+    },
+    {
+      "contents": "TaskDialogMsgBox(${1:const Instruction: String}; ${2:const Text: String}; ${3:const Typ: TMsgBoxType}; ${4:const Buttons: Cardinal}; ${5:const ButtonLabels: TArrayOfString}; ${6:const ShieldButton: Integer})",
+      "trigger": "TaskDialogMsgBox\tDialog"
+    },
+    {
+      "contents": "SuppressibleTaskDialogMsgBox(${1:const Instruction: String}; ${2:const Text: String}; ${3:const Typ: TMsgBoxType}; ${4:const Buttons: Cardinal}; ${5:const ButtonLabels: TArrayOfString}; ${6:const ShieldButton: Integer}; ${7:const Default: Integer})",
+      "trigger": "SuppressibleTaskDialogMsgBox\tDialog"
+    },
+    {
+      "contents": "Set8087CW(${1:NewCW: Word})",
+      "trigger": "Set8087CW\tOther"
+    },
+    {
+      "contents": "Get8087CW",
+      "trigger": "Get8087CW\tOther"
     }
   ]
 }
