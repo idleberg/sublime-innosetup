@@ -164,7 +164,7 @@ contexts:
     - match: '\('
       scope: punctuation.section.arguments.begin.inno
       set:
-        - meta_scope: meta.arguments.inno
+        - meta_scope: meta.function.arguments.inno
         - match: ','
           scope: punctuation.separator.inno
         - include: expression

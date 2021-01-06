@@ -180,7 +180,7 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
-        - meta_content_scope: source.pascal.embedded.inno
+        - meta_content_scope: source.pascal.embedded.inno source.pascal.inno
         - include: scope:source.pascal.inno
       with_prototype:
         # Line spanning is handled by Inno Pascal syntax.
@@ -232,7 +232,7 @@ contexts:
         1: meta.directive.inno keyword.other.inno
         2: keyword.operator.assignment.inno
       push:
-        - meta_content_scope: source.pascal.embedded.inno
+        - meta_content_scope: source.pascal.embedded.inno source.pascal.inno
         - match: '(?i)\s*(?:yes|no)(?=\s*$)'
           scope: constant.language.inno
         - include: scope:source.pascal.inno
@@ -308,7 +308,7 @@ contexts:
         1: meta.parameter.inno keyword.other.inno
         2: keyword.operator.assignment.inno
       push:
-        - meta_content_scope: source.pascal.embedded.inno
+        - meta_content_scope: source.pascal.embedded.inno source.pascal.inno
         - include: separator
         - include: scope:source.pascal.inno
       with_prototype:
