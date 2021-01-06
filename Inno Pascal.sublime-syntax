@@ -21,8 +21,6 @@ contexts:
   # Preprocessor handling is included in the push prototype.
   main:
     # Language constructs.
-    - include: type-block
-    - include: var-block
     - include: event-attribute
     - include: routine-definition
     # Block of code.
@@ -91,84 +89,14 @@ contexts:
         - match: '\('
           push:
             - meta_scope: meta.function.parameters.pascal
-            - include: type-declaration
             - include: block
             - match: '\w+'
               scope: variable.parameter.pascal
             - match: '\)'
               pop: true
-        # Match return type.
-        - include: type-declaration
         # Pop at anything else.
         - match: '(?=\S)'
           pop: true
-
-  # Type block. Types are recognized anywhere.
-  type-block:
-    - match: '(?i)\b(?:type)\b'
-      scope: keyword.other.pascal
-      push:
-        - include: pop-at-block-end
-        - include: interface-definition
-        - include: record-definition
-        - include: block
-        - include: type
-
-  # Var block. Type declarations are recognized.
-  # Note: Type declarations in const block are invalid in Inno Setup.
-  var-block:
-    - match: '(?i)\b(?:var)\b'
-      scope: keyword.other.pascal
-      push:
-        - include: pop-at-block-end
-        - include: type-declaration
-        - include: block
-
-  # Pop context at end of a top-level block (const, type, var).
-  pop-at-block-end:
-    - match: '(?i)(?=\b(?:begin|end|const|label|program|type|var|function|procedure)\b)'
-      pop: true
-
-  # Interface definition.
-  interface-definition:
-    - match: '(?i)\b(?:interface)\b'
-      scope: keyword.other.pascal
-      push:
-        - include: pop-at-end-keyword
-        # Match ancestor.
-        - match: '\('
-          push:
-            - include: block
-            - include: type
-            - match: '\)'
-              pop: true
-        - include: routine-definition
-        - include: block
-
-  # Record definition.
-  record-definition:
-    - match: '(?i)\b(?:record)\b'
-      scope: keyword.other.pascal
-      push:
-        - include: pop-at-end-keyword
-        - include: type-declaration
-        - include: block
-
-  # Pop context at end keyword.
-  pop-at-end-keyword:
-    - match: '(?i)\b(?:end)\b'
-      scope: keyword.other.pascal
-      pop: true
-
-  # Type declaration.
-  type-declaration:
-    - match: ':'
-      scope: punctuation.separator.pascal
-      push:
-        - match: '(?=[;)=])'
-          pop: true
-        - include: block
-        - include: type
 
   # Block of code.
   block:
@@ -181,6 +109,7 @@ contexts:
   expression:
     - include: operator
     - include: keyword
+    - include: type
     - include: routine
     - include: constant
     - include: identifier
