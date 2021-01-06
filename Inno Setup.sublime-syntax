@@ -309,7 +309,7 @@ contexts:
         2: keyword.operator.assignment.inno
       push:
         - meta_content_scope: source.pascal.embedded.inno
-        - include: pop-separator
+        - include: separator
         - include: scope:source.pascal.inno
       with_prototype:
         - include: line-end
@@ -323,7 +323,7 @@ contexts:
         2: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: pop-separator
+        - include: separator
         - match: '(?i)\s*\b{{flags}}\b'
           scope: constant.language.inno
 
@@ -335,7 +335,7 @@ contexts:
         2: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: pop-separator
+        - include: separator
         - match: '(?i)\s*\b{{keywords_other}}\b'
           scope: constant.language.inno
 
@@ -349,17 +349,12 @@ contexts:
         4: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: pop-separator
+        - include: separator
         - include: parameter-number
         - include: parameter-string
 
-  # Parameter separator.
+  # Parameter separator (pops the context).
   separator:
-    - match: ';'
-      scope: punctuation.separator.inno
-
-  # Parameter separator that pops the context.
-  pop-separator:
     - match: ';'
       scope: punctuation.separator.inno
       pop: true
