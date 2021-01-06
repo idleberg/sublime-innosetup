@@ -5,7 +5,7 @@
     <key>name</key>
     <string>Symbol List: Inno Setup</string>
     <key>scope</key>
-    <string>source.inno entity.name.section.inno</string>
+    <string>source.inno meta.section-tag.inno</string>
     <key>settings</key>
     <dict>
         <key>showInSymbolList</key>
