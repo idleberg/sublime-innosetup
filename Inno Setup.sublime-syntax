@@ -379,7 +379,7 @@ contexts:
 
   # Directive string.
   # Can be double-quoted or unquoted. Constants are expanded.
-  # Quotes are valid, also in constants. Opening braces must be escaped.
+  # Unescaped quotes are valid, also in constants. Opening braces must be escaped.
   directive-string:
     # Quoted string. Starts and ends with a quote.
     - match: '"(?=.*"\s*$)'
@@ -426,7 +426,6 @@ contexts:
             - include: preprocessor-inline
             - match: '"'
               scope: constant.character.escape.inno
-        - include: constant
 
   # Parameter string.
   # Can be double-quoted or unquoted. Constants are expanded.
@@ -492,7 +491,7 @@ contexts:
 
   # Message string.
   # Always unquoted. Constants are not expanded.
-  # Quotes and opening braces are valid.
+  # Unescaped quotes and braces are valid.
   message-string:
     # Unquoted string.
     - match: '(?=\S)'
