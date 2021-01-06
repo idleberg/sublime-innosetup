@@ -514,19 +514,19 @@ contexts:
     - match: '(?i)(\{)(?:{{constants}}|{{constants_deprecated}})(\})'
       scope: support.constant.inno
       captures:
-        1: punctuation.section.braces.begin.inno
-        2: punctuation.section.braces.end.inno
+        1: punctuation.definition.constant.inno
+        2: punctuation.definition.constant.inno
     # Dynamic constant.
     - match: '(\{)(?:%|(?:code|drive|ini|cm|reg|param):)'
       captures:
-        1: punctuation.section.braces.begin.inno
+        1: punctuation.definition.constant.inno
       push:
         - meta_scope: support.constant.inno
         - include: line-end
         - include: preprocessor-inline
         - include: constant
         - match: '\}'
-          scope: punctuation.section.braces.end.inno
+          scope: punctuation.definition.constant.inno
           pop: true
         - match: '\|'
           scope: punctuation.separator.inno
