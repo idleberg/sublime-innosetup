@@ -99,8 +99,10 @@ contexts:
         - include: comment
         - include: keyword
         - include: type
-        - match: '(?i)[a-z_]\w*'
-          scope: meta.function.inno entity.name.function.inno
+        - match: '(?i)([a-z_]\w*(?=\s*\())|([a-z_]\w*)'
+          captures:
+            1: meta.function.inno entity.name.function.inno
+            2: entity.name.variable.inno
           set: expect-parameters
         - include: pop-before-char
 
