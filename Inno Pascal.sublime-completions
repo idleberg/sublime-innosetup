@@ -968,6 +968,98 @@
     {
       "contents": "CastIntegerToString(${1:const L: Longint})",
       "trigger": "CastIntegerToString\tDeprecated"
+    },
+    {
+      "contents": "function InitializeSetup(): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "InitializeSetup\tSetup event"
+    },
+    {
+      "contents": "procedure InitializeWizard();\nbegin\n\t$0\nend",
+      "trigger": "InitializeWizard\tSetup event"
+    },
+    {
+      "contents": "procedure DeinitializeSetup();\nbegin\n\t$0\nend",
+      "trigger": "DeinitializeSetup\tSetup event"
+    },
+    {
+      "contents": "procedure CurStepChanged(CurStep: TSetupStep);\nbegin\n\t$0\nend",
+      "trigger": "CurStepChanged\tSetup event"
+    },
+    {
+      "contents": "procedure CurInstallProgressChanged(CurProgress, MaxProgress: Integer);\nbegin\n\t$0\nend",
+      "trigger": "CurInstallProgressChanged\tSetup event"
+    },
+    {
+      "contents": "function NextButtonClick(CurPageID: Integer): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "NextButtonClick\tSetup event"
+    },
+    {
+      "contents": "function BackButtonClick(CurPageID: Integer): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "BackButtonClick\tSetup event"
+    },
+    {
+      "contents": "procedure CancelButtonClick(CurPageID: Integer; var Cancel, Confirm: Boolean);\nbegin\n\t$0\nend",
+      "trigger": "CancelButtonClick\tSetup event"
+    },
+    {
+      "contents": "function ShouldSkipPage(PageID: Integer): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "ShouldSkipPage\tSetup event"
+    },
+    {
+      "contents": "procedure CurPageChanged(CurPageID: Integer);\nbegin\n\t$0\nend",
+      "trigger": "CurPageChanged\tSetup event"
+    },
+    {
+      "contents": "function CheckPassword(Password: String): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "CheckPassword\tSetup event"
+    },
+    {
+      "contents": "function NeedRestart(): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "NeedRestart\tSetup event"
+    },
+    {
+      "contents": "function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;\nbegin\n\t$0\nend",
+      "trigger": "UpdateReadyMemo\tSetup event"
+    },
+    {
+      "contents": "procedure RegisterPreviousData(PreviousDataKey: Integer);\nbegin\n\t$0\nend",
+      "trigger": "RegisterPreviousData\tSetup event"
+    },
+    {
+      "contents": "function CheckSerial(Serial: String): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "CheckSerial\tSetup event"
+    },
+    {
+      "contents": "function GetCustomSetupExitCode: Integer;\nbegin\n\t$0\nend",
+      "trigger": "GetCustomSetupExitCode\tSetup event"
+    },
+    {
+      "contents": "function PrepareToInstall(var NeedsRestart: Boolean): String;\nbegin\n\t$0\nend",
+      "trigger": "PrepareToInstall\tSetup event"
+    },
+    {
+      "contents": "procedure RegisterExtraCloseApplicationsResources;\nbegin\n\t$0\nend",
+      "trigger": "RegisterExtraCloseApplicationsResources\tSetup event"
+    },
+    {
+      "contents": "function InitializeUninstall(): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "InitializeUninstall\tUninstall event"
+    },
+    {
+      "contents": "procedure InitializeUninstallProgressForm();\nbegin\n\t$0\nend",
+      "trigger": "InitializeUninstallProgressForm\tUninstall event"
+    },
+    {
+      "contents": "procedure DeinitializeUninstall();\nbegin\n\t$0\nend",
+      "trigger": "DeinitializeUninstall\tUninstall event"
+    },
+    {
+      "contents": "procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);\nbegin\n\t$0\nend",
+      "trigger": "CurUninstallStepChanged\tUninstall event"
+    },
+    {
+      "contents": "function UninstallNeedRestart(): Boolean;\nbegin\n\t$0\nend",
+      "trigger": "UninstallNeedRestart\tUninstall event"
     }
   ]
 }
