@@ -386,46 +386,25 @@ contexts:
       scope: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.inno
-        - include: line-end
-        - include: preprocessor-inline
-        # Only last quote terminates the string, other quotes are escaped.
-        - match: '"(?!\s*$)'
-          scope: constant.character.escape.inno
+        - include: string-common
         - match: '"'
           scope: punctuation.definition.string.end.inno
           pop: true
-        # Push temporary constant-matching context to handle quotes.
-        - match: '(?=\{)'
-          push:
-            - include: constant
-            - include: pop-here
-          with_prototype:
-            # Preprocessor can contain strings so must be included to take precedence.
-            - include: preprocessor-inline
-            - match: '"(?!\s*$)'
-              scope: constant.character.escape.inno
-            # Premature end of string.
-            - match: '(?=")'
-              pop: true
+      with_prototype:
+        - include: string-prototype
+        # Only last quote terminates the string, other quotes are escaped.
+        - match: '"(?!\s*$)'
+          scope: constant.character.escape.inno
     # Unquoted string. Can contain quotes.
     - match: '(?=\S)'
       push:
         - meta_content_scope: string.unquoted.inno
-        - include: line-end
-        - include: preprocessor-inline
-        # Escape quotes for readability.
+        - include: string-common
+      with_prototype:
+        - include: string-prototype
+        # Consume quote. Escape for readability.
         - match: '"'
           scope: constant.character.escape.inno
-        # Push temporary constant-matching context to handle quotes.
-        - match: '(?=\{)'
-          push:
-            - include: constant
-            - include: pop-here
-          with_prototype:
-            # Preprocessor can contain strings so must be included to take precedence.
-            - include: preprocessor-inline
-            - match: '"'
-              scope: constant.character.escape.inno
 
   # Parameter string.
   # Can be double-quoted or unquoted. Constants are expanded.
@@ -436,47 +415,39 @@ contexts:
       scope: punctuation.definition.string.begin.inno
       push:
         - meta_scope: string.quoted.inno
-        - include: line-end
-        - include: preprocessor-inline
-        # Unescaped quote terminates the string.
-        - match: '""'
-          scope: constant.character.escape.inno
+        - include: string-common
         - match: '"'
           scope: punctuation.definition.string.end.inno
           set: parameter-end
-        # Push temporary constant-matching context to handle quotes.
-        - match: '(?=\{)'
-          push:
-            - include: constant
-            - include: pop-here
-          with_prototype:
-            # Preprocessor can contain strings so must be included to take precedence.
-            - include: preprocessor-inline
-            - match: '""'
-              scope: constant.character.escape.inno
-            # Premature end of string.
-            - match: '(?=")'
-              pop: true
+      with_prototype:
+        - include: string-prototype
+        # Escaped quote.
+        - match: '""'
+          scope: constant.character.escape.inno
     # Unquoted string. Quotes are invalid.
     - match: '(?=\S)'
       push:
         - meta_content_scope: string.unquoted.inno
-        - include: line-end
-        - include: preprocessor-inline
-        # Quote or semicolon terminates the string at whitespace preceding it.
-        - match: '(?=\s*[;"])'
+        - include: string-common
+        - match: '(?=\s*")'
           set: parameter-end
-        # Push temporary constant-matching context to handle quotes.
-        - match: '(?=\{)'
-          push:
-            - include: constant
-            - include: pop-here
-          with_prototype:
-            # Preprocessor can contain strings so must be included to take precedence.
-            - include: preprocessor-inline
-            # Premature end of string.
-            - match: '(?=\s*[;"])'
-              pop: true
+      with_prototype:
+        - include: string-prototype
+        # Premature end of string.
+        - match: '(?=\s*;)'
+          pop: true
+
+  # Common includes for directive and parameter strings.
+  string-common:
+    - include: line-end
+    - include: preprocessor-inline
+    - match: '\{\{'
+      scope: constant.character.escape.inno
+    - include: constant
+
+  string-prototype:
+    # Preprocessor can contain quoted strings so must take precedence.
+    - include: preprocessor-inline
 
   # Expected end of parameter. Used to mark multiple values in a single parameter as invalid.
   parameter-end:
@@ -506,9 +477,6 @@ contexts:
 
   # Constant.
   constant:
-    # Escaped opening brace.
-    - match: '\{\{'
-      scope: constant.character.escape.inno
     # Predefined constant.
     - match: '(?i)(\{)(?:{{constants}}|{{constants_deprecated}})(\})'
       scope: support.constant.inno
@@ -521,22 +489,26 @@ contexts:
         1: punctuation.definition.constant.inno
       push:
         - meta_scope: support.constant.inno
-        - include: line-end
-        - include: preprocessor-inline
-        - include: constant
-        - match: '\}'
-          scope: punctuation.definition.constant.inno
-          pop: true
+        - include: constant-common
         - match: '\|'
           scope: punctuation.separator.inno
         - match: '(?i)%[0-9a-f]{2}'
           scope: constant.character.escape.inno
     # Invalid constant.
     - match: '\{'
+      scope: punctuation.definition.constant.inno
       push:
         - meta_scope: invalid.illegal.inno
-        - include: line-end
-        - include: preprocessor-inline
-        - include: constant
-        - match: '\}'
-          pop: true
+        - include: constant-common
+
+  # Common includes for constants.
+  constant-common:
+    - include: line-end
+    - include: preprocessor-inline
+    - include: constant
+    - match: '\}'
+      scope: punctuation.definition.constant.inno
+      pop: true
+    # Premature end of constant. Valid quotes should be consumed in push prototype.
+    - match: '(?=")'
+      pop: true
