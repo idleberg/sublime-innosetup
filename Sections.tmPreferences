@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>name</key>
-    <string>Symbol List: Inno Setup</string>
+    <string>Inno Setup: Sections</string>
     <key>scope</key>
     <string>source.inno meta.section-tag.inno</string>
     <key>settings</key>
@@ -11,9 +11,7 @@
         <key>showInSymbolList</key>
         <integer>1</integer>
         <key>symbolTransformation</key>
-        <string>
-            s/(.+)/$1/
-        </string>
+        <string>s/(.+)/$1/</string>
     </dict>
 </dict>
 </plist>
