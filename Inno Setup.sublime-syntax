@@ -252,8 +252,7 @@ contexts:
         - include: line-end
         - match: '(?i)\b{{keywords_setup}}\b'
           scope: constant.language.inno
-        - include: directive-number
-        - include: directive-string
+        - include: directive-value
 
   # Language prefix used in LangOptions, Messages and CustomMessages sections.
   language-prefix:
@@ -274,8 +273,7 @@ contexts:
         4: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: directive-number
-        - include: directive-string
+        - include: directive-value
 
   # Inno Setup message. Only known messages are assigned the keyword scope.
   inno-message:
@@ -287,7 +285,7 @@ contexts:
         4: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: message-string
+        - include: message-value
 
   # Custom message. All messages are assigned the keyword scope.
   custom-message:
@@ -299,7 +297,7 @@ contexts:
         4: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - include: message-string
+        - include: message-value
 
   # Parameter expecting boolean expression.
   boolean-expression-parameter:
@@ -354,8 +352,7 @@ contexts:
       push:
         - include: line-end
         - include: separator
-        - include: parameter-number
-        - include: parameter-string
+        - include: parameter-value
 
   # Parameter separator (pops the context).
   separator:
@@ -363,28 +360,16 @@ contexts:
       scope: punctuation.separator.inno
       pop: true
 
-  # Directive number. Must end at line spanning or line end.
-  directive-number:
+  # Directive value.
+  # Matches numbers (only if alone) and double-quoted or unquoted strings with constants.
+  # In strings unescaped quotes are valid (also in constants), opening braces must be escaped.
+  directive-value:
     # Hexadecimal number.
     - match: '\$\h+(?=\s*(?:\s\\|$))'
       scope: constant.numeric.integer.hexadecimal.inno
     # Integer, float or version.
     - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:\s\\|$))'
       scope: constant.numeric.inno
-
-  # Parameter number. Must end at separator, line spanning or line end.
-  parameter-number:
-    # Hexadecimal number.
-    - match: '\$\h+(?=\s*(?:;|\s\\|$))'
-      scope: constant.numeric.integer.hexadecimal.inno
-    # Integer, float or version.
-    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:;|\s\\|$))'
-      scope: constant.numeric.inno
-
-  # Directive string.
-  # Can be double-quoted or unquoted. Constants are expanded.
-  # Unescaped quotes are valid, also in constants. Opening braces must be escaped.
-  directive-string:
     # Quoted string. Starts and ends with a quote.
     - match: '"(?=.*"\s*$)'
       scope: punctuation.definition.string.begin.inno
@@ -410,10 +395,16 @@ contexts:
         - match: '"'
           scope: constant.character.escape.inno
 
-  # Parameter string.
-  # Can be double-quoted or unquoted. Constants are expanded.
-  # Quotes must be escaped, also in constants. Opening braces must be escaped.
-  parameter-string:
+  # Parameter value.
+  # Matches numbers (only if alone) and double-quoted or unquoted strings with constants.
+  # In strings quotes and opening braces must be escaped (also in constants).
+  parameter-value:
+    # Hexadecimal number.
+    - match: '\$\h+(?=\s*(?:;|\s\\|$))'
+      scope: constant.numeric.integer.hexadecimal.inno
+    # Integer, float or version.
+    - match: '\b[0-9]+(?:\.[0-9]+)*(?=\s*(?:;|\s\\|$))'
+      scope: constant.numeric.inno
     # Quoted string. Terminates at unescaped quote.
     - match: '"'
       scope: punctuation.definition.string.begin.inno
@@ -464,10 +455,9 @@ contexts:
     - match: '\S.*?(?=\s*(?:;|\\|$))'
       scope: invalid.illegal.inno
 
-  # Message string.
-  # Always unquoted. Constants are not expanded.
-  # Unescaped quotes and braces are valid.
-  message-string:
+  # Message value.
+  # Matches only unquoted strings without constants. Unescaped quotes and braces are valid.
+  message-value:
     # Unquoted string.
     - match: '(?=\S)'
       push:
