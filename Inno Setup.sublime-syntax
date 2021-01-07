@@ -233,7 +233,7 @@ contexts:
         2: keyword.operator.assignment.inno
       push:
         - meta_content_scope: source.pascal.embedded.inno source.pascal.inno
-        - match: '(?i)\s*(?:yes|no)(?=\s*$)'
+        - match: '(?i)(?<==)\s*(?:yes|no)(?=\s*$)'
           scope: constant.language.inno
         - include: scope:source.pascal.inno
       with_prototype:
@@ -250,7 +250,7 @@ contexts:
         4: keyword.operator.assignment.inno
       push:
         - include: line-end
-        - match: '(?i)\s*\b{{keywords_setup}}\b'
+        - match: '(?i)\b{{keywords_setup}}\b'
           scope: constant.language.inno
         - include: directive-number
         - include: directive-string
@@ -324,8 +324,10 @@ contexts:
       push:
         - include: line-end
         - include: separator
-        - match: '(?i)\s*\b{{flags}}\b'
+        - match: '(?i)\b{{flags}}\b'
           scope: constant.language.inno
+        - match: '(?i)[^\s;]+'
+          scope: invalid.illegal.inno
 
   # Parameter expecting keywords.
   keyword-parameter:
@@ -336,8 +338,10 @@ contexts:
       push:
         - include: line-end
         - include: separator
-        - match: '(?i)\s*\b{{keywords_other}}\b'
+        - match: '(?i)\b{{keywords_other}}\b'
           scope: constant.language.inno
+        - match: '(?i)[^\s;]+'
+          scope: string.unquoted.inno
 
   # Parameter expecting value.
   value-parameter:
