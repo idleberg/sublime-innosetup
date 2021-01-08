@@ -1196,6 +1196,6 @@
     {
       "contents": "Get8087CW",
       "trigger": "Get8087CW\tOther function"
-    }
+    },
   ]
 }
