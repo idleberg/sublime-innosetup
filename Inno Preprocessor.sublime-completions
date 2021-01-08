@@ -1,0 +1,594 @@
+{
+  "scope": "meta.preprocessor.inno",
+  "completions": [
+    {
+      "contents": "AddBackslash(${1:str Str})",
+      "trigger": "AddBackslash\tAppends a backslash to the string if not already there"
+    },
+    {
+      "contents": "ChangeFileExt(${1:str FileName}, ${2:str NewExt})",
+      "trigger": "ChangeFileExt\tChanges the extension in FileName with NewExt"
+    },
+    {
+      "contents": "ComparePackedVersion(${1:int Version1}, ${2:int Version2})",
+      "trigger": "ComparePackedVersion\tCompares Version1 to Version2"
+    },
+    {
+      "contents": "Copy(${1:str Str}, ${2:int Pos}, ${3:int? Len})",
+      "trigger": "Copy\tExtracts a substring from a string"
+    },
+    {
+      "contents": "CopyFile(${1:str Source}, ${2:str Target})",
+      "trigger": "CopyFile\tCopies an existing file to a new file"
+    },
+    {
+      "contents": "DecodeVer(${1:int Version}, ${2:int Digits = 3})",
+      "trigger": "DecodeVer\tReturns given version decoded to string representation"
+    },
+    {
+      "contents": "Defined(${1:any Identifier})",
+      "trigger": "Defined\tReturns non-zero if the specified identifier is defined"
+    },
+    {
+      "contents": "Delete(${1:str *Str}, ${2:int Pos}, ${3:int Len = MaxInt})",
+      "trigger": "Delete\tDeletes the specified number of characters"
+    },
+    {
+      "contents": "DeleteFile(${1:str Path})",
+      "trigger": "DeleteFile\tMarks file for deletion after the compilation has completed"
+    },
+    {
+      "contents": "DeleteFileNow(${1:str Path})",
+      "trigger": "DeleteFileNow\tDeletes the specified file"
+    },
+    {
+      "contents": "DimOf(${1:any Identifier})",
+      "trigger": "DimOf\tReturns the dimension of the specified identifier"
+    },
+    {
+      "contents": "DirExists(${1:str Path})",
+      "trigger": "DirExists\tReturns non-zero value if the specified directory exists"
+    },
+    {
+      "contents": "EncodeVer(${1:int Major}, ${2:int Minor}, ${3:int Revision = 0}, ${4:int Build = -1})",
+      "trigger": "EncodeVer\tReturns given four version elements encoded to an integer"
+    },
+    {
+      "contents": "EntryCount(${1:str Section})",
+      "trigger": "EntryCount\tReturns the current number of entries in specified section"
+    },
+    {
+      "contents": "Error(${1:str Message})",
+      "trigger": "Error\tFunctional version of error"
+    },
+    {
+      "contents": "Exec(${1:str File}, ${2:str? Cmd}, ${3:str? WorkDir}, ${4:int? Wait}, ${5:int? Flags})",
+      "trigger": "Exec\tExecutes the specified executable file"
+    },
+    {
+      "contents": "ExtractFileDir(${1:str PathName})",
+      "trigger": "ExtractFileDir\tReturns the parent directory without a backslash"
+    },
+    {
+      "contents": "ExtractFileExt(${1:str PathName})",
+      "trigger": "ExtractFileExt\tReturns the extension portion of the given filename"
+    },
+    {
+      "contents": "ExtractFileName(${1:str PathName})",
+      "trigger": "ExtractFileName\tReturns the name portion of the given filename"
+    },
+    {
+      "contents": "ExtractFilePath(${1:str PathName})",
+      "trigger": "ExtractFilePath\tReturns the parent directory with a backslash"
+    },
+    {
+      "contents": "FileClose(${1:int Handle})",
+      "trigger": "FileClose\tCloses a file opened using FileOpen"
+    },
+    {
+      "contents": "FileEof(${1:int Handle})",
+      "trigger": "FileEof\tReturns non-zero if at end of the file"
+    },
+    {
+      "contents": "FileExists(${1:str Path})",
+      "trigger": "FileExists\tReturns non-zero value if the specified file exists"
+    },
+    {
+      "contents": "FileOpen(${1:str Path})",
+      "trigger": "FileOpen\tOpens a file for reading and returns the file handle"
+    },
+    {
+      "contents": "FileRead(${1:int Handle})",
+      "trigger": "FileRead\tReads the next line from the file"
+    },
+    {
+      "contents": "FileReset(${1:int Handle})",
+      "trigger": "FileReset\tResets the file pointer to zero"
+    },
+    {
+      "contents": "FileSize(${1:str Path})",
+      "trigger": "FileSize\tReturns size, in bytes, of the specified file"
+    },
+    {
+      "contents": "Find(${1:int StartPos}, ${2:str Text}, ${3:int? Flags}, ${4:str? Text}, ${5:int? Flags}, ${6:str? Text}, ${7:int? Flags})",
+      "trigger": "Find\tReturns line index depending on specified criteria"
+    },
+    {
+      "contents": "FindClose(${1:int Handle})",
+      "trigger": "FindClose\tTerminates a FindFirst/FindNext sequence"
+    },
+    {
+      "contents": "FindCode()",
+      "trigger": "FindCode\tReturns index of the first code line"
+    },
+    {
+      "contents": "FindFirst(${1:str PathMask}, ${2:int Attribs})",
+      "trigger": "FindFirst\tSearches the directory for the first matching file"
+    },
+    {
+      "contents": "FindGetFileName(${1:int Handle})",
+      "trigger": "FindGetFileName\tReturns name of the last found file"
+    },
+    {
+      "contents": "FindNext(${1:int Handle})",
+      "trigger": "FindNext\tReturns the next matching file"
+    },
+    {
+      "contents": "FindSection(${1:str Section = \"Files\"})",
+      "trigger": "FindSection\tReturns index of the first line in section"
+    },
+    {
+      "contents": "FindSectionEnd(${1:str Section = \"Files\"})",
+      "trigger": "FindSectionEnd\tReturns index of the last line in section"
+    },
+    {
+      "contents": "ForceDirectories(${1:str Path})",
+      "trigger": "ForceDirectories\tCreates all directories in the specified path"
+    },
+    {
+      "contents": "GetDateTimeString(${1:str Format}, ${2:str DateSep}, ${3:str TimeSep})",
+      "trigger": "GetDateTimeString\tReturns the current date and time string"
+    },
+    {
+      "contents": "GetEnv(${1:str VarName})",
+      "trigger": "GetEnv\tReturns the value of the environment variable"
+    },
+    {
+      "contents": "GetFileDateTimeString(${1:str File}, ${2:str Format}, ${3:str DateSep}, ${4:str TimeSep})",
+      "trigger": "GetFileDateTimeString\tReturns the date and time of the specified file"
+    },
+    {
+      "contents": "GetMD5OfFile(${1:str File})",
+      "trigger": "GetMD5OfFile\tGets the MD5 sum of the specified file"
+    },
+    {
+      "contents": "GetMD5OfString(${1:str Str})",
+      "trigger": "GetMD5OfString\tGets the MD5 sum of the specified ANSI string"
+    },
+    {
+      "contents": "GetMD5OfUnicodeString(${1:str Str})",
+      "trigger": "GetMD5OfUnicodeString\tGets the MD5 sum of the specified Unicode string"
+    },
+    {
+      "contents": "GetPackedVersion(${1:str Filename}, ${2:int *Version})",
+      "trigger": "GetPackedVersion\tGets the packed version of the specified file"
+    },
+    {
+      "contents": "GetSHA1OfFile(${1:str File})",
+      "trigger": "GetSHA1OfFile\tGets the SHA-1 hash of the specified file"
+    },
+    {
+      "contents": "GetSHA1OfString(${1:str Str})",
+      "trigger": "GetSHA1OfString\tGets the SHA-1 hash of the specified ANSI string"
+    },
+    {
+      "contents": "GetSHA1OfUnicodeString(${1:str Str})",
+      "trigger": "GetSHA1OfUnicodeString\tGets the SHA-1 hash of the specified Unicode string"
+    },
+    {
+      "contents": "GetStringFileInfo(${1:str File}, ${2:str Value}, ${3:int? LangId})",
+      "trigger": "GetStringFileInfo\tRetrieves string from version information resource"
+    },
+    {
+      "contents": "GetVersionComponents(${1:str Filename}, ${2:int *Major}, ${3:int *Minor}, ${4:int *Revision}, ${5:int *Build})",
+      "trigger": "GetVersionComponents\tGets the individual version components of the specified file"
+    },
+    {
+      "contents": "GetVersionNumbers(${1:str Filename}, ${2:int *VersionMS}, ${3:int *VersionLS})",
+      "trigger": "GetVersionNumbers\tGets the version numbers of the specified file"
+    },
+    {
+      "contents": "GetVersionNumbersString(${1:str Filename})",
+      "trigger": "GetVersionNumbersString\tReturns the version of the specified file"
+    },
+    {
+      "contents": "Insert(${1:str *Str}, ${2:int Index}, ${3:str SubStr})",
+      "trigger": "Insert\tInserts specified SubStr into Str"
+    },
+    {
+      "contents": "Int(${1:any Expr}, ${2:int? Default})",
+      "trigger": "Int\tConverts an expression to integer"
+    },
+    {
+      "contents": "IsWin64()",
+      "trigger": "IsWin64\tReturns non-zero if 64-bit version of Windows"
+    },
+    {
+      "contents": "Len(${1:str Str})",
+      "trigger": "Len\tReturns the length of the given string"
+    },
+    {
+      "contents": "LowerCase(${1:str Str})",
+      "trigger": "LowerCase\tReturns a string converted to lowercase"
+    },
+    {
+      "contents": "Max(${1:int A}, ${2:int B}, ${3:int C = MinInt})",
+      "trigger": "Max\tReturn greater of two numbers"
+    },
+    {
+      "contents": "Message(${1:str Message})",
+      "trigger": "Message\tFunctional version of pragma message"
+    },
+    {
+      "contents": "Min(${1:int A}, ${2:int B}, ${3:int C = MaxInt})",
+      "trigger": "Min\tReturn lower of two numbers"
+    },
+    {
+      "contents": "PackVersionComponents(${1:int Major}, ${2:int Minor}, ${3:int Revision}, ${4:int Build})",
+      "trigger": "PackVersionComponents\tPacks individual version components into a single value"
+    },
+    {
+      "contents": "PackVersionNumbers(${1:int VersionMS}, ${2:int VersionLS})",
+      "trigger": "PackVersionNumbers\tPacks version numbers into a single value"
+    },
+    {
+      "contents": "Pos(${1:str SubStr}, ${2:str Str})",
+      "trigger": "Pos\tSearches for SubStr in Str"
+    },
+    {
+      "contents": "Power(${1:int X}, ${2:int P = 2})",
+      "trigger": "Power\tReturns power of a number"
+    },
+    {
+      "contents": "ReadIni(${1:str IniFile}, ${2:str Section}, ${3:str Key}, ${4:str? Default})",
+      "trigger": "ReadIni\tReads the value from an INI file"
+    },
+    {
+      "contents": "RemoveBackslash(${1:str Str})",
+      "trigger": "RemoveBackslash\tRemoves the trailing backslash from the string"
+    },
+    {
+      "contents": "RemoveFileExt(${1:str FileName})",
+      "trigger": "RemoveFileExt\tRemoves the extension in FileName"
+    },
+    {
+      "contents": "RPos(${1:str SubStr}, ${2:str Str})",
+      "trigger": "RPos\tSearches for SubStr in Str"
+    },
+    {
+      "contents": "SamePackedVersion(${1:int Version1}, ${2:int Version2})",
+      "trigger": "SamePackedVersion\tCompares the packed versions"
+    },
+    {
+      "contents": "SameStr(${1:str S1}, ${2:str S2})",
+      "trigger": "SameStr\tChecks if given strings are identical, case-sensitive"
+    },
+    {
+      "contents": "SameText(${1:str S1}, ${2:str S2})",
+      "trigger": "SameText\tChecks if the given strings are identical ignores case"
+    },
+    {
+      "contents": "SaveStringToFile(${1:str Filename}, ${2:str Str}, ${3:int? Append}, ${4:int? Unicode})",
+      "trigger": "SaveStringToFile\tSaves the specified string to the file"
+    },
+    {
+      "contents": "SaveToFile(${1:str Filename})",
+      "trigger": "SaveToFile\tSaves current preprocessor output to the file"
+    },
+    {
+      "contents": "SetSetupSetting(${1:str Directive}, ${2:str Value})",
+      "trigger": "SetSetupSetting\tModifies or generates [Setup] section directive"
+    },
+    {
+      "contents": "SetupSetting(${1:str Directive})",
+      "trigger": "SetupSetting\tReturns value of [Setup] section directive"
+    },
+    {
+      "contents": "Str(${1:any Expr})",
+      "trigger": "Str\tConverts an expression to string"
+    },
+    {
+      "contents": "StringChange(${1:str Str}, ${2:str Find}, ${3:str Replace})",
+      "trigger": "StringChange\tReplaces all occurrences of Find in Str"
+    },
+    {
+      "contents": "Trim(${1:str Str})",
+      "trigger": "Trim\tReturns Str without leading and trailing spaces"
+    },
+    {
+      "contents": "TypeOf(${1:any Identifier})",
+      "trigger": "TypeOf\tReturns type of the specified identifier"
+    },
+    {
+      "contents": "UnpackVersionComponents(${1:int Version}, ${2:int *Major}, ${3:int *Minor}, ${4:int *Revision}, ${5:int *Build})",
+      "trigger": "UnpackVersionComponents\tUnpacks a packed version into individual components"
+    },
+    {
+      "contents": "UnpackVersionNumbers(${1:int Version}, ${2:int *VersionMS}, ${3:int *VersionLS})",
+      "trigger": "UnpackVersionNumbers\tUnpacks a packed version into version numbers"
+    },
+    {
+      "contents": "UpperCase(${1:str Str})",
+      "trigger": "UpperCase\tReturns a string converted to uppercase"
+    },
+    {
+      "contents": "VersionToStr(${1:int Version})",
+      "trigger": "VersionToStr\tReturns the specified packed version as a string"
+    },
+    {
+      "contents": "Warning(${1:str Message})",
+      "trigger": "Warning\tFunctional version of pragma warning"
+    },
+    {
+      "contents": "WriteIni(${1:str IniFile}, ${2:str Section}, ${3:str Key}, ${4:any Value})",
+      "trigger": "WriteIni\tWrites specified value to an INI file"
+    },
+    {
+      "contents": "YesNo(${1:str Str})",
+      "trigger": "YesNo\tReturns nonzero value if string is \"yes\", \"true\" or \"1\""
+    },
+    {
+      "contents": "__COUNTER__",
+      "trigger": "__COUNTER__\tAutomatically increments each time used"
+    },
+    {
+      "contents": "__FILE__",
+      "trigger": "__FILE__\tReturns name of the current file"
+    },
+    {
+      "contents": "__INCLUDE__",
+      "trigger": "__INCLUDE__\tReturns the current include paths"
+    },
+    {
+      "contents": "__LINE__",
+      "trigger": "__LINE__\tReturns the current line number"
+    },
+    {
+      "contents": "__OPT_${1:X}__",
+      "trigger": "__OPT_X__\tDefined if specified option is in effect"
+    },
+    {
+      "contents": "__PATHFILENAME__",
+      "trigger": "__PATHFILENAME__\tReturns full pathname of the current file"
+    },
+    {
+      "contents": "__POPT_${1:X}__",
+      "trigger": "__POPT_X__\tDefined if specified parser option is in effect"
+    },
+    {
+      "contents": "__WIN32__",
+      "trigger": "__WIN32__\tAlways defined"
+    },
+    {
+      "contents": "ISPP_INVOKED",
+      "trigger": "ISPP_INVOKED\tAlways defined"
+    },
+    {
+      "contents": "ISPPCC_INVOKED",
+      "trigger": "ISPPCC_INVOKED\tDefined if compilation invoked using ISCC"
+    },
+    {
+      "contents": "PREPROCVER",
+      "trigger": "PREPROCVER\tReturns the 32-bit encoded version of ISPP"
+    },
+    {
+      "contents": "WINDOWS",
+      "trigger": "WINDOWS\tAlways defined"
+    },
+    {
+      "contents": "UNICODE",
+      "trigger": "UNICODE\tAlways defined"
+    },
+    {
+      "contents": "CompilerPath",
+      "trigger": "CompilerPath\tPoints to the compiler directory"
+    },
+    {
+      "contents": "SourcePath",
+      "trigger": "SourcePath\tPoints to the the current script directory"
+    },
+    {
+      "contents": "Ver",
+      "trigger": "Ver\tReturns 32-bit encoded version of compiler"
+    },
+    {
+      "contents": "NewLine",
+      "trigger": "NewLine\tReturns the newline character"
+    },
+    {
+      "contents": "Tab",
+      "trigger": "Tab\tReturns the tab character"
+    },
+    "_BUILTINS_ISS_",
+    "COMPANY_NAME",
+    "faAnyFile",
+    "faArchive",
+    "faDirectory",
+    "faHidden",
+    "False",
+    "faReadOnly",
+    "faSymLink",
+    "faSysFile",
+    "faVolumeID",
+    "FILE_DESCRIPTION",
+    "FILE_VERSION",
+    "FIND_AND",
+    "FIND_BEGINS",
+    "FIND_CASESENSITIVE",
+    "FIND_CONTAINS",
+    "FIND_ENDS",
+    "FIND_MATCH",
+    "FIND_NOT",
+    "FIND_OR",
+    "FIND_SENSITIVE",
+    "FIND_TRIM",
+    "HKCC",
+    "HKCC64",
+    "HKCR",
+    "HKCR64",
+    "HKCU",
+    "HKCU64",
+    "HKEY_CLASSES_ROOT",
+    "HKEY_CLASSES_ROOT_64",
+    "HKEY_CURRENT_CONFIG",
+    "HKEY_CURRENT_CONFIG_64",
+    "HKEY_CURRENT_USER",
+    "HKEY_CURRENT_USER_64",
+    "HKEY_LOCAL_MACHINE",
+    "HKEY_LOCAL_MACHINE_64",
+    "HKEY_USERS",
+    "HKEY_USERS_64",
+    "HKLM",
+    "HKLM64",
+    "HKU",
+    "HKU64",
+    "INTERNAL_NAME",
+    "LEGAL_COPYRIGHT",
+    "MaxInt",
+    "MinInt",
+    "NewLine",
+    "No",
+    "NULL",
+    "ORIGINAL_FILENAME",
+    "PRODUCT_NAME",
+    "PRODUCT_VERSION",
+    "SW_HIDE",
+    "SW_MAX",
+    "SW_MAXIMIZE",
+    "SW_MINIMIZE",
+    "SW_NORMAL",
+    "SW_RESTORE",
+    "SW_SHOW",
+    "SW_SHOWDEFAULT",
+    "SW_SHOWMAXIMIZED",
+    "SW_SHOWMINIMIZED",
+    "SW_SHOWMINNOACTIVE",
+    "SW_SHOWNA",
+    "SW_SHOWNOACTIVATE",
+    "SW_SHOWNORMAL",
+    "Tab",
+    "True",
+    "TYPE_ARRAY",
+    "TYPE_ERROR",
+    "TYPE_FUNC",
+    "TYPE_INTEGER",
+    "TYPE_MACRO",
+    "TYPE_NULL",
+    "TYPE_STRING",
+    "void",
+    "Yes",
+    "#append",
+    {
+      "contents": "#define ${1:Identifier} ${2:Expression}",
+      "trigger": "#define"
+    },
+    {
+      "contents": "#dim ${1:Identifier}",
+      "trigger": "#dim"
+    },
+    {
+      "contents": "#elif ${1:Expression}",
+      "trigger": "#elif"
+    },
+    "#else",
+    {
+      "contents": "#emit ${1:Expression}",
+      "trigger": "#emit"
+    },
+    "#endif",
+    "#endsub",
+    {
+      "contents": "#error ${1:Text}",
+      "trigger": "#error"
+    },
+    {
+      "contents": "#expr ${1:Expression}",
+      "trigger": "#expr"
+    },
+    {
+      "contents": "#file ${1:Expression}",
+      "trigger": "#file"
+    },
+    {
+      "contents": "#for {${1:Init}; ${2:Condition}; ${3:Action}} ${4:Expression}",
+      "trigger": "#for"
+    },
+    {
+      "contents": "#if ${1:Expression}",
+      "trigger": "#if"
+    },
+    {
+      "contents": "#ifdef ${1:Identifier}",
+      "trigger": "#ifdef"
+    },
+    {
+      "contents": "#ifndef ${1:Identifier}",
+      "trigger": "#ifndef"
+    },
+    {
+      "contents": "#ifexist ${1:Expression}",
+      "trigger": "#ifexist"
+    },
+    {
+      "contents": "#ifnexist ${1:Expression}",
+      "trigger": "#ifnexist"
+    },
+    {
+      "contents": "#include ${1:Expression}",
+      "trigger": "#include"
+    },
+    {
+      "contents": "#insert ${1:Expression}",
+      "trigger": "#insert"
+    },
+    {
+      "contents": "#pragma ${1:Command} ${2:Expression}",
+      "trigger": "#pragma"
+    },
+    {
+      "contents": "#preproc ${1:Preprocessor}",
+      "trigger": "#preproc"
+    },
+    {
+      "contents": "#redim ${1:Identifier}",
+      "trigger": "#redim"
+    },
+    {
+      "contents": "#sub ${1:Identifier}",
+      "trigger": "#sub"
+    },
+    {
+      "contents": "#undef ${1:Identifier}",
+      "trigger": "#undef"
+    },
+    "builtin",
+    "ispp",
+    "option",
+    "parseroption",
+    "inlinestart",
+    "inlineend",
+    "message",
+    "warning",
+    "error",
+    "verboselevel",
+    "include",
+    "spansymbol",
+    "public",
+    "protected",
+    "private",
+    "any",
+    "int",
+    "str",
+    "func",
+  ]
+}
