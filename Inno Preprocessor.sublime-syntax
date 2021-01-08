@@ -5,6 +5,7 @@ scope: meta.preprocessor.inno
 
 variables:
   directives: '(?:[:+=!]|\b(?i:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef|x)\b)'
+  keywords_preproc: '\b(?i:builtin|ispp)\b'
   keywords_pragma: '\b(?i:option|parseroption|inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
   keywords_storage: '\b(?i:public|protected|private)\b'
   types_language: '\b(?i:any|int|str|func)\b'
@@ -20,6 +21,7 @@ contexts:
   # Line end handling is included in the push prototype.
   main:
     # Directives.
+    - include: preproc-directive
     - include: pragma-directive
     - include: error-directive
     - include: include-directive
@@ -49,6 +51,19 @@ contexts:
       scope: punctuation.definition.comment.inno
       push:
         - meta_scope: comment.line.semicolon.inno
+
+  # Preproc directive.
+  preproc-directive:
+    - match: '(?i)(#)\s*preproc\b'
+      scope: keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - include: comment
+        - match: '{{keywords_preproc}}'
+          scope: keyword.other.inno
+          pop: true
+        - include: pop-before-char
 
   # Pragma directive.
   pragma-directive:
