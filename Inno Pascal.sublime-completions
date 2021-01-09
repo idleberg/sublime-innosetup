@@ -78,7 +78,7 @@
       "trigger": "ExpandConstant\tSetup or Uninstall Info function"
     },
     {
-      "contents": "ExpandConstantEx(${1:const S: String}, ${2:const CustomConst}, ${3:CustomValue: String})",
+      "contents": "ExpandConstantEx(${1:const S: String}, ${2:const CustomConst: String}, ${3:const CustomValue: String})",
       "trigger": "ExpandConstantEx\tSetup or Uninstall Info function"
     },
     {
@@ -98,11 +98,11 @@
       "trigger": "ExtractTemporaryFiles\tSetup or Uninstall Info function"
     },
     {
-      "contents": "GetPreviousData(${1:const ValueName}, DefaultValueData: String})",
+      "contents": "GetPreviousData(${1:const ValueName: String}, ${2:const DefaultValueData: String})",
       "trigger": "GetPreviousData\tSetup or Uninstall Info function"
     },
     {
-      "contents": "SetPreviousData(${1:const PreviousDataKey: Integer}, ${2:const ValueName}, ${3:ValueData: String})",
+      "contents": "SetPreviousData(${1:const PreviousDataKey: Integer}, ${2:const ValueName: String}, ${3:const ValueData: String})",
       "trigger": "SetPreviousData\tSetup or Uninstall Info function"
     },
     {
@@ -162,7 +162,7 @@
       "trigger": "ProcessorArchitecture\tSystem function"
     },
     {
-      "contents": "InstallOnThisVersion(${1:const MinVersion}, ${2:OnlyBelowVersion: String})",
+      "contents": "InstallOnThisVersion(${1:const MinVersion: String}, ${2:const OnlyBelowVersion: String})",
       "trigger": "InstallOnThisVersion\tSystem function"
     },
     {
@@ -194,15 +194,15 @@
       "trigger": "FindWindowByWindowName\tSystem function"
     },
     {
-      "contents": "SendMessage(${1:const Wnd: HWND}, ${2:const Msg}, ${3:WParam}, ${4:LParam: Longint})",
+      "contents": "SendMessage(${1:const Wnd: HWND}, ${2:const Msg: Longint}, ${3:const WParam: Longint}, ${4:const LParam: Longint})",
       "trigger": "SendMessage\tSystem function"
     },
     {
-      "contents": "PostMessage(${1:const Wnd: HWND}, ${2:const Msg}, ${3:WParam}, ${4:LParam: Longint})",
+      "contents": "PostMessage(${1:const Wnd: HWND}, ${2:const Msg: Longint}, ${3:const WParam: Longint}, ${4:const LParam: Longint})",
       "trigger": "PostMessage\tSystem function"
     },
     {
-      "contents": "SendNotifyMessage(${1:const Wnd: HWND}, ${2:const Msg}, WParam}, ${3:LParam: Longint})",
+      "contents": "SendNotifyMessage(${1:const Wnd: HWND}, ${2:const Msg: Longint}, ${3:const WParam: Longint}, ${4:const LParam: Longint})",
       "trigger": "SendNotifyMessage\tSystem function"
     },
     {
@@ -210,15 +210,15 @@
       "trigger": "RegisterWindowMessage\tSystem function"
     },
     {
-      "contents": "SendBroadcastMessage(${1:const Msg}, ${2:WParam}, ${3:LParam: Longint})",
+      "contents": "SendBroadcastMessage(${1:const Msg: Longint}, ${2:const WParam: Longint}, ${3:const LParam: Longint})",
       "trigger": "SendBroadcastMessage\tSystem function"
     },
     {
-      "contents": "PostBroadcastMessage(${1:const Msg}, ${2:WParam}, ${3:LParam: Longint})",
+      "contents": "PostBroadcastMessage(${1:const Msg: Longint}, ${2:const WParam: Longint}, ${3:const LParam: Longint})",
       "trigger": "PostBroadcastMessage\tSystem function"
     },
     {
-      "contents": "SendBroadcastNotifyMessage(${1:const Msg}, ${2:WParam}, ${3:LParam: Longint})",
+      "contents": "SendBroadcastNotifyMessage(${1:const Msg: Longint}, ${2:const WParam: Longint}, ${3:const LParam: Longint})",
       "trigger": "SendBroadcastNotifyMessage\tSystem function"
     },
     {
@@ -250,11 +250,11 @@
       "trigger": "Ord\tString function"
     },
     {
-      "contents": "Copy(${1:S: String} Index}, ${2:Count: Integer})",
+      "contents": "Copy(${1:S: String}, ${2:Index: Integer}, ${3:Count: Integer})",
       "trigger": "Copy\tString function"
     },
     {
-      "contents": "Length(${1:s: String})",
+      "contents": "Length(${1:S: String})",
       "trigger": "Length\tString function"
     },
     {
@@ -278,7 +278,7 @@
       "trigger": "StringOfChar\tString function"
     },
     {
-      "contents": "Delete(${1:var S: String}, ${2:DeleteIndex}, ${3:Count: Integer})",
+      "contents": "Delete(${1:var S: String}, ${2:Index: Integer}, ${3:Count: Integer})",
       "trigger": "Delete\tString function"
     },
     {
@@ -286,11 +286,11 @@
       "trigger": "Insert\tString function"
     },
     {
-      "contents": "StringChange(${1:var S: String}, const FromStr}, ToStr: String})",
+      "contents": "StringChange(${1:var S: String}, ${2:const FromStr: String}, ${3:const ToStr: String})",
       "trigger": "StringChange\tString function"
     },
     {
-      "contents": "StringChangeEx(${1:var S: String}, ${2:const FromStr}, ${3:ToStr: String}, ${5:const SupportDBCS: Boolean})",
+      "contents": "StringChangeEx(${1:var S: String}, ${2:const FromStr: String}, ${3:const ToStr: String}, ${4:const SupportDBCS: Boolean})",
       "trigger": "StringChangeEx\tString function"
     },
     {
@@ -310,15 +310,15 @@
       "trigger": "ConvertPercentStr\tString function"
     },
     {
-      "contents": "CompareText(${1:const S1}, S2: string})",
+      "contents": "CompareText(${1:const S1: String}, ${2:const S2: String})",
       "trigger": "CompareText\tString function"
     },
     {
-      "contents": "CompareStr(${1:const S1}, S2: string})",
+      "contents": "CompareStr(${1:const S1: String}, ${2:const S2: String})",
       "trigger": "CompareStr\tString function"
     },
     {
-      "contents": "Format(${1:const Format: string}, const Args: array of const})",
+      "contents": "Format(${1:const Format: string}, ${2:const Args: array of const})",
       "trigger": "Format\tString function"
     },
     {
@@ -334,7 +334,7 @@
       "trigger": "TrimRight\tString function"
     },
     {
-      "contents": "StrToIntDef(${1:s: string} def: Longint})",
+      "contents": "StrToIntDef(${1:s: string}, ${2:def: Longint})",
       "trigger": "StrToIntDef\tString function"
     },
     {
@@ -342,7 +342,7 @@
       "trigger": "StrToInt\tString function"
     },
     {
-      "contents": "StrToInt64Def(${1:s: string} def: Int64})",
+      "contents": "StrToInt64Def(${1:s: string}, ${2:def: Int64})",
       "trigger": "StrToInt64Def\tString function"
     },
     {
@@ -362,7 +362,7 @@
       "trigger": "FloatToStr\tString function"
     },
     {
-      "contents": "CharLength(${1:const S: String}, const Index: Integer})",
+      "contents": "CharLength(${1:const S: String}, ${2:const Index: Integer})",
       "trigger": "CharLength\tString function"
     },
     {
@@ -382,7 +382,7 @@
       "trigger": "AddPeriod\tString function"
     },
     {
-      "contents": "ChangeFileExt(${1:const FileName}, ${2:Extension: string})",
+      "contents": "ChangeFileExt(${1:const FileName: string}, ${2:const Extension: string})",
       "trigger": "ChangeFileExt\tString function"
     },
     {
@@ -406,7 +406,7 @@
       "trigger": "ExtractFileDrive\tString function"
     },
     {
-      "contents": "ExtractRelativePath(${1:const BaseName}, ${2:DestName: String})",
+      "contents": "ExtractRelativePath(${1:const BaseName: String}, ${2:const DestName: String})",
       "trigger": "ExtractRelativePath\tString function"
     },
     {
@@ -418,7 +418,7 @@
       "trigger": "ExpandUNCFileName\tString function"
     },
     {
-      "contents": "GetDateTimeString(${1:const DateTimeFormat: String}, ${2:const DateSeparator}, ${3:TimeSeparator: Char})",
+      "contents": "GetDateTimeString(${1:const DateTimeFormat: String}, ${2:const DateSeparator: Char}, ${3:const TimeSeparator: Char})",
       "trigger": "GetDateTimeString\tString function"
     },
     {
@@ -450,7 +450,7 @@
       "trigger": "GetSHA1OfUnicodeString\tString function"
     },
     {
-      "contents": "SysErrorMessage(${ErrorCode: Integer})",
+      "contents": "SysErrorMessage(${1:ErrorCode: Integer})",
       "trigger": "SysErrorMessage\tString function"
     },
     {
@@ -462,7 +462,7 @@
       "trigger": "GetArrayLength\tArray function"
     },
     {
-      "contents": "SetArrayLength(${1:var Arr: Array}, ${3:I: Longint})",
+      "contents": "SetArrayLength(${1:var Arr: Array}, ${2:I: Longint})",
       "trigger": "SetArrayLength\tArray function"
     },
     {
@@ -506,15 +506,15 @@
       "trigger": "FileSize\tFile System function"
     },
     {
-      "contents": "GetSpaceOnDisk(${1:const Path: String}, ${2:const InMegabytes: Boolean}, ${3:var Free}, ${4:Total: Cardinal})",
+      "contents": "GetSpaceOnDisk(${1:const Path: String}, ${2:const InMegabytes: Boolean}, ${3:var Free: Cardinal}, ${4:var Total: Cardinal})",
       "trigger": "GetSpaceOnDisk\tFile System function"
     },
     {
-      "contents": "GetSpaceOnDisk64(${1:const Path: String}, ${2:var Free}, ${3:Total: Int64})",
+      "contents": "GetSpaceOnDisk64(${1:const Path: String}, ${2:var Free: Int64}, ${3:var Total: Int64})",
       "trigger": "GetSpaceOnDisk64\tFile System function"
     },
     {
-      "contents": "FileSearch(${1:const Name}, ${2:DirList: string})",
+      "contents": "FileSearch(${1:const Name: String}, ${2:const DirList: String})",
       "trigger": "FileSearch\tFile System function"
     },
     {
@@ -562,11 +562,11 @@
       "trigger": "GetShortName\tFile System function"
     },
     {
-      "contents": "GenerateUniqueName(${Path: String}, ${2:const Extension: String})",
+      "contents": "GenerateUniqueName(${1:Path: String}, ${2:const Extension: String})",
       "trigger": "GenerateUniqueName\tFile System function"
     },
     {
-      "contents": "GetVersionNumbers(${1:const Filename: String}, ${2:var VersionMS}, ${3:VersionLS: Cardinal})",
+      "contents": "GetVersionNumbers(${1:const Filename: String}, ${2:var VersionMS: Cardinal}, ${3:var VersionLS: Cardinal})",
       "trigger": "GetVersionNumbers\tFile System function"
     },
     {
@@ -590,27 +590,27 @@
       "trigger": "EnableFsRedirection\tFile System function"
     },
     {
-      "contents": "Exec(${1:const Filename}, Params}, ${2:WorkingDir: String}, ${2:const ShowCmd: Integer}, ${3:const Wait: TExecWait}, ${4:var ResultCode: Integer})",
+      "contents": "Exec(${1:const Filename: String}, ${2:const Params: String}, ${3:const WorkingDir: String}, ${4:const ShowCmd: Integer}, ${5:const Wait: TExecWait}, ${6:var ResultCode: Integer})",
       "trigger": "Exec\tFile function"
     },
     {
-      "contents": "ExecAsOriginalUser(${1:const Filename}, ${2:Params}, ${3:WorkingDir: String}, ${4:const ShowCmd: Integer}, ${5:const Wait: TExecWait}, ${6:var ResultCode: Integer})",
+      "contents": "ExecAsOriginalUser(${1:const Filename: String}, ${2:const Params: String}, ${3:const WorkingDir: String}, ${4:const ShowCmd: Integer}, ${5:const Wait: TExecWait}, ${6:var ResultCode: Integer})",
       "trigger": "ExecAsOriginalUser\tFile function"
     },
     {
-      "contents": "ShellExec(${1:const Verb}, ${2:Filename}, ${3:Params}, ${4:WorkingDir: String}, ${5:const ShowCmd: Integer}, ${6:const Wait: TExecWait}, ${7:var ErrorCode: Integer})",
+      "contents": "ShellExec(${1:const Verb: String}, ${2:const Filename: String}, ${3:const Params: String}, ${4:const WorkingDir: String}, ${5:const ShowCmd: Integer}, ${6:const Wait: TExecWait}, ${7:var ErrorCode: Integer})",
       "trigger": "ShellExec\tFile function"
     },
     {
-      "contents": "ShellExecAsOriginalUser(${1:const Verb}, ${2:Filename}, ${3:Params}, ${4:WorkingDir: String}, ${5:const ShowCmd: Integer}, ${6:const Wait: TExecWait}, ${7:var ErrorCode: Integer})",
+      "contents": "ShellExecAsOriginalUser(${1:const Verb: String}, ${2:const Filename: String}, ${3:const Params: String}, ${4:const WorkingDir: String}, ${5:const ShowCmd: Integer}, ${6:const Wait: TExecWait}, ${7:var ErrorCode: Integer})",
       "trigger": "ShellExecAsOriginalUser\tFile function"
     },
     {
-      "contents": "RenameFile(${1:const OldName}, ${2:NewName: string})",
+      "contents": "RenameFile(${1:const OldName: String}, ${2:const NewName: String})",
       "trigger": "RenameFile\tFile function"
     },
     {
-      "contents": "FileCopy(${1:const ExistingFile}, ${2:NewFile: String}, ${3:const FailIfExists: Boolean})",
+      "contents": "FileCopy(${1:const ExistingFile: String}, ${2:const NewFile: String}, ${3:const FailIfExists: Boolean})",
       "trigger": "FileCopy\tFile function"
     },
     {
@@ -650,7 +650,7 @@
       "trigger": "CreateDir\tFile function"
     },
     {
-      "contents": "ForceDirectories(${Dir: string})",
+      "contents": "ForceDirectories(${1:Dir: string})",
       "trigger": "ForceDirectories\tFile function"
     },
     {
@@ -658,11 +658,11 @@
       "trigger": "RemoveDir\tFile function"
     },
     {
-      "contents": "DelTree(${1:const Path: String}, ${2:const IsDir}, ${3:DeleteFiles}, ${4:DeleteSubdirsAlso: Boolean})",
+      "contents": "DelTree(${1:const Path: String}, ${2:const IsDir: Boolean}, ${3:const DeleteFiles: Boolean}, ${4:const DeleteSubdirsAlso: Boolean})",
       "trigger": "DelTree\tFile function"
     },
     {
-      "contents": "CreateShellLink(${1:const Filename}, ${2:Description}, ${3:ShortcutTo}, ${4:Parameters}, ${5:WorkingDir}, ${6:IconFilename: String}, ${7:const IconIndex}, ${8:ShowCmd: Integer})",
+      "contents": "CreateShellLink(${1:const Filename: String}, ${2:const Description: String}, ${3:const ShortcutTo: String}, ${4:const Parameters: String}, ${5:const WorkingDir: String}, ${6:IconFilename: String}, ${7:const IconIndex: Integer}, ${8:const ShowCmd: Integer})",
       "trigger": "CreateShellLink\tFile function"
     },
     {
@@ -694,11 +694,11 @@
       "trigger": "DecrementSharedCount\tFile function"
     },
     {
-      "contents": "RestartReplace(${1:const TempFile}, ${2:DestFile: String})",
+      "contents": "RestartReplace(${1:const TempFile: String}, ${2:const DestFile: String})",
       "trigger": "RestartReplace\tFile function"
     },
     {
-      "contents": "UnregisterFont(${1:const FontName}, ${2:FontFilename: String})",
+      "contents": "UnregisterFont(${1:const FontName: String}, ${2:const FontFilename: String}, ${3:const PerUserFont: Boolea}n)",
       "trigger": "UnregisterFont\tFile function"
     },
     {
@@ -710,7 +710,7 @@
       "trigger": "RegKeyExists\tRegistry function"
     },
     {
-      "contents": "RegValueExists(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String})",
+      "contents": "RegValueExists(${1:const RootKey: Integer}, ${2:const SubKeyName: String}}, ${3:const ValueName: String})",
       "trigger": "RegValueExists\tRegistry function"
     },
     {
@@ -722,39 +722,39 @@
       "trigger": "RegGetValueNames\tRegistry function"
     },
     {
-      "contents": "RegQueryStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String}, ${4:var ResultStr: String})",
+      "contents": "RegQueryStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:var ResultStr: String})",
       "trigger": "RegQueryStringValue\tRegistry function"
     },
     {
-      "contents": "RegQueryMultiStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String}, ${4:var ResultStr: String})",
+      "contents": "RegQueryMultiStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:var ResultStr: String})",
       "trigger": "RegQueryMultiStringValue\tRegistry function"
     },
     {
-      "contents": "RegQueryDWordValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String}, ${4:var ResultDWord: Cardinal})",
+      "contents": "RegQueryDWordValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:var ResultDWord: Cardinal})",
       "trigger": "RegQueryDWordValue\tRegistry function"
     },
     {
-      "contents": "RegQueryBinaryValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String}, ${4:var ResultStr: AnsiString})",
+      "contents": "RegQueryBinaryValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:var ResultStr: AnsiString})",
       "trigger": "RegQueryBinaryValue\tRegistry function"
     },
     {
-      "contents": "RegWriteStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName}, ${4:Data: String})",
+      "contents": "RegWriteStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:const Data: String})",
       "trigger": "RegWriteStringValue\tRegistry function"
     },
     {
-      "contents": "RegWriteExpandStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName}, ${4:Data: String})",
+      "contents": "RegWriteExpandStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:const Data: String})",
       "trigger": "RegWriteExpandStringValue\tRegistry function"
     },
     {
-      "contents": "RegWriteMultiStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName}, ${4:Data: String})",
+      "contents": "RegWriteMultiStringValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:const Data: String})",
       "trigger": "RegWriteMultiStringValue\tRegistry function"
     },
     {
-      "contents": "RegWriteDWordValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String}, ${4:const Data: Cardinal})",
+      "contents": "RegWriteDWordValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:const Data: Cardinal})",
       "trigger": "RegWriteDWordValue\tRegistry function"
     },
     {
-      "contents": "RegWriteBinaryValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String}, ${4:const Data: AnsiString})",
+      "contents": "RegWriteBinaryValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}, ${3:const ValueName: String}, ${4:const Data: AnsiString})",
       "trigger": "RegWriteBinaryValue\tRegistry function"
     },
     {
@@ -766,79 +766,79 @@
       "trigger": "RegDeleteKeyIfEmpty\tRegistry function"
     },
     {
-      "contents": "RegDeleteValue(${1:const RootKey: Integer}, ${2:const SubKeyName}, ${3:ValueName: String})",
+      "contents": "RegDeleteValue(${1:const RootKey: Integer}, ${2:const SubKeyName: String}}, ${3:const ValueName: String})",
       "trigger": "RegDeleteValue\tRegistry function"
     },
     {
-      "contents": "IniKeyExists(${1:const Section}, ${2:Key}, ${3:Filename: String})",
+      "contents": "IniKeyExists(${1:const Section: String}, ${2:const Key: String}, ${3:const Filename: String})",
       "trigger": "IniKeyExists\tINI File function"
     },
     {
-      "contents": "IsIniSectionEmpty(${1:const Section}, ${2:Filename: String})",
+      "contents": "IsIniSectionEmpty(${1:const Section: String}, ${2:const Filename: String})",
       "trigger": "IsIniSectionEmpty\tINI File function"
     },
     {
-      "contents": "GetIniBool(${1:const Section}, ${2:Key: String}, ${3:const Default: Boolean}, ${4:const Filename: String})",
+      "contents": "GetIniBool(${1:const Section: String}, ${2:const Key: String}, ${3:const Default: Boolean}, ${4:const Filename: String})",
       "trigger": "GetIniBool\tINI File function"
     },
     {
-      "contents": "GetIniInt(${1:const Section}, ${2:Key: String}, ${3:const Default}, ${4:Min}, ${5:Max: Longint}, ${6:const Filename: String})",
+      "contents": "GetIniInt(${1:const Section: String}, ${2:const Key: String}, ${3:const Default: Longint}, ${4:const Min: Longint}, ${5:const Max: Longint}, ${6:const Filename: String})",
       "trigger": "GetIniInt\tINI File function"
     },
     {
-      "contents": "GetIniString(${1:const Section}, ${2:Key}, Default}, ${3:Filename: String})",
+      "contents": "GetIniString(${1:const Section: String}, ${2:const Key: String}, ${3:const Default: String}, ${4:const Filename: String})",
       "trigger": "GetIniString\tINI File function"
     },
     {
-      "contents": "SetIniBool(${1:const Section}, ${2:Key: String}, ${3:const Value: Boolean}, ${4:const Filename: String})",
+      "contents": "SetIniBool(${1:const Section: String}, ${2:const Key: String}, ${3:const Value: Boolean}, ${4:const Filename: String})",
       "trigger": "SetIniBool\tINI File function"
     },
     {
-      "contents": "SetIniInt(${1:const Section}, ${2:Key: String}, ${3:const Value: Longint}, ${4:const Filename: String})",
+      "contents": "SetIniInt(${1:const Section: String}, ${2:const Key: String}, ${3:const Value: Longint}, ${4:const Filename: String})",
       "trigger": "SetIniInt\tINI File function"
     },
     {
-      "contents": "SetIniString(${1:const Section}, ${2:Key}, ${3:Value}, ${4:Filename: String})",
+      "contents": "SetIniString(${1:const Section: String}, ${2:const Key: String}, ${3:const Value: String}, ${4:const Filename: String})",
       "trigger": "SetIniString\tINI File function"
     },
     {
-      "contents": "DeleteIniSection(${1:const Section}, ${2:Filename: String})",
+      "contents": "DeleteIniSection(${1:const Section: String}, ${2:const Filename: String})",
       "trigger": "DeleteIniSection\tINI File function"
     },
     {
-      "contents": "DeleteIniEntry(${1:const Section}, ${2:Key}, ${3:Filename: String})",
+      "contents": "DeleteIniEntry(${1:const Section: String}, ${2:const Key: String}, ${3:const Filename: String})",
       "trigger": "DeleteIniEntry\tINI File function"
     },
     {
-      "contents": "CreateInputQueryPage(${1:const AfterID: Integer}, ${2:const ACaption}, ${3:ADescription}, ${4:ASubCaption: String})",
+      "contents": "CreateInputQueryPage(${1:const AfterID: Integer}, ${2:const ACaption: String}, ${3:const ADescription: String}, ${4:const ASubCaption: String})",
       "trigger": "CreateInputQueryPage\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "CreateInputOptionPage(${1:const AfterID: Integer}, ${2:const ACaption}, ${3:ADescription}, ${4:ASubCaption: String}, ${5:Exclusive}, ${6:ListBox: Boolean})",
+      "contents": "CreateInputOptionPage(${1:const AfterID: Integer}, ${2:const ACaption: String}, ${3:const ADescription: String}, ${4:const ASubCaption: String}, ${5:Exclusive: Boolean}, ${6:ListBox: Boolean})",
       "trigger": "CreateInputOptionPage\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "CreateInputDirPage(${1:const AfterID: Integer}, ${2:const ACaption}, ${3:ADescription}, ${4:ASubCaption: String}, ${5:AAppendDir: Boolean}, ${6:ANewFolderName: String})",
+      "contents": "CreateInputDirPage(${1:const AfterID: Integer}, ${2:const ACaption: String}, ${3:const ADescription: String}, ${4:const ASubCaption: String}, ${5:AAppendDir: Boolean}, ${6:ANewFolderName: String})",
       "trigger": "CreateInputDirPage\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "CreateInputFilePage(${1:const AfterID: Integer}, ${2:const ACaption}, ${3:ADescription}, ${4:ASubCaption: String})",
+      "contents": "CreateInputFilePage(${1:const AfterID: Integer}, ${2:const ACaption: String}, ${3:const ADescription: String}, ${4:const ASubCaption: String})",
       "trigger": "CreateInputFilePage\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "CreateOutputMsgPage(${1:const AfterID: Integer}, ${2:const ACaption}, ${3:ADescription}, ${4:AMsg: String})",
+      "contents": "CreateOutputMsgPage(${1:const AfterID: Integer}, ${2:const ACaption: String}, ${3:const ADescription: String}, ${4:const AMsg: String})",
       "trigger": "CreateOutputMsgPage\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "CreateOutputMsgMemoPage(${1:const AfterID: Integer}, ${2:const ACaption}, ${3:ADescription}, ${4:ASubCaption: String}, ${5:const AMsg: AnsiString})",
+      "contents": "CreateOutputMsgMemoPage(${1:const AfterID: Integer}, ${2:const ACaption: String}, ${3:const ADescription: String}, ${4:const ASubCaption: String}, ${5:const AMsg: AnsiString})",
       "trigger": "CreateOutputMsgMemoPage\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "CreateOutputProgressPage(${1:const ACaption}, ${2:ADescription: String})",
+      "contents": "CreateOutputProgressPage(${1:const ACaption: String}, ${2:const ADescription: String})",
       "trigger": "CreateOutputProgressPage\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "CreateCustomPage(${1:const AfterID: Integer}, ${2:const ACaption}, ${3:ADescription: String})",
+      "contents": "CreateCustomPage(${1:const AfterID: Integer}, ${2:const ACaption: String}, ${3:const ADescription: String})",
       "trigger": "CreateCustomPage\tCustom Setup Wizard Page function"
     },
     {
@@ -854,11 +854,11 @@
       "trigger": "PageIndexFromID\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "ScaleX(${X: Integer})",
+      "contents": "ScaleX(${1:X: Integer})",
       "trigger": "ScaleX\tCustom Setup Wizard Page function"
     },
     {
-      "contents": "ScaleY(${Y: Integer})",
+      "contents": "ScaleY(${1:Y: Integer})",
       "trigger": "ScaleY\tCustom Setup Wizard Page function"
     },
     {
@@ -866,19 +866,19 @@
       "trigger": "MsgBox\tDialog function"
     },
     {
-      "contents": "SuppressibleMsgBox(${1:const Text: String}, ${2:const Typ: TMsgBoxType}, ${3:const Buttons}, ${5:Default: Integer})",
+      "contents": "SuppressibleMsgBox(${1:const Text: String}, ${2:const Typ: TMsgBoxType}, ${3:const Buttons: Integer}, ${4:const Default: Integer})",
       "trigger": "SuppressibleMsgBox\tDialog function"
     },
     {
-      "contents": "GetOpenFileName(${1:const Prompt: String}, ${2:var FileName: String}, ${3:const InitialDirectory}, ${4:Filter}, ${5:DefaultExtension: String})",
+      "contents": "GetOpenFileName(${1:const Prompt: String}, ${2:var FileName: String}, ${3:const InitialDirectory: String}, ${4:const Filter: String}, ${5:const DefaultExtension: String})",
       "trigger": "GetOpenFileName\tDialog function"
     },
     {
-      "contents": "GetOpenFileNameMulti(${1:const Prompt: String}, ${2:var FileNameList: TStrings}, ${3:const InitialDirectory}, ${4:Filter}, ${5:DefaultExtension: String})",
+      "contents": "GetOpenFileNameMulti(${1:const Prompt: String}, ${2:var FileNameList: TStrings}, ${3:const InitialDirectory: String}, ${4:const Filter: String}, ${5:const DefaultExtension: String})",
       "trigger": "GetOpenFileNameMulti\tDialog function"
     },
     {
-      "contents": "GetSaveFileName(${1:const Prompt: String}, ${2:var FileName: String}, ${3:const InitialDirectory}, ${4:Filter}, ${5:DefaultExtension: String})",
+      "contents": "GetSaveFileName(${1:const Prompt: String}, ${2:var FileName: String}, ${3:const InitialDirectory: String}, ${4:const Filter: String}, ${5:const DefaultExtension: String})",
       "trigger": "GetSaveFileName\tDialog function"
     },
     {
@@ -902,7 +902,7 @@
       "trigger": "GetActiveOleObject\tCOM Automation objects support function"
     },
     {
-      "contents": "IDispatchInvoke(${Self: IDispatch} PropertySet: Boolean}, ${2:const Name: String}, ${3:Par: array of Variant})",
+      "contents": "IDispatchInvoke(${1:Self: IDispatch}, ${2:PropertySet: Boolean}, ${3:const Name: String}, ${4:Par: array of Variant})",
       "trigger": "IDispatchInvoke\tCOM Automation objects support function"
     },
     {
@@ -914,7 +914,7 @@
       "trigger": "StringToGUID\tCOM Automation objects support function"
     },
     {
-      "contents": "OleCheck(${Result: HResult})",
+      "contents": "OleCheck(${1:Result: HResult})",
       "trigger": "OleCheck\tCOM Automation objects support function"
     },
     {
@@ -946,7 +946,7 @@
       "trigger": "LoadDLL\tDeprecated function"
     },
     {
-      "contents": "CallDLLProc(${1:const DLLHandle: Longint}, ${2:const ProcName: String}, ${3:const Param1}, ${4:Param2: Longint}, ${5:var Result: Longint})",
+      "contents": "CallDLLProc(${1:const DLLHandle: Longint}, ${2:const ProcName: String}, ${3:const Param1: Longint}, ${4:const Param2: Longint}, ${5:var Result: Longint})",
       "trigger": "CallDLLProc\tDeprecated function"
     },
     {
