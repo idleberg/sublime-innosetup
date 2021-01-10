@@ -1,0 +1,317 @@
+{
+  "scope": "source.inno meta.constant.inno",
+  "completions": [
+    {
+      "contents": "app",
+      "trigger": "app\tThe application directory"
+    },
+    {
+      "contents": "win",
+      "trigger": "win\tThe Windows directory"
+    },
+    {
+      "contents": "sys",
+      "trigger": "sys\tThe System32 directory"
+    },
+    {
+      "contents": "sysnative",
+      "trigger": "sysnative\tThe directory containing 32-bit or 64-bit system files"
+    },
+    {
+      "contents": "syswow64",
+      "trigger": "syswow64\tOn 64-bit the SysWOW64 directory, on 32-bit the System32 directory"
+    },
+    {
+      "contents": "src",
+      "trigger": "src\tThe directory in which the Setup files are located"
+    },
+    {
+      "contents": "sd",
+      "trigger": "sd\tSystem Drive"
+    },
+    {
+      "contents": "commonpf",
+      "trigger": "commonpf\tProgram Files, 32-bit or 64-bit"
+    },
+    {
+      "contents": "commonpf32",
+      "trigger": "commonpf32\t32-bit Program Files"
+    },
+    {
+      "contents": "commonpf64",
+      "trigger": "commonpf64\t64-bit Program Files"
+    },
+    {
+      "contents": "commoncf",
+      "trigger": "commoncf\tCommon Files, 32-bit or 64-bit"
+    },
+    {
+      "contents": "commoncf32",
+      "trigger": "commoncf32\t32-bit Common Files"
+    },
+    {
+      "contents": "commoncf64",
+      "trigger": "commoncf64\t64-bit Common Files"
+    },
+    {
+      "contents": "tmp",
+      "trigger": "tmp\tTemporary directory used by Setup or Uninstall"
+    },
+    {
+      "contents": "commonfonts",
+      "trigger": "commonfonts\tFonts directory"
+    },
+    {
+      "contents": "dao",
+      "trigger": "dao\tDAO directory"
+    },
+    {
+      "contents": "dotnet11",
+      "trigger": "dotnet11\t32-bit .NET Framework version 1.1 root directory"
+    },
+    {
+      "contents": "dotnet20",
+      "trigger": "dotnet20\t.NET Framework version 2.0 - 3.5 root directory"
+    },
+    {
+      "contents": "dotnet2032",
+      "trigger": "dotnet2032\t32-bit .NET Framework version 2.0 - 3.5 root directory"
+    },
+    {
+      "contents": "dotnet2064",
+      "trigger": "dotnet2064\t64-bit .NET Framework version 2.0 - 3.5 root directory"
+    },
+    {
+      "contents": "dotnet40",
+      "trigger": "dotnet40\t.NET Framework version 4.0 and later root directory"
+    },
+    {
+      "contents": "dotnet4032",
+      "trigger": "dotnet4032\t32-bit .NET Framework version 4.0 and later root directory"
+    },
+    {
+      "contents": "dotnet4064",
+      "trigger": "dotnet4064\t64-bit .NET Framework version 4.0 and later root directory"
+    },
+    {
+      "contents": "group",
+      "trigger": "group\tThe path to the Start Menu folder"
+    },
+    {
+      "contents": "localappdata",
+      "trigger": "localappdata\tThe local (nonroaming) Application Data folder"
+    },
+    {
+      "contents": "userappdata",
+      "trigger": "userappdata\tThe path to the user Application Data folder"
+    },
+    {
+      "contents": "commonappdata",
+      "trigger": "commonappdata\tThe path to the common Application Data folder"
+    },
+    {
+      "contents": "usercf",
+      "trigger": "usercf\tCurrent user's Common Files directory"
+    },
+    {
+      "contents": "userdesktop",
+      "trigger": "userdesktop\tThe path to the user's Desktop folder"
+    },
+    {
+      "contents": "commondesktop",
+      "trigger": "commondesktop\tThe path to the common Desktop folder"
+    },
+    {
+      "contents": "userdocs",
+      "trigger": "userdocs\tThe path to the user's My Documents folder"
+    },
+    {
+      "contents": "commondocs",
+      "trigger": "commondocs\tThe path to the common My Documents folder"
+    },
+    {
+      "contents": "userfavorites",
+      "trigger": "userfavorites\tThe path to the user's Favorites folder"
+    },
+    {
+      "contents": "userfonts",
+      "trigger": "userfonts\tThe path to the user's Fonts folder"
+    },
+    {
+      "contents": "userpf",
+      "trigger": "userpf\tThe path to the user's Program Files directory"
+    },
+    {
+      "contents": "userprograms",
+      "trigger": "userprograms\tThe path to the user's Start Menu Programs folder"
+    },
+    {
+      "contents": "commonprograms",
+      "trigger": "commonprograms\tThe path to the common Start Menu Programs folder"
+    },
+    {
+      "contents": "usersavedgames",
+      "trigger": "usersavedgames\tThe path to the user's Saved Games directory"
+    },
+    {
+      "contents": "usersendto",
+      "trigger": "usersendto\tThe path to the user's Send To folder"
+    },
+    {
+      "contents": "userstartmenu",
+      "trigger": "userstartmenu\tThe path to the top level of the Start Menu"
+    },
+    {
+      "contents": "commonstartmenu",
+      "trigger": "commonstartmenu\tThe path to the top level of the Start Menu"
+    },
+    {
+      "contents": "userstartup",
+      "trigger": "userstartup\tThe path to the user's Startup folder on the Start Menu"
+    },
+    {
+      "contents": "commonstartup",
+      "trigger": "commonstartup\tThe path to the common Startup folder on the Start Menu"
+    },
+    {
+      "contents": "usertemplates",
+      "trigger": "usertemplates\tThe path to the user's Templates folder"
+    },
+    {
+      "contents": "commontemplates",
+      "trigger": "commontemplates\tThe path to the common Templates folder"
+    },
+    {
+      "contents": "autoappdata",
+      "trigger": "autoappdata\tCommon or user's Application Data, depending on install mode"
+    },
+    {
+      "contents": "autocf",
+      "trigger": "autocf\tCommon or user's Common Files, depending on install mode"
+    },
+    {
+      "contents": "autocf32",
+      "trigger": "autocf32\tCommon or user's 32-bit Common Files, depending on install mode"
+    },
+    {
+      "contents": "autocf64",
+      "trigger": "autocf64\tCommon or user's 64-bit Common Files, depending on install mode"
+    },
+    {
+      "contents": "autodesktop",
+      "trigger": "autodesktop\tCommon or user's Desktop, depending on install mode"
+    },
+    {
+      "contents": "autodocs",
+      "trigger": "autodocs\tCommon or user's My Documents, depending on install mode"
+    },
+    {
+      "contents": "autofonts",
+      "trigger": "autofonts\tCommon or user's Fonts, depending on install mode"
+    },
+    {
+      "contents": "autopf",
+      "trigger": "autopf\tCommon or user's Program Files, depending on install mode"
+    },
+    {
+      "contents": "autopf32",
+      "trigger": "autopf32\tCommon or user's 32-bit Program Files, depending on install mode"
+    },
+    {
+      "contents": "autopf64",
+      "trigger": "autopf64\tCommon or user's 64-bit Program Files, depending on install mode"
+    },
+    {
+      "contents": "autoprograms",
+      "trigger": "autoprograms\tCommon or user's Start Menu Programs, depending on install mode"
+    },
+    {
+      "contents": "autostartmenu",
+      "trigger": "autostartmenu\tCommon or user's Start Menu, depending on install mode"
+    },
+    {
+      "contents": "autostartup",
+      "trigger": "autostartup\tCommon or user's Startup, depending on install mode"
+    },
+    {
+      "contents": "autotemplates",
+      "trigger": "autotemplates\tCommon or user's Templates, depending on install mode"
+    },
+    {
+      "contents": "computername",
+      "trigger": "computername\tThe name of the computer the Setup or Uninstall program is running on (as returned by the Windows GetComputerName function)"
+    },
+    {
+      "contents": "drive:${1:Path}",
+      "trigger": "drive:\tExtracts drive from the specified path"
+    },
+    {
+      "contents": "groupname",
+      "trigger": "groupname\tThe name of the Start Menu folder"
+    },
+    {
+      "contents": "hwnd",
+      "trigger": "hwnd\tWindow handle of the Setup background window"
+    },
+    {
+      "contents": "wizardhwnd",
+      "trigger": "wizardhwnd\tWindow handle of the Setup wizard window"
+    },
+    {
+      "contents": "ini:${1:Filename},${2:Section},${3:Key}|${4:DefaultValue}",
+      "trigger": "ini:\tEmbeds a value from an .INI file"
+    },
+    {
+      "contents": "language",
+      "trigger": "language\tThe internal name of the selected language"
+    },
+    {
+      "contents": "cm:${1:MessageName},${2:Arguments}",
+      "trigger": "cm:\tEmbeds a custom message value based on the active language"
+    },
+    {
+      "contents": "reg:${1:HKxx\\SubkeyName},${2:ValueName}|${3:DefaultValue}",
+      "trigger": "reg:\tEmbeds a registry value"
+    },
+    {
+      "contents": "param:${1:ParamName}|${2:DefaultValue}",
+      "trigger": "param\tEmbeds a command line parameter value"
+    },
+    {
+      "contents": "srcexe",
+      "trigger": "srcexe\tThe full path of the Setup program exe"
+    },
+    {
+      "contents": "uninstallexe",
+      "trigger": "uninstallexe\tThe full path of the Uninstall program exe"
+    },
+    {
+      "contents": "sysuserinfoname",
+      "trigger": "sysuserinfoname\tThe name that Windows is registered to"
+    },
+    {
+      "contents": "sysuserinfoorg",
+      "trigger": "sysuserinfoorg\tThe organization that Windows is registered to"
+    },
+    {
+      "contents": "userinfoname",
+      "trigger": "userinfoname\tName entered by user on User Information page"
+    },
+    {
+      "contents": "userinfoorg",
+      "trigger": "userinfoorg\tOrganization entered by user on User Information page"
+    },
+    {
+      "contents": "userinfoserial",
+      "trigger": "userinfoserial\tSerial number entered by user on User Information page"
+    },
+    {
+      "contents": "username",
+      "trigger": "username\tThe name of the user running Setup or Uninstall program"
+    },
+    {
+      "contents": "log",
+      "trigger": "log\tThe log file name"
+    },
+  ]
+}

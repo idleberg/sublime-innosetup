@@ -1,0 +1,89 @@
+{
+  "scope": "meta.preprocessor.inno meta.directive.inno",
+  "completions": [
+    "#append",
+    {
+      "contents": "#define ${1:Identifier} ${2:Expression}",
+      "trigger": "#define"
+    },
+    {
+      "contents": "#dim ${1:Identifier}",
+      "trigger": "#dim"
+    },
+    {
+      "contents": "#elif ${1:Expression}",
+      "trigger": "#elif"
+    },
+    "#else",
+    {
+      "contents": "#emit ${1:Expression}",
+      "trigger": "#emit"
+    },
+    "#endif",
+    "#endsub",
+    {
+      "contents": "#error ${1:Text}",
+      "trigger": "#error"
+    },
+    {
+      "contents": "#expr ${1:Expression}",
+      "trigger": "#expr"
+    },
+    {
+      "contents": "#file ${1:Expression}",
+      "trigger": "#file"
+    },
+    {
+      "contents": "#for {${1:Init}; ${2:Condition}; ${3:Action}} ${4:Expression}",
+      "trigger": "#for"
+    },
+    {
+      "contents": "#if ${1:Expression}",
+      "trigger": "#if"
+    },
+    {
+      "contents": "#ifdef ${1:Identifier}",
+      "trigger": "#ifdef"
+    },
+    {
+      "contents": "#ifndef ${1:Identifier}",
+      "trigger": "#ifndef"
+    },
+    {
+      "contents": "#ifexist ${1:Expression}",
+      "trigger": "#ifexist"
+    },
+    {
+      "contents": "#ifnexist ${1:Expression}",
+      "trigger": "#ifnexist"
+    },
+    {
+      "contents": "#include ${1:Expression}",
+      "trigger": "#include"
+    },
+    {
+      "contents": "#insert ${1:Expression}",
+      "trigger": "#insert"
+    },
+    {
+      "contents": "#pragma ${1:Command} ${2:Expression}",
+      "trigger": "#pragma"
+    },
+    {
+      "contents": "#preproc ${1:Preprocessor}",
+      "trigger": "#preproc"
+    },
+    {
+      "contents": "#redim ${1:Identifier}",
+      "trigger": "#redim"
+    },
+    {
+      "contents": "#sub ${1:Identifier}",
+      "trigger": "#sub"
+    },
+    {
+      "contents": "#undef ${1:Identifier}",
+      "trigger": "#undef"
+    },
+  ]
+}

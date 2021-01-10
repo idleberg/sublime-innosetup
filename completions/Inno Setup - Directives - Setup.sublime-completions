@@ -1,0 +1,597 @@
+{
+  "scope": "source.inno meta.section.setup.inno - meta.directive.value",
+  "completions": [
+    {
+      "contents": "AllowCancelDuringInstall=${1:yes}",
+      "trigger": "AllowCancelDuringInstall"
+    },
+    {
+      "contents": "AppPublisher=",
+      "trigger": "AppPublisher"
+    },
+    {
+      "contents": "AppUpdatesURL=",
+      "trigger": "AppUpdatesURL"
+    },
+    {
+      "contents": "AlwaysUsePersonalGroup=${1:no}",
+      "trigger": "AlwaysUsePersonalGroup"
+    },
+    {
+      "contents": "ChangesEnvironment=${1:no}",
+      "trigger": "ChangesEnvironment"
+    },
+    {
+      "contents": "AppendDefaultGroupName=${1:yes}",
+      "trigger": "AppendDefaultGroupName"
+    },
+    {
+      "contents": "ASLRCompatible=${1:yes}",
+      "trigger": "ASLRCompatible"
+    },
+    {
+      "contents": "AllowNetworkDrive=${1:yes}",
+      "trigger": "AllowNetworkDrive"
+    },
+    {
+      "contents": "AlwaysRestart=${1:no}",
+      "trigger": "AlwaysRestart"
+    },
+    {
+      "contents": "AppPublisherURL=",
+      "trigger": "AppPublisherURL"
+    },
+    {
+      "contents": "AppVerName=",
+      "trigger": "AppVerName"
+    },
+    {
+      "contents": "AppComments=",
+      "trigger": "AppComments"
+    },
+    {
+      "contents": "CloseApplications=${1:yes}",
+      "trigger": "CloseApplications"
+    },
+    {
+      "contents": "AppId=",
+      "trigger": "AppId"
+    },
+    {
+      "contents": "BackColor=${1:clBlue}",
+      "trigger": "BackColor"
+    },
+    {
+      "contents": "BackColor=${1:clBlack}",
+      "trigger": "BackColor"
+    },
+    {
+      "contents": "AllowNoIcons=${1:no}",
+      "trigger": "AllowNoIcons"
+    },
+    {
+      "contents": "AlwaysShowComponentsList=${1:yes}",
+      "trigger": "AlwaysShowComponentsList"
+    },
+    {
+      "contents": "AppReadmeFile=",
+      "trigger": "AppReadmeFile"
+    },
+    {
+      "contents": "AppVersion=",
+      "trigger": "AppVersion"
+    },
+    {
+      "contents": "AppContact=",
+      "trigger": "AppContact"
+    },
+    {
+      "contents": "AppModifyPath=",
+      "trigger": "AppModifyPath"
+    },
+    {
+      "contents": "CloseApplicationsFilter=${1:*.exe,*.dll,*.chm}",
+      "trigger": "CloseApplicationsFilter"
+    },
+    {
+      "contents": "BackColorDirection=${1:toptobottom}",
+      "trigger": "BackColorDirection"
+    },
+    {
+      "contents": "AppSupportPhone=",
+      "trigger": "AppSupportPhone"
+    },
+    {
+      "contents": "AlwaysShowDirOnReadyPage=${1:no}",
+      "trigger": "AlwaysShowDirOnReadyPage"
+    },
+    {
+      "contents": "AllowRootDirectory=${1:no}",
+      "trigger": "AllowRootDirectory"
+    },
+    {
+      "contents": "ArchitecturesAllowed=",
+      "trigger": "ArchitecturesAllowed"
+    },
+    {
+      "contents": "AppCopyright=",
+      "trigger": "AppCopyright"
+    },
+    {
+      "contents": "Compression=${1:lzma2/max}",
+      "trigger": "Compression"
+    },
+    {
+      "contents": "AppMutex=",
+      "trigger": "AppMutex"
+    },
+    {
+      "contents": "BackSolid=${1:no}",
+      "trigger": "BackSolid"
+    },
+    {
+      "contents": "AppSupportURL=",
+      "trigger": "AppSupportURL"
+    },
+    {
+      "contents": "AlwaysShowGroupOnReadyPage=${1:no}",
+      "trigger": "AlwaysShowGroupOnReadyPage"
+    },
+    {
+      "contents": "AllowUNCPath=${1:yes}",
+      "trigger": "AllowUNCPath"
+    },
+    {
+      "contents": "ArchitecturesInstallIn64BitMode=",
+      "trigger": "ArchitecturesInstallIn64BitMode"
+    },
+    {
+      "contents": "AppendDefaultDirName=${1:yes}",
+      "trigger": "AppendDefaultDirName"
+    },
+    {
+      "contents": "CompressionThreads=${1:auto}",
+      "trigger": "CompressionThreads"
+    },
+    {
+      "contents": "AppName=",
+      "trigger": "AppName"
+    },
+    {
+      "contents": "ChangesAssociations=${1:no}",
+      "trigger": "ChangesAssociations"
+    },
+    {
+      "contents": "CreateAppDir=${1:yes}",
+      "trigger": "CreateAppDir"
+    },
+    {
+      "contents": "DefaultUserInfoName=${1:{sysuserinfoname}}",
+      "trigger": "DefaultUserInfoName"
+    },
+    {
+      "contents": "DisableReadyPage=${1:no}",
+      "trigger": "DisableReadyPage"
+    },
+    {
+      "contents": "DiskSpanning=${1:no}",
+      "trigger": "DiskSpanning"
+    },
+    {
+      "contents": "FlatComponentsList=${1:yes}",
+      "trigger": "FlatComponentsList"
+    },
+    {
+      "contents": "LicenseFile=",
+      "trigger": "LicenseFile"
+    },
+    {
+      "contents": "CreateUninstallRegKey=${1:yes}",
+      "trigger": "CreateUninstallRegKey"
+    },
+    {
+      "contents": "LZMANumBlockThreads=${1:1}",
+      "trigger": "LZMANumBlockThreads"
+    },
+    {
+      "contents": "DefaultUserInfoOrg=${1:{sysuserinfoorg}}",
+      "trigger": "DefaultUserInfoOrg"
+    },
+    {
+      "contents": "DisableDirPage=${1:auto}",
+      "trigger": "DisableDirPage"
+    },
+    {
+      "contents": "DisableStartupPrompt=${1:yes}",
+      "trigger": "DisableStartupPrompt"
+    },
+    {
+      "contents": "InfoAfterFile=",
+      "trigger": "InfoAfterFile"
+    },
+    {
+      "contents": "DefaultDialogFontName=${1:Tahoma}",
+      "trigger": "DefaultDialogFontName"
+    },
+    {
+      "contents": "LZMAAlgorithm=",
+      "trigger": "LZMAAlgorithm"
+    },
+    {
+      "contents": "DefaultUserInfoSerial=",
+      "trigger": "DefaultUserInfoSerial"
+    },
+    {
+      "contents": "LZMANumFastBytes=",
+      "trigger": "LZMANumFastBytes"
+    },
+    {
+      "contents": "DisableFinishedPage=${1:no}",
+      "trigger": "DisableFinishedPage"
+    },
+    {
+      "contents": "DisableWelcomePage=${1:yes}",
+      "trigger": "DisableWelcomePage"
+    },
+    {
+      "contents": "InfoBeforeFile=",
+      "trigger": "InfoBeforeFile"
+    },
+    {
+      "contents": "DefaultDirName=",
+      "trigger": "DefaultDirName"
+    },
+    {
+      "contents": "DEPCompatible=${1:yes}",
+      "trigger": "DEPCompatible"
+    },
+    {
+      "contents": "EnableDirDoesntExistWarning=${1:no}",
+      "trigger": "EnableDirDoesntExistWarning"
+    },
+    {
+      "contents": "DisableProgramGroupPage=${1:auto}",
+      "trigger": "DisableProgramGroupPage"
+    },
+    {
+      "contents": "LZMABlockSize=",
+      "trigger": "LZMABlockSize"
+    },
+    {
+      "contents": "DiskClusterSize=${1:512}",
+      "trigger": "DiskClusterSize"
+    },
+    {
+      "contents": "LZMAUseSeparateProcess=${1:no}",
+      "trigger": "LZMAUseSeparateProcess"
+    },
+    {
+      "contents": "InternalCompressLevel=${1:normal}",
+      "trigger": "InternalCompressLevel"
+    },
+    {
+      "contents": "DefaultGroupName=",
+      "trigger": "DefaultGroupName"
+    },
+    {
+      "contents": "DirExistsWarning=${1:auto}",
+      "trigger": "DirExistsWarning"
+    },
+    {
+      "contents": "Encryption=${1:no}",
+      "trigger": "Encryption"
+    },
+    {
+      "contents": "LZMADictionarySize=",
+      "trigger": "LZMADictionarySize"
+    },
+    {
+      "contents": "DiskSliceSize=${1:max}",
+      "trigger": "DiskSliceSize"
+    },
+    {
+      "contents": "MergeDuplicateFiles=${1:yes}",
+      "trigger": "MergeDuplicateFiles"
+    },
+    {
+      "contents": "ExtraDiskSpaceRequired=${1:0}",
+      "trigger": "ExtraDiskSpaceRequired"
+    },
+    {
+      "contents": "MinVersion=${1:6.1sp1}",
+      "trigger": "MinVersion"
+    },
+    {
+      "contents": "OutputDir=${1:Output}",
+      "trigger": "OutputDir"
+    },
+    {
+      "contents": "LZMAMatchFinder=",
+      "trigger": "LZMAMatchFinder"
+    },
+    {
+      "contents": "DisableReadyMemo=${1:no}",
+      "trigger": "DisableReadyMemo"
+    },
+    {
+      "contents": "ReserveBytes=${1:0}",
+      "trigger": "ReserveBytes"
+    },
+    {
+      "contents": "LanguageDetectionMethod=${1:uilanguage}",
+      "trigger": "LanguageDetectionMethod"
+    },
+    {
+      "contents": "MissingRunOnceIdsWarning=${1:yes}",
+      "trigger": "MissingRunOnceIdsWarning"
+    },
+    {
+      "contents": "OutputManifestFile=",
+      "trigger": "OutputManifestFile"
+    },
+    {
+      "contents": "SetupMutex=",
+      "trigger": "SetupMutex"
+    },
+    {
+      "contents": "SignToolRunMinimized=${1:no}",
+      "trigger": "SignToolRunMinimized"
+    },
+    {
+      "contents": "SignedUninstallerDir=${1:OutputDir}",
+      "trigger": "SignedUninstallerDir"
+    },
+    {
+      "contents": "RestartApplications=${1:yes}",
+      "trigger": "RestartApplications"
+    },
+    {
+      "contents": "OnlyBelowVersion=${1:0}",
+      "trigger": "OnlyBelowVersion"
+    },
+    {
+      "contents": "Password=",
+      "trigger": "Password"
+    },
+    {
+      "contents": "ShowComponentSizes=${1:yes}",
+      "trigger": "ShowComponentSizes"
+    },
+    {
+      "contents": "UninstallDisplayIcon=",
+      "trigger": "UninstallDisplayIcon"
+    },
+    {
+      "contents": "SignTool=",
+      "trigger": "SignTool"
+    },
+    {
+      "contents": "SlicesPerDisk=${1:1}",
+      "trigger": "SlicesPerDisk"
+    },
+    {
+      "contents": "RestartIfNeededByRun=${1:yes}",
+      "trigger": "RestartIfNeededByRun"
+    },
+    {
+      "contents": "PrivilegesRequired=${1:admin}",
+      "trigger": "PrivilegesRequired"
+    },
+    {
+      "contents": "ShowLanguageDialog=${1:yes}",
+      "trigger": "ShowLanguageDialog"
+    },
+    {
+      "contents": "TimeStampRounding=${1:2}",
+      "trigger": "TimeStampRounding"
+    },
+    {
+      "contents": "UninstallDisplayName=",
+      "trigger": "UninstallDisplayName"
+    },
+    {
+      "contents": "Output=${1:yes}",
+      "trigger": "Output"
+    },
+    {
+      "contents": "SolidCompression=${1:no}",
+      "trigger": "SolidCompression"
+    },
+    {
+      "contents": "SetupIconFile=",
+      "trigger": "SetupIconFile"
+    },
+    {
+      "contents": "PrivilegesRequiredOverridesAllowed=",
+      "trigger": "PrivilegesRequiredOverridesAllowed"
+    },
+    {
+      "contents": "ShowTasksTreeLines=${1:no}",
+      "trigger": "ShowTasksTreeLines"
+    },
+    {
+      "contents": "TimeStampsInUTC=${1:no}",
+      "trigger": "TimeStampsInUTC"
+    },
+    {
+      "contents": "UninstallDisplaySize=",
+      "trigger": "UninstallDisplaySize"
+    },
+    {
+      "contents": "OutputBaseFilename=${1:mysetup}",
+      "trigger": "OutputBaseFilename"
+    },
+    {
+      "contents": "SignToolRetryCount=${1:2}",
+      "trigger": "SignToolRetryCount"
+    },
+    {
+      "contents": "SetupLogging=${1:no}",
+      "trigger": "SetupLogging"
+    },
+    {
+      "contents": "SourceDir=",
+      "trigger": "SourceDir"
+    },
+    {
+      "contents": "SignedUninstaller=",
+      "trigger": "SignedUninstaller"
+    },
+    {
+      "contents": "TouchDate=${1:current}",
+      "trigger": "TouchDate"
+    },
+    {
+      "contents": "UninstallFilesDir=${1:{app}}",
+      "trigger": "UninstallFilesDir"
+    },
+    {
+      "contents": "SignToolRetryDelay=${1:500}",
+      "trigger": "SignToolRetryDelay"
+    },
+    {
+      "contents": "TerminalServicesAware=${1:yes}",
+      "trigger": "TerminalServicesAware"
+    },
+    {
+      "contents": "UsePreviousSetupType=${1:yes}",
+      "trigger": "UsePreviousSetupType"
+    },
+    {
+      "contents": "UsedUserAreasWarning=${1:yes}",
+      "trigger": "UsedUserAreasWarning"
+    },
+    {
+      "contents": "TouchTime=${1:current}",
+      "trigger": "TouchTime"
+    },
+    {
+      "contents": "VersionInfoCompany=",
+      "trigger": "VersionInfoCompany"
+    },
+    {
+      "contents": "UninstallLogMode=${1:append}",
+      "trigger": "UninstallLogMode"
+    },
+    {
+      "contents": "VersionInfoProductTextVersion=",
+      "trigger": "VersionInfoProductTextVersion"
+    },
+    {
+      "contents": "UsePreviousTasks=${1:yes}",
+      "trigger": "UsePreviousTasks"
+    },
+    {
+      "contents": "WindowShowCaption=${1:yes}",
+      "trigger": "WindowShowCaption"
+    },
+    {
+      "contents": "UsePreviousAppDir=${1:yes}",
+      "trigger": "UsePreviousAppDir"
+    },
+    {
+      "contents": "VersionInfoCopyright=",
+      "trigger": "VersionInfoCopyright"
+    },
+    {
+      "contents": "Uninstallable=${1:yes}",
+      "trigger": "Uninstallable"
+    },
+    {
+      "contents": "UninstallRestartComputer=${1:no}",
+      "trigger": "UninstallRestartComputer"
+    },
+    {
+      "contents": "WizardImageFile=${1:compiler:WIZMODERNIMAGE.BMP}",
+      "trigger": "WizardImageFile"
+    },
+    {
+      "contents": "WindowStartMaximized=${1:yes}",
+      "trigger": "WindowStartMaximized"
+    },
+    {
+      "contents": "UsePreviousGroup=${1:yes}",
+      "trigger": "UsePreviousGroup"
+    },
+    {
+      "contents": "VersionInfoProductVersion=",
+      "trigger": "VersionInfoProductVersion"
+    },
+    {
+      "contents": "UsePreviousUserInfo=${1:yes}",
+      "trigger": "UsePreviousUserInfo"
+    },
+    {
+      "contents": "VersionInfoDescription=",
+      "trigger": "VersionInfoDescription"
+    },
+    {
+      "contents": "WizardImageStretch=${1:yes}",
+      "trigger": "WizardImageStretch"
+    },
+    {
+      "contents": "WizardSmallImageFile=${1:compiler:WIZMODERNSMALLIMAGE.BMP}",
+      "trigger": "WizardSmallImageFile"
+    },
+    {
+      "contents": "WindowVisible=${1:no}",
+      "trigger": "WindowVisible"
+    },
+    {
+      "contents": "UsePreviousLanguage=${1:yes}",
+      "trigger": "UsePreviousLanguage"
+    },
+    {
+      "contents": "UserInfoPage=${1:no}",
+      "trigger": "UserInfoPage"
+    },
+    {
+      "contents": "VersionInfoTextVersion=",
+      "trigger": "VersionInfoTextVersion"
+    },
+    {
+      "contents": "VersionInfoOriginalFileName=",
+      "trigger": "VersionInfoOriginalFileName"
+    },
+    {
+      "contents": "WizardStyle=${1:classic}",
+      "trigger": "WizardStyle"
+    },
+    {
+      "contents": "WizardResizable=",
+      "trigger": "WizardResizable"
+    },
+    {
+      "contents": "UsePreviousPrivileges=${1:yes}",
+      "trigger": "UsePreviousPrivileges"
+    },
+    {
+      "contents": "UseSetupLdr=${1:yes}",
+      "trigger": "UseSetupLdr"
+    },
+    {
+      "contents": "WizardImageAlphaFormat=${1:none}",
+      "trigger": "WizardImageAlphaFormat"
+    },
+    {
+      "contents": "UpdateUninstallLogAppName=${1:yes}",
+      "trigger": "UpdateUninstallLogAppName"
+    },
+    {
+      "contents": "VersionInfoVersion=${1:0.0.0.0}",
+      "trigger": "VersionInfoVersion"
+    },
+    {
+      "contents": "VersionInfoProductName=",
+      "trigger": "VersionInfoProductName"
+    },
+    {
+      "contents": "WizardSizePercent=",
+      "trigger": "WizardSizePercent"
+    },
+    {
+      "contents": "WindowResizable=${1:yes}",
+      "trigger": "WindowResizable"
+    },
+  ]
+}

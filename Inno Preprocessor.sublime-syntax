@@ -5,8 +5,8 @@ scope: meta.preprocessor.inno
 
 variables:
   directives: '(?:[:+=!]|\b(?i:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef|x)\b)'
-  keywords_preproc: '\b(?i:builtin|ispp)\b'
-  keywords_pragma: '\b(?i:option|parseroption|inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
+  options_preproc: '\b(?i:builtin|ispp)\b'
+  options_pragma: '\b(?i:option|parseroption|inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
   keywords_storage: '\b(?i:public|protected|private)\b'
   types_language: '\b(?i:any|int|str|func)\b'
   constants_language: '\b(?i:__COUNTER__|__FILE__|__INCLUDE__|__LINE__|__OPT_[A-Z]__|__PATHFILENAME__|__POPT_[A-Z]__|__WIN32__|ISPP_INVOKED|ISPPCC_INVOKED|PREPROCVER|WINDOWS|UNICODE|CompilerPath|SourcePath|Ver)\b'
@@ -55,38 +55,44 @@ contexts:
   # Preproc directive.
   preproc-directive:
     - match: '(?i)(#)\s*preproc\b'
-      scope: keyword.other.inno
+      scope: meta.directive.inno keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
         - include: comment
-        - match: '{{keywords_preproc}}'
-          scope: keyword.other.inno
+        - match: '(({{options_preproc}})|(\w+))'
+          captures:
+            1: meta.option.preproc.inno
+            2: keyword.other.inno
+            3: invalid.illegal.inno
           pop: true
         - include: pop-before-char
 
   # Pragma directive.
   pragma-directive:
     - match: '(?i)(#)\s*pragma\b'
-      scope: keyword.other.inno
+      scope: meta.directive.inno keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
         - include: comment
         - match: '\b(?i:option|parseroption)\b'
-          scope: keyword.other.inno
+          scope: meta.option.pragma.inno keyword.other.inno
           set:
             - meta_content_scope: string.unquoted.inno
             - include: comment
-        - match: '{{keywords_pragma}}'
-          scope: keyword.other.inno
+        - match: '(({{options_pragma}})|(\w+))'
+          captures:
+            1: meta.option.pragma.inno
+            2: keyword.other.inno
+            3: invalid.illegal.inno
           pop: true
         - include: pop-before-char
 
   # Error directive.
   error-directive:
     - match: '(?i)(#)\s*error\b'
-      scope: keyword.other.inno
+      scope: meta.directive.inno keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
@@ -95,7 +101,7 @@ contexts:
   # Include directive.
   include-directive:
     - match: '(?i)(#)\s*(?:[+]|include\b)'
-      scope: keyword.other.inno
+      scope: meta.directive.inno keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
@@ -111,7 +117,7 @@ contexts:
   # Define directive.
   define-directive:
     - match: '(?i)(#)\s*(?:[:]|define\b)'
-      scope: keyword.other.inno
+      scope: meta.directive.inno keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
       push:
@@ -128,14 +134,14 @@ contexts:
   # Other directive.
   other-directive:
     - match: '(#)\s*{{directives}}'
-      scope: keyword.other.inno
+      scope: meta.directive.inno keyword.other.inno
       captures:
         1: punctuation.definition.keyword.inno
 
   # Unknown directive.
   unknown-directive:
-    - match: '(#).*'
-      scope: invalid.illegal.inno
+    - match: '(#)(?:\s*\w+)?'
+      scope: meta.directive.inno invalid.illegal.inno
       captures:
         1: punctuation.definition.keyword.inno
 

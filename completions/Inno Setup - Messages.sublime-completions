@@ -1,0 +1,1049 @@
+{
+  "scope": "source.inno meta.section.messages.inno - meta.message.value",
+  "completions": [
+    {
+      "contents": "AbortRetryIgnoreCancel=",
+      "trigger": "AbortRetryIgnoreCancel"
+    },
+    {
+      "contents": "AbortRetryIgnoreIgnore=",
+      "trigger": "AbortRetryIgnoreIgnore"
+    },
+    {
+      "contents": "AbortRetryIgnoreRetry=",
+      "trigger": "AbortRetryIgnoreRetry"
+    },
+    {
+      "contents": "AbortRetryIgnoreSelectAction=",
+      "trigger": "AbortRetryIgnoreSelectAction"
+    },
+    {
+      "contents": "AboutSetupMenuItem=",
+      "trigger": "AboutSetupMenuItem"
+    },
+    {
+      "contents": "AboutSetupMessage=",
+      "trigger": "AboutSetupMessage"
+    },
+    {
+      "contents": "AboutSetupNote=",
+      "trigger": "AboutSetupNote"
+    },
+    {
+      "contents": "AboutSetupTitle=",
+      "trigger": "AboutSetupTitle"
+    },
+    {
+      "contents": "AdminPrivilegesRequired=",
+      "trigger": "AdminPrivilegesRequired"
+    },
+    {
+      "contents": "ApplicationsFound=",
+      "trigger": "ApplicationsFound"
+    },
+    {
+      "contents": "ApplicationsFound2=",
+      "trigger": "ApplicationsFound2"
+    },
+    {
+      "contents": "BadDirName32=",
+      "trigger": "BadDirName32"
+    },
+    {
+      "contents": "BadGroupName=",
+      "trigger": "BadGroupName"
+    },
+    {
+      "contents": "BeveledLabel=",
+      "trigger": "BeveledLabel"
+    },
+    {
+      "contents": "BrowseDialogLabel=",
+      "trigger": "BrowseDialogLabel"
+    },
+    {
+      "contents": "BrowseDialogTitle=",
+      "trigger": "BrowseDialogTitle"
+    },
+    {
+      "contents": "ButtonBack=",
+      "trigger": "ButtonBack"
+    },
+    {
+      "contents": "ButtonBrowse=",
+      "trigger": "ButtonBrowse"
+    },
+    {
+      "contents": "ButtonCancel=",
+      "trigger": "ButtonCancel"
+    },
+    {
+      "contents": "ButtonFinish=",
+      "trigger": "ButtonFinish"
+    },
+    {
+      "contents": "ButtonInstall=",
+      "trigger": "ButtonInstall"
+    },
+    {
+      "contents": "ButtonNewFolder=",
+      "trigger": "ButtonNewFolder"
+    },
+    {
+      "contents": "ButtonNext=",
+      "trigger": "ButtonNext"
+    },
+    {
+      "contents": "ButtonNo=",
+      "trigger": "ButtonNo"
+    },
+    {
+      "contents": "ButtonNoToAll=",
+      "trigger": "ButtonNoToAll"
+    },
+    {
+      "contents": "ButtonOK=",
+      "trigger": "ButtonOK"
+    },
+    {
+      "contents": "ButtonStopDownload=",
+      "trigger": "ButtonStopDownload"
+    },
+    {
+      "contents": "ButtonWizardBrowse=",
+      "trigger": "ButtonWizardBrowse"
+    },
+    {
+      "contents": "ButtonYes=",
+      "trigger": "ButtonYes"
+    },
+    {
+      "contents": "ButtonYesToAll=",
+      "trigger": "ButtonYesToAll"
+    },
+    {
+      "contents": "CannotContinue=",
+      "trigger": "CannotContinue"
+    },
+    {
+      "contents": "CannotInstallToNetworkDrive=",
+      "trigger": "CannotInstallToNetworkDrive"
+    },
+    {
+      "contents": "CannotInstallToUNCPath=",
+      "trigger": "CannotInstallToUNCPath"
+    },
+    {
+      "contents": "ChangeDiskTitle=",
+      "trigger": "ChangeDiskTitle"
+    },
+    {
+      "contents": "ClickFinish=",
+      "trigger": "ClickFinish"
+    },
+    {
+      "contents": "ClickNext=",
+      "trigger": "ClickNext"
+    },
+    {
+      "contents": "CloseApplications=",
+      "trigger": "CloseApplications"
+    },
+    {
+      "contents": "CompactInstallation=",
+      "trigger": "CompactInstallation"
+    },
+    {
+      "contents": "ComponentsDiskSpaceGBLabel=",
+      "trigger": "ComponentsDiskSpaceGBLabel"
+    },
+    {
+      "contents": "ComponentsDiskSpaceMBLabel=",
+      "trigger": "ComponentsDiskSpaceMBLabel"
+    },
+    {
+      "contents": "ComponentSize1=",
+      "trigger": "ComponentSize1"
+    },
+    {
+      "contents": "ComponentSize2=",
+      "trigger": "ComponentSize2"
+    },
+    {
+      "contents": "ConfirmDeleteSharedFile2=",
+      "trigger": "ConfirmDeleteSharedFile2"
+    },
+    {
+      "contents": "ConfirmDeleteSharedFileTitle=",
+      "trigger": "ConfirmDeleteSharedFileTitle"
+    },
+    {
+      "contents": "ConfirmTitle=",
+      "trigger": "ConfirmTitle"
+    },
+    {
+      "contents": "ConfirmUninstall=",
+      "trigger": "ConfirmUninstall"
+    },
+    {
+      "contents": "CustomInstallation=",
+      "trigger": "CustomInstallation"
+    },
+    {
+      "contents": "DirDoesntExist=",
+      "trigger": "DirDoesntExist"
+    },
+    {
+      "contents": "DirDoesntExistTitle=",
+      "trigger": "DirDoesntExistTitle"
+    },
+    {
+      "contents": "DirExists=",
+      "trigger": "DirExists"
+    },
+    {
+      "contents": "DirExistsTitle=",
+      "trigger": "DirExistsTitle"
+    },
+    {
+      "contents": "DirNameTooLong=",
+      "trigger": "DirNameTooLong"
+    },
+    {
+      "contents": "DiskSpaceGBLabel=",
+      "trigger": "DiskSpaceGBLabel"
+    },
+    {
+      "contents": "DiskSpaceMBLabel=",
+      "trigger": "DiskSpaceMBLabel"
+    },
+    {
+      "contents": "DiskSpaceWarning=",
+      "trigger": "DiskSpaceWarning"
+    },
+    {
+      "contents": "DiskSpaceWarningTitle=",
+      "trigger": "DiskSpaceWarningTitle"
+    },
+    {
+      "contents": "DontCloseApplications=",
+      "trigger": "DontCloseApplications"
+    },
+    {
+      "contents": "DownloadingLabel=",
+      "trigger": "DownloadingLabel"
+    },
+    {
+      "contents": "ErrorChangingAttr=",
+      "trigger": "ErrorChangingAttr"
+    },
+    {
+      "contents": "ErrorCloseApplications=",
+      "trigger": "ErrorCloseApplications"
+    },
+    {
+      "contents": "ErrorCopying=",
+      "trigger": "ErrorCopying"
+    },
+    {
+      "contents": "ErrorCreatingDir=",
+      "trigger": "ErrorCreatingDir"
+    },
+    {
+      "contents": "ErrorCreatingTemp=",
+      "trigger": "ErrorCreatingTemp"
+    },
+    {
+      "contents": "ErrorDownloadAborted=",
+      "trigger": "ErrorDownloadAborted"
+    },
+    {
+      "contents": "ErrorDownloadFailed=",
+      "trigger": "ErrorDownloadFailed"
+    },
+    {
+      "contents": "ErrorDownloadSizeFailed=",
+      "trigger": "ErrorDownloadSizeFailed"
+    },
+    {
+      "contents": "ErrorExecutingProgram=",
+      "trigger": "ErrorExecutingProgram"
+    },
+    {
+      "contents": "ErrorFileHash1=",
+      "trigger": "ErrorFileHash1"
+    },
+    {
+      "contents": "ErrorFileHash2=",
+      "trigger": "ErrorFileHash2"
+    },
+    {
+      "contents": "ErrorFileSize=",
+      "trigger": "ErrorFileSize"
+    },
+    {
+      "contents": "ErrorFunctionFailed=",
+      "trigger": "ErrorFunctionFailed"
+    },
+    {
+      "contents": "ErrorFunctionFailedNoCode=",
+      "trigger": "ErrorFunctionFailedNoCode"
+    },
+    {
+      "contents": "ErrorFunctionFailedWithMessage=",
+      "trigger": "ErrorFunctionFailedWithMessage"
+    },
+    {
+      "contents": "ErrorIniEntry=",
+      "trigger": "ErrorIniEntry"
+    },
+    {
+      "contents": "ErrorInternal2=",
+      "trigger": "ErrorInternal2"
+    },
+    {
+      "contents": "ErrorOpeningReadme=",
+      "trigger": "ErrorOpeningReadme"
+    },
+    {
+      "contents": "ErrorProgress=",
+      "trigger": "ErrorProgress"
+    },
+    {
+      "contents": "ErrorReadingExistingDest=",
+      "trigger": "ErrorReadingExistingDest"
+    },
+    {
+      "contents": "ErrorReadingSource=",
+      "trigger": "ErrorReadingSource"
+    },
+    {
+      "contents": "ErrorRegCreateKey=",
+      "trigger": "ErrorRegCreateKey"
+    },
+    {
+      "contents": "ErrorRegisterServer=",
+      "trigger": "ErrorRegisterServer"
+    },
+    {
+      "contents": "ErrorRegisterTypeLib=",
+      "trigger": "ErrorRegisterTypeLib"
+    },
+    {
+      "contents": "ErrorRegOpenKey=",
+      "trigger": "ErrorRegOpenKey"
+    },
+    {
+      "contents": "ErrorRegSvr32Failed=",
+      "trigger": "ErrorRegSvr32Failed"
+    },
+    {
+      "contents": "ErrorRegWriteKey=",
+      "trigger": "ErrorRegWriteKey"
+    },
+    {
+      "contents": "ErrorRenamingTemp=",
+      "trigger": "ErrorRenamingTemp"
+    },
+    {
+      "contents": "ErrorReplacingExistingFile=",
+      "trigger": "ErrorReplacingExistingFile"
+    },
+    {
+      "contents": "ErrorRestartingComputer=",
+      "trigger": "ErrorRestartingComputer"
+    },
+    {
+      "contents": "ErrorRestartReplace=",
+      "trigger": "ErrorRestartReplace"
+    },
+    {
+      "contents": "ErrorTitle=",
+      "trigger": "ErrorTitle"
+    },
+    {
+      "contents": "ErrorTooManyFilesInDir=",
+      "trigger": "ErrorTooManyFilesInDir"
+    },
+    {
+      "contents": "ExistingFileNewer2=",
+      "trigger": "ExistingFileNewer2"
+    },
+    {
+      "contents": "ExistingFileNewerKeepExisting=",
+      "trigger": "ExistingFileNewerKeepExisting"
+    },
+    {
+      "contents": "ExistingFileNewerOverwriteExisting=",
+      "trigger": "ExistingFileNewerOverwriteExisting"
+    },
+    {
+      "contents": "ExistingFileNewerOverwriteOrKeepAll=",
+      "trigger": "ExistingFileNewerOverwriteOrKeepAll"
+    },
+    {
+      "contents": "ExistingFileNewerSelectAction=",
+      "trigger": "ExistingFileNewerSelectAction"
+    },
+    {
+      "contents": "ExistingFileReadOnly2=",
+      "trigger": "ExistingFileReadOnly2"
+    },
+    {
+      "contents": "ExistingFileReadOnlyKeepExisting=",
+      "trigger": "ExistingFileReadOnlyKeepExisting"
+    },
+    {
+      "contents": "ExistingFileReadOnlyRetry=",
+      "trigger": "ExistingFileReadOnlyRetry"
+    },
+    {
+      "contents": "ExitSetupMessage=",
+      "trigger": "ExitSetupMessage"
+    },
+    {
+      "contents": "ExitSetupTitle=",
+      "trigger": "ExitSetupTitle"
+    },
+    {
+      "contents": "FileAbortRetryIgnoreIgnoreNotRecommended=",
+      "trigger": "FileAbortRetryIgnoreIgnoreNotRecommended"
+    },
+    {
+      "contents": "FileAbortRetryIgnoreSkipNotRecommended=",
+      "trigger": "FileAbortRetryIgnoreSkipNotRecommended"
+    },
+    {
+      "contents": "FileExists2=",
+      "trigger": "FileExists2"
+    },
+    {
+      "contents": "FileExistsKeepExisting=",
+      "trigger": "FileExistsKeepExisting"
+    },
+    {
+      "contents": "FileExistsOverwriteExisting=",
+      "trigger": "FileExistsOverwriteExisting"
+    },
+    {
+      "contents": "FileExistsOverwriteOrKeepAll=",
+      "trigger": "FileExistsOverwriteOrKeepAll"
+    },
+    {
+      "contents": "FileExistsSelectAction=",
+      "trigger": "FileExistsSelectAction"
+    },
+    {
+      "contents": "FileNotInDir2=",
+      "trigger": "FileNotInDir2"
+    },
+    {
+      "contents": "FinishedHeadingLabel=",
+      "trigger": "FinishedHeadingLabel"
+    },
+    {
+      "contents": "FinishedLabel=",
+      "trigger": "FinishedLabel"
+    },
+    {
+      "contents": "FinishedLabelNoIcons=",
+      "trigger": "FinishedLabelNoIcons"
+    },
+    {
+      "contents": "FinishedRestartLabel=",
+      "trigger": "FinishedRestartLabel"
+    },
+    {
+      "contents": "FinishedRestartMessage=",
+      "trigger": "FinishedRestartMessage"
+    },
+    {
+      "contents": "FullInstallation=",
+      "trigger": "FullInstallation"
+    },
+    {
+      "contents": "GroupNameTooLong=",
+      "trigger": "GroupNameTooLong"
+    },
+    {
+      "contents": "HelpTextNote=",
+      "trigger": "HelpTextNote"
+    },
+    {
+      "contents": "IncorrectPassword=",
+      "trigger": "IncorrectPassword"
+    },
+    {
+      "contents": "InfoAfterClickLabel=",
+      "trigger": "InfoAfterClickLabel"
+    },
+    {
+      "contents": "InfoAfterLabel=",
+      "trigger": "InfoAfterLabel"
+    },
+    {
+      "contents": "InfoBeforeClickLabel=",
+      "trigger": "InfoBeforeClickLabel"
+    },
+    {
+      "contents": "InfoBeforeLabel=",
+      "trigger": "InfoBeforeLabel"
+    },
+    {
+      "contents": "InformationTitle=",
+      "trigger": "InformationTitle"
+    },
+    {
+      "contents": "InstallingLabel=",
+      "trigger": "InstallingLabel"
+    },
+    {
+      "contents": "InvalidDirName=",
+      "trigger": "InvalidDirName"
+    },
+    {
+      "contents": "InvalidDrive=",
+      "trigger": "InvalidDrive"
+    },
+    {
+      "contents": "InvalidGroupName=",
+      "trigger": "InvalidGroupName"
+    },
+    {
+      "contents": "InvalidParameter=",
+      "trigger": "InvalidParameter"
+    },
+    {
+      "contents": "InvalidPath=",
+      "trigger": "InvalidPath"
+    },
+    {
+      "contents": "LastErrorMessage=",
+      "trigger": "LastErrorMessage"
+    },
+    {
+      "contents": "LdrCannotCreateTemp=",
+      "trigger": "LdrCannotCreateTemp"
+    },
+    {
+      "contents": "LdrCannotExecTemp=",
+      "trigger": "LdrCannotExecTemp"
+    },
+    {
+      "contents": "LicenseAccepted=",
+      "trigger": "LicenseAccepted"
+    },
+    {
+      "contents": "LicenseLabel=",
+      "trigger": "LicenseLabel"
+    },
+    {
+      "contents": "LicenseLabel3=",
+      "trigger": "LicenseLabel3"
+    },
+    {
+      "contents": "LicenseNotAccepted=",
+      "trigger": "LicenseNotAccepted"
+    },
+    {
+      "contents": "MustEnterGroupName=",
+      "trigger": "MustEnterGroupName"
+    },
+    {
+      "contents": "NewFolderName=",
+      "trigger": "NewFolderName"
+    },
+    {
+      "contents": "NoProgramGroupCheck2=",
+      "trigger": "NoProgramGroupCheck2"
+    },
+    {
+      "contents": "NoRadio=",
+      "trigger": "NoRadio"
+    },
+    {
+      "contents": "NotOnThisPlatform=",
+      "trigger": "NotOnThisPlatform"
+    },
+    {
+      "contents": "NoUninstallWarning=",
+      "trigger": "NoUninstallWarning"
+    },
+    {
+      "contents": "NoUninstallWarningTitle=",
+      "trigger": "NoUninstallWarningTitle"
+    },
+    {
+      "contents": "OnlyAdminCanUninstall=",
+      "trigger": "OnlyAdminCanUninstall"
+    },
+    {
+      "contents": "OnlyOnTheseArchitectures=",
+      "trigger": "OnlyOnTheseArchitectures"
+    },
+    {
+      "contents": "OnlyOnThisPlatform=",
+      "trigger": "OnlyOnThisPlatform"
+    },
+    {
+      "contents": "PasswordEditLabel=",
+      "trigger": "PasswordEditLabel"
+    },
+    {
+      "contents": "PasswordLabel1=",
+      "trigger": "PasswordLabel1"
+    },
+    {
+      "contents": "PasswordLabel3=",
+      "trigger": "PasswordLabel3"
+    },
+    {
+      "contents": "PathLabel=",
+      "trigger": "PathLabel"
+    },
+    {
+      "contents": "PowerUserPrivilegesRequired=",
+      "trigger": "PowerUserPrivilegesRequired"
+    },
+    {
+      "contents": "PrepareToInstallNeedsRestart=",
+      "trigger": "PrepareToInstallNeedsRestart"
+    },
+    {
+      "contents": "PreparingDesc=",
+      "trigger": "PreparingDesc"
+    },
+    {
+      "contents": "PreviousInstallNotCompleted=",
+      "trigger": "PreviousInstallNotCompleted"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideAllUsers=",
+      "trigger": "PrivilegesRequiredOverrideAllUsers"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideAllUsersRecommended=",
+      "trigger": "PrivilegesRequiredOverrideAllUsersRecommended"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideCurrentUser=",
+      "trigger": "PrivilegesRequiredOverrideCurrentUser"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideCurrentUserRecommended=",
+      "trigger": "PrivilegesRequiredOverrideCurrentUserRecommended"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideInstruction=",
+      "trigger": "PrivilegesRequiredOverrideInstruction"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideText1=",
+      "trigger": "PrivilegesRequiredOverrideText1"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideText2=",
+      "trigger": "PrivilegesRequiredOverrideText2"
+    },
+    {
+      "contents": "PrivilegesRequiredOverrideTitle=",
+      "trigger": "PrivilegesRequiredOverrideTitle"
+    },
+    {
+      "contents": "ReadyLabel1=",
+      "trigger": "ReadyLabel1"
+    },
+    {
+      "contents": "ReadyLabel2a=",
+      "trigger": "ReadyLabel2a"
+    },
+    {
+      "contents": "ReadyLabel2b=",
+      "trigger": "ReadyLabel2b"
+    },
+    {
+      "contents": "ReadyMemoComponents=",
+      "trigger": "ReadyMemoComponents"
+    },
+    {
+      "contents": "ReadyMemoDir=",
+      "trigger": "ReadyMemoDir"
+    },
+    {
+      "contents": "ReadyMemoGroup=",
+      "trigger": "ReadyMemoGroup"
+    },
+    {
+      "contents": "ReadyMemoTasks=",
+      "trigger": "ReadyMemoTasks"
+    },
+    {
+      "contents": "ReadyMemoType=",
+      "trigger": "ReadyMemoType"
+    },
+    {
+      "contents": "ReadyMemoUserInfo=",
+      "trigger": "ReadyMemoUserInfo"
+    },
+    {
+      "contents": "RunEntryExec=",
+      "trigger": "RunEntryExec"
+    },
+    {
+      "contents": "RunEntryShellExec=",
+      "trigger": "RunEntryShellExec"
+    },
+    {
+      "contents": "SelectComponentsDesc=",
+      "trigger": "SelectComponentsDesc"
+    },
+    {
+      "contents": "SelectComponentsLabel2=",
+      "trigger": "SelectComponentsLabel2"
+    },
+    {
+      "contents": "SelectDirBrowseLabel=",
+      "trigger": "SelectDirBrowseLabel"
+    },
+    {
+      "contents": "SelectDirDesc=",
+      "trigger": "SelectDirDesc"
+    },
+    {
+      "contents": "SelectDirectoryLabel=",
+      "trigger": "SelectDirectoryLabel"
+    },
+    {
+      "contents": "SelectDirLabel3=",
+      "trigger": "SelectDirLabel3"
+    },
+    {
+      "contents": "SelectDiskLabel2=",
+      "trigger": "SelectDiskLabel2"
+    },
+    {
+      "contents": "SelectLanguageLabel=",
+      "trigger": "SelectLanguageLabel"
+    },
+    {
+      "contents": "SelectLanguageTitle=",
+      "trigger": "SelectLanguageTitle"
+    },
+    {
+      "contents": "SelectStartMenuFolderBrowseLabel=",
+      "trigger": "SelectStartMenuFolderBrowseLabel"
+    },
+    {
+      "contents": "SelectStartMenuFolderDesc=",
+      "trigger": "SelectStartMenuFolderDesc"
+    },
+    {
+      "contents": "SelectStartMenuFolderLabel3=",
+      "trigger": "SelectStartMenuFolderLabel3"
+    },
+    {
+      "contents": "SelectTasksDesc=",
+      "trigger": "SelectTasksDesc"
+    },
+    {
+      "contents": "SelectTasksLabel2=",
+      "trigger": "SelectTasksLabel2"
+    },
+    {
+      "contents": "SetupAborted=",
+      "trigger": "SetupAborted"
+    },
+    {
+      "contents": "SetupAlreadyRunning=",
+      "trigger": "SetupAlreadyRunning"
+    },
+    {
+      "contents": "SetupAppRunningError=",
+      "trigger": "SetupAppRunningError"
+    },
+    {
+      "contents": "SetupAppTitle=",
+      "trigger": "SetupAppTitle"
+    },
+    {
+      "contents": "SetupFileCorrupt=",
+      "trigger": "SetupFileCorrupt"
+    },
+    {
+      "contents": "SetupFileCorruptOrWrongVer=",
+      "trigger": "SetupFileCorruptOrWrongVer"
+    },
+    {
+      "contents": "SetupFileMissing=",
+      "trigger": "SetupFileMissing"
+    },
+    {
+      "contents": "SetupLdrStartupMessage=",
+      "trigger": "SetupLdrStartupMessage"
+    },
+    {
+      "contents": "SetupWindowTitle=",
+      "trigger": "SetupWindowTitle"
+    },
+    {
+      "contents": "SharedFileLocationLabel=",
+      "trigger": "SharedFileLocationLabel"
+    },
+    {
+      "contents": "SharedFileNameLabel=",
+      "trigger": "SharedFileNameLabel"
+    },
+    {
+      "contents": "ShowReadmeCheck=",
+      "trigger": "ShowReadmeCheck"
+    },
+    {
+      "contents": "ShutdownBlockReasonInstallingApp=",
+      "trigger": "ShutdownBlockReasonInstallingApp"
+    },
+    {
+      "contents": "ShutdownBlockReasonUninstallingApp=",
+      "trigger": "ShutdownBlockReasonUninstallingApp"
+    },
+    {
+      "contents": "SourceDoesntExist=",
+      "trigger": "SourceDoesntExist"
+    },
+    {
+      "contents": "SourceIsCorrupted=",
+      "trigger": "SourceIsCorrupted"
+    },
+    {
+      "contents": "StatusClosingApplications=",
+      "trigger": "StatusClosingApplications"
+    },
+    {
+      "contents": "StatusCreateDirs=",
+      "trigger": "StatusCreateDirs"
+    },
+    {
+      "contents": "StatusCreateIcons=",
+      "trigger": "StatusCreateIcons"
+    },
+    {
+      "contents": "StatusCreateIniEntries=",
+      "trigger": "StatusCreateIniEntries"
+    },
+    {
+      "contents": "StatusCreateRegistryEntries=",
+      "trigger": "StatusCreateRegistryEntries"
+    },
+    {
+      "contents": "StatusExtractFiles=",
+      "trigger": "StatusExtractFiles"
+    },
+    {
+      "contents": "StatusRegisterFiles=",
+      "trigger": "StatusRegisterFiles"
+    },
+    {
+      "contents": "StatusRestartingApplications=",
+      "trigger": "StatusRestartingApplications"
+    },
+    {
+      "contents": "StatusRollback=",
+      "trigger": "StatusRollback"
+    },
+    {
+      "contents": "StatusRunProgram=",
+      "trigger": "StatusRunProgram"
+    },
+    {
+      "contents": "StatusSavingUninstall=",
+      "trigger": "StatusSavingUninstall"
+    },
+    {
+      "contents": "StatusUninstalling=",
+      "trigger": "StatusUninstalling"
+    },
+    {
+      "contents": "StopDownload=",
+      "trigger": "StopDownload"
+    },
+    {
+      "contents": "TranslatorNote=",
+      "trigger": "TranslatorNote"
+    },
+    {
+      "contents": "UninstallAppFullTitle=",
+      "trigger": "UninstallAppFullTitle"
+    },
+    {
+      "contents": "UninstallAppRunningError=",
+      "trigger": "UninstallAppRunningError"
+    },
+    {
+      "contents": "UninstallAppTitle=",
+      "trigger": "UninstallAppTitle"
+    },
+    {
+      "contents": "UninstallDataCorrupted=",
+      "trigger": "UninstallDataCorrupted"
+    },
+    {
+      "contents": "UninstallDisplayNameMark=",
+      "trigger": "UninstallDisplayNameMark"
+    },
+    {
+      "contents": "UninstallDisplayNameMark32Bit=",
+      "trigger": "UninstallDisplayNameMark32Bit"
+    },
+    {
+      "contents": "UninstallDisplayNameMark64Bit=",
+      "trigger": "UninstallDisplayNameMark64Bit"
+    },
+    {
+      "contents": "UninstallDisplayNameMarkAllUsers=",
+      "trigger": "UninstallDisplayNameMarkAllUsers"
+    },
+    {
+      "contents": "UninstallDisplayNameMarkCurrentUser=",
+      "trigger": "UninstallDisplayNameMarkCurrentUser"
+    },
+    {
+      "contents": "UninstallDisplayNameMarks=",
+      "trigger": "UninstallDisplayNameMarks"
+    },
+    {
+      "contents": "UninstalledAll=",
+      "trigger": "UninstalledAll"
+    },
+    {
+      "contents": "UninstalledAndNeedsRestart=",
+      "trigger": "UninstalledAndNeedsRestart"
+    },
+    {
+      "contents": "UninstalledMost=",
+      "trigger": "UninstalledMost"
+    },
+    {
+      "contents": "UninstallNotFound=",
+      "trigger": "UninstallNotFound"
+    },
+    {
+      "contents": "UninstallOnlyOnWin64=",
+      "trigger": "UninstallOnlyOnWin64"
+    },
+    {
+      "contents": "UninstallOpenError=",
+      "trigger": "UninstallOpenError"
+    },
+    {
+      "contents": "UninstallStatusLabel=",
+      "trigger": "UninstallStatusLabel"
+    },
+    {
+      "contents": "UninstallUnknownEntry=",
+      "trigger": "UninstallUnknownEntry"
+    },
+    {
+      "contents": "UninstallUnsupportedVer=",
+      "trigger": "UninstallUnsupportedVer"
+    },
+    {
+      "contents": "UserInfoDesc=",
+      "trigger": "UserInfoDesc"
+    },
+    {
+      "contents": "UserInfoName=",
+      "trigger": "UserInfoName"
+    },
+    {
+      "contents": "UserInfoNameRequired=",
+      "trigger": "UserInfoNameRequired"
+    },
+    {
+      "contents": "UserInfoOrg=",
+      "trigger": "UserInfoOrg"
+    },
+    {
+      "contents": "UserInfoSerial=",
+      "trigger": "UserInfoSerial"
+    },
+    {
+      "contents": "WelcomeLabel1=",
+      "trigger": "WelcomeLabel1"
+    },
+    {
+      "contents": "WelcomeLabel2=",
+      "trigger": "WelcomeLabel2"
+    },
+    {
+      "contents": "WindowsServicePackRequired=",
+      "trigger": "WindowsServicePackRequired"
+    },
+    {
+      "contents": "WindowsVersionNotSupported=",
+      "trigger": "WindowsVersionNotSupported"
+    },
+    {
+      "contents": "WinVersionTooHighError=",
+      "trigger": "WinVersionTooHighError"
+    },
+    {
+      "contents": "WinVersionTooLowError=",
+      "trigger": "WinVersionTooLowError"
+    },
+    {
+      "contents": "WizardInfoAfter=",
+      "trigger": "WizardInfoAfter"
+    },
+    {
+      "contents": "WizardInfoBefore=",
+      "trigger": "WizardInfoBefore"
+    },
+    {
+      "contents": "WizardInstalling=",
+      "trigger": "WizardInstalling"
+    },
+    {
+      "contents": "WizardLicense=",
+      "trigger": "WizardLicense"
+    },
+    {
+      "contents": "WizardPassword=",
+      "trigger": "WizardPassword"
+    },
+    {
+      "contents": "WizardPreparing=",
+      "trigger": "WizardPreparing"
+    },
+    {
+      "contents": "WizardReady=",
+      "trigger": "WizardReady"
+    },
+    {
+      "contents": "WizardSelectComponents=",
+      "trigger": "WizardSelectComponents"
+    },
+    {
+      "contents": "WizardSelectDir=",
+      "trigger": "WizardSelectDir"
+    },
+    {
+      "contents": "WizardSelectProgramGroup=",
+      "trigger": "WizardSelectProgramGroup"
+    },
+    {
+      "contents": "WizardSelectTasks=",
+      "trigger": "WizardSelectTasks"
+    },
+    {
+      "contents": "WizardUninstalling=",
+      "trigger": "WizardUninstalling"
+    },
+    {
+      "contents": "WizardUserInfo=",
+      "trigger": "WizardUserInfo"
+    },
+    {
+      "contents": "YesRadio=",
+      "trigger": "YesRadio"
+    },
+  ]
+}

@@ -5,7 +5,7 @@
     <key>name</key>
     <string>Inno Setup: Sections</string>
     <key>scope</key>
-    <string>source.inno meta.section-tag.inno</string>
+    <string>source.inno meta.section-tag.inno - invalid.illegal.inno</string>
     <key>settings</key>
     <dict>
         <key>showInSymbolList</key>

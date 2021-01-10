@@ -8,11 +8,11 @@ variables:
   # Sections.
   sections: '\b(?i:Code|Components|CustomMessages|Dirs|Files|Icons|INI|InstallDelete|LangOptions|Languages|Messages|Registry|Run|Setup|Tasks|Types|UninstallDelete|UninstallRun)\b'
   # Setup directives.
-  setup_directives_boolean: '\b(?i:ChangesAssociations|ChangesEnvironment|CreateUninstallRegKey|Uninstallable)\b'
-  setup_directives_other: '\b(?i:AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|ASLRCompatible|BackColor|BackColor2|BackColorDirection|BackSolid|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CreateAppDir|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DEPCompatible|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageDetectionMethod|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|MissingRunOnceIdsWarning|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|PrivilegesRequired|PrivilegesRequiredOverridesAllowed|ReserveBytes|RestartApplications|RestartIfNeededByRun|SetupIconFile|SetupLogging|SetupMutex|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolMinimumTimeBetween|SignToolRetryCount|SignToolRetryDelay|SignToolRunMinimized|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TouchDate|TouchTime|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UpdateUninstallLogAppName|UsedUserAreasWarning|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousPrivigeles|UsePreviousPrivileges|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoOriginalFileName|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageAlphaFormat|WizardImageFile|WizardImageStretch|WizardResizable|WizardSizePercent|WizardSmallImageFile|WizardStyle)\b'
-  setup_directives_deprecated: '\b(?i:AlwaysCreateUninstallIcon|DisableAppendDir|DontMergeDuplicateFiles|MessagesFile|UninstallIconFile|UninstallIconName|UninstallStyle|WizardImageBackColor|WizardSmallImageBackColor)\b'
+  directives_setup_boolean: '\b(?i:ChangesAssociations|ChangesEnvironment|CreateUninstallRegKey|Uninstallable)\b'
+  directives_setup_other: '\b(?i:AllowCancelDuringInstall|AllowNetworkDrive|AllowNoIcons|AllowRootDirectory|AllowUNCPath|AlwaysRestart|AlwaysShowComponentsList|AlwaysShowDirOnReadyPage|AlwaysShowGroupOnReadyPage|AlwaysUsePersonalGroup|AppComments|AppContact|AppCopyright|AppendDefaultDirName|AppendDefaultGroupName|AppId|AppModifyPath|AppMutex|AppName|AppPublisher|AppPublisherURL|AppReadmeFile|AppSupportPhone|AppSupportURL|AppUpdatesURL|AppVerName|AppVersion|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|ASLRCompatible|BackColor|BackColor2|BackColorDirection|BackSolid|CloseApplications|CloseApplicationsFilter|Compression|CompressionThreads|CreateAppDir|DefaultDialogFontName|DefaultDirName|DefaultGroupName|DefaultUserInfoName|DefaultUserInfoOrg|DefaultUserInfoSerial|DEPCompatible|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageDetectionMethod|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseSeparateProcess|MergeDuplicateFiles|MinVersion|MissingRunOnceIdsWarning|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|PrivilegesRequired|PrivilegesRequiredOverridesAllowed|ReserveBytes|RestartApplications|RestartIfNeededByRun|SetupIconFile|SetupLogging|SetupMutex|ShowComponentSizes|ShowLanguageDialog|ShowTasksTreeLines|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolMinimumTimeBetween|SignToolRetryCount|SignToolRetryDelay|SignToolRunMinimized|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampRounding|TimeStampsInUTC|TouchDate|TouchTime|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallLogMode|UninstallRestartComputer|UpdateUninstallLogAppName|UsedUserAreasWarning|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousPrivigeles|UsePreviousPrivileges|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|UseSetupLdr|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoOriginalFileName|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageAlphaFormat|WizardImageFile|WizardImageStretch|WizardResizable|WizardSizePercent|WizardSmallImageFile|WizardStyle)\b'
+  directives_setup_deprecated: '\b(?i:AlwaysCreateUninstallIcon|DisableAppendDir|DontMergeDuplicateFiles|MessagesFile|UninstallIconFile|UninstallIconName|UninstallStyle|WizardImageBackColor|WizardSmallImageBackColor)\b'
   # LangOptions directives.
-  lang_options_directives: '\b(?i:CopyrightFontName|CopyrightFontSize|DialogFontName|DialogFontSize|LanguageCodePage|LanguageID|LanguageName|RightToLeft|TitleFontName|TitleFontSize|WelcomeFontName|WelcomeFontSize)\b'
+  directives_lang_options: '\b(?i:CopyrightFontName|CopyrightFontSize|DialogFontName|DialogFontSize|LanguageCodePage|LanguageID|LanguageName|RightToLeft|TitleFontName|TitleFontSize|WelcomeFontName|WelcomeFontSize)\b'
   # Parameters.
   parameters_boolean: '\b(?i:AfterInstall|BeforeInstall|Check|Components|Tasks)\b'
   parameters_flag: '\b(?i:Flags)\b'
@@ -31,7 +31,7 @@ variables:
   # Language codes (simplified, we could list all actual codes instead).
   languages: '\b(?i:[a-z]{2})\b'
   # Any section, directive, parameter or language.
-  any_section: '[^\]]*'
+  any_section: '[^\]\n]*'
   any_directive: '[^=]*?'
   any_parameter: '[^:]*?'
   any_language: '[^=.]*'
@@ -59,7 +59,8 @@ contexts:
     - include: code-section
     - include: other-section
     - include: unknown-section
-    # Any content outside of section is invalid.
+    # Content outside of section is invalid.
+    - include: invalid-section
     - include: invalid-content
 
   # Pop context when including line is reached.
@@ -159,6 +160,7 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
+        - meta_content_scope: meta.section.setup.inno
         - include: section-common
         - include: boolean-expression-directive
         - include: keyword-value-directive
@@ -170,6 +172,7 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
+        - meta_content_scope: meta.section.lang-options.inno
         - include: section-common
         - include: language-prefix
         - include: lang-options-directive
@@ -181,6 +184,7 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
+        - meta_content_scope: meta.section.messages.inno
         - include: section-common
         - include: language-prefix
         - include: inno-message
@@ -192,6 +196,7 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
+        - meta_content_scope: meta.section.custom-messages.inno
         - include: section-common
         - include: language-prefix
         - include: custom-message
@@ -203,7 +208,7 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
-        - meta_content_scope: source.pascal.embedded.inno source.pascal.inno
+        - meta_content_scope: meta.section.code.inno source.pascal.embedded.inno source.pascal.inno
         - include: scope:source.pascal.inno
       with_prototype:
         # Line spanning is handled by Inno Pascal syntax.
@@ -216,6 +221,7 @@ contexts:
       captures:
         1: meta.section-tag.inno entity.name.namespace.inno
       push:
+        - meta_content_scope: meta.section.other.inno
         - include: section-common
         - include: boolean-expression-parameter
         - include: flag-parameter
@@ -229,6 +235,7 @@ contexts:
       captures:
         1: meta.section-tag.inno
       push:
+        - meta_content_scope: meta.section.unknown.inno
         - include: section-common
 
   # Common includes for sections.
@@ -243,6 +250,12 @@ contexts:
     - match: '^(?=\s*\[)'
       pop: true
 
+  # Adds meta scope to an incomplete section tag.
+  invalid-section:
+    - match: '^\s*(\[{{any_section}})\s*$'
+      captures:
+        1: meta.section-tag.inno invalid.illegal.inno
+
   # Marks any non-whitespace content as invalid.
   invalid-content:
     - match: '\S.*?{{directive_end}}'
@@ -250,12 +263,12 @@ contexts:
 
   # Setup directive expecting boolean expression.
   boolean-expression-directive:
-    - match: '^\s*({{setup_directives_boolean}})\s*(=)'
+    - match: '^\s*({{directives_setup_boolean}})\s*(=)'
       captures:
         1: meta.directive.inno keyword.other.inno
         2: keyword.operator.assignment.inno
       push:
-        - meta_content_scope: source.pascal.embedded.inno source.pascal.inno
+        - meta_content_scope: meta.directive.value.code.inno source.pascal.embedded.inno source.pascal.inno
         - match: '(?<==)\s*(?i:yes|no)(?=\s*$)'
           scope: constant.language.inno
         - include: scope:source.pascal.inno
@@ -265,13 +278,14 @@ contexts:
 
   # Setup directive expecting keywords or value.
   keyword-value-directive:
-    - match: '^\s*(({{setup_directives_other}}|{{setup_directives_deprecated}})|({{any_directive}}))\s*(=)'
+    - match: '^\s*(({{directives_setup_other}}|{{directives_setup_deprecated}})|({{any_directive}}))\s*(=)'
       captures:
         1: meta.directive.inno
         2: keyword.other.inno
         3: invalid.illegal.inno
         4: keyword.operator.assignment.inno
       push:
+        - meta_content_scope: meta.directive.value.inno
         - include: line-end
         - match: '{{keywords_setup}}'
           scope: constant.language.inno
@@ -288,13 +302,14 @@ contexts:
 
   # LangOptions directive.
   lang-options-directive:
-    - match: '{{line_start_or_dot}}(({{lang_options_directives}})|({{any_directive}}))\s*(=)'
+    - match: '{{line_start_or_dot}}(({{directives_lang_options}})|({{any_directive}}))\s*(=)'
       captures:
         1: meta.directive.inno
         2: keyword.other.inno
         3: invalid.illegal.inno
         4: keyword.operator.assignment.inno
       push:
+        - meta_content_scope: meta.directive.value.inno
         - include: line-end
         - include: directive-value
 
@@ -307,6 +322,7 @@ contexts:
         3: invalid.illegal.inno
         4: keyword.operator.assignment.inno
       push:
+        - meta_content_scope: meta.message.value.inno
         - include: line-end
         - include: message-value
 
@@ -319,6 +335,7 @@ contexts:
         3: invalid.illegal.inno
         4: keyword.operator.assignment.inno
       push:
+        - meta_content_scope: meta.message.value.inno
         - include: line-end
         - include: message-value
 
@@ -329,7 +346,7 @@ contexts:
         1: meta.parameter.inno keyword.other.inno
         2: keyword.operator.assignment.inno
       push:
-        - meta_content_scope: source.pascal.embedded.inno source.pascal.inno
+        - meta_content_scope: meta.parameter.value.code.inno source.pascal.embedded.inno source.pascal.inno
         - include: separator
         - include: scope:source.pascal.inno
       with_prototype:
@@ -343,6 +360,7 @@ contexts:
         1: meta.parameter.inno keyword.other.inno
         2: keyword.operator.assignment.inno
       push:
+        - meta_content_scope: meta.parameter.value.flag.inno
         - include: line-end
         - include: separator
         - match: '{{flags}}'
@@ -357,6 +375,7 @@ contexts:
         1: meta.parameter.inno keyword.other.inno
         2: keyword.operator.assignment.inno
       push:
+        - meta_content_scope: meta.parameter.value.keyword.inno
         - include: line-end
         - include: separator
         - match: '{{keywords_other}}'
@@ -374,6 +393,7 @@ contexts:
         3: invalid.illegal.inno
         4: keyword.operator.assignment.inno
       push:
+        - meta_content_scope: meta.parameter.value.other.inno
         - include: line-end
         - include: separator
         - include: parameter-value
@@ -401,7 +421,7 @@ contexts:
         - meta_scope: string.quoted.inno
         - include: string-common
         - match: '{{unbalanced_constant}}(?="?\s*$)'
-          scope: invalid.illegal.inno
+          scope: meta.constant.inno invalid.illegal.inno
         - include: constant
         - match: '"'
           scope: punctuation.definition.string.end.inno
@@ -417,7 +437,7 @@ contexts:
         - meta_content_scope: string.unquoted.inno
         - include: string-common
         - match: '{{unbalanced_constant}}(?=\s*$)'
-          scope: invalid.illegal.inno
+          scope: meta.constant.inno invalid.illegal.inno
         - include: constant
       with_prototype:
         - include: string-prototype
@@ -442,7 +462,7 @@ contexts:
         - meta_scope: string.quoted.inno
         - include: string-common
         - match: '{{unbalanced_constant}}(?="(?!")|\s*$)'
-          scope: invalid.illegal.inno
+          scope: meta.constant.inno invalid.illegal.inno
         - include: constant
         - match: '"'
           scope: punctuation.definition.string.end.inno
@@ -458,7 +478,7 @@ contexts:
         - meta_content_scope: string.unquoted.inno
         - include: string-common
         - match: '{{unbalanced_constant}}(?=[";]|\s*$)'
-          scope: invalid.illegal.inno
+          scope: meta.constant.inno invalid.illegal.inno
         - include: constant
         - match: '(?=\s*")'
           set: parameter-end
@@ -501,16 +521,16 @@ contexts:
   constant:
     # Predefined constant.
     - match: '(\{)(?:{{constants}}|{{constants_deprecated}})(\})'
-      scope: support.constant.inno
+      scope: meta.constant.inno support.constant.inno
       captures:
-        1: punctuation.definition.constant.inno
-        2: punctuation.definition.constant.inno
+        1: punctuation.definition.constant.begin.inno
+        2: punctuation.definition.constant.end.inno
     # Dynamic constant (prefix is case sensitive).
     - match: '(\{)(?:%|(?:code|drive|ini|cm|reg|param):)'
       captures:
-        1: punctuation.definition.constant.inno
+        1: punctuation.definition.constant.begin.inno
       push:
-        - meta_scope: support.constant.inno
+        - meta_scope: meta.constant.inno support.constant.inno
         - include: constant-common
         - match: '\|'
           scope: punctuation.separator.inno
@@ -518,9 +538,9 @@ contexts:
           scope: constant.character.escape.inno
     # Invalid constant.
     - match: '\{'
-      scope: punctuation.definition.constant.inno
+      scope: punctuation.definition.constant.begin.inno
       push:
-        - meta_scope: invalid.illegal.inno
+        - meta_scope: meta.constant.inno invalid.illegal.inno
         - include: constant-common
 
   # Common includes for constants.
@@ -528,7 +548,7 @@ contexts:
     - include: string-common
     - include: constant
     - match: '\}'
-      scope: punctuation.definition.constant.inno
+      scope: punctuation.definition.constant.end.inno
       pop: true
     # Premature end of constant. Valid quotes should be consumed in push prototype.
     - match: '(?=")'

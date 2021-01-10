@@ -1,0 +1,201 @@
+{
+  "scope": "source.inno meta.section.other.inno - meta.parameter.value",
+  "completions": [
+    {
+      "contents": "AfterInstall: ",
+      "trigger": "AfterInstall"
+    },
+    {
+      "contents": "BeforeInstall: ",
+      "trigger": "BeforeInstall"
+    },
+    {
+      "contents": "Check: ",
+      "trigger": "Check"
+    },
+    {
+      "contents": "Components: ",
+      "trigger": "Components"
+    },
+    {
+      "contents": "Tasks: ",
+      "trigger": "Tasks"
+    },
+    {
+      "contents": "Flags: ",
+      "trigger": "Flags"
+    },
+    {
+      "contents": "Attribs: ",
+      "trigger": "Attribs"
+    },
+    {
+      "contents": "Permissions: ",
+      "trigger": "Permissions"
+    },
+    {
+      "contents": "Root: ",
+      "trigger": "Root"
+    },
+    {
+      "contents": "Type: ",
+      "trigger": "Type"
+    },
+    {
+      "contents": "Types: ",
+      "trigger": "Types"
+    },
+    {
+      "contents": "ValueType: ",
+      "trigger": "ValueType"
+    },
+    {
+      "contents": "Verb: ",
+      "trigger": "Verb"
+    },
+    {
+      "contents": "AppUserModelID: ",
+      "trigger": "AppUserModelID"
+    },
+    {
+      "contents": "AppUserModelToastActivatorCLSID: ",
+      "trigger": "AppUserModelToastActivatorCLSID"
+    },
+    {
+      "contents": "Comment: ",
+      "trigger": "Comment"
+    },
+    {
+      "contents": "CopyMode: ",
+      "trigger": "CopyMode"
+    },
+    {
+      "contents": "Description: ",
+      "trigger": "Description"
+    },
+    {
+      "contents": "DestDir: ",
+      "trigger": "DestDir"
+    },
+    {
+      "contents": "DestName: ",
+      "trigger": "DestName"
+    },
+    {
+      "contents": "Excludes: ",
+      "trigger": "Excludes"
+    },
+    {
+      "contents": "ExternalSize: ",
+      "trigger": "ExternalSize"
+    },
+    {
+      "contents": "ExtraDiskSpaceRequired: ",
+      "trigger": "ExtraDiskSpaceRequired"
+    },
+    {
+      "contents": "Filename: ",
+      "trigger": "Filename"
+    },
+    {
+      "contents": "FontInstall: ",
+      "trigger": "FontInstall"
+    },
+    {
+      "contents": "GroupDescription: ",
+      "trigger": "GroupDescription"
+    },
+    {
+      "contents": "HotKey: ",
+      "trigger": "HotKey"
+    },
+    {
+      "contents": "IconFilename: ",
+      "trigger": "IconFilename"
+    },
+    {
+      "contents": "IconIndex: ",
+      "trigger": "IconIndex"
+    },
+    {
+      "contents": "InfoAfterFile: ",
+      "trigger": "InfoAfterFile"
+    },
+    {
+      "contents": "InfoBeforeFile: ",
+      "trigger": "InfoBeforeFile"
+    },
+    {
+      "contents": "Key: ",
+      "trigger": "Key"
+    },
+    {
+      "contents": "Languages: ",
+      "trigger": "Languages"
+    },
+    {
+      "contents": "LicenseFile: ",
+      "trigger": "LicenseFile"
+    },
+    {
+      "contents": "MessagesFile: ",
+      "trigger": "MessagesFile"
+    },
+    {
+      "contents": "MinVersion: ",
+      "trigger": "MinVersion"
+    },
+    {
+      "contents": "Name: ",
+      "trigger": "Name"
+    },
+    {
+      "contents": "OnlyBelowVersion: ",
+      "trigger": "OnlyBelowVersion"
+    },
+    {
+      "contents": "Parameters: ",
+      "trigger": "Parameters"
+    },
+    {
+      "contents": "RunOnceId: ",
+      "trigger": "RunOnceId"
+    },
+    {
+      "contents": "Section: ",
+      "trigger": "Section"
+    },
+    {
+      "contents": "Source: ",
+      "trigger": "Source"
+    },
+    {
+      "contents": "StatusMsg: ",
+      "trigger": "StatusMsg"
+    },
+    {
+      "contents": "String: ",
+      "trigger": "String"
+    },
+    {
+      "contents": "StrongAssemblyName: ",
+      "trigger": "StrongAssemblyName"
+    },
+    {
+      "contents": "Subkey: ",
+      "trigger": "Subkey"
+    },
+    {
+      "contents": "ValueData: ",
+      "trigger": "ValueData"
+    },
+    {
+      "contents": "ValueName: ",
+      "trigger": "ValueName"
+    },
+    {
+      "contents": "WorkingDir: ",
+      "trigger": "WorkingDir"
+    },
+  ]
+}
