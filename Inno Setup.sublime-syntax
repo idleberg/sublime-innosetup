@@ -361,7 +361,8 @@ contexts:
         - include: separator
         - match: '{{keywords_other}}'
           scope: constant.language.inno
-        - match: '[^\s;]+'
+        # Format other characters one-by-one to allow matching multi-part keywords.
+        - match: '[^\s;]'
           scope: string.unquoted.inno
 
   # Parameter expecting value.
