@@ -38,7 +38,11 @@ contexts:
 
   # Comment.
   comment:
-    # Block comment.
+    - include: comment-block
+    - include: comment-line
+
+  # Block comment.
+  comment-block:
     - match: '/\*'
       scope: punctuation.definition.comment.inno
       push:
@@ -46,7 +50,9 @@ contexts:
         - match: '\*/'
           scope: punctuation.definition.comment.inno
           pop: true
-    # Line comment.
+
+  # Line comment.
+  comment-line:
     - match: ';'
       scope: punctuation.definition.comment.inno
       push:
@@ -185,7 +191,7 @@ contexts:
 
   # Push when expecting arguments of a function call. Pops if arguments are not found. Prevents matching terminators.
   expect-arguments:
-    - include: comment
+    - include: comment-block
     - match: '\('
       scope: punctuation.section.arguments.begin.inno
       set:
@@ -200,7 +206,7 @@ contexts:
 
   # Push when expecting parameters of a function definition. Pops if parameters are not found.
   expect-parameters:
-    - include: comment
+    - include: comment-block
     - match: '\('
       scope: punctuation.section.parameters.begin.inno
       set:
