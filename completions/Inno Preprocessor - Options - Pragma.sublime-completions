@@ -1,0 +1,15 @@
+{
+  "scope": "meta.preprocessor.inno meta.option.pragma.inno",
+  "completions": [
+    "option",
+    "parseroption",
+    "inlinestart",
+    "inlineend",
+    "message",
+    "warning",
+    "error",
+    "verboselevel",
+    "include",
+    "spansymbol",
+  ]
+}

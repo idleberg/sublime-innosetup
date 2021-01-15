@@ -1,0 +1,310 @@
+%YAML 1.2
+---
+name: 'Inno Preprocessor'
+scope: meta.preprocessor.inno
+
+variables:
+  directives: '(?:[:+=!]|\b(?i:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef|x)\b)'
+  options_preproc: '\b(?i:builtin|ispp)\b'
+  options_pragma: '\b(?i:option|parseroption|inlinestart|inlineend|message|warning|error|verboselevel|include|spansymbol)\b'
+  keywords_storage: '\b(?i:public|protected|private)\b'
+  types_language: '\b(?i:any|int|str|func)\b'
+  constants_language: '\b(?i:__COUNTER__|__FILE__|__INCLUDE__|__LINE__|__OPT_[A-Z]__|__PATHFILENAME__|__POPT_[A-Z]__|__WIN32__|ISPP_INVOKED|ISPPCC_INVOKED|PREPROCVER|WINDOWS|UNICODE|CompilerPath|SourcePath|Ver)\b'
+  constants_support: '\b(?i:_BUILTINS_ISS_|COMPANY_NAME|faAnyFile|faArchive|faDirectory|faHidden|False|faReadOnly|faSymLink|faSysFile|faVolumeID|FILE_DESCRIPTION|FILE_VERSION|FIND_AND|FIND_BEGINS|FIND_CASESENSITIVE|FIND_CONTAINS|FIND_ENDS|FIND_MATCH|FIND_NOT|FIND_OR|FIND_SENSITIVE|FIND_TRIM|HKCC|HKCC64|HKCR|HKCR64|HKCU|HKCU64|HKEY_CLASSES_ROOT|HKEY_CLASSES_ROOT_64|HKEY_CURRENT_CONFIG|HKEY_CURRENT_CONFIG_64|HKEY_CURRENT_USER|HKEY_CURRENT_USER_64|HKEY_LOCAL_MACHINE|HKEY_LOCAL_MACHINE_64|HKEY_USERS|HKEY_USERS_64|HKLM|HKLM64|HKU|HKU64|INTERNAL_NAME|LEGAL_COPYRIGHT|MaxInt|MinInt|NewLine|No|NULL|ORIGINAL_FILENAME|PRODUCT_NAME|PRODUCT_VERSION|SW_HIDE|SW_MAX|SW_MAXIMIZE|SW_MINIMIZE|SW_NORMAL|SW_RESTORE|SW_SHOW|SW_SHOWDEFAULT|SW_SHOWMAXIMIZED|SW_SHOWMINIMIZED|SW_SHOWMINNOACTIVE|SW_SHOWNA|SW_SHOWNOACTIVATE|SW_SHOWNORMAL|Tab|True|TYPE_ARRAY|TYPE_ERROR|TYPE_FUNC|TYPE_INTEGER|TYPE_MACRO|TYPE_NULL|TYPE_STRING|void|Yes)\b'
+  functions_language: '\b(?i:ComparePackedVersion|Copy|CopyFile|Defined|DeleteFile|DeleteFileNow|DimOf|DirExists|EntryCount|Error|Exec|FileClose|FileEof|FileExists|FileOpen|FileRead|FileReset|FileSize|Find|FindClose|FindFirst|FindGetFileName|FindNext|ForceDirectories|GetDateTimeString|GetEnv|GetFileDateTimeString|GetMD5OfFile|GetMD5OfString|GetMD5OfUnicodeString|GetSHA1OfFile|GetSHA1OfString|GetSHA1OfUnicodeString|GetStringFileInfo|GetVersionNumbersString|Int|IsWin64|Len|LowerCase|Message|Pos|ReadIni|ReadReg|RPos|SamePackedVersion|SaveStringToFile|SaveToFile|SetSetupSetting|SetupSetting|Str|StringChange|Trim|TypeOf|UpperCase|Warning|WriteIni)\b'
+  functions_support: '\b(?i:AddBackslash|ChangeFileExt|DecodeVer|Delete|DeleteToFirstPeriod|EncodeVer|ExtractFileDir|ExtractFileExt|ExtractFileName|ExtractFilePath|FindCode|FindNextSection|FindSection|FindSectionEnd|FindSectionEnd|GetFileCompany|GetFileCopyright|GetFileDescription|GetFileOriginalFilename|GetFileProductVersion|GetFileVersion|GetFileVersionString|GetPackedVersion|GetVersionComponents|GetVersionNumbers|Insert|IsDirSet|Max|Min|PackVersionComponents|PackVersionNumbers|ParseVersion|Power|RemoveBackslash|RemoveFileExt|SameStr|SameText|TypeOf2|UnpackVersionComponents|UnpackVersionNumbers|VersionToStr|WarnRenamedVersion|YesNo)\b'
+  identifier: '\b(?i:[a-z_]\w*)'
+  number_suffix: '(?i:u|f|u?l|u?ll)?'
+
+contexts:
+  # Preprocessor.
+  # Line end handling is included in the push prototype.
+  main:
+    # Directives.
+    - include: preproc-directive
+    - include: pragma-directive
+    - include: error-directive
+    - include: include-directive
+    - include: define-directive
+    - include: other-directive
+    - include: unknown-directive
+    # Expression.
+    - include: expression
+
+  # Pop context before any non-whitespace character when including line is reached.
+  pop-before-char:
+    - match: '(?=\S)'
+      pop: true
+
+  # Comment.
+  comment:
+    - include: comment-block
+    - include: comment-line
+
+  # Block comment.
+  comment-block:
+    - match: '/\*'
+      scope: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.block.inno
+        - match: '\*/'
+          scope: punctuation.definition.comment.inno
+          pop: true
+
+  # Line comment.
+  comment-line:
+    - match: ';'
+      scope: punctuation.definition.comment.inno
+      push:
+        - meta_scope: comment.line.semicolon.inno
+
+  # Preproc directive.
+  preproc-directive:
+    - match: '(?i)(#)\s*preproc\b'
+      scope: meta.directive.inno keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - include: comment
+        - match: '(({{options_preproc}})|(\w+))'
+          captures:
+            1: meta.option.preproc.inno
+            2: keyword.other.inno
+            3: invalid.illegal.inno
+          pop: true
+        - include: pop-before-char
+
+  # Pragma directive.
+  pragma-directive:
+    - match: '(?i)(#)\s*pragma\b'
+      scope: meta.directive.inno keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - include: comment
+        - match: '\b(?i:option|parseroption)\b'
+          scope: meta.option.pragma.inno keyword.other.inno
+          set:
+            - meta_content_scope: string.unquoted.inno
+            - include: comment
+        - match: '(({{options_pragma}})|(\w+))'
+          captures:
+            1: meta.option.pragma.inno
+            2: keyword.other.inno
+            3: invalid.illegal.inno
+          pop: true
+        - include: pop-before-char
+
+  # Error directive.
+  error-directive:
+    - match: '(?i)(#)\s*error\b'
+      scope: meta.directive.inno keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - meta_content_scope: string.unquoted.inno
+
+  # Include directive.
+  include-directive:
+    - match: '(?i)(#)\s*(?:[+]|include\b)'
+      scope: meta.directive.inno keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - include: comment
+        - match: '\s*(<)[^<>]*(>)\s*$'
+          scope: string.quoted.other.inno
+          captures:
+            1: punctuation.definition.string.begin.inno
+            2: punctuation.definition.string.end.inno
+          pop: true
+        - include: pop-before-char
+
+  # Define directive.
+  define-directive:
+    - match: '(?i)(#)\s*(?:[:]|define\b)'
+      scope: meta.directive.inno keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+      push:
+        - include: comment
+        - include: keyword
+        - include: type
+        - match: '({{identifier}}(?=\s*\())|({{identifier}})'
+          captures:
+            1: meta.function.inno entity.name.function.inno
+            2: entity.name.variable.inno
+          set: expect-parameters
+        - include: pop-before-char
+
+  # Other directive.
+  other-directive:
+    - match: '(#)\s*{{directives}}'
+      scope: meta.directive.inno keyword.other.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+
+  # Unknown directive.
+  unknown-directive:
+    - match: '(#)(?:\s*\w+)?'
+      scope: meta.directive.inno invalid.illegal.inno
+      captures:
+        1: punctuation.definition.keyword.inno
+
+  # Expression.
+  expression:
+    - include: comment
+    - include: braces
+    - include: parens
+    - include: operator
+    - include: keyword
+    - include: type
+    - include: constant
+    - include: identifier
+    - include: number
+    - include: string
+    - include: terminator
+
+  # Section delimited by curly braces. Prevents matching semicolons as comments.
+  braces:
+    - match: '\{'
+      scope: punctuation.section.braces.begin.inno
+      push:
+        - meta_scope: meta.braces.inno
+        - match: ';'
+          scope: punctuation.separator.inno
+        - include: expression
+        - match: '\}'
+          scope: punctuation.section.braces.end.inno
+          pop: true
+
+  # Section delimited by parentheses.
+  parens:
+    - match: '\('
+      scope: punctuation.section.parens.begin.inno
+      push:
+        - meta_scope: meta.parens.inno
+        - include: expression
+        - match: '\)'
+          scope: punctuation.section.parens.end.inno
+          pop: true
+
+  # Push when expecting arguments of a function call. Pops if arguments are not found. Prevents matching terminators.
+  expect-arguments:
+    - include: comment-block
+    - match: '\('
+      scope: punctuation.section.arguments.begin.inno
+      set:
+        - meta_scope: meta.function.arguments.inno
+        - match: ','
+          scope: punctuation.separator.inno
+        - include: expression
+        - match: '\)'
+          scope: punctuation.section.arguments.end.inno
+          pop: true
+    - include: pop-before-char
+
+  # Push when expecting parameters of a function definition. Pops if parameters are not found.
+  expect-parameters:
+    - include: comment-block
+    - match: '\('
+      scope: punctuation.section.parameters.begin.inno
+      set:
+        - meta_scope: meta.function.parameters.inno
+        - include: comment
+        - include: type
+        - include: number
+        - include: string
+        - match: ','
+          scope: punctuation.separator.inno
+        - match: '[*?]'
+          scope: keyword.operator.inno
+        - match: '\w+'
+          scope: variable.parameter.inno
+        - match: '='
+          scope: keyword.operator.assignment.inno
+          push:
+            - match: '(?=[,)])'
+              pop: true
+            - include: expression
+        - match: '\)'
+          scope: punctuation.section.parameters.end.inno
+          pop: true
+    - include: pop-before-char
+
+  # Operator.
+  operator:
+    - match: '='
+      scope: keyword.operator.assignment.inno
+    - match: '[-+*/]'
+      scope: keyword.operator.arithmetic.inno
+    - match: '!+|&&|\|\|'
+      scope: keyword.operator.logical.inno
+    - match: '[~&|^]|<<|>>'
+      scope: keyword.operator.bitwise.inno
+    - match: '<=|>=|<|>|==|!='
+      scope: keyword.operator.comparison.inno
+    - match: '[?:]'
+      scope: keyword.operator.conditional.inno
+
+  # Keyword.
+  keyword:
+    - match: '{{keywords_storage}}'
+      scope: storage.modifier.inno
+
+  # Type.
+  type:
+    - match: '{{types_language}}'
+      scope: storage.type.inno
+
+  # Identifier (function or variable).
+  identifier:
+    # Built-in function.
+    - match: '{{functions_language}}|{{functions_support}}'
+      scope: support.function.inno
+      push: expect-arguments
+    # User defined function (may be a variable, but we will still try to match arguments).
+    - match: '{{identifier}}'
+      push: expect-arguments
+
+  # Constant.
+  constant:
+    - match: '{{constants_language}}|{{constants_support}}'
+      scope: constant.other.inno
+
+  # Number.
+  number:
+    # Hexadecimal number.
+    - match: '\b0[xX]\h+{{number_suffix}}\b'
+      scope: constant.numeric.integer.hexadecimal.inno
+    # Integer or float.
+    - match: '\b[0-9]+(?:\.[0-9]+)?{{number_suffix}}\b'
+      scope: constant.numeric.inno
+
+  # String.
+  string:
+    # Double quoted string.
+    - match: '"'
+      scope: punctuation.definition.string.begin.inno
+      push:
+        - meta_scope: string.quoted.double.inno
+        - match: '""'
+          scope: constant.character.escape.inno
+        - match: '"'
+          scope: punctuation.definition.string.end.inno
+          pop: true
+    # Single quoted string.
+    - match: "'"
+      scope: punctuation.definition.string.begin.inno
+      push:
+        - meta_scope: string.quoted.double.inno
+        - match: "''"
+          scope: constant.character.escape.inno
+        - match: "'"
+          scope: punctuation.definition.string.end.inno
+          pop: true
+
+  # Statement terminator.
+  terminator:
+    - match: ','
+      scope: keyword.operator.terminator.inno

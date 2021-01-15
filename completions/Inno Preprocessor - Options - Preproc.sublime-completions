@@ -1,0 +1,7 @@
+{
+  "scope": "meta.preprocessor.inno meta.option.preproc.inno",
+  "completions": [
+    "builtin",
+    "ispp",
+  ]
+}
