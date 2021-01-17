@@ -2,6 +2,7 @@
 ---
 name: 'Inno Pascal'
 scope: source.pascal.inno
+hidden: true
 
 variables:
   keywords: '\b(?i:and|array|as|begin|break|case|const|continue|div|do|downto|else|end|except|exit|external|finally|for|forward|function|goto|if|in|interface|is|label|mod|not|of|or|out|procedure|program|record|repeat|set|shl|shr|then|to|try|type|until|var|while|with|xor)\b'
