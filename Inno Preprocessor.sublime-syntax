@@ -2,6 +2,7 @@
 ---
 name: 'Inno Preprocessor'
 scope: meta.preprocessor.inno
+hidden: true
 
 variables:
   directives: '(?:[:+=!]|\b(?i:append|define|dim|elif|else|emit|endif|endsub|error|expr|file|for|if|ifn?def|ifn?exist|include|insert|pragma|preproc|redim|sub|undef|x)\b)'
