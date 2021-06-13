@@ -1,4 +1,3 @@
 *.py
-*.tmLanguage
 node_modules/
 npm-debug.log*
