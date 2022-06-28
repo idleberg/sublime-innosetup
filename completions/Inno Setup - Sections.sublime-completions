@@ -1,0 +1,23 @@
+{
+  "scope": "source.inno meta.section-tag.inno",
+  "completions": [
+    "Code",
+    "Components",
+    "CustomMessages",
+    "Dirs",
+    "Files",
+    "Icons",
+    "INI",
+    "InstallDelete",
+    "LangOptions",
+    "Languages",
+    "Messages",
+    "Registry",
+    "Run",
+    "Setup",
+    "Tasks",
+    "Types",
+    "UninstallDelete",
+    "UninstallRun",
+  ]
+}

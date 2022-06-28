@@ -1,0 +1,53 @@
+{
+  "scope": "source.inno meta.section.lang-options.inno - meta.directive.value",
+  "completions": [
+    {
+      "contents": "CopyrightFontName=",
+      "trigger": "CopyrightFontName"
+    },
+    {
+      "contents": "CopyrightFontSize=",
+      "trigger": "CopyrightFontSize"
+    },
+    {
+      "contents": "DialogFontName=",
+      "trigger": "DialogFontName"
+    },
+    {
+      "contents": "DialogFontSize=",
+      "trigger": "DialogFontSize"
+    },
+    {
+      "contents": "LanguageCodePage=",
+      "trigger": "LanguageCodePage"
+    },
+    {
+      "contents": "LanguageID=",
+      "trigger": "LanguageID"
+    },
+    {
+      "contents": "LanguageName=",
+      "trigger": "LanguageName"
+    },
+    {
+      "contents": "RightToLeft=",
+      "trigger": "RightToLeft"
+    },
+    {
+      "contents": "TitleFontName=",
+      "trigger": "TitleFontName"
+    },
+    {
+      "contents": "TitleFontSize=",
+      "trigger": "TitleFontSize"
+    },
+    {
+      "contents": "WelcomeFontName=",
+      "trigger": "WelcomeFontName"
+    },
+    {
+      "contents": "WelcomeFontSize=",
+      "trigger": "WelcomeFontSize"
+    },
+  ]
+}
